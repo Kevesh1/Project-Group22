@@ -1,4 +1,4 @@
 package budgetapp.view;
 
-public class tempview {
+public class TempView {
 }

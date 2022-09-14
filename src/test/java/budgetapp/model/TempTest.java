@@ -1,4 +1,4 @@
 package budgetapp.model;
 
-public class tempmodel {
+public class TempTest {
 }
