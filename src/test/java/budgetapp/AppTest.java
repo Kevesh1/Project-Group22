@@ -12,8 +12,4 @@ public class AppTest {
     public void tempTest() {
         assertTrue(true);
     }
-    @Test
-    public void tempTest2() {
-        fail();
-    }
 }
