@@ -1,4 +1,5 @@
 package budgetapp.controller;
 
-public class TempController {
+public class MainController {
+
 }
