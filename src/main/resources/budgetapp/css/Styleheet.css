@@ -48,3 +48,23 @@
     -fx-background-insets : 2.0, 0.0, 0.0;
     -fx-background-radius : 2.0em;
 }
+
+.darkModeThemeDark{
+    -fx-background-color: #424549;
+}
+.darkModeThemeDarker{
+    -fx-background-color: #36393E;
+}
+.darkModeThemeDarkest{
+    -fx-background-color: #282b30;
+}
+.lightModeThemeLight{
+    -fx-background-color: #CFCFCF;
+}
+.lightModeThemeLighter{
+    -fx-background-color: #E1E3E5;
+}
+.lightModeThemeLightest{
+    -fx-background-color: #ffffff;
+}
+

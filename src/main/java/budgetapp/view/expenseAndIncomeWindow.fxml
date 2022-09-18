@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.MainController">
+   <children>
+      <Circle fill="DODGERBLUE" layoutX="75.0" layoutY="47.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="129.0" layoutY="39.0" text="Label" />
+      <Label layoutX="37.0" layoutY="105.0" text="Label" />
+      <Label layoutX="37.0" layoutY="185.0" text="Label" />
+      <Label layoutX="35.0" layoutY="271.0" text="Label" />
+      <Label layoutX="206.0" layoutY="134.0" text="Label" />
+      <TextField layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" />
+      <TextField layoutX="35.0" layoutY="205.0" prefHeight="35.0" prefWidth="150.0" />
+      <TextField layoutX="35.0" layoutY="291.0" prefHeight="100.0" prefWidth="200.0" />
+      <AnchorPane layoutX="286.0" layoutY="48.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Accordion>
+                          <panes>
+                            <TitledPane animated="false" prefHeight="130.0" prefWidth="202.0" text="untitled 1">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="200.0" />
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" text="untitled 2">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" text="untitled 3">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </TitledPane>
+                          </panes>
+                        </Accordion>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="46.0" fitWidth="61.0" layoutX="438.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
