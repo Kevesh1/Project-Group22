@@ -7,11 +7,13 @@ public class User {
     private String firstName;
     private String lastName;
     private Image profilePicture;
+    private String password;
 
     public User(String firstName, String lastName, Image profilePicture){
         this.firstName = firstName;
         this.lastName = lastName;
         this.profilePicture = profilePicture;
+        this.password = password;
     }
 
 }
