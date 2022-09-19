@@ -1,5 +1,7 @@
 package budgetapp.model;
 import java.util.*;
+import javafx.scene.*;
+import javafx.scene.image.Image;
 
 public class FrontPage {
     private int numUsers;
@@ -10,7 +12,6 @@ public class FrontPage {
 
     public FrontPage(int numUsers, String[] Users){
         this.numUsers = numUsers;
-        this.usersList = usersList;
         this.maxNumUsers = 4;
     }
 
@@ -27,12 +28,19 @@ public class FrontPage {
     }
 
 
-/*    public void userCreate(){
-        calculateNumUsers(String[] usersList);
-        if (getNumUsers() <= getNumUsers()){
-
+    public void userCreate(){
+        calculateNumUsers(usersList);
+        if (getNumUsers() <= getMaxNumUsers()){
+            customizeNewUser();
+        }
+        else{
+            System.out.println("Too many current users");
         }
 
     }
- */
+
+    public void customizeNewUser(){
+      /*  firstName =
+        User user = new User(); */
+    }
 }
