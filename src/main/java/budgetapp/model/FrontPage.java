@@ -10,7 +10,7 @@ public class FrontPage {
 
     public FrontPage(int numUsers, String[] Users){
         this.numUsers = numUsers;
-        this.Users = Users;
+        this.usersList = usersList;
         this.maxNumUsers = 4;
     }
 
@@ -22,16 +22,17 @@ public class FrontPage {
         return maxNumUsers;
     }
 
-    public void calculateNumUsers(String[] usersList){
+    public void calculateNumUsers(List<User> usersList){
         int numUsers = usersList.size();
     }
 
 
-    public void userCreate(){
+/*    public void userCreate(){
         calculateNumUsers(String[] usersList);
         if (getNumUsers() <= getNumUsers()){
 
         }
 
     }
+ */
 }
