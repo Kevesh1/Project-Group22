@@ -49,6 +49,9 @@
     -fx-background-radius : 2.0em;
 }
 
+.themeColor{
+    -fx-background-color: #33455E;
+}
 .darkModeThemeDark{
     -fx-background-color: #424549;
 }
