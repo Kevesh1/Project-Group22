@@ -1,4 +1,4 @@
-package budgetapp.model;
+package budgetapp.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 
 import java.io.IOException;
 
-public class LoginPage {
+public class LoginPageController {
 
     @FXML
     private Button returnFrontButton;

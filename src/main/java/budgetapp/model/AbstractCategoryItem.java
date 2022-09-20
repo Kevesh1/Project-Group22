@@ -5,12 +5,12 @@ import javafx.scene.image.Image;
 abstract public class AbstractCategoryItem {
     private String name;
     private double budget;
-    private double spentAmount;
+    private double budgetSpent;
     private Image icon;
 
     public AbstractCategoryItem(String name, double budget, Image icon) {
         this.budget = budget;
-        this.spentAmount = 0;
+        this.budgetSpent = 0;
         this.icon = icon;
     }
 
@@ -28,11 +28,11 @@ abstract public class AbstractCategoryItem {
         this.budget = budget;
     }
 
-    public double getSpentAmount() {
-        return spentAmount;
+    public double getBudgetSpent() {
+        return budgetSpent;
     }
-    private void setSpentAmount(double spentAmount) {
-        this.spentAmount = spentAmount;
+    private void setBudgetSpent(double budgetSpent) {
+        this.budgetSpent = budgetSpent;
     }
 
     public Image getIcon() {
@@ -50,9 +50,9 @@ abstract public class AbstractCategoryItem {
     }
 
     protected void incrementSpentAmount(int amount) {
-        setSpentAmount(spentAmount + amount);
+        setBudgetSpent(budgetSpent + amount);
     }
     protected void decrementSpentAmount(int amount) {
-        setSpentAmount(spentAmount - amount);
+        setBudgetSpent(budgetSpent - amount);
     }
 }
