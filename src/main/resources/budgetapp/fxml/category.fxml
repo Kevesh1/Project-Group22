@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="78.0" prefWidth="428.0" style="-fx-background-color: lightgray;" stylesheets="@../css/Categories.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.view.CategoryList">
+   <children>
+      <Label fx:id="categoryName" layoutX="168.0" layoutY="4.0" styleClass="title" text="Transport" />
+      <Label fx:id="categoryBudget" layoutX="370.0" layoutY="51.0" styleClass="amount" text="5000 kr" />
+      <ImageView fitHeight="53.0" fitWidth="80.0" layoutX="8.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+      <ProgressBar fx:id="progressBar" layoutX="65.0" layoutY="57.0" prefHeight="12.0" prefWidth="298.0" progress="0.0" />
+      <Button fx:id="editButton" layoutX="345.0" layoutY="6.0" mnemonicParsing="false" text="Edit" />
+      <Button fx:id="removeCategory" layoutX="385.0" layoutY="6.0" mnemonicParsing="false" onAction="#removeCategory" text="X" />
+   </children>
+</AnchorPane>

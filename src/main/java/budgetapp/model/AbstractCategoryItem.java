@@ -1,5 +1,7 @@
 package budgetapp.model;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 
 abstract public class AbstractCategoryItem {
@@ -7,6 +9,7 @@ abstract public class AbstractCategoryItem {
     private double budget;
     private double budgetSpent;
     private Image icon;
+
 
     public AbstractCategoryItem(String name, double budget, Image icon) {
         this.budget = budget;
@@ -20,6 +23,7 @@ abstract public class AbstractCategoryItem {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public double getBudget() {
         return budget;
