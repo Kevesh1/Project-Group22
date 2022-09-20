@@ -24,7 +24,6 @@ public class BudgetMonth {
         return yearMonth.getMonth();
     }
 
-
     public double getBudget() {
         return budget;
     }

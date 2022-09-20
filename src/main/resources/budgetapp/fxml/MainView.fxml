@@ -1,11 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <DatePicker layoutX="80.0" layoutY="116.0" />
+      <ScrollPane layoutX="664.0" layoutY="142.0" prefHeight="447.0" prefWidth="222.0">
+         <content>
+            <FlowPane fx:id="categoriesFlowpane" />
+         </content>
+      </ScrollPane>
+      <PieChart fx:id="pieChart" layoutX="360.0" layoutY="142.0" prefHeight="214.0" prefWidth="303.0" />
+      <HBox layoutX="68.0" layoutY="60.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="previousMonthButton" mnemonicParsing="false" text="Button" />
+            <ComboBox fx:id="yearMonthComboBox" prefHeight="10.0" prefWidth="121.0" />
+            <Button fx:id="nextMonthButton" mnemonicParsing="false" text="Button" />
+         </children>
+      </HBox>
+      <StackedBarChart fx:id="stackedBarChart" layoutX="34.0" layoutY="142.0" prefHeight="214.0" prefWidth="303.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </StackedBarChart>
+      <HBox layoutX="68.0" layoutY="113.0">
+         <children>
+            <Label text="Budget" />
+            <Label fx:id="budgetLabel" text="budgetLabel" />
+         </children>
+      </HBox>
+      <HBox layoutX="227.0" layoutY="113.0">
+         <children>
+            <Label text="Spent" />
+            <Label fx:id="spentbudgetLabel" text="spentBudgetLabel" />
+         </children>
+      </HBox>
+      <Label layoutX="452.0" layoutY="113.0" text="selectedCategoryLabel" />
+      <ImageView fx:id="profileImage" fitHeight="80.0" fitWidth="80.0" layoutX="806.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="remainingBugdgetLabel" layoutX="466.0" layoutY="357.0" text="remainingBudgetLabel" />
+      <ScrollPane layoutX="41.0" layoutY="384.0" prefHeight="202.0" prefWidth="606.0">
+         <content>
+            <FlowPane fx:id="detailViewFlowPane" />
+         </content>
+      </ScrollPane>
+      <HBox layoutX="41.0" layoutY="353.0">
+         <children>
+            <ToggleButton mnemonicParsing="false" text="ToggleButton" />
+            <ToggleButton mnemonicParsing="false" text="ToggleButton" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
