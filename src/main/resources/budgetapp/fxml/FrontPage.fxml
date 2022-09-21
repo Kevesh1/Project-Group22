@@ -13,11 +13,38 @@
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Text>
-      <Button layoutX="152.0" layoutY="168.0" mnemonicParsing="false" text="Button">
+      <Button layoutX="64.0" layoutY="148.0" mnemonicParsing="false">
          <graphic>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Documents/bankvault.jpg" />
+                  <Image url="@../img/BlankProfilePicture.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="254.0" layoutY="155.0" mnemonicParsing="false">
+         <graphic>
+            <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/BlankProfilePicture.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="274.0" layoutY="294.0" mnemonicParsing="false">
+         <graphic>
+            <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/BlankProfilePicture.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="401.0" layoutY="134.0" mnemonicParsing="false">
+         <graphic>
+            <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/BlankProfilePicture.png" />
                </image>
             </ImageView>
          </graphic>

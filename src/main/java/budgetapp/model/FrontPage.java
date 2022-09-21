@@ -33,10 +33,25 @@ public class FrontPage {
         if (getNumUsers() <= getMaxNumUsers()){
             customizeNewUser();
         }
-        else{
-            System.out.println("Too many current users");
-        }
+    }
 
+    public void userDisplayConditions(){
+        calculateNumUsers(usersList);
+        if (getNumUsers() == 0){
+            
+        }
+        else if (getNumUsers() == 1){
+
+        }
+        else if (getNumUsers() == 2){
+
+        }
+        else if (getNumUsers() == 3){
+
+        }
+        else {
+
+        }
     }
 
     public void customizeNewUser(){

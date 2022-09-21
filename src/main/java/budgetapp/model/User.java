@@ -11,10 +11,10 @@ public class User {
     private int totalBudget;
     private int totalExpenses;
 
-    public User(String firstName, String lastName, Image profilePicture){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.profilePicture = profilePicture;
+    public User(String firstName, String lastName, String password){
+        this.firstName = "Fredrik";
+        this.lastName = "Dahl";
+        this.password = "OMG";
     }
 
 }

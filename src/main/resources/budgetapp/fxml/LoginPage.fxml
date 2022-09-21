@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.LoginPageController">
    <children>
       <ImageView fx:id="profilePicture" fitHeight="150.0" fitWidth="150.0" layoutX="225.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="40.0">
          <image>
@@ -21,8 +20,8 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="passwordField" layoutX="217.0" layoutY="236.0" promptText="Password" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="216.0" />
       <Text fx:id="passwordText" layoutX="141.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="66.21875" AnchorPane.leftAnchor="141.0" AnchorPane.rightAnchor="392.78125" />
       <Button fx:id="returnFrontButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Return" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <PasswordField fx:id="passwordField" layoutX="217.0" layoutY="236.0" promptText="Password" />
    </children>
 </AnchorPane>

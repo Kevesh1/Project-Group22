@@ -1,9 +1,10 @@
 package budgetapp.controller;
 
+import budgetapp.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class LoginPageController {
     private Image profilePicture;
 
     @FXML
-    private TextField passwordField;
+    private PasswordField passwordField;
 
 
     public void userLogin(ActionEvent event) throws IOException{
