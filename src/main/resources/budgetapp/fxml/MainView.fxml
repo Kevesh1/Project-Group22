@@ -18,7 +18,7 @@
    <children>
       <ScrollPane layoutX="664.0" layoutY="142.0" prefHeight="447.0" prefWidth="222.0">
          <content>
-            <FlowPane fx:id="categoriesFlowPane" />
+            <FlowPane fx:id="categoriesFlowPane" prefHeight="0.0" prefWidth="221.0" />
          </content>
       </ScrollPane>
       <PieChart fx:id="pieChart" layoutX="360.0" layoutY="142.0" prefHeight="214.0" prefWidth="303.0" />
