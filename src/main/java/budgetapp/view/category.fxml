@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="78.0" prefWidth="428.0" style="-fx-background-color: lightgray;" stylesheets="@../../../resources/budgetapp/css/Categories.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.view.CategoryList">
+<AnchorPane prefHeight="78.0" prefWidth="428.0" style="-fx-background-color: lightgray;" stylesheets="@../../../resources/budgetapp/css/Categories.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.CategoryList">
    <children>
       <Label fx:id="categoryName" layoutX="168.0" layoutY="4.0" styleClass="title" text="Transport" />
       <Label fx:id="categoryBudget" layoutX="370.0" layoutY="51.0" styleClass="amount" stylesheets="@../../../resources/budgetapp/css/Categories.css" text="5000 kr" />

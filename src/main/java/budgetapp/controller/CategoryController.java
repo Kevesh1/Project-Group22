@@ -50,16 +50,13 @@ public class CategoryController extends AnchorPane {
         categoryBudget.setText(String.valueOf(categoryItem.getCategory()));
         categoryAmount.setText(String.valueOf(categoryItem.getBudget()));
         progressBar.setProgress((categoryItem.getBudget()-categoryItem.getBudgetSpent())/categoryItem.getBudget());
-
-
-
     }
 
-    @FXML
+    /*@FXML
     public void removeCategory() throws IOException {
         mc.getCategories().remove(this.categoryItem);
         mc.updateCategoryList();
-    }
+    }*/
 
 /*    @FXML
     public void setLabels(CategoryItem item){

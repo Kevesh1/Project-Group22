@@ -2,19 +2,20 @@ package budgetapp.model;
 
 import java.time.Month;
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BudgetMonth {
     private double budget;
     private double budgetSpent;
     private final YearMonth yearMonth;
-    private List<Category> categories;
+    private List<CategoryItem> categoryItems;
 
     public BudgetMonth(double budget, int year, Month month) {
         this.budget = budget;
         this.budgetSpent = 0;
         this.yearMonth = YearMonth.of(year, month);
-        // categories.add()
+        categoryItems = new ArrayList<CategoryItem>();
     }
 
     public int getYear() {
@@ -38,5 +39,11 @@ public class BudgetMonth {
         this.budgetSpent = budgetSpent;
     }
 
+    public List<CategoryItem> getCategories() {
+        return categoryItems;
+    }
 
+    public void addCategoryItem(CategoryItem categoryItem) {
+        categoryItems.add(categoryItem);
+    }
 }

@@ -3,6 +3,7 @@ package budgetapp.controller;
 import budgetapp.model.BudgetMonth;
 import budgetapp.model.Category;
 import budgetapp.model.CategoryItem;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
@@ -14,8 +15,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
+import java.time.Month;
 import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainController {
 
@@ -34,7 +37,7 @@ public class MainController {
     @FXML
     Label budgetLabel;
     @FXML
-    Label spentBudgetLabel;
+    Label budgetSpentLabel;
     @FXML
     ImageView profileImage;
     @FXML
@@ -42,53 +45,69 @@ public class MainController {
     @FXML
     FlowPane detailedViewFlowPane;
 
-    private boolean started = false;
-
-    private ArrayList<CategoryItem> categoryList = new ArrayList<>();
+    //private ArrayList<CategoryItem> categoryList = new ArrayList<>();
     private CategoryController cc;
+    private BudgetMonth selectedBudgetMonth;
+    List<BudgetMonth> budgetMonths = new ArrayList<BudgetMonth>();
 
-    public MainController() throws IOException {
-        //cc = new CategoryController(this);
+    @FXML
+    private void onClickPreviousMonth() {
+        yearMonthComboBox.getSelectionModel().selectPrevious();
     }
 
+    @FXML
+    private void onClickNextMonth() {
+        yearMonthComboBox.getSelectionModel().selectNext();
+    }
+
+    @FXML
+    private void onChangeBudgetMonthComboBox() {
+        selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
+        loadBudgetMonth();
+    }
+
+    private void budgetMonthsMockUp() {
+        BudgetMonth tempBudgetMonth1 = new BudgetMonth(5000, 2022, Month.AUGUST);
+        tempBudgetMonth1.addCategoryItem(new CategoryItem(100, null, Category.Food));
+        budgetMonths.add(tempBudgetMonth1);
+        budgetMonths.add(new BudgetMonth(4000, 2022, Month.SEPTEMBER));
+        budgetMonths.add(new BudgetMonth(7000, 2022, Month.OCTOBER));
+    }
+
+    public MainController() {
+    }
 
     //does not work!
     public void initialize() throws IOException {
-        try {
-            initiateCategories();
-        }
-        catch (Exception ignored){
-        }
-        try {
-            updateCategoryList();
-        }
-        catch (Exception ignored){
-        }
-
+        budgetMonthsMockUp();
+        initializeBudgetMonths();
+        //updateCategoryList();
     }
 
-    private void initiateCategories() throws IOException {
+    public void initializeBudgetMonths() {
+        yearMonthComboBox.setItems(FXCollections.observableArrayList(budgetMonths));
+        yearMonthComboBox.getSelectionModel().selectFirst();
+        selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
+        loadBudgetMonth();
+    }
+
+    private void loadBudgetMonth() {
+        budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
+        budgetSpentLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetSpent()));
+    }
+
+    /*private void initiateCategories() throws IOException {
         for (Category category : Category.values()) {
-
-            //int i = 0;
-            //i++;
-            //cc.setLabels(categoryItem);
-            //categoriesFlowPane.getChildren().add(categoryItem);
-            categoryList.add(new CategoryItem(5000, null, category.valueOf(category.name())));
+            categoryList.add(new CategoryItem(5000, null, Category.valueOf(category.name())));
         }
-    }
+    }*/
 
     public void updateCategoryList() throws IOException {
         categoriesFlowPane.getChildren().clear();
-        for (CategoryItem category : categoryList) {
-            CategoryItem categoryItem = new CategoryItem(category.getBudget(), category.getIcon(), category.getCategory());
+        for (CategoryItem categoryItem : selectedBudgetMonth.getCategories()) {
+            //CategoryItem categoryItem = new CategoryItem(category.getBudget(), category.getIcon(), category.getCategory());
             CategoryController categoryController = new CategoryController(this, categoryItem);
             categoriesFlowPane.getChildren().add(categoryController);
         }
     }
-
-    public ArrayList<CategoryItem> getCategories(){
-        return categoryList;
-    }
-
 }
