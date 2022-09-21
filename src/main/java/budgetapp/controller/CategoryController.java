@@ -9,14 +9,16 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class CategoryController {
+public class CategoryController extends AnchorPane {
 
     private CategoryList categoryList;
     private CategoryItem category;
-    MainController mc;
+    private MainController mc;
+    private CategoryItem categoryItem;
 
     @FXML
     private ProgressBar progressBar;
@@ -40,10 +42,15 @@ public class CategoryController {
     //    progressBar.setProgress(this.budget - this.spentAmount);}
 
 
-    public CategoryController(MainController mc) throws IOException {
+    public CategoryController(MainController mc, CategoryItem categoryItem) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/category.fxml"));
-        categoryList = new CategoryList();
+        //categoryList = new CategoryList();
         this.mc = mc;
+        categoryName.setText(categoryItem.getName());
+        categoryBudget.setText(String.valueOf(categoryItem.getCategory()));
+        categoryAmount.setText(String.valueOf(categoryItem.getBudget()));
+        progressBar.setProgress((categoryItem.getBudget()-categoryItem.getBudgetSpent())/categoryItem.getBudget());
+
 
 
     }
@@ -53,11 +60,11 @@ public class CategoryController {
         mc.getCategories().remove(this);
     }
 
-    @FXML
+/*    @FXML
     public void setLabels(CategoryItem item){
         categoryName.setText(item.getName());
         categoryBudget.setText(String.valueOf(item.getCategory()));
         categoryAmount.setText(String.valueOf(item.getBudget()));
         progressBar.setProgress((item.getBudget()-item.getBudgetSpent())/item.getBudget());
-    }
+    }*/
 }

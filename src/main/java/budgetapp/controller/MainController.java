@@ -50,17 +50,24 @@ public class MainController {
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() throws IOException {
         initiateCategories();
     }
 
-    private void initiateCategories(){
-        /*for(Category category : Category.values()){
-            int i = 0;
-            i++;
-            list.add(new CategoryItem(5000, null, category.valueOf(category.name())));
-            cc.setLabels(list.get(i));
-        }*/
+    private void initiateCategories() throws IOException {
+        categoriesFlowPane.getChildren().clear();
+        for(Category category : Category.values()){
+            //int i = 0;
+            //i++;
+            //list.add(new CategoryItem(5000, null, category.valueOf(category.name())));
+            //cc.setLabels(categoryItem);
+            //categoriesFlowPane.getChildren().add(categoryItem);
+
+
+            CategoryItem categoryItem = new CategoryItem(5000, null, category.valueOf(category.name()));
+            CategoryController categoryController = new CategoryController(this, categoryItem);
+            categoriesFlowPane.getChildren().add(categoryController);
+        }
     }
 
     public ArrayList<CategoryItem> getCategories(){
