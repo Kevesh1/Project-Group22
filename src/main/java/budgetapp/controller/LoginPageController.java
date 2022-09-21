@@ -35,5 +35,6 @@ public class LoginPageController {
     }
 
     public void returnToFrontPage(ActionEvent event) throws IOException{
+        
     }
 }
