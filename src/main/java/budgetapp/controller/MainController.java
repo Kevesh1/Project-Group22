@@ -42,36 +42,53 @@ public class MainController {
     @FXML
     FlowPane detailedViewFlowPane;
 
-    private ArrayList<CategoryItem> list = new ArrayList<>();
+    private boolean started = false;
+
+    private ArrayList<CategoryItem> categoryList = new ArrayList<>();
     private CategoryController cc;
 
     public MainController() throws IOException {
         //cc = new CategoryController(this);
     }
 
-    @FXML
+
+    //does not work!
     public void initialize() throws IOException {
-        initiateCategories();
+        try {
+            initiateCategories();
+        }
+        catch (Exception ignored){
+        }
+        try {
+            updateCategoryList();
+        }
+        catch (Exception ignored){
+        }
+
     }
 
     private void initiateCategories() throws IOException {
-        categoriesFlowPane.getChildren().clear();
-        for(Category category : Category.values()){
+        for (Category category : Category.values()) {
+
             //int i = 0;
             //i++;
-            //list.add(new CategoryItem(5000, null, category.valueOf(category.name())));
             //cc.setLabels(categoryItem);
             //categoriesFlowPane.getChildren().add(categoryItem);
+            categoryList.add(new CategoryItem(5000, null, category.valueOf(category.name())));
+        }
+    }
 
-
-            CategoryItem categoryItem = new CategoryItem(5000, null, category.valueOf(category.name()));
+    public void updateCategoryList() throws IOException {
+        categoriesFlowPane.getChildren().clear();
+        for (CategoryItem category : categoryList) {
+            CategoryItem categoryItem = new CategoryItem(category.getBudget(), category.getIcon(), category.getCategory());
             CategoryController categoryController = new CategoryController(this, categoryItem);
             categoriesFlowPane.getChildren().add(categoryController);
         }
     }
 
     public ArrayList<CategoryItem> getCategories(){
-        return null;
+        return categoryList;
     }
 
 }

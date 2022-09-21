@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+
+.category-list{
+    -fx-font-family: "Roboto Medium", sans-serif;
+    -fx-font-size: 15px;
+}
+
+.add-category{
+    -fx-padding: 0;
+    -fx-font-size: 25px;
+    -fx-background-color: green;
+    -fx-border-width: 10px;
+    -fx-text-fill: white;
+
+
+}

@@ -1,29 +1,4 @@
 
-/*.accordion .titled-pane > *.content{
-    -fx-background-color: transparent ;
-    -fx-border-color: transparent;
-    }
-
-
-.accordion .titled-pane .title {
-    -fx-background-color: transparent;
-    -fx-font-size: 20px;
-}
-
-
-
-.accordion .titled-pane .title:hover {
-    -fx-background-color: lightgray;
-    -fx-border-radius: 5px;
-
-}
-
-
-.accordion .title > .arrow-button .arrow{
-    -fx-translate-x: 280;
-    -fx-translate-y: -10;
-}*/
-
 .title{
     -fx-font-size: 20px;
     -fx-font-weight: bold;
@@ -33,3 +8,4 @@
     -fx-font-size: 15px;
     -fx-font-weight: bold;
 }
+

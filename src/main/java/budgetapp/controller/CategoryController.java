@@ -56,8 +56,9 @@ public class CategoryController extends AnchorPane {
     }
 
     @FXML
-    public void removeCategory(){
-        mc.getCategories().remove(this);
+    public void removeCategory() throws IOException {
+        mc.getCategories().remove(this.categoryItem);
+        mc.updateCategoryList();
     }
 
 /*    @FXML
