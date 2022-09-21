@@ -17,4 +17,8 @@ public class User {
         this.password = "OMG";
     }
 
+    private void createPassword(){
+
+    }
+
 }
