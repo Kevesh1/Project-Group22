@@ -22,6 +22,6 @@
       </Text>
       <Text fx:id="passwordText" layoutX="141.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="66.21875" AnchorPane.leftAnchor="141.0" AnchorPane.rightAnchor="392.78125" />
       <Button fx:id="returnFrontButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Return" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
-      <PasswordField fx:id="passwordField" layoutX="217.0" layoutY="236.0" promptText="Password" />
+      <PasswordField fx:id="passwordField" layoutX="217.0" layoutY="236.0" promptText="Password" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="216.0" />
    </children>
 </AnchorPane>

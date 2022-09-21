@@ -1,5 +1,6 @@
 package budgetapp.controller;
 
+import budgetapp.App;
 import budgetapp.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +27,10 @@ public class LoginPageController {
     }
 
     public void passwordValidity() throws IOException{
+        App app = new App();
+        if(passwordField.getText().toString().equals("OMG")){
+           app.changeScene("MainView.fxml");
+        }
 
     }
 }
