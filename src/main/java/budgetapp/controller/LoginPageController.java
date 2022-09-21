@@ -28,9 +28,13 @@ public class LoginPageController {
 
     public void passwordValidity() throws IOException{
         App app = new App();
-        if(passwordField.getText().toString().equals("OMG")){
+        if(passwordField.getText().toString().equals("OMG")){     /*later connect with user class*/
            app.changeScene("MainView.fxml");
         }
 
+    }
+
+    public void returnToFrontPage(ActionEvent event) throws IOException{
+        
     }
 }
