@@ -1,7 +1,6 @@
 package budgetapp.controller;
 
 import budgetapp.App;
-import budgetapp.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -35,6 +34,7 @@ public class LoginPageController {
     }
 
     public void returnToFrontPage(ActionEvent event) throws IOException{
-        
+        App app = new App();
+        app.changeScene("FrontPage.fxml");
     }
 }
