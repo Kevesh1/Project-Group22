@@ -53,10 +53,11 @@ abstract public class AbstractCategoryItem {
         setBudget(budget - amount);
     }
 
-    protected void incrementSpentAmount(int amount) {
+    //TODO Temp probably shouldn't be public
+    public void incrementBudgetSpent(int amount) {
         setBudgetSpent(budgetSpent + amount);
     }
-    protected void decrementSpentAmount(int amount) {
+    public void decrementBudgetSpent(int amount) {
         setBudgetSpent(budgetSpent - amount);
     }
 }

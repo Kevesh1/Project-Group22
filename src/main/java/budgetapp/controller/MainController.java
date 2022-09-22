@@ -5,6 +5,7 @@ import budgetapp.model.Category;
 import budgetapp.model.CategoryItem;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
@@ -68,7 +69,10 @@ public class MainController {
 
     private void budgetMonthsMockUp() {
         BudgetMonth tempBudgetMonth1 = new BudgetMonth(5000, 2022, Month.AUGUST);
-        tempBudgetMonth1.addCategoryItem(new CategoryItem(100, null, Category.Food));
+        CategoryItem tempCategoryItem1 = new CategoryItem(100, null, Category.Food);
+        tempCategoryItem1.incrementBudgetSpent(50);
+        tempBudgetMonth1.addCategoryItem(tempCategoryItem1);
+        tempBudgetMonth1.addCategoryItem(new CategoryItem(200, null, Category.Savings));
         budgetMonths.add(tempBudgetMonth1);
         budgetMonths.add(new BudgetMonth(4000, 2022, Month.SEPTEMBER));
         budgetMonths.add(new BudgetMonth(7000, 2022, Month.OCTOBER));
@@ -81,7 +85,6 @@ public class MainController {
     public void initialize() throws IOException {
         budgetMonthsMockUp();
         initializeBudgetMonths();
-        //updateCategoryList();
     }
 
     public void initializeBudgetMonths() {
@@ -94,6 +97,8 @@ public class MainController {
     private void loadBudgetMonth() {
         budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
         budgetSpentLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetSpent()));
+
+        updateCategoryList();
     }
 
     /*private void initiateCategories() throws IOException {
@@ -102,7 +107,7 @@ public class MainController {
         }
     }*/
 
-    public void updateCategoryList() throws IOException {
+    public void updateCategoryList() {
         categoriesFlowPane.getChildren().clear();
         for (CategoryItem categoryItem : selectedBudgetMonth.getCategories()) {
             //CategoryItem categoryItem = new CategoryItem(category.getBudget(), category.getIcon(), category.getCategory());

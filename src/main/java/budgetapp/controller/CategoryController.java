@@ -13,43 +13,52 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class CategoryController extends AnchorPane {
+public class CategoryController extends AnchorPane{
 
-    private CategoryList categoryList;
-    private CategoryItem category;
-    private MainController mc;
-    private CategoryItem categoryItem;
 
     @FXML
-    private ProgressBar progressBar;
+    ProgressBar progressBar;
 
     @FXML
-    private Label categoryAmount;
+    Label categoryName;
 
     @FXML
-    private Label categoryName;
+    Label categoryBudget;
 
     @FXML
-    private Label categoryBudget;
+    Button editCategory;
 
     @FXML
-    private Button editCategory;
-
-    @FXML
-    private Button removeCategoryButton;
+    Button removeCategoryButton;
 
     //private void updateProgressBar(){
     //    progressBar.setProgress(this.budget - this.spentAmount);}
 
+    private final MainController parentController;
+    private final CategoryItem categoryitem;
 
-    public CategoryController(MainController mc, CategoryItem categoryItem) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/category.fxml"));
-        //categoryList = new CategoryList();
-        this.mc = mc;
-        categoryName.setText(categoryItem.getName());
-        categoryBudget.setText(String.valueOf(categoryItem.getCategory()));
-        categoryAmount.setText(String.valueOf(categoryItem.getBudget()));
-        progressBar.setProgress((categoryItem.getBudget()-categoryItem.getBudgetSpent())/categoryItem.getBudget());
+    @FXML
+    public void initialize() {
+
+    };
+
+    public CategoryController(MainController parentController, CategoryItem categoryItem) {
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/categoryItem.fxml"));
+        root.setRoot(this);
+        root.setController(this);
+        try {
+            root.load();
+        } catch (Exception ignored) {
+        }
+        this.categoryitem = categoryItem;
+        this.parentController = parentController;
+        setLabels();
+    }
+
+    public void setLabels(){
+        categoryName.setText(categoryitem.getName());
+        categoryBudget.setText(String.valueOf(categoryitem.getCategory()));
+        progressBar.setProgress(categoryitem.getBudgetSpent()/categoryitem.getBudget());
     }
 
     /*@FXML
@@ -58,11 +67,5 @@ public class CategoryController extends AnchorPane {
         mc.updateCategoryList();
     }*/
 
-/*    @FXML
-    public void setLabels(CategoryItem item){
-        categoryName.setText(item.getName());
-        categoryBudget.setText(String.valueOf(item.getCategory()));
-        categoryAmount.setText(String.valueOf(item.getBudget()));
-        progressBar.setProgress((item.getBudget()-item.getBudgetSpent())/item.getBudget());
-    }*/
+
 }

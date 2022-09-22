@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class App extends Application {
 
@@ -16,7 +17,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         stg = primaryStage;
         primaryStage.setTitle("Hello World!");
-        Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/budgetapp/fxml/MainView.fxml")));
         Scene scene = new Scene(root, 300, 275);
         //Node node =  FXMLLoader.load(getClass().getResource("/budgetapp/fxml/test.fxml"));
         primaryStage.setScene(scene);
@@ -32,5 +33,6 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
     }
 }
