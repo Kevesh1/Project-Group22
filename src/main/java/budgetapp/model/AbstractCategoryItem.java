@@ -12,6 +12,7 @@ abstract public class AbstractCategoryItem {
 
 
     public AbstractCategoryItem(String name, double budget, Image icon) {
+        this.name = name;
         this.budget = budget;
         this.budgetSpent = 0;
         this.icon = icon;

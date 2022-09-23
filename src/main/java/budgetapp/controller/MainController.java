@@ -1,5 +1,6 @@
 package budgetapp.controller;
 
+import budgetapp.model.AbstractCategoryItem;
 import budgetapp.model.BudgetMonth;
 import budgetapp.model.Category;
 import budgetapp.model.CategoryItem;
@@ -42,7 +43,7 @@ public class MainController {
     @FXML
     ImageView profileImage;
     @FXML
-    Label remainingBudgetLabel;
+    Label budgetRemainingLabel;
     @FXML
     FlowPane detailedViewFlowPane;
 
@@ -64,7 +65,7 @@ public class MainController {
     @FXML
     private void onChangeBudgetMonthComboBox() {
         selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
-        loadBudgetMonth();
+        updateMainView();
     }
 
     private void budgetMonthsMockUp() {
@@ -78,27 +79,32 @@ public class MainController {
         budgetMonths.add(new BudgetMonth(7000, 2022, Month.OCTOBER));
     }
 
-    public MainController() {
-    }
-
-    //does not work!
     public void initialize() throws IOException {
         budgetMonthsMockUp();
         initializeBudgetMonths();
+        updateMainView();
+    }
+    public void updateMainView() {
+        budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
+        budgetSpentLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetSpent()));
+        budgetRemainingLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()-selectedBudgetMonth.getBudgetSpent()));
+        updateCategoryList();
+        updatePieChart(selectedBudgetMonth.getCategories());
+    }
+
+    public void updatePieChart(ArrayList<CategoryItem> categories) {
+        List<PieChart.Data> data = new ArrayList<PieChart.Data>();
+        for(AbstractCategoryItem category : categories) {
+            System.out.println(category.getName());
+            data.add(new PieChart.Data(category.getName(), category.getBudget()));
+        }
+        pieChart.setData(FXCollections.observableArrayList(data));
     }
 
     public void initializeBudgetMonths() {
         yearMonthComboBox.setItems(FXCollections.observableArrayList(budgetMonths));
         yearMonthComboBox.getSelectionModel().selectFirst();
         selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
-        loadBudgetMonth();
-    }
-
-    private void loadBudgetMonth() {
-        budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
-        budgetSpentLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetSpent()));
-
-        updateCategoryList();
     }
 
     /*private void initiateCategories() throws IOException {

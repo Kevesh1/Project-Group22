@@ -55,19 +55,19 @@
       </StackedBarChart>
       <HBox layoutX="68.0" layoutY="113.0">
          <children>
-            <Label text="Budget" />
+            <Label text="Budget:" />
             <Label fx:id="budgetLabel" text="budgetLabel" />
          </children>
       </HBox>
       <HBox layoutX="227.0" layoutY="113.0">
          <children>
-            <Label text="Spent" />
+            <Label text="Spent:" />
             <Label fx:id="budgetSpentLabel" text="budgetSpentLabel" />
          </children>
       </HBox>
       <Label layoutX="452.0" layoutY="113.0" text="selectedCategoryLabel" />
       <ImageView fx:id="profileImage" fitHeight="80.0" fitWidth="80.0" layoutX="806.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="remainingBudgetLabel" layoutX="466.0" layoutY="357.0" text="remainingBudgetLabel" />
+      <Label fx:id="budgetRemainingLabel" layoutX="466.0" layoutY="357.0" text="budgetRemainingLabel" />
       <ScrollPane layoutX="41.0" layoutY="384.0" prefHeight="202.0" prefWidth="606.0">
          <content>
             <FlowPane fx:id="detailedViewFlowPane" />
