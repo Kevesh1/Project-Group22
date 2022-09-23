@@ -23,13 +23,13 @@ public class CategoryController extends AnchorPane{
 
 
     @FXML
-    private ProgressBar progressBar;
+    ProgressBar progressBar;
 
     @FXML
-    private Label categoryName;
+    Label categoryName;
 
     @FXML
-    private Label categoryBudget;
+    Label categoryBudget;
 
     @FXML
     Button editCategory;
@@ -38,7 +38,7 @@ public class CategoryController extends AnchorPane{
     Button removeCategoryButton;
 
     @FXML
-    private ImageView categoryImage;
+    ImageView categoryImage;
 
     @FXML
     private Button addButton;
@@ -69,10 +69,10 @@ public class CategoryController extends AnchorPane{
     }
 
     public void setLabels() {
-        //categoryName.setText(categoryItem.getName());
-        //categoryBudget.setText(categoryItem.getBudget() + " kr");
-        //progressBar.setProgress(categoryItem.getBudgetSpent() / categoryItem.getBudget());
-        //categoryImage.setImage(categoryItem.getIcon(categoryItem.getCategory()));
+        categoryName.setText(categoryItem.getName());
+        categoryBudget.setText(categoryItem.getBudget() + " kr");
+        progressBar.setProgress(categoryItem.getBudgetSpent() / categoryItem.getBudget());
+        categoryImage.setImage(categoryItem.getIcon());
     }
 
     @FXML

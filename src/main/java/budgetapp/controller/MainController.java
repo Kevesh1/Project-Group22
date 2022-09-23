@@ -62,7 +62,7 @@ public class MainController {
     Button addNewCategoryButton;
     @FXML
     AnchorPane addNewCategoryPane;
-    
+
 
     @FXML
     private void onClickPreviousMonth() {

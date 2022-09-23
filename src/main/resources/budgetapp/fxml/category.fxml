@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="78.0" prefWidth="428.0" style="-fx-background-color: lightgray;" stylesheets="@../css/Categories.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="78.0" prefWidth="428.0" style="-fx-background-color: lightgray;" stylesheets="@../css/Categories.css" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="categoryName" layoutX="11.0" layoutY="3.0" styleClass="title" text="Transport" />
       <Label fx:id="categoryBudget" layoutX="370.0" layoutY="51.0" styleClass="amount" text="5000 kr" />
@@ -16,4 +16,4 @@
       <Button fx:id="removeCategory" layoutX="385.0" layoutY="6.0" mnemonicParsing="false" onAction="#removeCategory" text="X" />
       <Button fx:id="addButton" layoutX="113.0" layoutY="6.0" mnemonicParsing="false" onAction="#addSubCategory" text="+" />
    </children>
-</AnchorPane>
+</fx:root>

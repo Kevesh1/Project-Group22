@@ -31,24 +31,7 @@ abstract public class AbstractCategoryItem {
     }
 
 
-    public Image getIcon(Category category) {
-        switch (category) {
-            case Food:
-                return (new Image(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(
-                        "src/main/resources/budgetapp/img/food.png"))));
-            case Home:
-                return (new Image(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(
-                        "src/main/resources/budgetapp/img/home.png"))));
-            case Transportation:
-                return (new Image(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(
-                        "src/main/resources/budgetapp/img/transportation.png"))));
-            case Savings:
-                return (new Image(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(
-                        "src/main/resources/budgetapp/img/savings.png"))));
-            case Hobbies:
-                return (new Image(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(
-                        "src/main/resources/budgetapp/img/hobbies.png"))));
-        }
+    public Image getIcon() {
         return null;
     }
 
