@@ -9,9 +9,13 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class CategoryController extends AnchorPane{
 
@@ -31,11 +35,14 @@ public class CategoryController extends AnchorPane{
     @FXML
     Button removeCategoryButton;
 
+    @FXML
+    private ImageView categoryImage;
+
     //private void updateProgressBar(){
     //    progressBar.setProgress(this.budget - this.spentAmount);}
 
     private final MainController parentController;
-    private final CategoryItem categoryitem;
+    private final CategoryItem categoryItem;
 
     @FXML
     public void initialize() {
@@ -50,15 +57,17 @@ public class CategoryController extends AnchorPane{
             root.load();
         } catch (Exception ignored) {
         }
-        this.categoryitem = categoryItem;
+        this.categoryItem = categoryItem;
         this.parentController = parentController;
         setLabels();
     }
 
-    public void setLabels(){
-        categoryName.setText(categoryitem.getName());
-        categoryBudget.setText(String.valueOf(categoryitem.getCategory()));
-        progressBar.setProgress(categoryitem.getBudgetSpent()/categoryitem.getBudget());
+    public void setLabels() {
+        categoryName.setText(categoryItem.getName());
+        categoryBudget.setText(String.valueOf(categoryItem.getCategory()));
+        progressBar.setProgress(categoryItem.getBudgetSpent() / categoryItem.getBudget());
+        //categoryImage.setImage(categoryItem.getIcon(categoryItem.getCategory()));
+
     }
 
     /*@FXML

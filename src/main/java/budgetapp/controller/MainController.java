@@ -69,10 +69,10 @@ public class MainController {
 
     private void budgetMonthsMockUp() {
         BudgetMonth tempBudgetMonth1 = new BudgetMonth(5000, 2022, Month.AUGUST);
-        CategoryItem tempCategoryItem1 = new CategoryItem(100, null, Category.Food);
+        CategoryItem tempCategoryItem1 = new CategoryItem(100, Category.Food);
         tempCategoryItem1.incrementBudgetSpent(50);
         tempBudgetMonth1.addCategoryItem(tempCategoryItem1);
-        tempBudgetMonth1.addCategoryItem(new CategoryItem(200, null, Category.Savings));
+        tempBudgetMonth1.addCategoryItem(new CategoryItem(200, Category.Food));
         budgetMonths.add(tempBudgetMonth1);
         budgetMonths.add(new BudgetMonth(4000, 2022, Month.SEPTEMBER));
         budgetMonths.add(new BudgetMonth(7000, 2022, Month.OCTOBER));
@@ -82,7 +82,7 @@ public class MainController {
     }
 
     //does not work!
-    public void initialize() throws IOException {
+    public void initialize() {
         budgetMonthsMockUp();
         initializeBudgetMonths();
     }
