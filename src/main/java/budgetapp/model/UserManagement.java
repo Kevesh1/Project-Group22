@@ -3,20 +3,22 @@ package budgetapp.model;
 public class UserManagement {
 
 
-
-
-    private void deleteAccount(){
+    private static void deleteAccount(){
 
     }
 
-    private void toggleElderlyService(){
+    private static void toggleElderlyService(){
     }
 
-    private void createFirstName(){
+    private static void toggleFamilySharing(){
 
     }
 
-    private void createPassword(){
+    private static void createFirstName(){
+
+    }
+
+    private static void createPassword(){
 
     }
 

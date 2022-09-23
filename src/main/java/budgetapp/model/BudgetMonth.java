@@ -9,7 +9,7 @@ public class BudgetMonth {
     private double budget;
     private double budgetSpent;
     private final YearMonth yearMonth;
-    private List<CategoryItem> categoryItems;
+    private final ArrayList<CategoryItem> categoryItems;
 
     public BudgetMonth(double budget, int year, Month month) {
         this.budget = budget;
@@ -39,7 +39,7 @@ public class BudgetMonth {
         this.budgetSpent = budgetSpent;
     }
 
-    public List<CategoryItem> getCategories() {
+    public ArrayList<CategoryItem> getCategories() {
         return categoryItems;
     }
 

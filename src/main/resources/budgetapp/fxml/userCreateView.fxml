@@ -18,14 +18,14 @@
             <Image url="@../img/BlankProfilePicture.png" />
          </image>
       </ImageView>
-      <TextField layoutX="217.0" layoutY="208.0" promptText="First name" />
+      <TextField fx:id="firstNameInput" layoutX="217.0" layoutY="208.0" promptText="First name" />
       <Text layoutX="124.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name:" />
-      <TextField layoutX="217.0" layoutY="246.0" promptText="Last name" />
+      <TextField fx:id="lastNameInput" layoutX="217.0" layoutY="246.0" promptText="Last name" />
       <Text layoutX="125.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name:" />
-      <PasswordField layoutX="217.0" layoutY="281.0" promptText="Password" />
-      <PasswordField layoutX="217.0" layoutY="313.0" promptText="Re-enter password" />
-      <RadioButton layoutX="173.0" layoutY="338.0" mnemonicParsing="false" text="I want an interface adapted for the elderly" />
-      <Button layoutX="214.0" layoutY="363.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" text="Create new user" />
+      <PasswordField fx:id="createPassword" layoutX="217.0" layoutY="281.0" promptText="Password" />
+      <PasswordField fx:id="createPasswordRepeat" layoutX="217.0" layoutY="313.0" promptText="Re-enter password" />
+      <RadioButton fx:id="adaptedElderlyButton" layoutX="173.0" layoutY="338.0" mnemonicParsing="false" text="I want an interface adapted for the elderly" />
+      <Button fx:id="profileFinnishedButton" layoutX="214.0" layoutY="363.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" text="Create new user" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Return" />
       <Text layoutX="126.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="63.58447265625" />
       <Text layoutX="65.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Re-enter password:" />
