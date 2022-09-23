@@ -2,9 +2,9 @@ package budgetapp.model;
 
 import javafx.scene.image.Image;
 
-class CategorySubItem extends AbstractCategoryItem{
+public class CategorySubItem extends AbstractCategoryItem{
 
-    public CategorySubItem(String name, double budget, Category category) {
-        super(name, budget, category);
+    public CategorySubItem(double budget, Category category) {
+        super(category.toString(), budget, category);
     }
 }

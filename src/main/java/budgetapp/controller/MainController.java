@@ -11,9 +11,14 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
@@ -48,6 +53,16 @@ public class MainController {
     Label budgetRemainingLabel;
     @FXML
     FlowPane detailedViewFlowPane;
+
+    @FXML
+    TextField newCategoryName;
+    @FXML
+    TextField getNewCategoryBudget;
+    @FXML
+    Button addNewCategoryButton;
+    @FXML
+    AnchorPane addNewCategoryPane;
+    
 
     @FXML
     private void onClickPreviousMonth() {

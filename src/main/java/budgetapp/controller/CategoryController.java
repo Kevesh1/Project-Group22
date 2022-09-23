@@ -3,6 +3,7 @@ package budgetapp.controller;
 import budgetapp.model.Category;
 import budgetapp.model.CategoryItem;
 import budgetapp.model.CategoryList;
+import budgetapp.model.CategorySubItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,19 +16,20 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class CategoryController extends AnchorPane{
 
 
     @FXML
-    ProgressBar progressBar;
+    private ProgressBar progressBar;
 
     @FXML
-    Label categoryName;
+    private Label categoryName;
 
     @FXML
-    Label categoryBudget;
+    private Label categoryBudget;
 
     @FXML
     Button editCategory;
@@ -38,11 +40,15 @@ public class CategoryController extends AnchorPane{
     @FXML
     private ImageView categoryImage;
 
+    @FXML
+    private Button addButton;
+
     //private void updateProgressBar(){
     //    progressBar.setProgress(this.budget - this.spentAmount);}
 
     private final MainController parentController;
     private final CategoryItem categoryItem;
+    private ArrayList<CategorySubItem> subCategories;
 
     @FXML
     public void initialize() {
@@ -50,7 +56,7 @@ public class CategoryController extends AnchorPane{
     };
 
     public CategoryController(MainController parentController, CategoryItem categoryItem) {
-        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/categoryItem.fxml"));
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/category.fxml"));
         root.setRoot(this);
         root.setController(this);
         try {
@@ -63,11 +69,23 @@ public class CategoryController extends AnchorPane{
     }
 
     public void setLabels() {
-        categoryName.setText(categoryItem.getName());
-        categoryBudget.setText(String.valueOf(categoryItem.getCategory()));
-        progressBar.setProgress(categoryItem.getBudgetSpent() / categoryItem.getBudget());
+        //categoryName.setText(categoryItem.getName());
+        //categoryBudget.setText(categoryItem.getBudget() + " kr");
+        //progressBar.setProgress(categoryItem.getBudgetSpent() / categoryItem.getBudget());
         //categoryImage.setImage(categoryItem.getIcon(categoryItem.getCategory()));
+    }
 
+    @FXML
+    public void getNewSubCategoryWindow(){
+        parentController.addNewCategoryPane.toFront();
+        //parentController.newCategoryName.setText(categoryItem.getName());
+        //parentController.newCategoryName.disableProperty();
+    }
+
+    @FXML
+    public void addSubCategory(){
+        subCategories.add(new CategorySubItem(Double.parseDouble(
+                parentController.getNewCategoryBudget.getText()), categoryItem.getCategory()));
     }
 
     /*@FXML
