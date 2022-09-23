@@ -13,9 +13,13 @@ import javafx.scene.chart.StackedBarChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import org.w3c.dom.Text;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.time.Month;
 import java.time.YearMonth;
@@ -47,6 +51,15 @@ public class MainController {
     @FXML
     FlowPane detailedViewFlowPane;
 
+    @FXML
+    TextField newCategoryName;
+    @FXML
+    TextField getNewCategoryBudget;
+    @FXML
+    Button addNewCategoryButton;
+    @FXML
+    AnchorPane addNewCategoryPane;
+
     //private ArrayList<CategoryItem> categoryList = new ArrayList<>();
     private CategoryController cc;
     private BudgetMonth selectedBudgetMonth;
@@ -73,7 +86,7 @@ public class MainController {
         CategoryItem tempCategoryItem1 = new CategoryItem(100, Category.Food);
         tempCategoryItem1.incrementBudgetSpent(50);
         tempBudgetMonth1.addCategoryItem(tempCategoryItem1);
-        tempBudgetMonth1.addCategoryItem(new CategoryItem(200, Category.Food));
+        tempBudgetMonth1.addCategoryItem(new CategoryItem(200, Category.Savings));
         budgetMonths.add(tempBudgetMonth1);
         budgetMonths.add(new BudgetMonth(4000, 2022, Month.SEPTEMBER));
         budgetMonths.add(new BudgetMonth(7000, 2022, Month.OCTOBER));
