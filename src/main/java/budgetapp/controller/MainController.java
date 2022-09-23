@@ -5,16 +5,18 @@ import budgetapp.model.BudgetMonth;
 import budgetapp.model.Category;
 import budgetapp.model.CategoryItem;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.util.Callback;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.time.Month;
@@ -47,11 +49,6 @@ public class MainController {
     @FXML
     FlowPane detailedViewFlowPane;
 
-    //private ArrayList<CategoryItem> categoryList = new ArrayList<>();
-    private CategoryController cc;
-    private BudgetMonth selectedBudgetMonth;
-    List<BudgetMonth> budgetMonths = new ArrayList<BudgetMonth>();
-
     @FXML
     private void onClickPreviousMonth() {
         yearMonthComboBox.getSelectionModel().selectPrevious();
@@ -68,22 +65,16 @@ public class MainController {
         updateMainView();
     }
 
-    private void budgetMonthsMockUp() {
-        BudgetMonth tempBudgetMonth1 = new BudgetMonth(5000, 2022, Month.AUGUST);
-        CategoryItem tempCategoryItem1 = new CategoryItem(100, Category.Food);
-        tempCategoryItem1.incrementBudgetSpent(50);
-        tempBudgetMonth1.addCategoryItem(tempCategoryItem1);
-        tempBudgetMonth1.addCategoryItem(new CategoryItem(200, Category.Food));
-        budgetMonths.add(tempBudgetMonth1);
-        budgetMonths.add(new BudgetMonth(4000, 2022, Month.SEPTEMBER));
-        budgetMonths.add(new BudgetMonth(7000, 2022, Month.OCTOBER));
-    }
+    private CategoryController cc;
+    private BudgetMonth selectedBudgetMonth;
+    List<BudgetMonth> budgetMonths = new ArrayList<>();
 
     public MainController() {
     }
 
     public void initialize() throws IOException {
         budgetMonthsMockUp();
+        initializeComboBox();
         initializeBudgetMonths();
         updateMainView();
     }
@@ -95,17 +86,21 @@ public class MainController {
         updatePieChart(selectedBudgetMonth.getCategories());
     }
 
-    public void updatePieChart(ArrayList<CategoryItem> categories) {
+    private void updatePieChart(ArrayList<CategoryItem> categories) {
         List<PieChart.Data> data = new ArrayList<PieChart.Data>();
         for(AbstractCategoryItem category : categories) {
-            System.out.println(category.getName());
             data.add(new PieChart.Data(category.getName(), category.getBudget()));
         }
         pieChart.setData(FXCollections.observableArrayList(data));
     }
 
-    public void initializeBudgetMonths() {
+    private void initializeComboBox() {
+        yearMonthComboBox.setCellFactory(comboBoxCellFactory);
+        yearMonthComboBox.setConverter(comboBoxStringConverter);
         yearMonthComboBox.setItems(FXCollections.observableArrayList(budgetMonths));
+    }
+
+    public void initializeBudgetMonths() {
         yearMonthComboBox.getSelectionModel().selectFirst();
         selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
     }
@@ -119,9 +114,49 @@ public class MainController {
     public void updateCategoryList() {
         categoriesFlowPane.getChildren().clear();
         for (CategoryItem categoryItem : selectedBudgetMonth.getCategories()) {
-            //CategoryItem categoryItem = new CategoryItem(category.getBudget(), category.getIcon(), category.getCategory());
             CategoryController categoryController = new CategoryController(this, categoryItem);
             categoriesFlowPane.getChildren().add(categoryController);
         }
     }
+
+    private void budgetMonthsMockUp() {
+        BudgetMonth tempBudgetMonth1 = new BudgetMonth(5000, 2022, Month.AUGUST);
+        CategoryItem tempCategoryItem1 = new CategoryItem(100, Category.Food);
+        tempCategoryItem1.incrementBudgetSpent(50);
+        tempBudgetMonth1.addCategoryItem(tempCategoryItem1);
+        tempBudgetMonth1.addCategoryItem(new CategoryItem(200, Category.Savings));
+        budgetMonths.add(tempBudgetMonth1);
+        budgetMonths.add(new BudgetMonth(4000, 2022, Month.SEPTEMBER));
+        budgetMonths.add(new BudgetMonth(7000, 2022, Month.OCTOBER));
+    }
+
+    Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>> comboBoxCellFactory = new Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>>() {
+        @Override
+        public ListCell<BudgetMonth> call(ListView<BudgetMonth> budgetMonthListView) {
+            return new ListCell<BudgetMonth>() {
+                @Override
+                protected void updateItem(BudgetMonth budgetMonth, boolean empty) {
+                    super.updateItem(budgetMonth, empty);
+                    if (budgetMonth == null || empty) {
+                        setGraphic(null);
+                    } else {
+                        setText(yearMonthComboBox.getConverter().toString(budgetMonth));
+                    }
+                }
+            };
+        }
+    };
+
+    StringConverter<BudgetMonth> comboBoxStringConverter = new StringConverter<BudgetMonth>() {
+
+        @Override
+        public String toString(BudgetMonth budgetMonth) {
+            return String.format("%s %d", budgetMonth.getMonth().toString(), budgetMonth.getYear());
+        }
+
+        @Override
+        public BudgetMonth fromString(String string) {
+            return null;
+        }
+    };
 }
