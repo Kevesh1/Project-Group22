@@ -5,12 +5,9 @@ import budgetapp.model.BudgetMonth;
 import budgetapp.model.Category;
 import budgetapp.model.CategoryItem;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -24,10 +21,12 @@ import javafx.util.Callback;
 import javafx.util.StringConverter;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.time.Month;
 import java.time.YearMonth;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MainController {
 
@@ -42,7 +41,7 @@ public class MainController {
     @FXML
     ComboBox<BudgetMonth> yearMonthComboBox;
     @FXML
-    StackedBarChart stackedBarChart;
+    StackedBarChart<String, Number> stackedBarChart;
     @FXML
     Label budgetLabel;
     @FXML
@@ -82,15 +81,16 @@ public class MainController {
 
     private CategoryController cc;
     private BudgetMonth selectedBudgetMonth;
-    List<BudgetMonth> budgetMonths = new ArrayList<>();
+    ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
 
     public MainController() {
     }
 
-    public void initialize() throws IOException {
+    public void initialize() {
         budgetMonthsMockUp();
         initializeComboBox();
         initializeBudgetMonths();
+        updateBarChart(budgetMonths);
         updateMainView();
     }
     public void updateMainView() {
@@ -107,6 +107,25 @@ public class MainController {
             data.add(new PieChart.Data(category.getName(), category.getBudget()));
         }
         pieChart.setData(FXCollections.observableArrayList(data));
+    }
+
+    // TODO Refactor function
+    private void updateBarChart(List<BudgetMonth> budgetMonths) {
+        stackedBarChart.getYAxis().setLabel("Budget");
+        stackedBarChart.setTitle("MONTH budget");
+        Map<Category ,XYChart.Series<String, Number>> series = new HashMap<>();
+        for(BudgetMonth budgetMonth : budgetMonths) {
+            for (CategoryItem categoryItem : budgetMonth.getCategories()) {
+                String temp1 = categoryItem.getName();
+                series.computeIfAbsent(categoryItem.getCategory(),
+                        c -> new XYChart.Series<String, Number>()).setName(categoryItem.getName().toUpperCase());
+                series.get(categoryItem.getCategory()).getData().add(new XYChart.Data<String, Number>(budgetMonth.getMonth().toString(), categoryItem.getBudget()));
+            }
+        }
+        series.forEach((category, stringNumberSeries) -> System.out.println(series.get(category)));
+        List temp = new ArrayList<>() ;
+        series.forEach((category, stringNumberSeries) -> temp.add(series.get(category)));
+        stackedBarChart.setData(FXCollections.observableArrayList(temp));
     }
 
     private void initializeComboBox() {
@@ -136,13 +155,19 @@ public class MainController {
 
     private void budgetMonthsMockUp() {
         BudgetMonth tempBudgetMonth1 = new BudgetMonth(5000, 2022, Month.AUGUST);
+        BudgetMonth tempBudgetMonth2 = (new BudgetMonth(4000, 2022, Month.SEPTEMBER));
+        BudgetMonth tempBudgetMonth3 = (new BudgetMonth(7000, 2022, Month.OCTOBER));
         CategoryItem tempCategoryItem1 = new CategoryItem(100, Category.Food);
+        CategoryItem tempCategoryItem2 = new CategoryItem(300, Category.Transportation);
         tempCategoryItem1.incrementBudgetSpent(50);
-        tempBudgetMonth1.addCategoryItem(tempCategoryItem1);
         tempBudgetMonth1.addCategoryItem(new CategoryItem(200, Category.Savings));
+        tempBudgetMonth1.addCategoryItem(tempCategoryItem1);
+        tempBudgetMonth2.addCategoryItem(tempCategoryItem2);
+        tempBudgetMonth3.addCategoryItem(new CategoryItem(300, Category.Transportation));
+        tempBudgetMonth3.addCategoryItem(new CategoryItem(300, Category.Food));
         budgetMonths.add(tempBudgetMonth1);
-        budgetMonths.add(new BudgetMonth(4000, 2022, Month.SEPTEMBER));
-        budgetMonths.add(new BudgetMonth(7000, 2022, Month.OCTOBER));
+        budgetMonths.add(tempBudgetMonth2);
+        budgetMonths.add(tempBudgetMonth3);
     }
 
     Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>> comboBoxCellFactory = new Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>>() {

@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.MainController">
    <children>
       <AnchorPane fx:id="addNewCategoryPane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
          <children>
@@ -38,21 +38,21 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1072.0" style="-fx-background-color: white;" stylesheets="@../css/mainView.css">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1072.0" style="-fx-background-color: white;" stylesheets="@../css/mainView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ScrollPane layoutX="664.0" layoutY="142.0" prefHeight="447.0" prefWidth="385.0">
+            <ScrollPane layoutX="664.0" layoutY="142.0" prefHeight="447.0" prefWidth="435.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="142.0">
                <content>
                   <FlowPane fx:id="categoriesFlowPane" prefHeight="0.0" prefWidth="221.0" />
                </content>
             </ScrollPane>
-            <PieChart fx:id="pieChart" layoutX="360.0" layoutY="142.0" prefHeight="214.0" prefWidth="303.0" />
-            <HBox layoutX="68.0" layoutY="60.0" prefWidth="200.0">
+            <PieChart fx:id="pieChart" layoutX="409.0" layoutY="142.0" prefHeight="214.0" prefWidth="227.0" AnchorPane.bottomAnchor="246.60000000000002" AnchorPane.leftAnchor="409.0" AnchorPane.rightAnchor="265.79999999999995" AnchorPane.topAnchor="142.0" />
+            <HBox layoutX="91.0" layoutY="54.0" prefWidth="200.0" AnchorPane.bottomAnchor="517.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="611.0" AnchorPane.topAnchor="54.0">
                <children>
                   <Button fx:id="previousMonthButton" mnemonicParsing="false" onAction="#onClickPreviousMonth">
                      <graphic>
                         <ImageView pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/material/arrow_back_ios_new.png" />
+                              <Image url="@../img/material/arrow_back_ios.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -69,7 +69,7 @@
                   </Button>
                </children>
             </HBox>
-            <StackedBarChart fx:id="stackedBarChart" layoutX="34.0" layoutY="142.0" prefHeight="214.0" prefWidth="303.0">
+            <StackedBarChart fx:id="stackedBarChart" layoutX="13.0" layoutY="142.0" prefHeight="214.0" prefWidth="34.0" AnchorPane.bottomAnchor="247.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="855.0" AnchorPane.topAnchor="142.0">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -77,35 +77,34 @@
                   <NumberAxis side="LEFT" />
                </yAxis>
             </StackedBarChart>
-            <HBox layoutX="68.0" layoutY="113.0">
+            <HBox layoutX="68.0" layoutY="113.0" AnchorPane.rightAnchor="726.8">
                <children>
                   <Label text="Budget:" />
                   <Label fx:id="budgetLabel" text="budgetLabel" />
                </children>
             </HBox>
-            <HBox layoutX="227.0" layoutY="113.0">
+            <HBox layoutX="227.0" layoutY="113.0" AnchorPane.rightAnchor="543.8">
                <children>
                   <Label text="Spent:" />
                   <Label fx:id="budgetSpentLabel" text="budgetSpentLabel" />
                </children>
             </HBox>
-            <Label layoutX="452.0" layoutY="113.0" text="selectedCategoryLabel" />
             <ImageView fx:id="profileImage" fitHeight="80.0" fitWidth="80.0" layoutX="806.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="budgetRemainingLabel" layoutX="466.0" layoutY="357.0" text="budgetRemainingLabel" />
-            <ScrollPane layoutX="41.0" layoutY="384.0" prefHeight="202.0" prefWidth="606.0">
+            <Label fx:id="budgetRemainingLabel" layoutX="316.0" layoutY="357.0" text="budgetRemainingLabel" AnchorPane.bottomAnchor="228.4" AnchorPane.rightAnchor="462.8" />
+            <ScrollPane layoutX="13.0" layoutY="379.0" prefHeight="202.0" prefWidth="410.0" AnchorPane.bottomAnchor="21.600000000000023" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="478.6">
                <content>
                   <FlowPane fx:id="detailedViewFlowPane" />
                </content>
             </ScrollPane>
-            <HBox layoutX="41.0" layoutY="353.0">
+            <HBox layoutX="13.0" layoutY="353.0" AnchorPane.bottomAnchor="224.39999999999998">
                <children>
                   <ToggleButton mnemonicParsing="false" text="ToggleButton" />
                   <ToggleButton mnemonicParsing="false" text="ToggleButton" />
                </children>
             </HBox>
             <Label layoutX="14.0" layoutY="14.0" text="Label" />
-            <Label layoutX="663.0" layoutY="113.0" prefHeight="17.0" prefWidth="80.0" styleClass="category-list" text="Categories" />
-            <Button layoutX="990.0" layoutY="87.0" mnemonicParsing="false" text="+">
+            <Label layoutX="490.0" layoutY="111.0" prefHeight="17.0" prefWidth="80.0" styleClass="category-list" text="Categories" AnchorPane.rightAnchor="332.0" />
+            <Button layoutX="839.0" layoutY="87.0" mnemonicParsing="false" text="+" AnchorPane.rightAnchor="14.200000000000003">
                <font>
                   <Font size="24.0" />
                </font>
