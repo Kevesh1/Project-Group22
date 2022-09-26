@@ -1,3 +1,15 @@
+
+
+@import url("https://fonts.google.com/specimen/Montserrat?query=montse");
+@import url("https://fonts.google.com/specimen/Roboto?query=roboto");
+
+.roboto{
+    -fx-font-family: "Roboto";
+}
+.montserrat{
+    -fx-font-family: "Montserrat";
+}
+
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track{
     -fx-background-color :transparent;
@@ -5,7 +17,6 @@
     -fx-background-radius : 0.0em;
     -fx-border-radius :2.0em;
 }
-
 
 .scroll-bar:horizontal .increment-button ,
 .scroll-bar:horizontal .decrement-button {
@@ -85,7 +96,21 @@
 
     -fx-focus-color: -fx-theme-color;
 }
-
+.date-picker{
+    -fx-background-color: transparent;
+    -fx-show-week-numbers: false;
+}
+.date-picker .button{
+    -fx-background-color: -fx-theme-color;
+}
+.date-picker .label{
+    -fx-background-color: -fx-theme-color;
+}
+.date-picker > .text-field  {
+    -fx-alignment: center;
+    -fx-background-color: -fx-dark-color;
+    -fx-text-fill: -fx-text-color;
+}
 .date-picker .arrow-button {
     -fx-background-color: -fx-theme-color;
     -fx-background-radius: 0;
@@ -105,7 +130,6 @@
     -fx-background-color: -fx-dark-color;
 }
 .date-picker .selected {
-    -fx-background-color: -fx-theme-color;
     -fx-text-fill: -fx-text-color;
 }
 .date-picker .selected:focused {
@@ -135,6 +159,10 @@
 .date-picker-popup .spinner .button .left-arrow,
 .date-picker-popup .spinner .button .right-arrow {
     -fx-background-color: -fx-dark-color;
+}
+
+.categoryImages{
+    -fx-background-color: gray;
 }
 
 

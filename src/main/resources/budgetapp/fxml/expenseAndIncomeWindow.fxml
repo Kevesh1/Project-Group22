@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="500.0" styleClass="darkModeThemeDarker" stylesheets="@../css/Styleheet.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.expenseAndIncomeController">
    <children>
       <Circle fx:id="categorySwap" fill="DODGERBLUE" layoutX="75.0" layoutY="47.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label layoutX="129.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Label">
+      <Label layoutX="129.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
          <font>
             <Font size="15.0" />
          </font>
@@ -20,7 +20,7 @@
             <String fx:value="darkModeTextColor" />
             <String fx:value="standardFontSize" />
          </styleClass></Label>
-      <Label layoutX="37.0" layoutY="105.0" stylesheets="@../css/Styleheet.css" text="Label">
+      <Label layoutX="37.0" layoutY="105.0" stylesheets="@../css/Styleheet.css" text="Sum">
          <font>
             <Font />
          </font>
@@ -28,7 +28,7 @@
             <String fx:value="darkModeTextColor" />
             <String fx:value="standardFontSize" />
          </styleClass></Label>
-      <Label layoutX="37.0" layoutY="185.0" stylesheets="@../css/Styleheet.css" text="Label">
+      <Label layoutX="37.0" layoutY="185.0" stylesheets="@../css/Styleheet.css" text="Date">
          <font>
             <Font size="15.0" />
          </font>
@@ -36,7 +36,7 @@
             <String fx:value="darkModeTextColor" />
             <String fx:value="standardFontSize" />
          </styleClass></Label>
-      <Label layoutX="35.0" layoutY="271.0" stylesheets="@../css/Styleheet.css" text="Label">
+      <Label layoutX="35.0" layoutY="271.0" stylesheets="@../css/Styleheet.css" text="Note">
          <font>
             <Font size="15.0" />
          </font>
