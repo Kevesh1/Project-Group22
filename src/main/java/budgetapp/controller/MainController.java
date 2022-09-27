@@ -112,18 +112,16 @@ public class MainController {
     // TODO Refactor function
     private void updateBarChart(List<BudgetMonth> budgetMonths) {
         stackedBarChart.getYAxis().setLabel("Budget");
-        stackedBarChart.setTitle("MONTH budget");
+        stackedBarChart.setTitle("Yearly budget");
         Map<Category ,XYChart.Series<String, Number>> series = new HashMap<>();
         for(BudgetMonth budgetMonth : budgetMonths) {
             for (CategoryItem categoryItem : budgetMonth.getCategories()) {
-                String temp1 = categoryItem.getName();
                 series.computeIfAbsent(categoryItem.getCategory(),
                         c -> new XYChart.Series<String, Number>()).setName(categoryItem.getName().toUpperCase());
                 series.get(categoryItem.getCategory()).getData().add(new XYChart.Data<String, Number>(budgetMonth.getMonth().toString(), categoryItem.getBudget()));
             }
         }
-        series.forEach((category, stringNumberSeries) -> System.out.println(series.get(category)));
-        List temp = new ArrayList<>() ;
+        List<XYChart.Series<String, Number>> temp = new ArrayList<>() ;
         series.forEach((category, stringNumberSeries) -> temp.add(series.get(category)));
         stackedBarChart.setData(FXCollections.observableArrayList(temp));
     }
@@ -138,12 +136,6 @@ public class MainController {
         yearMonthComboBox.getSelectionModel().selectFirst();
         selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
     }
-
-    /*private void initiateCategories() throws IOException {
-        for (Category category : Category.values()) {
-            categoryList.add(new CategoryItem(5000, null, Category.valueOf(category.name())));
-        }
-    }*/
 
     public void updateCategoryList() {
         categoriesFlowPane.getChildren().clear();

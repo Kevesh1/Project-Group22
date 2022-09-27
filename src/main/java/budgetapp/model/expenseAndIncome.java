@@ -6,6 +6,7 @@ public class expenseAndIncome {
 
     private String note;
 
+
     public expenseAndIncome(String sum, String Note){
         this.sum =sum;
         this.note = note;
