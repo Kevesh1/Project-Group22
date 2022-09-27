@@ -44,7 +44,6 @@ public class FrontPage {
     public void userCreate() throws IOException {
             App app = new App();
             app.changeScene("userCreateView.fxml");
-        }
     }
 
 }
