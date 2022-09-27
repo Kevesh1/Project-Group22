@@ -170,7 +170,7 @@ public class MainController {
         budgetMonths.add(tempBudgetMonth3);
     }
 
-    Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>> comboBoxCellFactory = new Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>>() {
+    private Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>> comboBoxCellFactory = new Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>>() {
         @Override
         public ListCell<BudgetMonth> call(ListView<BudgetMonth> budgetMonthListView) {
             return new ListCell<BudgetMonth>() {
@@ -187,7 +187,7 @@ public class MainController {
         }
     };
 
-    StringConverter<BudgetMonth> comboBoxStringConverter = new StringConverter<BudgetMonth>() {
+    private StringConverter<BudgetMonth> comboBoxStringConverter = new StringConverter<BudgetMonth>() {
 
         @Override
         public String toString(BudgetMonth budgetMonth) {
