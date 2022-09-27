@@ -1,9 +1,6 @@
 package budgetapp.controller;
 
-import budgetapp.model.AbstractCategoryItem;
-import budgetapp.model.BudgetMonth;
-import budgetapp.model.Category;
-import budgetapp.model.CategoryItem;
+import budgetapp.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -154,6 +151,7 @@ public class MainController {
         BudgetMonth tempBudgetMonth3 = (new BudgetMonth(7000, 2022, Month.OCTOBER));
         CategoryItem tempCategoryItem1 = new CategoryItem(100, Category.Food);
         CategoryItem tempCategoryItem2 = new CategoryItem(300, Category.Transportation);
+        tempCategoryItem1.addSubCategory(new CategorySubItem(40, "Food"));
         tempCategoryItem1.incrementBudgetSpent(50);
         tempBudgetMonth1.addCategoryItem(new CategoryItem(200, Category.Savings));
         tempBudgetMonth1.addCategoryItem(tempCategoryItem1);

@@ -104,7 +104,7 @@ public class CategoryController extends AnchorPane{
     @FXML
     public void addSubCategory(){
         subCategories.add(new CategorySubItem(Double.parseDouble(
-                parentController.getNewCategoryBudget.getText()), categoryItem.getCategory()));
+                parentController.getNewCategoryBudget.getText()), "TEMPNAME"));
     }
 
     @FXML

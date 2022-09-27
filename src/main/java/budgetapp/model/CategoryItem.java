@@ -12,11 +12,13 @@ import java.util.Objects;
 
 public class CategoryItem extends AbstractCategoryItem{
     private List<CategorySubItem> subCategories;
+    private Category category;
 
 
     public CategoryItem(double budget, @NotNull Category category) {
-        super(category.toString(), budget, category);
+        super(category.toString(), budget);
         this.subCategories = new ArrayList<CategorySubItem>();
+        this.category = category;
     }
 
     @Override
@@ -34,5 +36,13 @@ public class CategoryItem extends AbstractCategoryItem{
     }
     public void removeSubcategory(CategorySubItem subcategory) {
         subCategories.remove(subcategory);
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

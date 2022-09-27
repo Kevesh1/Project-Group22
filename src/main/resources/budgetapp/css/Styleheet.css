@@ -1,15 +1,11 @@
 
-
-@import url("https://fonts.google.com/specimen/Montserrat?query=montse");
-@import url("https://fonts.google.com/specimen/Roboto?query=roboto");
-
-.roboto{
-    -fx-font-family: "Roboto";
-}
-.montserrat{
+@font-face {
     -fx-font-family: "Montserrat";
+    src:local("./font/montserrat/Montserrat-ExtraBold.ttf")
 }
-
+.scroll-pane{
+    -fx-border-color: transparent;
+}
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track{
     -fx-background-color :transparent;
@@ -23,17 +19,13 @@
     -fx-background-color :transparent;
     -fx-background-radius : 0.0em;
     -fx-padding :0.0 0.0 10.0 0.0;
-
 }
-
 .scroll-bar:vertical .increment-button ,
 .scroll-bar:vertical .decrement-button {
     -fx-background-color :transparent;
     -fx-background-radius : 0.0em;
     -fx-padding :0.0 10.0 0.0 0.0;
-
 }
-
 .scroll-bar .increment-arrow,
 .scroll-bar .decrement-arrow{
     -fx-shape : " ";
@@ -55,6 +47,7 @@
 
 .scroll-bar:horizontal .thumb:hover,
 .scroll-bar:vertical .thumb:hover {
+    visibility: hidden;
     -fx-background-color :derive(#4D4C4F,10.0%);
     -fx-background-insets : 2.0, 0.0, 0.0;
     -fx-background-radius : 2.0em;
@@ -87,82 +80,29 @@
     -fx-background-color: #ffffff;
 }
 
-* {
-    -fx-theme-color: #33455e;
-    -fx-dark-color: #424549;
-    -fx-darker-color: #36393E;
-    -fx-darkest-color:#282b30;
-    -fx-text-color: #BCBCBC;
-
-    -fx-focus-color: -fx-theme-color;
-}
-.date-picker{
-    -fx-background-color: transparent;
-    -fx-show-week-numbers: false;
-}
-.date-picker .button{
-    -fx-background-color: -fx-theme-color;
-}
-.date-picker .label{
-    -fx-background-color: -fx-theme-color;
-}
-.date-picker > .text-field  {
-    -fx-alignment: center;
-    -fx-background-color: -fx-dark-color;
-    -fx-text-fill: -fx-text-color;
-}
-.date-picker .arrow-button {
-    -fx-background-color: -fx-theme-color;
-    -fx-background-radius: 0;
-}
-.date-picker .arrow-button:hover {
-    -fx-background-color: -fx-theme-color;
-}
-.date-picker .arrow-button .arrow {
-    -fx-background-color: -fx-dark-color;
-}
-.date-picker .cell {
-    -fx-background-color: -fx-theme-color ;
-    -fx-text-fill: -fx-text-color;
-    -fx-border-color: -fx-darker-color;
-}
-.date-picker .cell:filled{
-    -fx-background-color: -fx-dark-color;
-}
-.date-picker .selected {
-    -fx-text-fill: -fx-text-color;
-}
-.date-picker .selected:focused {
-    -fx-background-color: -fx-theme-color;
-    -fx-text-fill: -fx-text-color;
-}
-.date-picker-popup  {
-    -fx-border-color: transparent;
-    -fx-background-color: transparent;
-}
-.date-picker-popup .cell:hover{
-    -fx-background-color: -fx-theme-color;
-}
-.date-picker-popup .month-year-pane {
-    -fx-background-color: -fx-theme-color;
-}
-.date-picker-popup .month-year-pane .label {
-    -fx-text-fill: -fx-text-color;
-}
-.date-picker-popup .week-number-cell {
-    -fx-text-fill: -fx-text-color;
-    -fx-background-color: -fx-theme-color;
-}
-.date-picker-popup .week-number-cell {
-    -fx-border-color: -fx-dark-color;
-}
-.date-picker-popup .spinner .button .left-arrow,
-.date-picker-popup .spinner .button .right-arrow {
-    -fx-background-color: -fx-dark-color;
-}
 
 .categoryImages{
     -fx-background-color: gray;
+}
+
+.accordion > .titled-pane > .title {
+    -fx-background-color:
+            -fx-inner-border,
+            -fx-body-color;
+    -fx-background-insets: -1 0 0 0, 0 1 1 1, 1 2 2 2;
+    -fx-background-radius: 0, 0, 0;
+}
+.accordion > .titled-pane > .title {
+    -fx-background-color: null;
+}
+.titled-pane > *.content {
+    -fx-background-color: null;
+    -fx-border-color: null;
+}
+.titled-pane > .title > .arrow-button {
+    visibility: hidden;
+    -fx-padding: 0.0em 0.0em 0.0em 3.583em;
+    -fx-alignment: center;
 }
 
 
