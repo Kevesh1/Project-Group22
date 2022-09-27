@@ -1,15 +1,11 @@
 
-
-@import url("https://fonts.google.com/specimen/Montserrat?query=montse");
-@import url("https://fonts.google.com/specimen/Roboto?query=roboto");
-
-.roboto{
-    -fx-font-family: "Roboto";
-}
-.montserrat{
+@font-face {
     -fx-font-family: "Montserrat";
+    src:local("./font/montserrat/Montserrat-ExtraBold.ttf")
 }
-
+.scroll-pane{
+    -fx-border-color: transparent;
+}
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track{
     -fx-background-color :transparent;
@@ -23,9 +19,7 @@
     -fx-background-color :transparent;
     -fx-background-radius : 0.0em;
     -fx-padding :0.0 0.0 10.0 0.0;
-
 }
-
 .scroll-bar:vertical .increment-button ,
 .scroll-bar:vertical .decrement-button {
     -fx-background-color :transparent;
@@ -55,6 +49,7 @@
 
 .scroll-bar:horizontal .thumb:hover,
 .scroll-bar:vertical .thumb:hover {
+    visibility: hidden;
     -fx-background-color :derive(#4D4C4F,10.0%);
     -fx-background-insets : 2.0, 0.0, 0.0;
     -fx-background-radius : 2.0em;
@@ -163,6 +158,26 @@
 
 .categoryImages{
     -fx-background-color: gray;
+}
+
+.accordion > .titled-pane > .title {
+    -fx-background-color:
+            -fx-inner-border,
+            -fx-body-color;
+    -fx-background-insets: -1 0 0 0, 0 1 1 1, 1 2 2 2;
+    -fx-background-radius: 0, 0, 0;
+}
+.accordion > .titled-pane > .title {
+    -fx-background-color: null;
+}
+.titled-pane > *.content {
+    -fx-background-color: null;
+    -fx-border-color: null;
+}
+.titled-pane > .title > .arrow-button {
+    visibility: hidden;
+    -fx-padding: 0.0em 0.0em 0.0em 3.583em;
+    -fx-alignment: center;
 }
 
 
