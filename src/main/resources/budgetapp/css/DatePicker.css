@@ -1,0 +1,73 @@
+* {
+    -fx-theme-color: #33455e;
+    -fx-dark-color: #424549;
+    -fx-darker-color: #36393E;
+    -fx-darkest-color:#282b30;
+    -fx-text-color: #BCBCBC;
+
+    -fx-focus-color: -fx-theme-color;
+}
+.date-picker{
+    -fx-background-color: transparent;
+    -fx-show-week-numbers: false;
+}
+.date-picker .button{
+    -fx-background-color: -fx-theme-color;
+}
+.date-picker .label{
+    -fx-background-color: -fx-theme-color;
+}
+.date-picker > .text-field  {
+    -fx-alignment: center;
+    -fx-background-color: -fx-dark-color;
+    -fx-text-fill: -fx-text-color;
+}
+.date-picker .arrow-button {
+    -fx-background-color: -fx-theme-color;
+    -fx-background-radius: 0;
+}
+.date-picker .arrow-button:hover {
+    -fx-background-color: -fx-theme-color;
+}
+.date-picker .arrow-button .arrow {
+    -fx-background-color: -fx-dark-color;
+}
+.date-picker .cell {
+    -fx-background-color: -fx-theme-color ;
+    -fx-text-fill: -fx-text-color;
+    -fx-border-color: -fx-darker-color;
+}
+.date-picker .cell:filled{
+    -fx-background-color: -fx-dark-color;
+}
+.date-picker .selected {
+    -fx-text-fill: -fx-text-color;
+}
+.date-picker .selected:focused {
+    -fx-background-color: -fx-theme-color;
+    -fx-text-fill: -fx-text-color;
+}
+.date-picker-popup  {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+.date-picker-popup .cell:hover{
+    -fx-background-color: -fx-theme-color;
+}
+.date-picker-popup .month-year-pane {
+    -fx-background-color: -fx-theme-color;
+}
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: -fx-text-color;
+}
+.date-picker-popup .week-number-cell {
+    -fx-text-fill: -fx-text-color;
+    -fx-background-color: -fx-theme-color;
+}
+.date-picker-popup .week-number-cell {
+    -fx-border-color: -fx-dark-color;
+}
+.date-picker-popup .spinner .button .left-arrow,
+.date-picker-popup .spinner .button .right-arrow {
+    -fx-background-color: -fx-dark-color;
+}
