@@ -1,23 +1,17 @@
 package budgetapp.controller;
 
-import budgetapp.model.Category;
 import budgetapp.model.CategoryItem;
-import budgetapp.model.CategoryList;
 import budgetapp.model.CategorySubItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class CategoryController extends AnchorPane{
 
@@ -43,19 +37,23 @@ public class CategoryController extends AnchorPane{
     @FXML
     private Button addButton;
 
+    @FXML
+    private AnchorPane CategoryPane;
+
     //private void updateProgressBar(){
     //    progressBar.setProgress(this.budget - this.spentAmount);}
 
     private final MainController parentController;
     private final CategoryItem categoryItem;
-    private ArrayList<CategorySubItem> subCategories;
+    private ArrayList<CategorySubItem> subCategories = new ArrayList<>();
+    private int index;
 
     @FXML
     public void initialize() {
 
     };
 
-    public CategoryController(MainController parentController, CategoryItem categoryItem) {
+    public CategoryController(MainController parentController, CategoryItem categoryItem, int i) {
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/category.fxml"));
         root.setRoot(this);
         root.setController(this);
@@ -65,7 +63,9 @@ public class CategoryController extends AnchorPane{
         }
         this.categoryItem = categoryItem;
         this.parentController = parentController;
+        this.index = i;
         setLabels();
+        subCategoriesMock();
     }
 
     public void setLabels() {
@@ -75,11 +75,30 @@ public class CategoryController extends AnchorPane{
         categoryImage.setImage(categoryItem.getIcon());
     }
 
+    private void subCategoriesMock(){
+        CategorySubItem subCategory1 = new CategorySubItem(20,categoryItem.getCategory());
+        CategorySubItem subCategory2 = new CategorySubItem(20,categoryItem.getCategory());
+        CategorySubItem subCategory3 = new CategorySubItem(20,categoryItem.getCategory());
+
+        subCategories.add(subCategory1);
+        subCategories.add(subCategory2);
+        subCategories.add(subCategory3);
+    }
+
+    @FXML
+    private void showSubCategories(){
+        parentController.updateCategoryList();
+        for (CategorySubItem subCategory : subCategories) {
+            SubCategoryController subCategoryController = new SubCategoryController(this, subCategory);
+            parentController.categoriesFlowPane.getChildren().add(index,subCategoryController);
+
+        }
+    }
+
     @FXML
     public void getNewSubCategoryWindow(){
         parentController.addNewCategoryPane.toFront();
-        //parentController.newCategoryName.setText(categoryItem.getName());
-        //parentController.newCategoryName.disableProperty();
+
     }
 
     @FXML
@@ -88,11 +107,10 @@ public class CategoryController extends AnchorPane{
                 parentController.getNewCategoryBudget.getText()), categoryItem.getCategory()));
     }
 
-    /*@FXML
-    public void removeCategory() throws IOException {
-        mc.getCategories().remove(this.categoryItem);
-        mc.updateCategoryList();
-    }*/
-
+    @FXML
+    public void removeCategory(){
+        parentController.selectedBudgetMonth.getCategories().remove(this.categoryItem);
+        parentController.updateCategoryList();
+    }
 
 }

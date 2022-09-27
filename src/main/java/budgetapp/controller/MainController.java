@@ -80,7 +80,7 @@ public class MainController {
     }
 
     private CategoryController cc;
-    private BudgetMonth selectedBudgetMonth;
+    public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
 
     public MainController() {
@@ -139,9 +139,12 @@ public class MainController {
 
     public void updateCategoryList() {
         categoriesFlowPane.getChildren().clear();
+        int i = 0;
         for (CategoryItem categoryItem : selectedBudgetMonth.getCategories()) {
-            CategoryController categoryController = new CategoryController(this, categoryItem);
+            i++;
+            CategoryController categoryController = new CategoryController(this, categoryItem,i);
             categoriesFlowPane.getChildren().add(categoryController);
+
         }
     }
 

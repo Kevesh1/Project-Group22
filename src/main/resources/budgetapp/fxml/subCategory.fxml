@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#showSubCategories" prefHeight="78.0" prefWidth="414.0" style="-fx-background-color: gray;" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="subCateogryName" layoutX="14.0" layoutY="31.0" text="name" />
+      <ProgressBar fx:id="subCategoryProgressBar" layoutX="84.0" layoutY="32.0" prefHeight="18.0" prefWidth="246.0" progress="0.0" />
+      <Label fx:id="subCategoryBudget" layoutX="389.0" layoutY="33.0" text="kr" />
+   </children>
+</fx:root>
