@@ -15,29 +15,7 @@ public class FrontPage {
     private int maxNumUsers;
     private int numSlots;
 
-    @FXML
-    private Button userButton1;
 
-    @FXML
-    private Button userButton2;
-
-    @FXML
-    private Button userButton3;
-
-    @FXML
-    private Button userButton4;
-
-    @FXML
-    private Image userImage1;
-
-    @FXML
-    private Image userImage2;
-
-    @FXML
-    private Image userImage3;
-
-    @FXML
-    private Image userImage4;
 
     public FrontPage(int numUsers, String[] Users){
         this.numUsers = numUsers;
@@ -64,18 +42,9 @@ public class FrontPage {
 
 
     public void userCreate() throws IOException {
-        calculateNumUsers(usersList);
-        if (getNumUsers() <= getMaxNumUsers()){
             App app = new App();
             app.changeScene("userCreateView.fxml");
         }
     }
 
-    public int getNumUsers(){
-        return numUsers;
-    }
-
-    public int getMaxNumUsers(){
-        return maxNumUsers;
-    }
 }

@@ -21,5 +21,8 @@ public class UserManagement {
     private static void createPassword(){
 
     }
+    private static void designateID(){
+
+    }
 
 }

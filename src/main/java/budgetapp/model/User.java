@@ -12,5 +12,6 @@ public class User {
     private int totalExpenses;
     private boolean familyShare;
     private boolean elderlyAdjusted;
+    private int userID;
 
 }
