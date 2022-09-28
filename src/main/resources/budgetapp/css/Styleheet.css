@@ -80,9 +80,14 @@
     -fx-background-color: #ffffff;
 }
 
-
 .categoryImages{
     -fx-background-color: gray;
+    -fx-background-radius: 100;
+}
+
+.categoryimagesfront{
+    -fx-background-radius: 100;
+    -fx-alignment: center;
 }
 
 .accordion > .titled-pane > .title {
@@ -105,5 +110,10 @@
     -fx-alignment: center;
 }
 
+.text-area > .title > .arrow-button {
+    visibility: hidden;
+    -fx-padding: 0.0em 0.0em 0.0em 3.583em;
+    -fx-alignment: center;
+}
 
 

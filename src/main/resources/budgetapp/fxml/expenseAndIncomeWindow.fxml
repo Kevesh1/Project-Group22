@@ -1,61 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500.0" styleClass="darkModeThemeDarker" stylesheets="@../css/Styleheet.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.expenseAndIncomeController">
-   <children>
-      <Circle fx:id="categorySwap" fill="DODGERBLUE" layoutX="75.0" layoutY="47.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label layoutX="129.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <styleClass>
-            <String fx:value="darkModeTextColor" />
-            <String fx:value="standardFontSize" />
-         </styleClass></Label>
-      <Label layoutX="37.0" layoutY="105.0" stylesheets="@../css/Styleheet.css" text="Sum">
-         <font>
-            <Font />
-         </font>
-         <styleClass>
-            <String fx:value="darkModeTextColor" />
-            <String fx:value="standardFontSize" />
-         </styleClass></Label>
-      <Label layoutX="37.0" layoutY="185.0" stylesheets="@../css/Styleheet.css" text="Date">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <styleClass>
-            <String fx:value="darkModeTextColor" />
-            <String fx:value="standardFontSize" />
-         </styleClass></Label>
-      <Label layoutX="35.0" layoutY="271.0" stylesheets="@../css/Styleheet.css" text="Note">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <styleClass>
-            <String fx:value="darkModeTextColor" />
-            <String fx:value="standardFontSize" />
-         </styleClass></Label>
-      <Label layoutX="192.0" layoutY="134.0" stylesheets="@../css/Styleheet.css" text="Kr">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <styleClass>
-            <String fx:value="darkModeTextColor" />
-            <String fx:value="standardFontSize" />
-         </styleClass></Label>
-      <TextField fx:id="sumWindow" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" styleClass="darkModeThemeDark" stylesheets="@../css/Styleheet.css" />
-      <TextField fx:id="note" layoutX="35.0" layoutY="291.0" prefHeight="100.0" prefWidth="200.0" styleClass="darkModeThemeDark" stylesheets="@../css/Styleheet.css" />
-      <ImageView fx:id="closeButton" fitHeight="46.0" fitWidth="61.0" layoutX="438.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
-      <AnchorPane fx:id="categorySelect" layoutX="286.0" layoutY="14.0" prefHeight="383.0" prefWidth="200.0" />
-      <DatePicker fx:id="transaktionDate" layoutX="36.0" layoutY="215.0" style="-fx-background-insets: #63464;" styleClass="darkModeThemeDark" stylesheets="@../css/Styleheet.css" />
-   </children>
-</AnchorPane>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="597.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.expenseAndIncomeController">
+  <tabs>
+    <Tab text="Untitled Tab 1">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="299.0" prefWidth="597.0">
+               <children>
+                  <AnchorPane prefHeight="313.0" prefWidth="600.0" styleClass="darkModeThemeDarker" stylesheets="@../css/Styleheet.css">
+                     <children>
+                        <Circle fx:id="categorySwap" fill="DODGERBLUE" layoutX="75.0" layoutY="47.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Label layoutX="129.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="darkModeTextColor" />
+                              <String fx:value="standardFontSize" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="37.0" layoutY="105.0" stylesheets="@../css/Styleheet.css" text="Sum">
+                           <font>
+                              <Font />
+                           </font>
+                           <styleClass>
+                              <String fx:value="darkModeTextColor" />
+                              <String fx:value="standardFontSize" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="37.0" layoutY="185.0" stylesheets="@../css/Styleheet.css" text="Date">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="darkModeTextColor" />
+                              <String fx:value="standardFontSize" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="35.0" layoutY="271.0" stylesheets="@../css/Styleheet.css" text="Note">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="darkModeTextColor" />
+                              <String fx:value="standardFontSize" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="192.0" layoutY="134.0" stylesheets="@../css/Styleheet.css" text="Kr">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="darkModeTextColor" />
+                              <String fx:value="standardFontSize" />
+                           </styleClass>
+                        </Label>
+                        <TextField fx:id="sumWindow" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" styleClass="darkModeThemeDark" stylesheets="@../css/Styleheet.css" />
+                        <ImageView fx:id="closeButton" fitHeight="46.0" fitWidth="61.0" layoutX="438.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <AnchorPane fx:id="categorySelect" layoutX="286.0" layoutY="14.0" prefHeight="383.0" prefWidth="200.0" />
+                        <DatePicker fx:id="transaktionDate" layoutX="36.0" layoutY="215.0" styleClass="darkModeThemeDark">
+                           <stylesheets>
+                              <URL value="@../css" />
+                              <URL value="@../css/DatePicker.css" />
+                           </stylesheets>
+                        </DatePicker>
+                        <Button layoutX="109.0" layoutY="85.0" mnemonicParsing="false" text="Button" />
+                     </children>
+                  </AnchorPane>
+                  <TextArea fx:id="note" layoutX="37.0" layoutY="291.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Untitled Tab 2">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <AnchorPane prefHeight="400.0" prefWidth="597.0" styleClass="darkModeThemeDarker" stylesheets="@../css/Styleheet.css">
+                     <children>
+                        <Circle fill="DODGERBLUE" layoutX="75.0" layoutY="47.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Label layoutX="129.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="darkModeTextColor" />
+                              <String fx:value="standardFontSize" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="37.0" layoutY="105.0" stylesheets="@../css/Styleheet.css" text="Sum">
+                           <font>
+                              <Font />
+                           </font>
+                           <styleClass>
+                              <String fx:value="darkModeTextColor" />
+                              <String fx:value="standardFontSize" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="37.0" layoutY="185.0" stylesheets="@../css/Styleheet.css" text="Date">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="darkModeTextColor" />
+                              <String fx:value="standardFontSize" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="35.0" layoutY="271.0" stylesheets="@../css/Styleheet.css" text="Note">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="darkModeTextColor" />
+                              <String fx:value="standardFontSize" />
+                           </styleClass>
+                        </Label>
+                        <Label layoutX="192.0" layoutY="134.0" stylesheets="@../css/Styleheet.css" text="Kr">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="darkModeTextColor" />
+                              <String fx:value="standardFontSize" />
+                           </styleClass>
+                        </Label>
+                        <TextField fx:id="sumWindow1" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" styleClass="darkModeThemeDark" stylesheets="@../css/Styleheet.css" />
+                        <ImageView fx:id="closeButton1" fitHeight="46.0" fitWidth="61.0" layoutX="438.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <AnchorPane fx:id="categorySelect1" layoutX="286.0" layoutY="14.0" prefHeight="383.0" prefWidth="200.0" />
+                        <DatePicker fx:id="transaktionDate1" layoutX="36.0" layoutY="215.0" styleClass="darkModeThemeDark">
+                           <stylesheets>
+                              <URL value="@../css" />
+                              <URL value="@../css/DatePicker.css" />
+                           </stylesheets>
+                        </DatePicker>
+                        <TextArea layoutX="37.0" layoutY="291.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
+                     </children>
+                  </AnchorPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

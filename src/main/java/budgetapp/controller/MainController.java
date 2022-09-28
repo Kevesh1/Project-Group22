@@ -3,7 +3,13 @@ package budgetapp.controller;
 import budgetapp.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -14,6 +20,7 @@ import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
@@ -25,8 +32,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+
 public class MainController {
 
+
+
+    @FXML
+    AnchorPane mainView;
     @FXML
     FlowPane categoriesFlowPane;
     @FXML
@@ -51,13 +63,41 @@ public class MainController {
     FlowPane detailedViewFlowPane;
 
     @FXML
-    TextField newCategoryName;
+    ComboBox categoryComboBox;
     @FXML
-    TextField getNewCategoryBudget;
+    TextField newCategoryBudget;
     @FXML
     Button addNewCategoryButton;
     @FXML
     AnchorPane addNewCategoryPane;
+    @FXML
+    Button addCategoryButton;
+    @FXML
+    Label newCategoryNameLabel;
+    @FXML
+    Label newCategoryBudgetLabel;
+
+    @FXML
+    AnchorPane addNewSubCategoryPane;
+    @FXML
+    TextField newSubCategoryName;
+    @FXML
+    TextField newSubCategoryBudget;
+    @FXML
+    Button justabutton;
+    @FXML
+    private void OpenIEWindow(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("//budgetapp/fxml/expenseAndIncomeWindow.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void closeNewCategoryWindow(){
+        mainView.toFront();
+    }
 
 
     @FXML
@@ -76,7 +116,45 @@ public class MainController {
         updateMainView();
     }
 
-    private CategoryController cc;
+    @FXML
+    private void showAddCategoryWindow(){
+        addNewCategoryPane.toFront();
+    }
+
+    @FXML
+    private void addNewCategory(){
+        Category category = Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString());
+        CategoryItem categoryItem = new CategoryItem(Double.parseDouble(newCategoryBudget.getText()), category);
+        selectedBudgetMonth.addCategoryItem(categoryItem);
+        updateCategoryList();
+        mainView.toFront();
+        newCategoryBudget.setText("");
+        categoryComboBox.getSelectionModel().selectFirst();
+    }
+
+    @FXML
+    public void showAddSubCategoryWindow(CategoryController categoryController){
+        addNewSubCategoryPane.toFront();
+        this.categoryController = categoryController;
+    }
+
+    @FXML
+    private void addNewSubCategory(){
+        String name = newSubCategoryName.getText();
+        double budget = Double.parseDouble(newSubCategoryBudget.getText());
+        CategorySubItem categorySubItem = new CategorySubItem(budget,name);
+        categoryController.subCategories.add(categorySubItem);
+        categoryController.updateSubCategories();
+
+        System.out.println(categoryController.subCategories);
+        mainView.toFront();
+        newSubCategoryBudget.setText("");
+        newSubCategoryName.setText("");
+    }
+
+
+
+    private CategoryController categoryController;
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
 
@@ -89,6 +167,7 @@ public class MainController {
         initializeBudgetMonths();
         updateBarChart(budgetMonths);
         updateMainView();
+        initializeCategoryComboBox();
     }
     public void updateMainView() {
         budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
@@ -128,6 +207,15 @@ public class MainController {
         yearMonthComboBox.setConverter(comboBoxStringConverter);
         yearMonthComboBox.setItems(FXCollections.observableArrayList(budgetMonths));
     }
+
+    private void initializeCategoryComboBox(){
+        ObservableList<Category> categories = FXCollections.observableArrayList();
+        categories.addAll(Arrays.asList(Category.values()));
+        categoryComboBox.setItems(categories);
+        categoryComboBox.getSelectionModel().selectFirst();
+    }
+
+
 
     public void initializeBudgetMonths() {
         yearMonthComboBox.getSelectionModel().selectFirst();

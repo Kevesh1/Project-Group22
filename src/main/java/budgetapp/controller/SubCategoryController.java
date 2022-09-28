@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 public class SubCategoryController extends AnchorPane {
 
     private CategoryController parentController;
+    private CategorySubItem subCategory;
 
     @FXML
     private Label subCateogryName;
@@ -33,9 +34,19 @@ public class SubCategoryController extends AnchorPane {
         }
 
         this.parentController = parentController;
+        this.subCategory = subCategory;
         setLabels();
     }
 
     private void setLabels(){
+        subCateogryName.setText(subCategory.getName());
+        subCategoryBudget.setText(subCategory.getBudget() + " kr");
+        subCategoryProgressBar.setProgress(subCategory.getBudgetSpent()/subCategory.getBudget());
+    }
+
+    @FXML
+    private void removeSubCategory(){
+        parentController.subCategories.remove(this.subCategory);
+        parentController.updateSubCategories();
     }
 }
