@@ -40,12 +40,15 @@ public class CategoryController extends AnchorPane{
     @FXML
     private AnchorPane CategoryPane;
 
+    @FXML
+    Button addSubCategoryButton;
+
     //private void updateProgressBar(){
     //    progressBar.setProgress(this.budget - this.spentAmount);}
 
     private final MainController parentController;
     private final CategoryItem categoryItem;
-    private ArrayList<CategorySubItem> subCategories = new ArrayList<>();
+    public ArrayList<CategorySubItem> subCategories = new ArrayList<>();
     private int index;
 
     @FXML
@@ -76,9 +79,9 @@ public class CategoryController extends AnchorPane{
     }
 
     private void subCategoriesMock(){
-        CategorySubItem subCategory1 = new CategorySubItem(20,categoryItem.getCategory());
-        CategorySubItem subCategory2 = new CategorySubItem(20,categoryItem.getCategory());
-        CategorySubItem subCategory3 = new CategorySubItem(20,categoryItem.getCategory());
+        CategorySubItem subCategory1 = new CategorySubItem(20,"Food");
+        CategorySubItem subCategory2 = new CategorySubItem(20,"Food");
+        CategorySubItem subCategory3 = new CategorySubItem(20,"Food");
 
         subCategories.add(subCategory1);
         subCategories.add(subCategory2);
@@ -86,7 +89,7 @@ public class CategoryController extends AnchorPane{
     }
 
     @FXML
-    private void showSubCategories(){
+    public void updateSubCategories(){
         parentController.updateCategoryList();
         for (CategorySubItem subCategory : subCategories) {
             SubCategoryController subCategoryController = new SubCategoryController(this, subCategory);
@@ -96,15 +99,14 @@ public class CategoryController extends AnchorPane{
     }
 
     @FXML
-    public void getNewSubCategoryWindow(){
-        parentController.addNewCategoryPane.toFront();
-
+    private void getNewSubCategoryWindow(){
+        parentController.addNewSubCategoryPane.toFront();
     }
 
     @FXML
     public void addSubCategory(){
         subCategories.add(new CategorySubItem(Double.parseDouble(
-                parentController.getNewCategoryBudget.getText()), "TEMPNAME"));
+                parentController.newSubCategoryBudget.getText()), parentController.newSubCategoryName.getText()));
     }
 
     @FXML

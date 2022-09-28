@@ -3,6 +3,7 @@ package budgetapp.controller;
 import budgetapp.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
@@ -27,6 +28,9 @@ import java.util.stream.Stream;
 
 public class MainController {
 
+
+    @FXML
+    AnchorPane mainView;
     @FXML
     FlowPane categoriesFlowPane;
     @FXML
@@ -51,14 +55,43 @@ public class MainController {
     FlowPane detailedViewFlowPane;
 
     @FXML
-    TextField newCategoryName;
+    ComboBox categoryComboBox;
     @FXML
-    TextField getNewCategoryBudget;
+    TextField newCategoryBudget;
     @FXML
     Button addNewCategoryButton;
     @FXML
     AnchorPane addNewCategoryPane;
+    @FXML
+    Button addCategoryButton;
+    @FXML
+    Label newCategoryNameLabel;
+    @FXML
+    Label newCategoryBudgetLabel;
 
+    @FXML
+    AnchorPane addNewSubCategoryPane;
+    @FXML
+    TextField newSubCategoryName;
+    @FXML
+    TextField newSubCategoryBudget;
+
+
+
+    @FXML
+    public void closeNewCategoryWindow(){
+        mainView.toFront();
+    }
+
+
+    public void addCategoryWindow(){
+
+    }
+
+    @FXML
+    private void showAddCategoryWindow(){
+        addNewCategoryPane.toFront();
+    }
 
     @FXML
     private void onClickPreviousMonth() {
@@ -89,6 +122,7 @@ public class MainController {
         initializeBudgetMonths();
         updateBarChart(budgetMonths);
         updateMainView();
+        initializeCategoryComboBox();
     }
     public void updateMainView() {
         budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
@@ -128,6 +162,15 @@ public class MainController {
         yearMonthComboBox.setConverter(comboBoxStringConverter);
         yearMonthComboBox.setItems(FXCollections.observableArrayList(budgetMonths));
     }
+
+    private void initializeCategoryComboBox(){
+        ObservableList<Category> categories = FXCollections.observableArrayList();
+        categories.addAll(Arrays.asList(Category.values()));
+        categoryComboBox.setItems(categories);
+        categoryComboBox.getSelectionModel().selectFirst();
+    }
+
+
 
     public void initializeBudgetMonths() {
         yearMonthComboBox.getSelectionModel().selectFirst();
