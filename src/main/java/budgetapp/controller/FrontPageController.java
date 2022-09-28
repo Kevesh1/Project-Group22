@@ -30,6 +30,10 @@ public class FrontPageController {
     @FXML
     private Image userImage4;
 
+
+
+    //updateUserSlots();
+
     private void updateUserSlots(){
         //for (User : Users){
 

@@ -36,10 +36,6 @@ public class FrontPage {
         return true;
     }
 
-    public void calculateNumUsers(List<User> usersList){
-        int numUsers = usersList.size();
-    }
-
 
     public void userCreate() throws IOException {
             App app = new App();

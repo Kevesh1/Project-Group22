@@ -12,6 +12,14 @@ public class User {
     private int totalExpenses;
     private boolean familyShare;
     private boolean elderlyAdjusted;
-    private int userID;
+    private final int userID;
+
+    public User(int userID){
+        this.userID = userID;
+    }
+
+    public void fullName(String firstName, String lastName){
+        String fullName = firstName + lastName;
+    }
 
 }
