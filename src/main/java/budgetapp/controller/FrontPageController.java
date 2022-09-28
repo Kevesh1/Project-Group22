@@ -1,42 +1,41 @@
 package budgetapp.controller;
 
+import budgetapp.model.User;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class FrontPageController {
 
-    @FXML
-    private Button userButton1;
 
     @FXML
-    private Button userButton2;
+    private HBox userCardContainer;
 
-    @FXML
-    private Button userButton3;
+    List<User> userCard;
 
-    @FXML
-    private Button userButton4;
+    public void initialize(URL location, ResourceBundle resources){
 
-    @FXML
-    private Image userImage1;
-
-    @FXML
-    private Image userImage2;
-
-    @FXML
-    private Image userImage3;
-
-    @FXML
-    private Image userImage4;
-
-
-
-    //updateUserSlots();
-
-    private void updateUserSlots(){
-        //for (User : Users){
-
-        //}
     }
+
+    private List<User> getUserCard(){
+        List<User> allUserCards = new ArrayList<>();
+
+        User user = new User();
+        user.setFirstName("Erik");
+        user.setProfilePicture("");
+        allUserCards.add(user);
+
+        user = new User();
+        user.setFirstName("Jacob");
+        user.setProfilePicture("");
+        allUserCards.add(user);
+
+        return allUserCards;
+
+    }
+
 }
