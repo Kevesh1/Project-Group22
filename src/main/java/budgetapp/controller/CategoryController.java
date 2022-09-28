@@ -76,9 +76,9 @@ public class CategoryController extends AnchorPane{
     }
 
     private void subCategoriesMock(){
-        CategorySubItem subCategory1 = new CategorySubItem(20,categoryItem.getCategory());
-        CategorySubItem subCategory2 = new CategorySubItem(20,categoryItem.getCategory());
-        CategorySubItem subCategory3 = new CategorySubItem(20,categoryItem.getCategory());
+        CategorySubItem subCategory1 = new CategorySubItem(20,"food");
+        CategorySubItem subCategory2 = new CategorySubItem(20,"food");
+        CategorySubItem subCategory3 = new CategorySubItem(20,"food");
 
         subCategories.add(subCategory1);
         subCategories.add(subCategory2);
