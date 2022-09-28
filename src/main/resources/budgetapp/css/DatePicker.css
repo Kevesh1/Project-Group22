@@ -23,8 +23,7 @@
     -fx-text-fill: -fx-text-color;
 }
 .date-picker .arrow-button {
-    -fx-background-color: -fx-theme-color;
-    -fx-background-radius: 0;
+    -fx-background-color: -fx-text-color;
 }
 .date-picker .arrow-button:hover {
     -fx-background-color: -fx-theme-color;

@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Circle?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="210.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.MainController">
+<AnchorPane prefHeight="400.0" prefWidth="210.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.expenseAndIncomeController">
    <children>
       <ScrollPane fitToWidth="true" prefHeight="400.0" prefWidth="210.0">
         <content>
