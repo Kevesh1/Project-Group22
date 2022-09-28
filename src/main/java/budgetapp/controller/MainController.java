@@ -4,7 +4,12 @@ import budgetapp.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -15,6 +20,7 @@ import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
@@ -26,7 +32,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+
 public class MainController {
+
 
 
     @FXML
@@ -75,8 +83,16 @@ public class MainController {
     TextField newSubCategoryName;
     @FXML
     TextField newSubCategoryBudget;
-
-
+    @FXML
+    Button justabutton;
+    @FXML
+    private void OpenIEWindow(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("//budgetapp/fxml/expenseAndIncomeWindow.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
     public void closeNewCategoryWindow(){
