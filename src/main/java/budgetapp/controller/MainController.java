@@ -84,15 +84,6 @@ public class MainController {
     }
 
 
-    public void addCategoryWindow(){
-
-    }
-
-    @FXML
-    private void showAddCategoryWindow(){
-        addNewCategoryPane.toFront();
-    }
-
     @FXML
     private void onClickPreviousMonth() {
         yearMonthComboBox.getSelectionModel().selectPrevious();
@@ -109,7 +100,45 @@ public class MainController {
         updateMainView();
     }
 
-    private CategoryController cc;
+    @FXML
+    private void showAddCategoryWindow(){
+        addNewCategoryPane.toFront();
+    }
+
+    @FXML
+    private void addNewCategory(){
+        Category category = Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString());
+        CategoryItem categoryItem = new CategoryItem(Double.parseDouble(newCategoryBudget.getText()), category);
+        selectedBudgetMonth.addCategoryItem(categoryItem);
+        updateCategoryList();
+        mainView.toFront();
+        newCategoryBudget.setText("");
+        categoryComboBox.getSelectionModel().selectFirst();
+    }
+
+    @FXML
+    public void showAddSubCategoryWindow(CategoryController categoryController){
+        addNewSubCategoryPane.toFront();
+        this.categoryController = categoryController;
+    }
+
+    @FXML
+    private void addNewSubCategory(){
+        String name = newSubCategoryName.getText();
+        double budget = Double.parseDouble(newSubCategoryBudget.getText());
+        CategorySubItem categorySubItem = new CategorySubItem(budget,name);
+        categoryController.subCategories.add(categorySubItem);
+        categoryController.updateSubCategories();
+
+        System.out.println(categoryController.subCategories);
+        mainView.toFront();
+        newSubCategoryBudget.setText("");
+        newSubCategoryName.setText("");
+    }
+
+
+
+    private CategoryController categoryController;
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
 

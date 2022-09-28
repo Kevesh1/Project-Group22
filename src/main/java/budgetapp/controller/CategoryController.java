@@ -1,5 +1,6 @@
 package budgetapp.controller;
 
+import budgetapp.model.Category;
 import budgetapp.model.CategoryItem;
 import budgetapp.model.CategorySubItem;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 public class CategoryController extends AnchorPane{
@@ -41,7 +43,7 @@ public class CategoryController extends AnchorPane{
     private AnchorPane CategoryPane;
 
     @FXML
-    Button addSubCategoryButton;
+    Button addNewSubCategoryButton;
 
     //private void updateProgressBar(){
     //    progressBar.setProgress(this.budget - this.spentAmount);}
@@ -54,7 +56,8 @@ public class CategoryController extends AnchorPane{
     @FXML
     public void initialize() {
 
-    };
+    }
+
 
     public CategoryController(MainController parentController, CategoryItem categoryItem, int i) {
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/category.fxml"));
@@ -83,24 +86,24 @@ public class CategoryController extends AnchorPane{
         CategorySubItem subCategory2 = new CategorySubItem(20,"Food");
         CategorySubItem subCategory3 = new CategorySubItem(20,"Food");
 
-        subCategories.add(subCategory1);
-        subCategories.add(subCategory2);
-        subCategories.add(subCategory3);
+        categoryItem.addSubCategory(subCategory1);
+        categoryItem.addSubCategory(subCategory2);
+        categoryItem.addSubCategory(subCategory3);
+
     }
 
     @FXML
     public void updateSubCategories(){
         parentController.updateCategoryList();
-        for (CategorySubItem subCategory : subCategories) {
+        for (CategorySubItem subCategory : categoryItem.getSubCategories()) {
             SubCategoryController subCategoryController = new SubCategoryController(this, subCategory);
             parentController.categoriesFlowPane.getChildren().add(index,subCategoryController);
-
         }
     }
 
     @FXML
-    private void getNewSubCategoryWindow(){
-        parentController.addNewSubCategoryPane.toFront();
+    private void getAddSubCategoryWindow(){
+        parentController.showAddSubCategoryWindow(this);
     }
 
     @FXML
