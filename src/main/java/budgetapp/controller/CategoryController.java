@@ -49,14 +49,9 @@ public class CategoryController extends AnchorPane{
     //    progressBar.setProgress(this.budget - this.spentAmount);}
 
     private final MainController parentController;
-    private final CategoryItem categoryItem;
-    public ArrayList<CategorySubItem> subCategories = new ArrayList<>();
+    public final CategoryItem categoryItem;
+    //private ArrayList<CategorySubItem> subCategories = new ArrayList<>();
     private int index;
-
-    @FXML
-    public void initialize() {
-
-    }
 
 
     public CategoryController(MainController parentController, CategoryItem categoryItem, int i) {
@@ -71,7 +66,15 @@ public class CategoryController extends AnchorPane{
         this.parentController = parentController;
         this.index = i;
         setLabels();
+
+
+    }
+
+    @FXML
+    public void initialize() {
         subCategoriesMock();
+        System.out.println("INIT");
+
     }
 
     public void setLabels() {
@@ -83,7 +86,7 @@ public class CategoryController extends AnchorPane{
 
     private void subCategoriesMock(){
         CategorySubItem subCategory1 = new CategorySubItem(20,"Food");
-        CategorySubItem subCategory2 = new CategorySubItem(20,"Food");
+        CategorySubItem subCategory2 = new CategorySubItem(20,"Buzz");
         CategorySubItem subCategory3 = new CategorySubItem(20,"Food");
 
         categoryItem.addSubCategory(subCategory1);
@@ -94,6 +97,7 @@ public class CategoryController extends AnchorPane{
 
     @FXML
     public void updateSubCategories(){
+        System.out.println(categoryItem.getSubCategories());
         parentController.updateCategoryList();
         for (CategorySubItem subCategory : categoryItem.getSubCategories()) {
             SubCategoryController subCategoryController = new SubCategoryController(this, subCategory);
@@ -106,11 +110,11 @@ public class CategoryController extends AnchorPane{
         parentController.showAddSubCategoryWindow(this);
     }
 
-    @FXML
+   /* @FXML
     public void addSubCategory(){
         subCategories.add(new CategorySubItem(Double.parseDouble(
                 parentController.newSubCategoryBudget.getText()), parentController.newSubCategoryName.getText()));
-    }
+    }*/
 
     @FXML
     public void removeCategory(){

@@ -143,10 +143,10 @@ public class MainController {
         String name = newSubCategoryName.getText();
         double budget = Double.parseDouble(newSubCategoryBudget.getText());
         CategorySubItem categorySubItem = new CategorySubItem(budget,name);
-        categoryController.subCategories.add(categorySubItem);
+        categoryController.categoryItem.addSubCategory(categorySubItem);
+        //categoryController.subCategories.add(categorySubItem);
         categoryController.updateSubCategories();
-
-        System.out.println(categoryController.subCategories);
+        //System.out.println(categoryController.subCategories);
         mainView.toFront();
         newSubCategoryBudget.setText("");
         newSubCategoryName.setText("");
@@ -239,7 +239,7 @@ public class MainController {
         BudgetMonth tempBudgetMonth3 = (new BudgetMonth(7000, 2022, Month.OCTOBER));
         CategoryItem tempCategoryItem1 = new CategoryItem(100, Category.Food);
         CategoryItem tempCategoryItem2 = new CategoryItem(300, Category.Transportation);
-        tempCategoryItem1.addSubCategory(new CategorySubItem(40, "Food"));
+        tempCategoryItem1.addSubCategory(new CategorySubItem(40, "AHHH"));
         tempCategoryItem1.incrementBudgetSpent(50);
         tempBudgetMonth1.addCategoryItem(new CategoryItem(200, Category.Savings));
         tempBudgetMonth1.addCategoryItem(tempCategoryItem1);

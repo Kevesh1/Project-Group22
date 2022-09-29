@@ -46,7 +46,7 @@ public class SubCategoryController extends AnchorPane {
 
     @FXML
     private void removeSubCategory(){
-        parentController.subCategories.remove(this.subCategory);
+        parentController.categoryItem.removeSubcategory(this.subCategory);
         parentController.updateSubCategories();
     }
 }
