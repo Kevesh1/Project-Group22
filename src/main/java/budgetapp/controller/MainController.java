@@ -87,7 +87,7 @@ public class MainController {
     Button justabutton;
     @FXML
     private void OpenIEWindow(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("//budgetapp/fxml/expenseAndIncomeWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/expenseAndIncomeWindow.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
