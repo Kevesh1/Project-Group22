@@ -4,6 +4,8 @@ import com.sun.javafx.fxml.FXMLLoaderHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -14,6 +16,7 @@ import javafx.scene.control.TextArea;
 import javafx.event.ActionEvent;
 import javafx.animation.TranslateTransition;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
@@ -37,14 +40,18 @@ public class expenseAndIncomeController {
     private AnchorPane SwapCategory;
     @FXML
     private ImageView closeButton;
-
     @FXML private VBox statusContainer;
+    @FXML
+    private Button close;
 
 
     @FXML
-    private void loadCategory(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("budgetapp/fxml/CategorySelection.fxml"));
-        categorySelect.getChildren().setAll(pane);
+    private void closeWindow(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     private TranslateTransition showStatus;
