@@ -14,15 +14,14 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="597.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.expenseAndIncomeController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="597.0" stylesheets="@../css/Styleheet.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.expenseAndIncomeController">
   <tabs>
-    <Tab text="Untitled Tab 1">
+    <Tab text="Income">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="299.0" prefWidth="597.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="313.0" prefWidth="600.0">
                <children>
                   <AnchorPane prefHeight="313.0" prefWidth="600.0" styleClass="darkModeThemeDarker" stylesheets="@../css/Styleheet.css">
                      <children>
-                        <Circle fx:id="categorySwap" fill="DODGERBLUE" layoutX="75.0" layoutY="47.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
                         <Label layoutX="129.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
                            <font>
                               <Font size="15.0" />
@@ -32,7 +31,7 @@
                               <String fx:value="standardFontSize" />
                            </styleClass>
                         </Label>
-                        <Label layoutX="37.0" layoutY="105.0" stylesheets="@../css/Styleheet.css" text="Sum">
+                        <Label layoutX="37.0" layoutY="98.0" stylesheets="@../css/Styleheet.css" text="Sum">
                            <font>
                               <Font />
                            </font>
@@ -41,7 +40,7 @@
                               <String fx:value="standardFontSize" />
                            </styleClass>
                         </Label>
-                        <Label layoutX="37.0" layoutY="185.0" stylesheets="@../css/Styleheet.css" text="Date">
+                        <Label layoutX="37.0" layoutY="189.0" stylesheets="@../css/Styleheet.css" text="Date">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -50,7 +49,7 @@
                               <String fx:value="standardFontSize" />
                            </styleClass>
                         </Label>
-                        <Label layoutX="35.0" layoutY="271.0" stylesheets="@../css/Styleheet.css" text="Note">
+                        <Label layoutX="35.0" layoutY="263.0" stylesheets="@../css/Styleheet.css" text="Note">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -59,7 +58,7 @@
                               <String fx:value="standardFontSize" />
                            </styleClass>
                         </Label>
-                        <Label layoutX="192.0" layoutY="134.0" stylesheets="@../css/Styleheet.css" text="Kr">
+                        <Label layoutX="192.0" layoutY="131.0" stylesheets="@../css/Styleheet.css" text="Kr">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -77,18 +76,19 @@
                               <URL value="@../css/DatePicker.css" />
                            </stylesheets>
                         </DatePicker>
-                        <Button layoutX="109.0" layoutY="85.0" mnemonicParsing="false" text="Button" />
+                        <Button fx:id="close" layoutX="109.0" layoutY="85.0" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
+                        <Button fx:id="categorySwap" layoutX="37.0" layoutY="19.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 100;" text="Button" />
                      </children>
                   </AnchorPane>
                   <TextArea fx:id="note" layoutX="37.0" layoutY="291.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab text="Untitled Tab 2">
+    <Tab text="Expense">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="313.0" prefWidth="600.0">
                <children>
-                  <AnchorPane prefHeight="400.0" prefWidth="597.0" styleClass="darkModeThemeDarker" stylesheets="@../css/Styleheet.css">
+                  <AnchorPane prefHeight="313.0" prefWidth="600.0" styleClass="darkModeThemeDarker" stylesheets="@../css/Styleheet.css">
                      <children>
                         <Circle fill="DODGERBLUE" layoutX="75.0" layoutY="47.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
                         <Label layoutX="129.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
