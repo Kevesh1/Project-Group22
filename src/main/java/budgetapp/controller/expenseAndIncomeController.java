@@ -33,7 +33,7 @@ public class expenseAndIncomeController {
     @FXML
     private DatePicker transaktionDate;
     @FXML
-    private Button button;
+    private Button categorySwap;
     @FXML
     private AnchorPane categorySelect;
     @FXML
