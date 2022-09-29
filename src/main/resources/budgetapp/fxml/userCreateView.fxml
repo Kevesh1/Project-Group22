@@ -9,15 +9,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.CreateNewUserController">
    <children>
-      <Button layoutX="271.0" layoutY="107.0" mnemonicParsing="false" AnchorPane.leftAnchor="271.0" />
-      <ImageView fx:id="chooseProfilePictureButton" fitHeight="150.0" fitWidth="150.0" layoutX="240.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="40.0">
-         <image>
-            <Image url="@../img/BlankProfilePicture.png" />
-         </image>
-      </ImageView>
+      <Button layoutX="214.0" layoutY="39.0" mnemonicParsing="false" AnchorPane.leftAnchor="214.0">
+         <graphic>
+            <ImageView fx:id="chooseProfilePictureButton" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/BlankProfilePicture.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <TextField fx:id="firstNameInput" layoutX="217.0" layoutY="208.0" promptText="First name" />
       <Text layoutX="124.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name:" />
       <TextField fx:id="lastNameInput" layoutX="217.0" layoutY="246.0" promptText="Last name" />

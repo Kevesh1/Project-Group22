@@ -16,7 +16,7 @@ public class FrontPageController {
 
 
     @FXML
-    private HBox userCardContainer;
+    public HBox userCardContainer;
 
     List<User> userCards;
 
@@ -39,7 +39,7 @@ public class FrontPageController {
         }
     }
 
-    private List<User> userList(){
+    public List<User> userList(){
         List<User> allUsers = new ArrayList<>();
 
         User user = new User();

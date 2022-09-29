@@ -12,13 +12,13 @@ import java.util.Objects;
 public class UserCardController {
 
     @FXML
-    private Label firstNameCard;
+    public Label firstNameCard;
 
     @FXML
-    private ImageView profilePictureCard;
+    public ImageView profilePictureCard;
 
     @FXML
-    private Button userButtonCard;
+    public Button userButtonCard;
 
     public void setCardData(User user){
         Image profilePicture = new Image(Objects.requireNonNull(getClass().getResourceAsStream(user.getProfilePicture())));

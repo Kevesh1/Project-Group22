@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="80.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="80.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.UserCardController">
    <children>
-      <Button fx:id="userButton" mnemonicParsing="false" prefHeight="129.0" prefWidth="80.0">
+      <Button fx:id="userButtonCard" mnemonicParsing="false" prefHeight="129.0" prefWidth="80.0">
          <graphic>
             <ImageView fx:id="profilePictureCard" fitHeight="85.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                <image>
