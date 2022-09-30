@@ -5,6 +5,7 @@ import budgetapp.model.CategoryItem;
 import budgetapp.model.CategorySubItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -13,7 +14,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.awt.event.ActionEvent;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class CategoryController extends AnchorPane{
 
@@ -70,11 +73,11 @@ public class CategoryController extends AnchorPane{
 
     }
 
+
     @FXML
     public void initialize() {
         subCategoriesMock();
         System.out.println("INIT");
-
     }
 
     public void setLabels() {
@@ -117,9 +120,18 @@ public class CategoryController extends AnchorPane{
     }*/
 
     @FXML
-    public void removeCategory(){
-        parentController.selectedBudgetMonth.getCategories().remove(this.categoryItem);
+    public void removeCategoryCheck(){
+        if (categoryItem.isBudgetEmpty()){
+            confirmRemoveCategory();
+        }
+        else
+            parentController.confirmRemoveCategoryWindow(this);
+    }
+
+    public void confirmRemoveCategory(){
+        parentController.selectedBudgetMonth.getCategories().remove(categoryItem);
         parentController.updateCategoryList();
     }
+
 
 }

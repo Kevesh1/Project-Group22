@@ -1,13 +1,10 @@
 package budgetapp.model;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 public class CategoryItem extends AbstractCategoryItem{
@@ -38,6 +35,14 @@ public class CategoryItem extends AbstractCategoryItem{
         subCategories.remove(subcategory);
     }
 
+    public void addSubcategoryBudget(){
+        incrementBudget((int) subCategories.get(subCategories.size() - 1).getBudget());
+    }
+
+    public void removeSubcategoryBudget(CategorySubItem subCategory){
+        decrementBudget((int)subCategory.getBudget());
+    }
+
     public Category getCategory() {
         return category;
     }
@@ -45,4 +50,6 @@ public class CategoryItem extends AbstractCategoryItem{
     public void setCategory(Category category) {
         this.category = category;
     }
+
+
 }

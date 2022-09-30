@@ -35,8 +35,8 @@ import java.util.stream.Stream;
 
 public class MainController {
 
-
-
+    @FXML
+    Button confirmButton;
     @FXML
     AnchorPane mainView;
     @FXML
@@ -61,6 +61,8 @@ public class MainController {
     Label budgetRemainingLabel;
     @FXML
     FlowPane detailedViewFlowPane;
+    @FXML
+    AnchorPane confirmDeletePane;
 
     @FXML
     ComboBox categoryComboBox;
@@ -122,12 +124,20 @@ public class MainController {
     }
 
     @FXML
+    private void showMainView(){
+        mainView.toFront();
+    }
+
+    @FXML
     private void addNewCategory(){
+        /*if (newCategoryBudget == null) {
+            newCategoryBudget.setText("0");
+        }*/
         Category category = Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString());
         CategoryItem categoryItem = new CategoryItem(Double.parseDouble(newCategoryBudget.getText()), category);
         selectedBudgetMonth.addCategoryItem(categoryItem);
         updateCategoryList();
-        mainView.toFront();
+        showMainView();
         newCategoryBudget.setText("");
         categoryComboBox.getSelectionModel().selectFirst();
     }
@@ -144,12 +154,25 @@ public class MainController {
         double budget = Double.parseDouble(newSubCategoryBudget.getText());
         CategorySubItem categorySubItem = new CategorySubItem(budget,name);
         categoryController.categoryItem.addSubCategory(categorySubItem);
+        categoryController.categoryItem.addSubcategoryBudget();
         //categoryController.subCategories.add(categorySubItem);
         categoryController.updateSubCategories();
         //System.out.println(categoryController.subCategories);
-        mainView.toFront();
+        showMainView();
         newSubCategoryBudget.setText("");
         newSubCategoryName.setText("");
+    }
+
+    @FXML
+    public void confirmRemoveCategoryWindow(CategoryController categoryController){
+        confirmDeletePane.toFront();
+        this.categoryController = categoryController;
+    }
+
+    @FXML
+    public void removeCategory(){
+        categoryController.confirmRemoveCategory();
+        showMainView();
     }
 
 
@@ -280,4 +303,6 @@ public class MainController {
             return null;
         }
     };
+
+
 }

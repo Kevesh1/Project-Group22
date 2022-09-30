@@ -132,5 +132,16 @@
             <Button fx:id="justabutton" layoutX="13.0" layoutY="57.0" mnemonicParsing="false" onAction="#OpenIEWindow" text="Button" />
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="confirmDeletePane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+         <children>
+            <AnchorPane layoutX="351.0" layoutY="222.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <Label layoutX="15.0" layoutY="14.0" text="Are you sure you want to delete" />
+                  <Button fx:id="confirmButton" layoutX="43.0" layoutY="40.0" mnemonicParsing="false" onAction="#removeCategory" text="Yes" />
+                  <Button layoutX="100.0" layoutY="40.0" mnemonicParsing="false" onAction="#showMainView" text="Cancel" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

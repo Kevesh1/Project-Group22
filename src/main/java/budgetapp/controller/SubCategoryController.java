@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
+
 
 public class SubCategoryController extends AnchorPane {
 
@@ -47,6 +49,7 @@ public class SubCategoryController extends AnchorPane {
     @FXML
     private void removeSubCategory(){
         parentController.categoryItem.removeSubcategory(this.subCategory);
+        parentController.categoryItem.removeSubcategoryBudget(subCategory);
         parentController.updateSubCategories();
     }
 }

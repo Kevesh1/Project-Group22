@@ -5,7 +5,7 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#showSubCategories" prefHeight="49.0" prefWidth="402.0" style="-fx-background-color: gray;" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="402.0" style="-fx-background-color: gray;" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="subCateogryName" layoutX="14.0" layoutY="18.0" text="name" />
       <ProgressBar fx:id="subCategoryProgressBar" layoutX="84.0" layoutY="23.0" prefHeight="8.0" prefWidth="246.0" progress="0.0" />

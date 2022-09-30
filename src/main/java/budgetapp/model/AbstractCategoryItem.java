@@ -45,6 +45,10 @@ abstract public class AbstractCategoryItem {
         this.budget = budget;
     }
 
+    public boolean isBudgetEmpty(){
+        return getBudget() == 0;
+    }
+
     public double getBudgetSpent() {
         return budgetSpent;
     }
