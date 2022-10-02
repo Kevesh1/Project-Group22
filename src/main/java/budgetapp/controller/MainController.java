@@ -1,5 +1,7 @@
 package budgetapp.controller;
 
+import DAO.Dao;
+import DAO.MongoDB.UserDao;
 import budgetapp.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -104,11 +106,18 @@ public class MainController {
 
     @FXML
     private void onClickPreviousMonth() {
+        List<User> users = userDao.getAll();
+        for (User user : users) {
+            System.out.println(user.getFirstName() + " " + user.getPassword());
+        }
         yearMonthComboBox.getSelectionModel().selectPrevious();
     }
 
     @FXML
     private void onClickNextMonth() {
+        Random rand = new Random();
+        int randno = rand.nextInt();
+        userDao.save(new User("user"+1, "lastname", ""+ randno/5));
         yearMonthComboBox.getSelectionModel().selectNext();
     }
 
@@ -180,11 +189,13 @@ public class MainController {
     private CategoryController categoryController;
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
+    private static Dao<User> userDao;
 
     public MainController() {
     }
 
     public void initialize() {
+        userDao = new UserDao();
         budgetMonthsMockUp();
         initializeComboBox();
         initializeBudgetMonths();

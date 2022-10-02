@@ -1,5 +1,6 @@
 package budgetapp;
 
+import DAO.MongoDB.MongoDBService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        MongoDBService.createDataBase("test");
         stg = primaryStage;
         primaryStage.setTitle("Hello World!");
         Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
