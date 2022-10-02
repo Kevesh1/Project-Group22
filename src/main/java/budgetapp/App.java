@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class App extends Application {
 
@@ -18,8 +19,8 @@ public class App extends Application {
         MongoDBService.createDataBase("test");
         stg = primaryStage;
         primaryStage.setTitle("Hello World!");
-        Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/FrontPage.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/budgetapp/fxml/FrontPage.fxml")));
         Scene scene = new Scene(root, 300, 275);
         //Node node =  FXMLLoader.load(getClass().getResource("/budgetapp/fxml/test.fxml"));
         primaryStage.setScene(scene);

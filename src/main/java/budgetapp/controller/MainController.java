@@ -20,6 +20,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.time.Month;
@@ -80,6 +81,7 @@ public class MainController {
     TextField newSubCategoryBudget;
     @FXML
     Button justabutton;
+
     @FXML
     private void OpenIEWindow(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/expenseAndIncomeWindow.fxml"));
@@ -197,7 +199,7 @@ public class MainController {
         updatePieChart(selectedBudgetMonth.getCategories());
     }
 
-    private void updatePieChart(ArrayList<CategoryItem> categories) {
+    private void updatePieChart(@NotNull ArrayList<CategoryItem> categories) {
         List<PieChart.Data> data = new ArrayList<PieChart.Data>();
         for(AbstractCategoryItem category : categories) {
             data.add(new PieChart.Data(category.getName(), category.getBudget()));
