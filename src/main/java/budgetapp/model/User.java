@@ -10,15 +10,16 @@ public class User {
     private boolean elderlyAdjusted;
     private int userID;
 
-<<<<<<< Updated upstream
-=======
     public User(String firstName, String lastName, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
     }
 
->>>>>>> Stashed changes
+    public User() {
+
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -35,7 +36,6 @@ public class User {
         this.lastName = lastName;
     }
 
-<<<<<<< Updated upstream
     public String getProfilePicture() {
         return profilePicture;
     }
@@ -44,31 +44,12 @@ public class User {
         this.profilePicture = profilePicture;
     }
 
-=======
->>>>>>> Stashed changes
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-<<<<<<< Updated upstream
-
-    public int getTotalBudget() {
-        return totalBudget;
-    }
-
-    public void setTotalBudget(int totalBudget) {
-        this.totalBudget = totalBudget;
-    }
-
-    public int getTotalExpenses() {
-        return totalExpenses;
-    }
-
-    public void setTotalExpenses(int totalExpenses) {
-        this.totalExpenses = totalExpenses;
     }
 
     public boolean isFamilyShare() {
@@ -95,7 +76,4 @@ public class User {
         this.userID = userID;
     }
 
-
-=======
->>>>>>> Stashed changes
 }

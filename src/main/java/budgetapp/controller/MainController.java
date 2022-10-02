@@ -5,20 +5,15 @@ import DAO.MongoDB.UserDao;
 import budgetapp.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.Node;
-import javafx.scene.chart.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -27,12 +22,8 @@ import javafx.util.Callback;
 import javafx.util.StringConverter;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.time.Month;
-import java.time.YearMonth;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 public class MainController {
@@ -115,9 +106,6 @@ public class MainController {
 
     @FXML
     private void onClickNextMonth() {
-        Random rand = new Random();
-        int randno = rand.nextInt();
-        userDao.save(new User("user"+1, "lastname", ""+ randno/5));
         yearMonthComboBox.getSelectionModel().selectNext();
     }
 
@@ -183,8 +171,6 @@ public class MainController {
         categoryController.confirmRemoveCategory();
         showMainView();
     }
-
-
 
     private CategoryController categoryController;
     public BudgetMonth selectedBudgetMonth;
