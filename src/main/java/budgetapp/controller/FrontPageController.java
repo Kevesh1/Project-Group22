@@ -1,9 +1,12 @@
 package budgetapp.controller;
 
+import budgetapp.App;
 import budgetapp.model.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +64,22 @@ public class FrontPageController {
 
         return allUsers;
 
+    }
+
+    @FXML
+    public void loginToUserAction(ActionEvent event) throws IOException {
+        App app = new App();
+        app.changeScene("LoginPage.fxml");
+    }
+
+    @FXML
+    public void createNewUserAction(ActionEvent event) throws IOException {
+        App app = new App();
+        app.changeScene("userCreateView.fxml");
+    }
+
+    @FXML
+    public void manageUserAccounts(ActionEvent event) throws IOException{
     }
 
 }
