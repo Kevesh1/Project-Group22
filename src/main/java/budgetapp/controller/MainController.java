@@ -1,36 +1,30 @@
 package budgetapp.controller;
 
+import DAO.Dao;
+import DAO.MongoDB.UserDao;
 import budgetapp.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.Node;
-import javafx.scene.chart.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.time.Month;
-import java.time.YearMonth;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 public class MainController {
@@ -87,6 +81,7 @@ public class MainController {
     TextField newSubCategoryBudget;
     @FXML
     Button justabutton;
+
     @FXML
     Button addNewSubCategoryButton;
 
@@ -108,6 +103,10 @@ public class MainController {
 
     @FXML
     private void onClickPreviousMonth() {
+        List<User> users = userDao.getAll();
+        for (User user : users) {
+            System.out.println(user.getFirstName() + " " + user.getPassword());
+        }
         yearMonthComboBox.getSelectionModel().selectPrevious();
     }
 
@@ -190,11 +189,13 @@ public class MainController {
     private CategoryController categoryController;
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
+    private static Dao<User> userDao;
 
     public MainController() {
     }
 
     public void initialize() {
+        userDao = new UserDao();
         budgetMonthsMockUp();
         initializeComboBox();
         initializeBudgetMonths();
@@ -210,7 +211,7 @@ public class MainController {
         updatePieChart(selectedBudgetMonth.getCategories());
     }
 
-    private void updatePieChart(ArrayList<CategoryItem> categories) {
+    private void updatePieChart(@NotNull ArrayList<CategoryItem> categories) {
         List<PieChart.Data> data = new ArrayList<PieChart.Data>();
         for(AbstractCategoryItem category : categories) {
             data.add(new PieChart.Data(category.getName(), category.getBudget()));

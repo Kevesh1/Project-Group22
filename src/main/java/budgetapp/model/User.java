@@ -6,11 +6,20 @@ public class User {
     private String lastName;
     private String profilePicture;
     private String password;
-    private int totalBudget;
-    private int totalExpenses;
     private boolean familyShare;
     private boolean elderlyAdjusted;
     private int userID;
+    private boolean enablePassword;
+
+    public User(String firstName, String lastName, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+    }
+
+    public User() {
+
+    }
 
     public String getFirstName() {
         return firstName;
@@ -44,22 +53,6 @@ public class User {
         this.password = password;
     }
 
-    public int getTotalBudget() {
-        return totalBudget;
-    }
-
-    public void setTotalBudget(int totalBudget) {
-        this.totalBudget = totalBudget;
-    }
-
-    public int getTotalExpenses() {
-        return totalExpenses;
-    }
-
-    public void setTotalExpenses(int totalExpenses) {
-        this.totalExpenses = totalExpenses;
-    }
-
     public boolean isFamilyShare() {
         return familyShare;
     }
@@ -83,6 +76,5 @@ public class User {
     public void setUserID(int userID) {
         this.userID = userID;
     }
-
 
 }
