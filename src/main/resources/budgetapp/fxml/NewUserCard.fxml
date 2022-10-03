@@ -9,7 +9,7 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="80.0" type="VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="EmptyUserButton" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0">
+      <Button fx:id="EmptyUserButton" mnemonicParsing="false" onAction="#createNewUserAction" prefHeight="80.0" prefWidth="80.0">
          <graphic>
             <ImageView fx:id="BlankProfilePicture" fitHeight="73.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
                <image>

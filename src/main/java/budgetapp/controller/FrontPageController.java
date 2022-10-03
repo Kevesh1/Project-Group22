@@ -82,4 +82,6 @@ public class FrontPageController {
     public void manageUserAccounts(ActionEvent event) throws IOException{
     }
 
+
+
 }

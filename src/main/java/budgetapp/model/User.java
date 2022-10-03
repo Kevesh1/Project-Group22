@@ -9,6 +9,7 @@ public class User {
     private boolean familyShare;
     private boolean elderlyAdjusted;
     private int userID;
+    private boolean enablePassword;
 
     public User(String firstName, String lastName, String password) {
         this.firstName = firstName;

@@ -16,7 +16,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        MongoDBService.createDataBase("test");
+        //MongoDBService.createDataBase("test");
         stg = primaryStage;
         primaryStage.setTitle("Hello World!");
         //Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/MainView.fxml"));

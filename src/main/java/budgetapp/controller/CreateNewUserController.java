@@ -10,23 +10,26 @@ import javafx.scene.image.ImageView;
 public class CreateNewUserController {
 
     @FXML
-    private RadioButton adaptedElderlyButton;
+    public RadioButton adaptedElderlyButton;
 
     @FXML
-    private ImageView chooseProfilePictureButton;
+    public ImageView chooseProfilePictureButton;
 
     @FXML
-    private PasswordField createPassword;
+    public PasswordField createPassword;
 
     @FXML
-    private PasswordField createPasswordRepeat;
+    public PasswordField createPasswordRepeat;
 
     @FXML
-    private TextField firstNameInput;
+    public TextField firstNameInput;
 
     @FXML
-    private TextField lastNameInput;
+    public TextField lastNameInput;
 
     @FXML
-    private Button profileFinishedButton;
+    public Button profileFinishedButton;
+
+    @FXML
+    public void
 }
