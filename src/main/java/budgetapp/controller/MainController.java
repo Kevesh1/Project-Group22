@@ -88,6 +88,9 @@ public class MainController {
     @FXML
     Button justabutton;
     @FXML
+    Button addNewSubCategoryButton;
+
+    @FXML
     private void OpenIEWindow(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/expenseAndIncomeWindow.fxml"));
         Stage stage = new Stage();
@@ -99,6 +102,7 @@ public class MainController {
     @FXML
     public void closeNewCategoryWindow(){
         mainView.toFront();
+        resetNewCategoryInputs();
     }
 
 
@@ -133,13 +137,13 @@ public class MainController {
         /*if (newCategoryBudget == null) {
             newCategoryBudget.setText("0");
         }*/
+        addNewCategoryButton.setText("Add");
         Category category = Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString());
         CategoryItem categoryItem = new CategoryItem(Double.parseDouble(newCategoryBudget.getText()), category);
         selectedBudgetMonth.addCategoryItem(categoryItem);
         updateCategoryList();
         showMainView();
-        newCategoryBudget.setText("");
-        categoryComboBox.getSelectionModel().selectFirst();
+        resetNewCategoryInputs();
     }
 
     @FXML
@@ -159,8 +163,7 @@ public class MainController {
         categoryController.updateSubCategories();
         //System.out.println(categoryController.subCategories);
         showMainView();
-        newSubCategoryBudget.setText("");
-        newSubCategoryName.setText("");
+        resetNewCategoryInputs();
     }
 
     @FXML
@@ -173,6 +176,13 @@ public class MainController {
     public void removeCategory(){
         categoryController.confirmRemoveCategory();
         showMainView();
+    }
+
+    private void resetNewCategoryInputs(){
+        categoryComboBox.getSelectionModel().selectFirst();
+        newCategoryBudget.setText("");
+        newSubCategoryName.setText("");
+        newSubCategoryBudget.setText("");
     }
 
 

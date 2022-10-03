@@ -39,21 +39,13 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="addNewSubCategoryPane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+      <AnchorPane fx:id="confirmDeletePane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
          <children>
-            <AnchorPane layoutX="351.0" layoutY="194.0" prefHeight="214.0" prefWidth="200.0" style="-fx-background-color: white;">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
+            <AnchorPane layoutX="351.0" layoutY="222.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: white;">
                <children>
-                  <Label layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Subcategory" />
-                  <TextField fx:id="newSubCategoryName" layoutX="26.0" layoutY="68.0" />
-                  <Label fx:id="newCategoryBudgetLabel" layoutX="26.0" layoutY="101.0" prefHeight="26.0" prefWidth="64.0" text="Budget" />
-                  <TextField fx:id="newSubCategoryBudget" layoutX="25.0" layoutY="127.0" />
-                  <Label layoutX="54.0" layoutY="14.0" text="Add Subcategory" />
-                  <Button fx:id="addNewSubCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#addNewSubCategory" text="Add" />
-                  <Button layoutX="75.0" layoutY="174.0" mnemonicParsing="false" text="Cancel" />
-                  <Button layoutX="175.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="x" />
+                  <Label layoutX="15.0" layoutY="14.0" text="Are you sure you want to delete" />
+                  <Button fx:id="confirmButton" layoutX="43.0" layoutY="40.0" mnemonicParsing="false" onAction="#removeCategory" text="Yes" />
+                  <Button layoutX="100.0" layoutY="40.0" mnemonicParsing="false" onAction="#showMainView" text="Cancel" />
                </children>
             </AnchorPane>
          </children>
@@ -132,13 +124,21 @@
             <Button fx:id="justabutton" layoutX="13.0" layoutY="57.0" mnemonicParsing="false" onAction="#OpenIEWindow" text="Button" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="confirmDeletePane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+      <AnchorPane fx:id="addNewSubCategoryPane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
          <children>
-            <AnchorPane layoutX="351.0" layoutY="222.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: white;">
+            <AnchorPane layoutX="351.0" layoutY="194.0" prefHeight="214.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
                <children>
-                  <Label layoutX="15.0" layoutY="14.0" text="Are you sure you want to delete" />
-                  <Button fx:id="confirmButton" layoutX="43.0" layoutY="40.0" mnemonicParsing="false" onAction="#removeCategory" text="Yes" />
-                  <Button layoutX="100.0" layoutY="40.0" mnemonicParsing="false" onAction="#showMainView" text="Cancel" />
+                  <Label layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Subcategory" />
+                  <TextField fx:id="newSubCategoryName" layoutX="26.0" layoutY="68.0" />
+                  <Label fx:id="newCategoryBudgetLabel" layoutX="26.0" layoutY="101.0" prefHeight="26.0" prefWidth="64.0" text="Budget" />
+                  <TextField fx:id="newSubCategoryBudget" layoutX="25.0" layoutY="127.0" />
+                  <Label layoutX="54.0" layoutY="14.0" text="Add Subcategory" />
+                  <Button fx:id="addNewSubCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#addNewSubCategory" text="Add" />
+                  <Button layoutX="75.0" layoutY="174.0" mnemonicParsing="false" text="Cancel" />
+                  <Button layoutX="175.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="x" />
                </children>
             </AnchorPane>
          </children>

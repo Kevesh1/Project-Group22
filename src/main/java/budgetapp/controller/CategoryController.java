@@ -55,6 +55,7 @@ public class CategoryController extends AnchorPane{
     public final CategoryItem categoryItem;
     //private ArrayList<CategorySubItem> subCategories = new ArrayList<>();
     private int index;
+    private boolean edit = false;
 
 
     public CategoryController(MainController parentController, CategoryItem categoryItem, int i) {
@@ -133,5 +134,12 @@ public class CategoryController extends AnchorPane{
         parentController.updateCategoryList();
     }
 
-
+    @FXML
+    private void editCategory(){
+        edit = true;
+        parentController.addNewCategoryButton.setText("Update");
+        parentController.categoryComboBox.getSelectionModel().select(categoryItem.getCategory());
+        parentController.newCategoryBudget.setText(String.valueOf(categoryItem.getBudget()));
+        parentController.addNewCategoryPane.toFront();
+    }
 }
