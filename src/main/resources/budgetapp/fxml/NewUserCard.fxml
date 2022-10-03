@@ -5,23 +5,19 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="80.0" type="VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="userButtonCard" mnemonicParsing="false" prefHeight="129.0" prefWidth="80.0">
+      <Button fx:id="EmptyUserButton" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0">
          <graphic>
-            <ImageView fx:id="profilePictureCard" fitHeight="85.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="BlankProfilePicture" fitHeight="73.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/BlankProfilePicture.png" />
+                  <Image url="@../img/plus.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="firstNameCard" alignment="CENTER" prefHeight="19.0" prefWidth="80.0" text="Jacob" textAlignment="CENTER">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
+      <Label fx:id="NewUserLabel" alignment="CENTER" text="New user" />
    </children>
 </fx:root>
