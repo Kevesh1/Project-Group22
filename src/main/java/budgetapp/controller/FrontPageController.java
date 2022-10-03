@@ -1,19 +1,12 @@
 package budgetapp.controller;
 
-import budgetapp.model.CategoryItem;
 import budgetapp.model.User;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
-import javax.swing.event.AncestorEvent;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
+
 
 public class FrontPageController {
 
@@ -24,6 +17,7 @@ public class FrontPageController {
     List<User> userCards;
 
 
+
     public void initialize() {
         userCards = userList();
         userCardContainer.getChildren().clear();
@@ -31,6 +25,17 @@ public class FrontPageController {
             UserCardController userCardController = new UserCardController(this, user);
             userCardContainer.getChildren().add(userCardController);
         }
+        userCardContainer.getChildren().add(new NewUserCardController(this));
+
+    }
+
+    public void initilizeUserCards(){
+        userCards = new ArrayList<>(userList());
+            for(User user : userCards){
+                UserCardController userCardController = new UserCardController(this,user);
+                userCardContainer.getChildren().add(userCardController);
+
+            }
     }
 
     public List<User> userList(){
