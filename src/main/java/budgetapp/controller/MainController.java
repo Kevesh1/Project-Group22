@@ -3,6 +3,7 @@ package budgetapp.controller;
 import DAO.Dao;
 import DAO.MongoDB.UserDao;
 import budgetapp.controller.categories.CategoryController;
+import budgetapp.controller.categories.SubCategoryController;
 import budgetapp.model.*;
 import budgetapp.model.categories.AbstractCategoryItem;
 import budgetapp.model.categories.Category;
@@ -28,7 +29,6 @@ import javafx.util.StringConverter;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.security.cert.PolicyNode;
 import java.time.Month;
 import java.util.*;
 
@@ -80,6 +80,8 @@ public class MainController {
     Label newCategoryBudgetLabel;
     @FXML
     Button updateCategoryButton;
+    @FXML
+    Button updateSubCategoryButton;
 
     @FXML
     AnchorPane addNewSubCategoryPane;
@@ -92,6 +94,7 @@ public class MainController {
 
     @FXML
     Button addNewSubCategoryButton;
+
 
     @FXML
     private void OpenIEWindow(ActionEvent event) throws IOException {
@@ -141,6 +144,36 @@ public class MainController {
         mainView.toFront();
     }
 
+
+
+    public void showEditSubCategoryWindow(SubCategoryController subCategoryController){
+        this.subCategoryController = subCategoryController;
+        addNewSubCategoryPane.toFront();
+        updateSubCategoryButton.setVisible(true);
+        addNewSubCategoryButton.setVisible(false);
+        newSubCategoryName.setText(subCategoryController.subCategory.getName());
+        newSubCategoryBudget.setText(String.valueOf(subCategoryController.subCategory.getBudget()));
+    }
+
+    @FXML
+    private void updateSubCategory(){
+        subCategoryController.subCategory.setName(newSubCategoryName.getText());
+        subCategoryController.subCategory.setBudget(Double.parseDouble(newSubCategoryBudget.getText()));
+        updateCategoryList();
+        showMainView();
+        System.out.println("UPDATE");
+    }
+
+    public void showEditCategoryWindow(CategoryController categoryController){
+        this.categoryController = categoryController;
+        addNewCategoryPane.toFront();
+        updateCategoryButton.setVisible(true);
+        addNewCategoryButton.setVisible(false);
+        categoryComboBox.getSelectionModel().select(categoryController.categoryItem.getCategory());
+        newCategoryBudget.setText(String.valueOf(categoryController.categoryItem.getBudget()));
+
+    }
+
     @FXML
     private void updateCategory(){
         categoryController.categoryItem.setCategory(Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString()));
@@ -148,18 +181,6 @@ public class MainController {
         updateCategoryList();
         showMainView();
         System.out.println("UPDATE");
-    }
-
-
-    public void showEditCategoryWindow(CategoryController categoryController){
-
-        addNewCategoryPane.toFront();
-        updateCategoryButton.setVisible(true);
-        addNewCategoryButton.setVisible(false);
-        categoryComboBox.getSelectionModel().select(categoryController.categoryItem.getCategory());
-        newCategoryBudget.setText(String.valueOf(categoryController.categoryItem.getBudget()));
-        this.categoryController = categoryController;
-
     }
 
     @FXML
@@ -180,6 +201,8 @@ public class MainController {
     @FXML
     public void showAddSubCategoryWindow(CategoryController categoryController){
         addNewSubCategoryPane.toFront();
+        updateSubCategoryButton.setVisible(false);
+        addNewSubCategoryButton.setVisible(true);
         this.categoryController = categoryController;
     }
 
@@ -219,11 +242,13 @@ public class MainController {
 
 
     private CategoryController categoryController;
+    private SubCategoryController subCategoryController;
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
     private static Dao<User> userDao;
 
     public MainController() {
+
     }
 
     public void initialize() {

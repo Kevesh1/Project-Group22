@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 public class SubCategoryController extends AnchorPane {
 
     private CategoryController parentController;
-    private CategorySubItem subCategory;
+    public CategorySubItem subCategory;
 
     @FXML
     private Label subCateogryName;
@@ -50,5 +50,10 @@ public class SubCategoryController extends AnchorPane {
         parentController.categoryItem.removeSubcategoryBudget(subCategory);
         parentController.updateSubCategories();
     }
-    
+
+    //try and fix this method
+    @FXML
+    private void getEditSubCategoryWindow(){
+        parentController.parentController.showEditSubCategoryWindow(this);
+    }
 }

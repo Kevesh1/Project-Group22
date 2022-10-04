@@ -12,7 +12,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class CategoryController extends AnchorPane{
+public class CategoryController extends AnchorPane {
 
 
     @FXML
