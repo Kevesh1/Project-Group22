@@ -157,8 +157,10 @@ public class MainController {
 
     @FXML
     private void updateSubCategory(){
+        subCategoryController.parentController.categoryItem.removeSubcategoryBudget(subCategoryController.subCategory);
         subCategoryController.subCategory.setName(newSubCategoryName.getText());
         subCategoryController.subCategory.setBudget(Double.parseDouble(newSubCategoryBudget.getText()));
+        subCategoryController.parentController.categoryItem.addSubcategoryBudget();
         updateCategoryList();
         showMainView();
         System.out.println("UPDATE");

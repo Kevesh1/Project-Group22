@@ -10,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class SubCategoryController extends AnchorPane {
 
-    private CategoryController parentController;
+    public CategoryController parentController;
     public CategorySubItem subCategory;
 
     @FXML
