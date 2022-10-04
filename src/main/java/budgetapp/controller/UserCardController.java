@@ -30,7 +30,7 @@ public class UserCardController extends VBox {
             root.load();
         } catch (Exception ignored) {
         }
-        setCardData(user);
+        //setCardData(user);
     }
 
     public void setCardData(User user){
