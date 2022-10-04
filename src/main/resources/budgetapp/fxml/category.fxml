@@ -12,7 +12,7 @@
       <Label fx:id="categoryBudget" layoutX="370.0" layoutY="51.0" styleClass="amount" text="5000 kr" />
       <ImageView fx:id="categoryImage" fitHeight="43.0" fitWidth="54.0" layoutX="11.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
       <ProgressBar fx:id="progressBar" layoutX="65.0" layoutY="57.0" prefHeight="12.0" prefWidth="298.0" progress="0.0" />
-      <Button fx:id="editButton" layoutX="345.0" layoutY="6.0" mnemonicParsing="false" onAction="#editCategory" text="Edit" />
+      <Button fx:id="editButton" layoutX="345.0" layoutY="6.0" mnemonicParsing="false" onAction="#getEditCategoryWindow" text="Edit" />
       <Button fx:id="removeCategoryButton" layoutX="385.0" layoutY="6.0" mnemonicParsing="false" onAction="#removeCategoryCheck" text="X" />
       <Button fx:id="addSubCategoryButton" layoutX="202.0" layoutY="6.0" mnemonicParsing="false" onAction="#getAddSubCategoryWindow" text="+" />
    </children>

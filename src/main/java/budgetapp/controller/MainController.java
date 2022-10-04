@@ -2,7 +2,12 @@ package budgetapp.controller;
 
 import DAO.Dao;
 import DAO.MongoDB.UserDao;
+import budgetapp.controller.categories.CategoryController;
 import budgetapp.model.*;
+import budgetapp.model.categories.AbstractCategoryItem;
+import budgetapp.model.categories.Category;
+import budgetapp.model.categories.CategoryItem;
+import budgetapp.model.categories.CategorySubItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +28,7 @@ import javafx.util.StringConverter;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.security.cert.PolicyNode;
 import java.time.Month;
 import java.util.*;
 
@@ -34,7 +40,7 @@ public class MainController {
     @FXML
     AnchorPane mainView;
     @FXML
-    FlowPane categoriesFlowPane;
+    public FlowPane categoriesFlowPane;
     @FXML
     PieChart pieChart;
     @FXML
@@ -72,6 +78,8 @@ public class MainController {
     Label newCategoryNameLabel;
     @FXML
     Label newCategoryBudgetLabel;
+    @FXML
+    Button updateCategoryButton;
 
     @FXML
     AnchorPane addNewSubCategoryPane;
@@ -124,6 +132,8 @@ public class MainController {
     @FXML
     private void showAddCategoryWindow(){
         addNewCategoryPane.toFront();
+        updateCategoryButton.setVisible(false);
+        addNewCategoryButton.setVisible(true);
     }
 
     @FXML
@@ -132,11 +142,33 @@ public class MainController {
     }
 
     @FXML
+    private void updateCategory(){
+        categoryController.categoryItem.setCategory(Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString()));
+        categoryController.categoryItem.setBudget(Double.parseDouble(newCategoryBudget.getText()));
+        updateCategoryList();
+        showMainView();
+        System.out.println("UPDATE");
+    }
+
+
+    public void showEditCategoryWindow(CategoryController categoryController){
+
+        addNewCategoryPane.toFront();
+        updateCategoryButton.setVisible(true);
+        addNewCategoryButton.setVisible(false);
+        categoryComboBox.getSelectionModel().select(categoryController.categoryItem.getCategory());
+        newCategoryBudget.setText(String.valueOf(categoryController.categoryItem.getBudget()));
+        this.categoryController = categoryController;
+
+    }
+
+    @FXML
     private void addNewCategory(){
         /*if (newCategoryBudget == null) {
             newCategoryBudget.setText("0");
         }*/
-        addNewCategoryButton.setText("Add");
+        System.out.println("ADD");
+
         Category category = Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString());
         CategoryItem categoryItem = new CategoryItem(Double.parseDouble(newCategoryBudget.getText()), category);
         selectedBudgetMonth.addCategoryItem(categoryItem);

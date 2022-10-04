@@ -1,5 +1,7 @@
 package budgetapp.model;
 
+import budgetapp.model.categories.Category;
+
 import java.time.YearMonth;
 
 public class Expense {

@@ -1,4 +1,4 @@
-package budgetapp.model;
+package budgetapp.model.categories;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
@@ -41,7 +41,7 @@ abstract public class AbstractCategoryItem {
     public double getBudget() {
         return budget;
     }
-    protected void setBudget(double budget) {
+    public void setBudget(double budget) {
         this.budget = budget;
     }
 
@@ -71,4 +71,5 @@ abstract public class AbstractCategoryItem {
     public void decrementBudgetSpent(int amount) {
         setBudgetSpent(budgetSpent - amount);
     }
+
 }

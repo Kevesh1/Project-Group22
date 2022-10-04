@@ -1,22 +1,16 @@
-package budgetapp.controller;
+package budgetapp.controller.categories;
 
-import budgetapp.model.Category;
-import budgetapp.model.CategoryItem;
-import budgetapp.model.CategorySubItem;
+import budgetapp.controller.MainController;
+import budgetapp.model.categories.CategoryItem;
+import budgetapp.model.categories.CategorySubItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
-import java.awt.event.ActionEvent;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class CategoryController extends AnchorPane{
 
@@ -51,7 +45,7 @@ public class CategoryController extends AnchorPane{
     //private void updateProgressBar(){
     //    progressBar.setProgress(this.budget - this.spentAmount);}
 
-    private final MainController parentController;
+    public final MainController parentController;
     public final CategoryItem categoryItem;
     //private ArrayList<CategorySubItem> subCategories = new ArrayList<>();
     private int index;
@@ -135,11 +129,9 @@ public class CategoryController extends AnchorPane{
     }
 
     @FXML
-    private void editCategory(){
-        edit = true;
-        parentController.addNewCategoryButton.setText("Update");
-        parentController.categoryComboBox.getSelectionModel().select(categoryItem.getCategory());
-        parentController.newCategoryBudget.setText(String.valueOf(categoryItem.getBudget()));
-        parentController.addNewCategoryPane.toFront();
+    private void getEditCategoryWindow(){
+        parentController.showEditCategoryWindow(this);
     }
+
+
 }

@@ -18,23 +18,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.MainController">
    <children>
-      <AnchorPane fx:id="addNewCategoryPane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+      <AnchorPane fx:id="addNewSubCategoryPane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
          <children>
             <AnchorPane layoutX="351.0" layoutY="194.0" prefHeight="214.0" prefWidth="200.0" style="-fx-background-color: white;">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <children>
-                  <Label fx:id="newCategoryLabel" layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Category" />
-                  <Label fx:id="newCategoryBudgetLabel1" layoutX="26.0" layoutY="101.0" prefHeight="26.0" prefWidth="64.0" text="Budget" />
-                  <TextField fx:id="newCategoryBudget" layoutX="25.0" layoutY="127.0" />
-                  <Label layoutX="63.0" layoutY="14.0" text="Add Category" />
-                  <Button fx:id="addNewCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#addNewCategory" text="Add" />
+                  <Label layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Subcategory" />
+                  <TextField fx:id="newSubCategoryName" layoutX="26.0" layoutY="68.0" />
+                  <Label fx:id="newCategoryBudgetLabel" layoutX="26.0" layoutY="101.0" prefHeight="26.0" prefWidth="64.0" text="Budget" />
+                  <TextField fx:id="newSubCategoryBudget" layoutX="25.0" layoutY="127.0" />
+                  <Label layoutX="54.0" layoutY="14.0" text="Add Subcategory" />
+                  <Button fx:id="addNewSubCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#addNewSubCategory" text="Add" />
                   <Button layoutX="75.0" layoutY="174.0" mnemonicParsing="false" text="Cancel" />
                   <Button layoutX="175.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="x" />
-                  <ComboBox fx:id="categoryComboBox" layoutX="26.0" layoutY="68.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
          </children>
@@ -124,21 +124,22 @@
             <Button fx:id="justabutton" layoutX="13.0" layoutY="57.0" mnemonicParsing="false" onAction="#OpenIEWindow" text="Button" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="addNewSubCategoryPane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+      <AnchorPane fx:id="addNewCategoryPane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
          <children>
             <AnchorPane layoutX="351.0" layoutY="194.0" prefHeight="214.0" prefWidth="200.0" style="-fx-background-color: white;">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <children>
-                  <Label layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Subcategory" />
-                  <TextField fx:id="newSubCategoryName" layoutX="26.0" layoutY="68.0" />
-                  <Label fx:id="newCategoryBudgetLabel" layoutX="26.0" layoutY="101.0" prefHeight="26.0" prefWidth="64.0" text="Budget" />
-                  <TextField fx:id="newSubCategoryBudget" layoutX="25.0" layoutY="127.0" />
-                  <Label layoutX="54.0" layoutY="14.0" text="Add Subcategory" />
-                  <Button fx:id="addNewSubCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#addNewSubCategory" text="Add" />
+                  <Button fx:id="updateCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#updateCategory" text="Update" />
+                  <Label fx:id="newCategoryLabel" layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Category" />
+                  <Label fx:id="newCategoryBudgetLabel1" layoutX="26.0" layoutY="101.0" prefHeight="26.0" prefWidth="64.0" text="Budget" />
+                  <TextField fx:id="newCategoryBudget" layoutX="25.0" layoutY="127.0" />
+                  <Label layoutX="63.0" layoutY="14.0" text="Add Category" />
+                  <Button fx:id="addNewCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#addNewCategory" text="Add" />
                   <Button layoutX="75.0" layoutY="174.0" mnemonicParsing="false" text="Cancel" />
                   <Button layoutX="175.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="x" />
+                  <ComboBox fx:id="categoryComboBox" layoutX="26.0" layoutY="68.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
          </children>

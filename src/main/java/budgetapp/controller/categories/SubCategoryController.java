@@ -1,13 +1,11 @@
-package budgetapp.controller;
+package budgetapp.controller.categories;
 
-import budgetapp.model.CategorySubItem;
+import budgetapp.model.categories.CategorySubItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
-
-import java.io.IOException;
 
 
 public class SubCategoryController extends AnchorPane {
@@ -52,4 +50,5 @@ public class SubCategoryController extends AnchorPane {
         parentController.categoryItem.removeSubcategoryBudget(subCategory);
         parentController.updateSubCategories();
     }
+    
 }
