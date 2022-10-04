@@ -30,6 +30,4 @@ public class CreateNewUserController {
     @FXML
     public Button profileFinishedButton;
 
-    @FXML
-    public void
 }

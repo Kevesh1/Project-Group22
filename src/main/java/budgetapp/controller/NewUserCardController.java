@@ -38,7 +38,7 @@ public class NewUserCardController extends VBox {
     public void setCardData(){
         Image profilePicture = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/budgetapp/img/Squared_plus.svg.png")));
         BlankProfilePicture.setImage(profilePicture);
-        NewUserLabel.setText("New user");
+        //NewUserLabel.setText("New user");
     }
 
 }
