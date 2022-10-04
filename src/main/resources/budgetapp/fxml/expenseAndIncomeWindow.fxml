@@ -2,13 +2,16 @@
 
 <?import java.lang.String?>
 <?import java.net.URL?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
@@ -67,20 +70,110 @@
                               <String fx:value="standardFontSize" />
                            </styleClass>
                         </Label>
-                        <TextField fx:id="sumWindow" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" styleClass="darkModeThemeDark" stylesheets="@../css/Styleheet.css" />
+                        <TextField fx:id="sumWindow" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/Styleheet.css">
+                           <styleClass>
+                              <String fx:value="darkModeThemeDark" />
+                              <String fx:value="inputbox" />
+                           </styleClass></TextField>
                         <ImageView fx:id="closeButton" fitHeight="46.0" fitWidth="61.0" layoutX="438.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
-                        <AnchorPane fx:id="categorySelect" layoutX="286.0" layoutY="14.0" prefHeight="383.0" prefWidth="200.0" />
+                        <AnchorPane layoutX="300.0" layoutY="15.0" prefHeight="400.0" prefWidth="268.0">
+                           <children>
+                              <ScrollPane fitToWidth="true" layoutX="-45.0" prefHeight="400.0" prefWidth="310.0" stylesheets="@../css/Styleheet.css">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="699.0" prefWidth="200.0" style="-fx-background-color: #36393E#36393E;">
+                                       <children>
+                                          <Accordion prefHeight="825.0" prefWidth="408.0" stylesheets="@../css/Styleheet.css">
+                                             <panes>
+                                                <TitledPane animated="false" text="sdfasdasd">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                   </content>
+                                                   <graphic>
+                                                      <Circle fill="#4f5e6b" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+                                                   </graphic>
+                                                </TitledPane>
+                                                <TitledPane animated="false">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Circle fill="DODGERBLUE" layoutX="100.0" layoutY="42.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+                                                            <Circle fill="DODGERBLUE" layoutX="103.0" layoutY="120.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                   <graphic>
+                                                      <Circle fill="DODGERBLUE" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+                                                   </graphic>
+                                                </TitledPane>
+                                                <TitledPane animated="false">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                   </content>
+                                                   <graphic>
+                                                      <Circle fill="DODGERBLUE" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+                                                   </graphic>
+                                                </TitledPane>
+                                                <TitledPane animated="false">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                   </content>
+                                                   <graphic>
+                                                      <Circle fill="DODGERBLUE" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+                                                   </graphic>
+                                                </TitledPane>
+                                                <TitledPane animated="false">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                   </content>
+                                                   <graphic>
+                                                      <Circle fill="DODGERBLUE" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+                                                   </graphic>
+                                                </TitledPane>
+                                                <TitledPane animated="false">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                   </content>
+                                                   <graphic>
+                                                      <Circle fill="DODGERBLUE" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+                                                   </graphic>
+                                                </TitledPane>
+                                                <TitledPane animated="false">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                   </content>
+                                                   <graphic>
+                                                      <Circle fill="DODGERBLUE" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+                                                   </graphic>
+                                                </TitledPane>
+                                                <TitledPane animated="false">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="61.0" prefWidth="200.0" />
+                                                   </content>
+                                                   <graphic>
+                                                      <Circle fill="DODGERBLUE" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+                                                   </graphic>
+                                                </TitledPane>
+                                             </panes>
+                                          </Accordion>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
                         <DatePicker fx:id="transaktionDate" layoutX="36.0" layoutY="215.0" styleClass="darkModeThemeDark">
                            <stylesheets>
                               <URL value="@../css" />
                               <URL value="@../css/DatePicker.css" />
                            </stylesheets>
                         </DatePicker>
-                        <Button fx:id="close" layoutX="109.0" layoutY="85.0" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
-                        <Button fx:id="categorySwap" layoutX="37.0" layoutY="19.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 100;" text="Button" />
+                        <Button fx:id="categorySwap" layoutX="36.0" layoutY="18.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 100;" text="+">
+                           <font>
+                              <Font size="29.0" />
+                           </font></Button>
+                        <TextArea fx:id="note" layoutX="37.0" layoutY="294.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
                      </children>
                   </AnchorPane>
-                  <TextArea fx:id="note" layoutX="37.0" layoutY="291.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
                </children></AnchorPane>
       </content>
     </Tab>
