@@ -51,8 +51,6 @@ public class CategoryController extends AnchorPane {
     public final CategoryItem categoryItem;
     //private ArrayList<CategorySubItem> subCategories = new ArrayList<>();
     private int index;
-    private boolean edit = false;
-
 
     public CategoryController(MainController parentController, CategoryItem categoryItem, int i) {
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/category.fxml"));
@@ -66,10 +64,7 @@ public class CategoryController extends AnchorPane {
         this.parentController = parentController;
         this.index = i;
         setLabels();
-
-
     }
-
 
     @FXML
     public void initialize() {
@@ -149,9 +144,16 @@ public class CategoryController extends AnchorPane {
     }
 
     @FXML
-    private void getEditCategoryWindow(){
+    private void getEditCategoryWindow() {
         parentController.showEditCategoryWindow(this);
     }
+    /*private void editCategory(){
+        boolean edit = true;
+        parentController.addNewCategoryButton.setText("Update");
+        parentController.categoryComboBox.getSelectionModel().select(categoryItem.getCategory());
+        parentController.newCategoryBudget.setText(String.valueOf(categoryItem.getBudget()));
+        parentController.addNewCategoryPane.toFront();
+    }*/
 
 
 }

@@ -44,6 +44,11 @@
             <artifactId>mongo-java-driver</artifactId>
             <version>3.12.11</version>
         </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.0.0</version>
+        </dependency>
 
     </dependencies>
 

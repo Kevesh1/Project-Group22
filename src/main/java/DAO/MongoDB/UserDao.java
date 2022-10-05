@@ -1,19 +1,24 @@
 package DAO.MongoDB;
 
-import DAO.Dao;
+import DAO.IDao;
+import DAO.IUserDao;
+import DAO.MongoDB.DTO.UserDto;
 import budgetapp.model.User;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
+import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
-public class UserDao implements Dao<User> {
+public class UserDao implements IUserDao {
 
-    MongoCollection<DAO.MongoDB.DTO.User> collection = MongoDBService.database.getCollection(
-            DAO.MongoDB.DTO.User.class.getSimpleName().toLowerCase(Locale.ROOT), DAO.MongoDB.DTO.User.class);
+    MongoCollection<UserDto> collection = MongoDBService.database.getCollection(
+            UserDto.class.getSimpleName().toLowerCase(Locale.ROOT), UserDto.class);
+
+    ModelMapper modelMapper = new ModelMapper();
 
     @Override
     public Optional<User> get(long id) {
@@ -23,9 +28,9 @@ public class UserDao implements Dao<User> {
     @Override
     public List<User> getAll() {;
         ArrayList<User> userArray = new ArrayList<>();
-        collection.find(new Document(), DAO.MongoDB.DTO.User.class).into(new ArrayList<DAO.MongoDB.DTO.User>())
+        collection.find(new Document(), UserDto.class).into(new ArrayList<UserDto>())
                 .forEach(user -> userArray.add(new User(
-                        user.getFirstname(),
+                        user.getFirstName(),
                         user.getLastName(),
                         user.getPassword())));
         return userArray;
@@ -33,8 +38,11 @@ public class UserDao implements Dao<User> {
 
     @Override
     public void save(User user) {
-        DAO.MongoDB.DTO.User newUser = new DAO.MongoDB.DTO.User()
-                .setFirstname(user.getFirstName())
+        UserDto userDto = modelMapper.map(user, UserDto.class);
+        System.out.println(user.getFirstName());
+        System.out.println(userDto.getFirstName());
+        UserDto newUser = new UserDto()
+                .setFirstName(user.getFirstName())
                 .setLastName(user.getLastName())
                 .setPassword(user.getPassword());
         collection.insertOne(newUser);

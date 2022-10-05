@@ -1,6 +1,7 @@
 package budgetapp.controller;
 
-import DAO.Dao;
+import DAO.IDao;
+import DAO.MongoDB.AccountDao;
 import DAO.MongoDB.UserDao;
 import budgetapp.controller.categories.CategoryController;
 import budgetapp.controller.categories.SubCategoryController;
@@ -111,14 +112,9 @@ public class MainController {
         mainView.toFront();
         resetNewCategoryInputs();
     }
-
-
+    AccountDao accountDao = new AccountDao();
     @FXML
     private void onClickPreviousMonth() {
-        List<User> users = userDao.getAll();
-        for (User user : users) {
-            System.out.println(user.getFirstName() + " " + user.getPassword());
-        }
         yearMonthComboBox.getSelectionModel().selectPrevious();
     }
 
@@ -248,14 +244,12 @@ public class MainController {
     private SubCategoryController subCategoryController;
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
-    private static Dao<User> userDao;
 
     public MainController() {
 
     }
 
     public void initialize() {
-        userDao = new UserDao();
         budgetMonthsMockUp();
         initializeComboBox();
         initializeBudgetMonths();
@@ -327,7 +321,6 @@ public class MainController {
             i++;
             CategoryController categoryController = new CategoryController(this, categoryItem,i);
             categoriesFlowPane.getChildren().add(categoryController);
-
         }
     }
 
