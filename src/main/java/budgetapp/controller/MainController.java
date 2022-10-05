@@ -60,9 +60,10 @@ public class MainController {
     @FXML
     Label budgetRemainingLabel;
     @FXML
-    FlowPane detailedViewFlowPane;
+    FlowPane latestPurchases;
     @FXML
     AnchorPane confirmDeletePane;
+
 
     @FXML
     ComboBox categoryComboBox;
@@ -261,6 +262,8 @@ public class MainController {
         updateBarChart(budgetMonths);
         updateMainView();
         initializeCategoryComboBox();
+        updateLatestPurchases();
+
     }
     public void updateMainView() {
         budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
@@ -326,6 +329,13 @@ public class MainController {
         }
     }
 
+    private void updateLatestPurchases(){
+        for (Expense expense : selectedBudgetMonth.getExpenses()){
+            ExpenseController expenseController = new ExpenseController(this, expense);
+            latestPurchases.getChildren().add(expenseController);
+        }
+    }
+
     private void budgetMonthsMockUp() {
         BudgetMonth tempBudgetMonth1 = new BudgetMonth(5000, 2022, Month.AUGUST);
         BudgetMonth tempBudgetMonth2 = (new BudgetMonth(4000, 2022, Month.SEPTEMBER));
@@ -333,6 +343,7 @@ public class MainController {
         CategoryItem tempCategoryItem1 = new CategoryItem(100, Category.Food);
         CategoryItem tempCategoryItem2 = new CategoryItem(300, Category.Transportation);
         tempCategoryItem1.addSubCategory(new CategorySubItem(40, "AHHH"));
+        tempBudgetMonth1.addExpense(new Expense(100.0,"Buss Ticket", 7 -23-2018));
         tempCategoryItem1.incrementBudgetSpent(50);
         tempBudgetMonth1.addCategoryItem(new CategoryItem(200, Category.Savings));
         tempBudgetMonth1.addCategoryItem(tempCategoryItem1);
