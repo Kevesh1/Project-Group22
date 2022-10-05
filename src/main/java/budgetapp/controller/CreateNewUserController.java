@@ -1,7 +1,8 @@
 package budgetapp.controller;
 
+import budgetapp.model.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -10,24 +11,45 @@ import javafx.scene.image.ImageView;
 public class CreateNewUserController {
 
     @FXML
-    public RadioButton adaptedElderlyButton;
+    private RadioButton adaptedElderlyButton;
 
     @FXML
-    public ImageView chooseProfilePictureButton;
+    private ImageView chooseProfilePictureButton;
 
     @FXML
-    public PasswordField createPassword;
+    private PasswordField createPassword;
 
     @FXML
-    public PasswordField createPasswordRepeat;
+    private PasswordField createPasswordRepeat;
 
     @FXML
-    public TextField firstNameInput;
+    private TextField firstNameInput;
 
     @FXML
-    public TextField lastNameInput;
+    private TextField lastNameInput;
 
     @FXML
-    public Button profileFinishedButton;
+    void profileFinishedAction(ActionEvent event) {
+        if (controlAllInputs() && samePassword()){
+            User user = new User(firstNameInput.getText(), lastNameInput.getText(), createPassword.getText());
+        }
+
+    }
+
+    public boolean controlAllInputs(){
+        if (firstNameInput.getText().toString().isEmpty() || lastNameInput.getText().toString().isEmpty() || createPassword.getText().toString().isEmpty() || createPasswordRepeat.getText().toString().isEmpty() || !chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/plus.png")){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public void profilePictureToString(){
+    }
+
+    public boolean samePassword(){
+        return createPassword.getText().toString().equals(createPasswordRepeat.getText().toString());
+    }
 
 }

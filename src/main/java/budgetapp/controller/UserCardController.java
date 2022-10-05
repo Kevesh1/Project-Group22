@@ -30,7 +30,7 @@ public class UserCardController extends VBox {
             root.load();
         } catch (Exception ignored) {
         }
-        //setCardData(user);
+        setCardData(user);
     }
 
     public void setCardData(User user){
@@ -38,4 +38,5 @@ public class UserCardController extends VBox {
         profilePictureCard.setImage(profilePicture);
         firstNameCard.setText(user.getFirstName());
     }
+
 }

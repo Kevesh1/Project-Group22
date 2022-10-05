@@ -20,7 +20,7 @@ public class App extends Application {
         stg = primaryStage;
         primaryStage.setTitle("Hello World!");
         //Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/budgetapp/fxml/AccountLoginView.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/budgetapp/fxml/FrontPage.fxml")));
         Scene scene = new Scene(root, 300, 275);
         //Node node =  FXMLLoader.load(getClass().getResource("/budgetapp/fxml/test.fxml"));
         primaryStage.setScene(scene);
