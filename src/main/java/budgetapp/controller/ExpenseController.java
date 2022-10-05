@@ -37,10 +37,17 @@ public class ExpenseController extends AnchorPane {
         setLabels();
 
     }
-
     private void setLabels(){
         latestPurchaseNotation.setText(expense.getAnnotation());
         latestPurchaseDate.setText(Integer.toString(expense.getDate()));
         latestPurchaseCost.setText(String.valueOf(expense.getCost()));
+    }
+
+    @FXML
+    private void deleteExpense(){
+        parentController.selectedBudgetMonth.removeExpense(expense);
+        parentController.updateLatestPurchases();
+        System.out.println("DELETED");
+
     }
 }

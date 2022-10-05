@@ -55,6 +55,10 @@ public class BudgetMonth {
         expenseList.add(expense);
     }
 
+    public void removeExpense(Expense expense){
+        expenseList.remove(expense);
+    }
+
     public ArrayList<Expense> getExpenses(){
         return expenseList;
     }

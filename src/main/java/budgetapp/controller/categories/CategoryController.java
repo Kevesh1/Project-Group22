@@ -1,6 +1,8 @@
 package budgetapp.controller.categories;
 
+import budgetapp.controller.ExpenseController;
 import budgetapp.controller.MainController;
+import budgetapp.model.Expense;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import javafx.fxml.FXML;
@@ -94,6 +96,24 @@ public class CategoryController extends AnchorPane {
     }
 
     @FXML
+    public void updateInformation(){
+        updateSubCategories();
+        showLatestPurchases();
+    }
+
+    public void showLatestPurchases(){
+        parentController.latestPurchases.getChildren().clear();
+        for (Expense expense : parentController.selectedBudgetMonth.getExpenses()){
+            if (expense.getCategory().equals(categoryItem.getCategory())){
+                System.out.println("GOES IN IF STATEMENT");
+                ExpenseController expenseController = new ExpenseController(parentController, expense);
+                parentController.latestPurchases.getChildren().add(expenseController);
+
+            }
+        }
+        System.out.println("SHOW PURCHASES");
+    }
+
     public void updateSubCategories(){
         System.out.println(categoryItem.getSubCategories());
         parentController.updateCategoryList();

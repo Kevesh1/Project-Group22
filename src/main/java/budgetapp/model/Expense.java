@@ -12,10 +12,11 @@ public class Expense {
     // Maybe not Category
     private Category category;
 
-    public Expense(Double cost, String annotation, int date) {
+    public Expense(Double cost, String annotation, int date, Category category) {
         this.cost = cost;
         this.annotation = annotation;
         this.date = date;
+        this.category = category;
     }
 
     public Category getCategory() {
