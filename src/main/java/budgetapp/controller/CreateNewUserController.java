@@ -32,9 +32,15 @@ public class CreateNewUserController {
     @FXML
     public Button profileFinishedButton;
 
-    void profileFinishedAction(ActionEvent event) {
+    public void chooseProfilePicture(ActionEvent event){
+        
+    }
+
+    @FXML
+    public void profileFinishedAction(ActionEvent event) {
         if (controlAllInputs() && samePassword()){
             User user = new User(firstNameInput.getText(), lastNameInput.getText(), createPassword.getText());
+            user.setProfilePicture(chooseProfilePictureButton.toString());
         }
 
     }
