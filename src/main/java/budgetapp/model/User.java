@@ -10,6 +10,7 @@ public class User {
     private int userID;
     private boolean enablePassword;
 
+    //expand
     public User(String firstName, String lastName, String password) {
         this.firstName = firstName;
         this.lastName = lastName;

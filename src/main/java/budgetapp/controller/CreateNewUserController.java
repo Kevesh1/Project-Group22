@@ -52,4 +52,5 @@ public class CreateNewUserController {
         return createPassword.getText().toString().equals(createPasswordRepeat.getText().toString());
     }
 
+
 }

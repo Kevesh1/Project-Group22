@@ -44,17 +44,17 @@ public class FrontPageController {
     public List<User> userList(){
         List<User> allUsers = new ArrayList<>();
 
-        User user = new User("Erik", "Svensson", "omg");
+        User user = new User("Sven", "Svensson", "omg");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
         user.setUserID(1);
         allUsers.add(user);
 
-        user = new User("Jacob","Wester","Di1");
+        user = new User("Jacob","West","Di1");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
         user.setUserID(2);
         allUsers.add(user);
 
-        user = new User("Sigfrid","Bo","2d");
+        user = new User("Sigfrid","Bort","2d");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
         user.setUserID(3);
         allUsers.add(user);
