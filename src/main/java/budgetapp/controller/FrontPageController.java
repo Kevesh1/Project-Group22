@@ -44,25 +44,23 @@ public class FrontPageController {
     public List<User> userList(){
         List<User> allUsers = new ArrayList<>();
 
-        User user = new User();
-        user.setFirstName("Erik");
+        User user = new User("Sven", "Svensson", "omg");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
         user.setUserID(1);
         allUsers.add(user);
 
-        user = new User();
-        user.setFirstName("Jacob");
+        user = new User("Jacob","West","Di1");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
         user.setUserID(2);
         allUsers.add(user);
 
-        user = new User();
-        user.setFirstName("Sigfrid");
+        user = new User("Sigfrid","Bort","2d");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
         user.setUserID(3);
         allUsers.add(user);
 
         return allUsers;
+
 
     }
 
@@ -82,6 +80,11 @@ public class FrontPageController {
     public void manageUserAccounts(ActionEvent event) throws IOException{
     }
 
+    @FXML
+    public void logoutAction(ActionEvent event) throws IOException {
+        App app = new App();
+        app.changeScene("AccountLoginView.fxml");
+    }
 
 
 }

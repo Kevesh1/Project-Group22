@@ -41,4 +41,5 @@ public class NewUserCardController extends VBox {
         //NewUserLabel.setText("New user");
     }
 
+
 }

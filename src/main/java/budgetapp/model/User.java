@@ -1,6 +1,5 @@
 package budgetapp.model;
 
-
 public class User {
     private String firstName;
     private String lastName;
@@ -11,14 +10,11 @@ public class User {
     private int userID;
     private boolean enablePassword;
 
+    //expand
     public User(String firstName, String lastName, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
-    }
-
-    public User() {
-
     }
 
     public String getFirstName() {
@@ -75,6 +71,14 @@ public class User {
 
     public void setUserID(int userID) {
         this.userID = userID;
+    }
+
+    public boolean isEnablePassword() {
+        return enablePassword;
+    }
+
+    public void setEnablePassword(boolean enablePassword) {
+        this.enablePassword = enablePassword;
     }
 
 }

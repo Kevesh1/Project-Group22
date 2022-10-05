@@ -36,5 +36,6 @@ public class UserLoginPageController {
     public void returnToFrontPage(ActionEvent event) throws IOException{
         App app = new App();
         app.changeScene("FrontPage.fxml");
+
     }
 }
