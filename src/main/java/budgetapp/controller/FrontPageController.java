@@ -61,6 +61,7 @@ public class FrontPageController {
 
         return allUsers;
 
+
     }
 
     @FXML

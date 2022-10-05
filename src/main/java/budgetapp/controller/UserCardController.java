@@ -39,4 +39,5 @@ public class UserCardController extends VBox {
         //firstNameCard.setText(user.getFirstName());
     }
 
+
 }
