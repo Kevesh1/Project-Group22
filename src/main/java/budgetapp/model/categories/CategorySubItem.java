@@ -1,4 +1,4 @@
-package budgetapp.model;
+package budgetapp.model.categories;
 
 public class CategorySubItem extends AbstractCategoryItem{
 

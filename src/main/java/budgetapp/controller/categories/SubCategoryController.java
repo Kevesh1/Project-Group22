@@ -1,19 +1,17 @@
-package budgetapp.controller;
+package budgetapp.controller.categories;
 
-import budgetapp.model.CategorySubItem;
+import budgetapp.model.categories.CategorySubItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.IOException;
-
 
 public class SubCategoryController extends AnchorPane {
 
-    private CategoryController parentController;
-    private CategorySubItem subCategory;
+    public CategoryController parentController;
+    public CategorySubItem subCategory;
 
     @FXML
     private Label subCateogryName;
@@ -51,5 +49,11 @@ public class SubCategoryController extends AnchorPane {
         parentController.categoryItem.removeSubcategory(this.subCategory);
         parentController.categoryItem.removeSubcategoryBudget(subCategory);
         parentController.updateSubCategories();
+    }
+
+    //try and fix this method
+    @FXML
+    private void getEditSubCategoryWindow(){
+        parentController.parentController.showEditSubCategoryWindow(this);
     }
 }

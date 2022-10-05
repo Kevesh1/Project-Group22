@@ -36,7 +36,7 @@ public class UserCardController extends VBox {
     public void setCardData(User user){
         Image profilePicture = new Image(Objects.requireNonNull(getClass().getResourceAsStream(user.getProfilePicture())));
         profilePictureCard.setImage(profilePicture);
-        firstNameCard.setText(user.getFirstName());
+        //firstNameCard.setText(user.getFirstName());
     }
 
 }

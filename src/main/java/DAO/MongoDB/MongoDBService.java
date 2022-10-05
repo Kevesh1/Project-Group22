@@ -50,6 +50,6 @@ public class MongoDBService {
 
     private static void configureWarnings() {
         Logger mongoLogger = Logger.getLogger("org.mongodb.driver");
-        mongoLogger.setLevel(Level.SEVERE);
+        mongoLogger.setLevel(Level.WARNING);
     }
 }

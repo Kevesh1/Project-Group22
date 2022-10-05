@@ -2,7 +2,13 @@ package budgetapp.controller;
 
 import DAO.Dao;
 import DAO.MongoDB.UserDao;
+import budgetapp.controller.categories.CategoryController;
+import budgetapp.controller.categories.SubCategoryController;
 import budgetapp.model.*;
+import budgetapp.model.categories.AbstractCategoryItem;
+import budgetapp.model.categories.Category;
+import budgetapp.model.categories.CategoryItem;
+import budgetapp.model.categories.CategorySubItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,7 +40,7 @@ public class MainController {
     @FXML
     AnchorPane mainView;
     @FXML
-    FlowPane categoriesFlowPane;
+    public FlowPane categoriesFlowPane;
     @FXML
     PieChart pieChart;
     @FXML
@@ -72,6 +78,10 @@ public class MainController {
     Label newCategoryNameLabel;
     @FXML
     Label newCategoryBudgetLabel;
+    @FXML
+    Button updateCategoryButton;
+    @FXML
+    Button updateSubCategoryButton;
 
     @FXML
     AnchorPane addNewSubCategoryPane;
@@ -84,6 +94,7 @@ public class MainController {
 
     @FXML
     Button addNewSubCategoryButton;
+
 
     @FXML
     private void OpenIEWindow(ActionEvent event) throws IOException {
@@ -124,6 +135,8 @@ public class MainController {
     @FXML
     private void showAddCategoryWindow(){
         addNewCategoryPane.toFront();
+        updateCategoryButton.setVisible(false);
+        addNewCategoryButton.setVisible(true);
     }
 
     @FXML
@@ -131,12 +144,54 @@ public class MainController {
         mainView.toFront();
     }
 
+
+
+    public void showEditSubCategoryWindow(SubCategoryController subCategoryController){
+        this.subCategoryController = subCategoryController;
+        addNewSubCategoryPane.toFront();
+        updateSubCategoryButton.setVisible(true);
+        addNewSubCategoryButton.setVisible(false);
+        newSubCategoryName.setText(subCategoryController.subCategory.getName());
+        newSubCategoryBudget.setText(String.valueOf(subCategoryController.subCategory.getBudget()));
+    }
+
+    @FXML
+    private void updateSubCategory(){
+        subCategoryController.parentController.categoryItem.removeSubcategoryBudget(subCategoryController.subCategory);
+        subCategoryController.subCategory.setName(newSubCategoryName.getText());
+        subCategoryController.subCategory.setBudget(Double.parseDouble(newSubCategoryBudget.getText()));
+        subCategoryController.parentController.categoryItem.addSubcategoryBudget();
+        updateCategoryList();
+        showMainView();
+        System.out.println("UPDATE");
+    }
+
+    public void showEditCategoryWindow(CategoryController categoryController){
+        this.categoryController = categoryController;
+        addNewCategoryPane.toFront();
+        updateCategoryButton.setVisible(true);
+        addNewCategoryButton.setVisible(false);
+        categoryComboBox.getSelectionModel().select(categoryController.categoryItem.getCategory());
+        newCategoryBudget.setText(String.valueOf(categoryController.categoryItem.getBudget()));
+
+    }
+
+    @FXML
+    private void updateCategory(){
+        categoryController.categoryItem.setCategory(Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString()));
+        categoryController.categoryItem.setBudget(Double.parseDouble(newCategoryBudget.getText()));
+        updateCategoryList();
+        showMainView();
+        System.out.println("UPDATE");
+    }
+
     @FXML
     private void addNewCategory(){
         /*if (newCategoryBudget == null) {
             newCategoryBudget.setText("0");
         }*/
-        addNewCategoryButton.setText("Add");
+        System.out.println("ADD");
+
         Category category = Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString());
         CategoryItem categoryItem = new CategoryItem(Double.parseDouble(newCategoryBudget.getText()), category);
         selectedBudgetMonth.addCategoryItem(categoryItem);
@@ -148,6 +203,8 @@ public class MainController {
     @FXML
     public void showAddSubCategoryWindow(CategoryController categoryController){
         addNewSubCategoryPane.toFront();
+        updateSubCategoryButton.setVisible(false);
+        addNewSubCategoryButton.setVisible(true);
         this.categoryController = categoryController;
     }
 
@@ -187,11 +244,13 @@ public class MainController {
 
 
     private CategoryController categoryController;
+    private SubCategoryController subCategoryController;
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
     private static Dao<User> userDao;
 
     public MainController() {
+
     }
 
     public void initialize() {

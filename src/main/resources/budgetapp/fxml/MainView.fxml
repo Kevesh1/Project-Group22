@@ -27,6 +27,7 @@
                   <Insets />
                </opaqueInsets>
                <children>
+                  <Button fx:id="updateCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#updateCategory" text="Update" />
                   <Label fx:id="newCategoryLabel" layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Category" />
                   <Label fx:id="newCategoryBudgetLabel1" layoutX="26.0" layoutY="101.0" prefHeight="26.0" prefWidth="64.0" text="Budget" />
                   <TextField fx:id="newCategoryBudget" layoutX="25.0" layoutY="127.0" />
@@ -35,17 +36,6 @@
                   <Button layoutX="75.0" layoutY="174.0" mnemonicParsing="false" text="Cancel" />
                   <Button layoutX="175.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="x" />
                   <ComboBox fx:id="categoryComboBox" layoutX="26.0" layoutY="68.0" prefWidth="150.0" />
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="confirmDeletePane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
-         <children>
-            <AnchorPane layoutX="351.0" layoutY="222.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: white;">
-               <children>
-                  <Label layoutX="15.0" layoutY="14.0" text="Are you sure you want to delete" />
-                  <Button fx:id="confirmButton" layoutX="43.0" layoutY="40.0" mnemonicParsing="false" onAction="#removeCategory" text="Yes" />
-                  <Button layoutX="100.0" layoutY="40.0" mnemonicParsing="false" onAction="#showMainView" text="Cancel" />
                </children>
             </AnchorPane>
          </children>
@@ -124,6 +114,17 @@
             <Button fx:id="justabutton" layoutX="13.0" layoutY="57.0" mnemonicParsing="false" onAction="#OpenIEWindow" text="Button" />
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="confirmDeletePane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+         <children>
+            <AnchorPane layoutX="351.0" layoutY="222.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <Label layoutX="15.0" layoutY="14.0" text="Are you sure you want to delete" />
+                  <Button fx:id="confirmButton" layoutX="43.0" layoutY="40.0" mnemonicParsing="false" onAction="#removeCategory" text="Yes" />
+                  <Button layoutX="100.0" layoutY="40.0" mnemonicParsing="false" onAction="#showMainView" text="Cancel" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="addNewSubCategoryPane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
          <children>
             <AnchorPane layoutX="351.0" layoutY="194.0" prefHeight="214.0" prefWidth="200.0" style="-fx-background-color: white;">
@@ -139,6 +140,7 @@
                   <Button fx:id="addNewSubCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#addNewSubCategory" text="Add" />
                   <Button layoutX="75.0" layoutY="174.0" mnemonicParsing="false" text="Cancel" />
                   <Button layoutX="175.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="x" />
+                  <Button fx:id="updateSubCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#updateSubCategory" text="Update" />
                </children>
             </AnchorPane>
          </children>

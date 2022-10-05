@@ -1,9 +1,10 @@
 package budgetapp.model;
 
+import budgetapp.model.categories.CategoryItem;
+
 import java.time.Month;
 import java.time.YearMonth;
 import java.util.ArrayList;
-import java.util.List;
 
 public class BudgetMonth {
     private double budget;

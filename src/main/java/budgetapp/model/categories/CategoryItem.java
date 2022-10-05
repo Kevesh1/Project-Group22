@@ -1,4 +1,4 @@
-package budgetapp.model;
+package budgetapp.model.categories;
 
 import javafx.scene.image.Image;
 import org.jetbrains.annotations.NotNull;
