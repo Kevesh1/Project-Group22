@@ -3,6 +3,9 @@
     -fx-font-family: "Montserrat";
     src:local("./font/montserrat/Montserrat-ExtraBold.ttf")
 }
+.label{
+    -fx-font-weight: bold;
+}
 .scroll-pane{
     -fx-border-color: transparent;
     -fx-background-color: transparent;
@@ -118,10 +121,16 @@
     -fx-padding: 0.0em 0.0em 0.0em 3.583em;
     -fx-alignment: center;
 }
-
-.text-area {
-    -fx-background-color: transparent;
+.text-field{
     -fx-text-fill: -fx-text-color;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+}
+.text-area {
+    -fx-background-color: -fx-dark-color;
+    -fx-text-fill: -fx-text-color;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
 }
 .text-area .content {
     -fx-background-color: -fx-dark-color;
@@ -154,6 +163,9 @@
 {
     -fx-background-color: -fx-theme-color;
 }
+.tab-pane .tab:hover{
+    -fx-background-color: derive(-fx-theme-color, 15%)
+}
 .tab-pane .tab:selected
 {
     -fx-background-color: -fx-darker-color;
@@ -171,6 +183,42 @@
     -fx-text-fill: -fx-text-color;
 }
 
+.combo-box{
+    -fx-background-color: -fx-dark-color;
+    -fx-text-fill: -fx-text-color;
+}
+
+.combo-box .content{
+    -fx-background-color: -fx-dark-color;
+    -fx-text-fill: -fx-text-color;
+    -fx-border-color: -fx-theme-color;
+}
+.combo-box-popup .list-view .list-cell{
+    -fx-background-color: -fx-dark-color;
+    -fx-text-fill: -fx-text-color;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.combo-box .list-cell{
+    -fx-text-fill: -fx-text-color;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.button{
+    -fx-background-color: -fx-theme-color;
+    -fx-text-fill: -fx-text-color;
+    -fx-font-size: 20;
+    -fx-border-color: -fx-dark-color;
+    -fx-background-radius: 7;
+}
+
+.button:hover{
+    -fx-background-color: derive(-fx-theme-color,15%);
+}
 
 
 

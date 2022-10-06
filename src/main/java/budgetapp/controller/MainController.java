@@ -69,6 +69,8 @@ public class MainController {
     @FXML
     ComboBox categoryComboBox;
     @FXML
+    ComboBox categoryComboBox2;
+    @FXML
     TextField newCategoryBudget;
     @FXML
     Button addNewCategoryButton;
@@ -97,6 +99,10 @@ public class MainController {
     @FXML
     Button addNewSubCategoryButton;
 
+    @FXML
+    AnchorPane iEWindow;
+
+
 
     @FXML
     private void OpenIEWindow(ActionEvent event) throws IOException {
@@ -106,6 +112,13 @@ public class MainController {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    private void openIE(){
+        iEWindow.toFront();
+
+    }
+
+
 
     @FXML
     public void closeNewCategoryWindow(){
@@ -305,6 +318,8 @@ public class MainController {
         categories.addAll(Arrays.asList(Category.values()));
         categoryComboBox.setItems(categories);
         categoryComboBox.getSelectionModel().selectFirst();
+        categoryComboBox2.setItems(categories);
+        categoryComboBox2.getSelectionModel().selectFirst();
     }
 
 
