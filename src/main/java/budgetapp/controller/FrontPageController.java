@@ -41,6 +41,7 @@ public class FrontPageController {
             }
     }
 
+    //should be moved to model
     public List<User> userList(){
         List<User> allUsers = new ArrayList<>();
 
