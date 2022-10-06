@@ -1,7 +1,5 @@
 package DAO.MongoDB;
 
-import DAO.IAccountDao;
-import DAO.IDao;
 import DAO.MongoDB.DTO.AccountDto;
 import DAO.MongoDB.DTO.UserDto;
 import budgetapp.model.Account;
@@ -12,8 +10,12 @@ import org.bson.types.ObjectId;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
 
+import javax.swing.text.html.Option;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static com.mongodb.client.model.Filters.and;
+import static com.mongodb.client.model.Filters.mod;
 
 public class AccountDao implements IAccountDao {
 
@@ -25,6 +27,7 @@ public class AccountDao implements IAccountDao {
     @Override
     public Optional<Account> getAccountById(ObjectId id) {
         AccountDto accountDto = collection.find(Filters.eq("_id", id), AccountDto.class).first();
+        System.out.println(accountDto);
         return Optional.of(modelMapper.map(accountDto, Account.class));
     }
 
@@ -48,12 +51,33 @@ public class AccountDao implements IAccountDao {
                 .map(user -> modelMapper.map(user, UserDto.class))
                 .collect(Collectors.toList());
         accountDto.setUsers(users);
-        //collection.updateOne(accountDto.getId());
+        collection.insertOne(accountDto);
     }
 
     @Override
     public void deleteAccount(Account account) {
         AccountDto accountDto = modelMapper.map(account, AccountDto.class);
         //collection.deleteOne(new Document(),Filters.eq("id", account.getUsername()), accountDto);
+    }
+
+    @Override
+    public Optional<Account> validateAccount(String username, String password) {
+        Optional<AccountDto> account = Optional.ofNullable(collection.find(
+                and(Filters.eq("username", username), Filters.eq("password", password)), AccountDto.class).first());
+        System.out.println(account);
+        Optional<Account> acc = Optional.empty();
+        if (account.isPresent())
+            acc = Optional.of(modelMapper.map(account, Account.class));
+        return acc;
+    }
+
+    @Override
+    public boolean accountExists(String username) {
+        boolean accountExists = true;
+        Optional<AccountDto> account = Optional.ofNullable(collection.find(Filters.eq("username", username), AccountDto.class).first());
+        if(account.isEmpty()) {
+            accountExists = false;
+        }
+        return accountExists;
     }
 }

@@ -27,6 +27,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import org.bson.types.ObjectId;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -117,8 +118,6 @@ public class MainController {
         iEWindow.toFront();
 
     }
-
-
 
     @FXML
     public void closeNewCategoryWindow(){
@@ -252,7 +251,7 @@ public class MainController {
     }
 
 
-
+    private User user;
     private CategoryController categoryController;
     private SubCategoryController subCategoryController;
     public BudgetMonth selectedBudgetMonth;

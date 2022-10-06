@@ -1,4 +1,4 @@
-package DAO;
+package DAO.MongoDB;
 
 import budgetapp.model.Account;
 import budgetapp.model.User;
@@ -12,5 +12,6 @@ public interface IAccountDao{
     public List<Account> getAllAccounts();
     public void updateAccount(Account account);
     public void deleteAccount(Account account);
-
+    Optional<Account> validateAccount(String username, String password);
+    boolean accountExists(String username);
 }

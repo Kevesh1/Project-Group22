@@ -5,7 +5,7 @@ import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
 
 public final class CategoryDto {
-    @BsonId
+
     private ObjectId id;
 
     private Category category;
