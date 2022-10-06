@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-
+*{
+    -fx-theme-color: #33455e;
+    -fx-dark-color: #424549;
+    -fx-darker-color: #36393E;
+    -fx-darkest-color:#282b30;
+    -fx-text-color: #BCBCBC;
+}
 
 .category-list{
     -fx-font-family: "Roboto Medium", sans-serif;
@@ -13,4 +19,12 @@
     -fx-border-width: 10px;
     -fx-text-fill: white;
 
+}
+
+.mainBackground{
+    -fx-background-color: -fx-darker-color;
+}
+
+.pane{
+    -fx-background-color: fx-dark-color;
 }

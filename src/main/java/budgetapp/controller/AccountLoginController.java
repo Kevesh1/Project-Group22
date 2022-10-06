@@ -1,7 +1,10 @@
 package budgetapp.controller;
 
+import DAO.MongoDB.AccountDao;
 import budgetapp.App;
+import budgetapp.model.Account;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,21 +20,35 @@ import java.io.IOException;
 public class AccountLoginController {
 
     @FXML
-    private Button AccountLoginButton;
+    private Button loginButton;
 
     @FXML
-    private TextField AccountName;
+    private TextField username;
 
     @FXML
-    private PasswordField AccountPassword;
+    private PasswordField password;
 
     @FXML
     private Label wrongPassword;
 
-    @FXML
-    public void accountLogin(ActionEvent event) throws IOException {
-        accountValidity();
+    private final AccountDao accountDao;
+
+    public AccountLoginController() {
+        accountDao = new AccountDao();
     }
+
+    @FXML
+    public void loginEvent(Event event) {
+        accountDao.validateAccount(username.getText(), password.getText()).ifPresent(
+                System.out::println
+        );
+        event.consume();
+    }
+
+    /*@FXML
+    public void accountLogin(ActionEvent event) throws IOException {
+        //accountValidity();
+    }*/
 
     /*@FXML
     private void OpenIEWindow(ActionEvent event) throws IOException {
@@ -42,9 +59,9 @@ public class AccountLoginController {
         stage.show();
     }*/
 
-    public void accountValidity() throws IOException {
+    /*public void accountValidity() throws IOException {
         App app = new App();
-        if(AccountName.getText().toString().equals("javatest") && AccountPassword.getText().toString().equals("Fun1")){
+        if(AccountName.getText().equals("javatest") && AccountPassword.getText().toString().equals("Fun1")){
             app.changeScene("FrontPage.fxml");
         }
         else if(AccountName.getText().isEmpty()){
@@ -56,7 +73,7 @@ public class AccountLoginController {
         else{
             wrongPassword.setText("Wrong username or password");
         }
-    }
+    }*/
 
 }
 

@@ -3,6 +3,7 @@ package budgetapp.controller;
 import budgetapp.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -29,9 +30,17 @@ public class CreateNewUserController {
     private TextField lastNameInput;
 
     @FXML
-    void profileFinishedAction(ActionEvent event) {
+    public Button profileFinishedButton;
+
+    public void chooseProfilePicture(ActionEvent event){
+        
+    }
+
+    @FXML
+    public void profileFinishedAction(ActionEvent event) {
         if (controlAllInputs() && samePassword()){
             User user = new User(firstNameInput.getText(), lastNameInput.getText(), createPassword.getText());
+            user.setProfilePicture(chooseProfilePictureButton.toString());
         }
 
     }
@@ -51,6 +60,4 @@ public class CreateNewUserController {
     public boolean samePassword(){
         return createPassword.getText().toString().equals(createPasswordRepeat.getText().toString());
     }
-
-
 }

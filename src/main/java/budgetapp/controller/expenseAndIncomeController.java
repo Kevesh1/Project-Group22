@@ -45,14 +45,6 @@ public class expenseAndIncomeController {
     private Button close;
 
 
-    @FXML
-    private void closeWindow(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
     private TranslateTransition showStatus;
     private TranslateTransition hideStatus;

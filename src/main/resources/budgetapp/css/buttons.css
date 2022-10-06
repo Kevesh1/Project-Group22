@@ -1,0 +1,19 @@
+*{
+    -fx-theme-color: #33455e;
+    -fx-dark-color: #424549;
+    -fx-darker-color: #36393E;
+    -fx-darkest-color:#282b30;
+    -fx-text-color: #BCBCBC;
+}
+
+.button{
+    -fx-background-color: -fx-theme-color;
+    -fx-text-fill: -fx-text-color;
+    -fx-font-size: 20;
+    -fx-border-color: -fx-dark-color;
+    -fx-background-radius: 7;
+}
+
+.button:hover{
+    -fx-background-color: derive(-fx-theme-color,15%);
+}

@@ -3,30 +3,26 @@ package DAO.MongoDB.DTO;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
-public class User {
+public final class UserDto implements Dto {
+
     private ObjectId id;
-    @BsonProperty(value = "firstName")
-    private String firstname;
-    @BsonProperty(value = "lastName")
+
+    private String firstName;
+
     private String lastName;
-    @BsonProperty(value = "password")
+
     private String password;
 
     public ObjectId getId() {
         return id;
     }
 
-    public User setId(ObjectId id) {
-        this.id = id;
-        return this;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public User setFirstname(String firstname) {
-        this.firstname = firstname;
+    public UserDto setFirstName(String firstName) {
+        this.firstName = firstName;
         return this;
     }
 
@@ -34,7 +30,7 @@ public class User {
         return lastName;
     }
 
-    public User setLastName(String lastName) {
+    public UserDto setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -43,7 +39,7 @@ public class User {
         return password;
     }
 
-    public User setPassword(String password) {
+    public UserDto setPassword(String password) {
         this.password = password;
         return this;
     }

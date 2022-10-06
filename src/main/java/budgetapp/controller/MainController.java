@@ -1,6 +1,7 @@
 package budgetapp.controller;
 
-import DAO.Dao;
+import DAO.IDao;
+import DAO.MongoDB.AccountDao;
 import DAO.MongoDB.UserDao;
 import budgetapp.controller.categories.CategoryController;
 import budgetapp.controller.categories.SubCategoryController;
@@ -26,6 +27,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import org.bson.types.ObjectId;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -68,6 +70,8 @@ public class MainController {
     @FXML
     ComboBox categoryComboBox;
     @FXML
+    ComboBox categoryComboBox2;
+    @FXML
     TextField newCategoryBudget;
     @FXML
     Button addNewCategoryButton;
@@ -96,6 +100,10 @@ public class MainController {
     @FXML
     Button addNewSubCategoryButton;
 
+    @FXML
+    AnchorPane iEWindow;
+
+
 
     @FXML
     private void OpenIEWindow(ActionEvent event) throws IOException {
@@ -105,20 +113,20 @@ public class MainController {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    private void openIE(){
+        iEWindow.toFront();
+
+    }
 
     @FXML
     public void closeNewCategoryWindow(){
         mainView.toFront();
         resetNewCategoryInputs();
     }
-
-
+    AccountDao accountDao = new AccountDao();
     @FXML
     private void onClickPreviousMonth() {
-        List<User> users = userDao.getAll();
-        for (User user : users) {
-            System.out.println(user.getFirstName() + " " + user.getPassword());
-        }
         yearMonthComboBox.getSelectionModel().selectPrevious();
     }
 
@@ -243,19 +251,17 @@ public class MainController {
     }
 
 
-
+    private User user;
     private CategoryController categoryController;
     private SubCategoryController subCategoryController;
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
-    private static Dao<User> userDao;
 
     public MainController() {
 
     }
 
     public void initialize() {
-        userDao = new UserDao();
         budgetMonthsMockUp();
         initializeComboBox();
         initializeBudgetMonths();
@@ -311,6 +317,8 @@ public class MainController {
         categories.addAll(Arrays.asList(Category.values()));
         categoryComboBox.setItems(categories);
         categoryComboBox.getSelectionModel().selectFirst();
+        categoryComboBox2.setItems(categories);
+        categoryComboBox2.getSelectionModel().selectFirst();
     }
 
 
@@ -327,7 +335,6 @@ public class MainController {
             i++;
             CategoryController categoryController = new CategoryController(this, categoryItem,i);
             categoriesFlowPane.getChildren().add(categoryController);
-
         }
     }
 

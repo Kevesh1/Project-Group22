@@ -7,7 +7,7 @@ import java.time.Month;
 import java.time.YearMonth;
 import java.util.ArrayList;
 
-public class BudgetMonth {
+public final class BudgetMonth {
     private double budget;
     private double budgetSpent;
     private final YearMonth yearMonth;
