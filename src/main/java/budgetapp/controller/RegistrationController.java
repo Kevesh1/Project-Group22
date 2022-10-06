@@ -5,14 +5,20 @@ import budgetapp.model.Account;
 import budgetapp.model.User;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class RegistrationController {
+public class RegistrationController extends BorderPane {
     @FXML
     private TextField username;
 
@@ -26,6 +32,17 @@ public class RegistrationController {
 
     public RegistrationController() {
         accountDao = new AccountDao();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/AccountRegistrationView.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try
+        {
+            fxmlLoader.load();
+        } catch (IOException exception)
+        {
+            throw new RuntimeException(exception);
+        }
     }
 
     @FXML
@@ -44,4 +61,11 @@ public class RegistrationController {
         accountDao.updateAccount(account);
         return account;
     }
+    //TODO Change
+    @FXML
+    public void toLogin() {
+        Scene scene = this.getScene();
+        scene.setRoot(new AccountLoginController());
+    }
+
 }

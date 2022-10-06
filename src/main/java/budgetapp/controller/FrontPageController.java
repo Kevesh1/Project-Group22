@@ -1,6 +1,7 @@
 package budgetapp.controller;
 
 import budgetapp.App;
+import budgetapp.model.Account;
 import budgetapp.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,9 @@ public class FrontPageController {
 
     List<User> userCards;
 
+    public FrontPageController(Account account) {
+        System.out.println(account.getUsername());
+    }
 
 
     public void initialize() {
