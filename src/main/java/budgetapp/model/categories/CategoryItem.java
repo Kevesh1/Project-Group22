@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
 public class CategoryItem extends AbstractCategoryItem{
     private List<CategorySubItem> subCategories;
     private Category category;

@@ -34,9 +34,9 @@ abstract public class AbstractCategoryItem {
         return null;
     }
 
-    public void setIcon(Image icon) {
+    /*public void setIcon(Image icon) {
         this.icon = icon;
-    }
+    }*/
 
     public double getBudget() {
         return budget;
@@ -52,7 +52,7 @@ abstract public class AbstractCategoryItem {
     public double getBudgetSpent() {
         return budgetSpent;
     }
-    private void setBudgetSpent(double budgetSpent) {
+    public void setBudgetSpent(double budgetSpent) {
         this.budgetSpent = budgetSpent;
     }
 
