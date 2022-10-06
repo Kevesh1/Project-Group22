@@ -1,0 +1,12 @@
+*{
+     -fx-theme-color: #33455e;
+     -fx-dark-color: #424549;
+     -fx-darker-color: #36393E;
+     -fx-darkest-color:#282b30;
+     -fx-text-color: #BCBCBC;
+ }
+
+.label{
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-color;
+}

@@ -1,0 +1,50 @@
+*{
+    -fx-theme-color: #33455e;
+    -fx-dark-color: #424549;
+    -fx-darker-color: #36393E;
+    -fx-darkest-color:#282b30;
+    -fx-text-color: #BCBCBC;
+}
+.chart{
+    -fx-background-color: transparent;
+}
+.chart-legend {
+    -fx-background-color:  -fx-theme-color;
+    -fx-border-color: -fx-dark-color;
+    -fx-font-size: 15;
+}
+
+.chart-legend-item{
+    -fx-text-fill: -fx-text-color;
+}
+
+.chart-plot-background {
+    -fx-background-color: -fx-theme-color;
+}
+.chart-pie-label-line {
+    -fx-stroke: -fx-text-color;
+    -fx-fill: -fx-text-color;
+}
+
+.chart-pie-label {
+    -fx-fill: -fx-text-color;
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+}
+.chart-pie {
+    -fx-background-insets: 0;
+    -fx-border-width: 0;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: -fx-text-color;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: -fx-text-color;
+}
+.chart-alternative-row-fill {
+    -fx-fill: grey;
+    -fx-stroke: transparent;
+    -fx-stroke-width: 0;
+}
+.
