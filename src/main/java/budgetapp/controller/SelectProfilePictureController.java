@@ -18,6 +18,7 @@ public class SelectProfilePictureController {
 
 
 
+    /*
     public void initialize() {
         profileCards = ProfileIcon.profileIconList();
         profileSelectionContainer.getChildren().clear();
@@ -35,6 +36,8 @@ public class SelectProfilePictureController {
 
         }
     }
+
+     */
 
 
 }
