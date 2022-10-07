@@ -1,10 +1,8 @@
-package budgetapp.model;
+package budgetapp.model.transactions;
 
 import budgetapp.model.categories.Category;
 
-import java.time.LocalDate;
 import java.time.YearMonth;
-import java.util.Date;
 
 public class Expense extends Transaction {
     private double cost;

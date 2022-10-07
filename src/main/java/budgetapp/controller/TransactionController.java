@@ -1,17 +1,13 @@
 package budgetapp.controller;
 
-import budgetapp.controller.categories.CategoryController;
-import budgetapp.model.Expense;
-import budgetapp.model.Transaction;
-import budgetapp.model.categories.CategorySubItem;
-import com.sun.tools.javac.Main;
+import budgetapp.model.transactions.Transaction;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 
-public class ExpenseController extends AnchorPane {
+public class TransactionController extends AnchorPane {
 
     @FXML
     Label latestPurchaseNotation;
@@ -23,7 +19,7 @@ public class ExpenseController extends AnchorPane {
     private Transaction transaction;
     private MainController parentController;
 
-    public ExpenseController(MainController parentController, Transaction transaction) {
+    public TransactionController(MainController parentController, Transaction transaction) {
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/Expense.fxml"));
         root.setRoot(this);
         root.setController(this);

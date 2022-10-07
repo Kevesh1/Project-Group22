@@ -8,6 +8,9 @@ import budgetapp.model.categories.AbstractCategoryItem;
 import budgetapp.model.categories.Category;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
+import budgetapp.model.transactions.Expense;
+import budgetapp.model.transactions.Income;
+import budgetapp.model.transactions.Transaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -383,7 +386,7 @@ public class MainController extends AnchorPane{
     public void updateLatestTransaction(){
         latestPurchases.getChildren().clear();
         for (Transaction transaction : selectedBudgetMonth.getTransactions()){
-            ExpenseController expenseController = new ExpenseController(this, transaction);
+            TransactionController expenseController = new TransactionController(this, transaction);
             latestPurchases.getChildren().add(expenseController);
         }
     }

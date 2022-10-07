@@ -1,8 +1,9 @@
 package budgetapp.model;
 
 import budgetapp.model.categories.CategoryItem;
+import budgetapp.model.transactions.Income;
+import budgetapp.model.transactions.Transaction;
 
-import java.awt.*;
 import java.time.Month;
 import java.time.YearMonth;
 import java.util.ArrayList;

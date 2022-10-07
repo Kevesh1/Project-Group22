@@ -1,4 +1,4 @@
-package budgetapp.model;
+package budgetapp.model.transactions;
 
 import budgetapp.model.categories.Category;
 

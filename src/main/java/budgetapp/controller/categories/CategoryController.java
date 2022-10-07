@@ -1,9 +1,8 @@
 package budgetapp.controller.categories;
 
-import budgetapp.controller.ExpenseController;
+import budgetapp.controller.TransactionController;
 import budgetapp.controller.MainController;
-import budgetapp.model.Expense;
-import budgetapp.model.Transaction;
+import budgetapp.model.transactions.Transaction;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import javafx.fxml.FXML;
@@ -100,7 +99,7 @@ public class CategoryController extends AnchorPane {
         for (Transaction expense : parentController.selectedBudgetMonth.getTransactions()){
             if (expense.getCategory().equals(categoryItem.getCategory())){
                 System.out.println("GOES IN IF STATEMENT");
-                ExpenseController expenseController = new ExpenseController(parentController, expense);
+                TransactionController expenseController = new TransactionController(parentController, expense);
                 parentController.latestPurchases.getChildren().add(expenseController);
             }
         }
