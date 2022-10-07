@@ -43,7 +43,6 @@ public class CreateNewUserController {
         if (controlAllInputs() && samePassword()){
             User user = new User(firstNameInput.getText(), lastNameInput.getText(), createPassword.getText());
             user.setProfilePicture(chooseProfilePictureButton.toString());
-            User.userList().add(user);
         }
 
     }

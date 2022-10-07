@@ -13,11 +13,14 @@ public class User {
     private int userID;
     private boolean enablePassword;
 
+    private static List<User> allUsers = new ArrayList<>();
+
     //expand
     public User(String firstName, String lastName, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
+        allUsers.add(this);
     }
 
     public String getFirstName() {
@@ -85,26 +88,23 @@ public class User {
     }
 
     public static List<User> userList(){
-        List<User> allUsers = new ArrayList<>();
 
         User user = new User("Sven", "Svensson", "omg");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
         user.setUserID(1);
-        allUsers.add(user);
 
         user = new User("Jacob","West","Di1");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
         user.setUserID(2);
-        allUsers.add(user);
 
         user = new User("Sigfrid","Bort","2d");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
         user.setUserID(3);
-        allUsers.add(user);
 
         return allUsers;
 
-
     }
 
+
+    //klassvariabel
 }
