@@ -69,7 +69,6 @@ public class CategoryController extends AnchorPane {
     @FXML
     public void initialize() {
         subCategoriesMock();
-        System.out.println("INIT");
     }
 
     public void setLabels() {

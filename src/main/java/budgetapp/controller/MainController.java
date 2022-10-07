@@ -172,7 +172,6 @@ public class MainController extends AnchorPane{
         subCategoryController.parentController.categoryItem.addSubcategoryBudget();
         updateCategoryList();
         showMainView();
-        System.out.println("UPDATE");
     }
 
     public void showEditCategoryWindow(CategoryController categoryController){
@@ -191,7 +190,6 @@ public class MainController extends AnchorPane{
         categoryController.categoryItem.setBudget(Double.parseDouble(newCategoryBudget.getText()));
         updateCategoryList();
         showMainView();
-        System.out.println("UPDATE");
     }
 
     @FXML
@@ -199,7 +197,6 @@ public class MainController extends AnchorPane{
         /*if (newCategoryBudget == null) {
             newCategoryBudget.setText("0");
         }*/
-        System.out.println("ADD");
 
         Category category = Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString());
         CategoryItem categoryItem = new CategoryItem(Double.parseDouble(newCategoryBudget.getText()), category);
@@ -257,13 +254,10 @@ public class MainController extends AnchorPane{
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
 
-
-
     public MainController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
-
         try
         {
             fxmlLoader.load();

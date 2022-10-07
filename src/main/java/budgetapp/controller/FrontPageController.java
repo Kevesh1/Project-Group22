@@ -3,6 +3,7 @@ package budgetapp.controller;
 import budgetapp.App;
 import budgetapp.model.Account;
 import budgetapp.model.User;
+import com.mongodb.client.FindIterable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
@@ -20,26 +21,30 @@ public class FrontPageController {
 
     List<User> userCards;
 
+    @FXML
+    public void initialize() {
+        updateUserCards(userCards);
+    }
+
     public FrontPageController(Account account) {
-        System.out.println(account.getUsername());
+        userCards = account.getUsers();
     }
 
 
-    public void initialize() {
-        userCards = User.userList();
+    public void updateUserCards(List<User> userCards) {
         userCardContainer.getChildren().clear();
         for (User user : userCards) {
-            UserCardController userCardController = new UserCardController(this, user);
+            UserCardController userCardController = new UserCardController(user);
             userCardContainer.getChildren().add(userCardController);
         }
-        userCardContainer.getChildren().add(new NewUserCardController(this));
+        userCardContainer.getChildren().add(new AddUsercardController());
 
     }
 
     public void initilizeUserCards(){
         userCards = new ArrayList<>(User.userList());
             for(User user : userCards){
-                UserCardController userCardController = new UserCardController(this,user);
+                UserCardController userCardController = new UserCardController(user);
                 userCardContainer.getChildren().add(userCardController);
 
             }

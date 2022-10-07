@@ -47,7 +47,6 @@ public class ExpenseController extends AnchorPane {
     private void deleteExpense(){
         parentController.selectedBudgetMonth.removeExpense(expense);
         parentController.updateLatestPurchases();
-        System.out.println("DELETED");
 
     }
 }

@@ -9,36 +9,40 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class NewUserCardController extends VBox {
 
 
     @FXML
-    private ImageView BlankProfilePicture;
+    public ImageView BlankProfilePicture;
 
     @FXML
-    private Button EmptyUserButton;
+    public Button EmptyUserButton;
 
     @FXML
-    private Label NewUserLabel;
+    Label newUserLabel;
 
 
-    public NewUserCardController(FrontPageController parentController) {
-        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/NewUserCard.fxml"));
-        root.setRoot(this);
-        root.setController(this);
-        try {
-            root.load();
-        } catch (Exception ignored) {
+    public NewUserCardController() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/NewUserCard.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try
+        {
+            fxmlLoader.load();
+        } catch (IOException exception)
+        {
+            throw new RuntimeException(exception);
         }
         setCardData();
     }
 
     public void setCardData(){
-        Image profilePicture = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/budgetapp/img/Squared_plus.svg.png")));
-        BlankProfilePicture.setImage(profilePicture);
-        NewUserLabel.setText("New user");
+        //Image profilePicture = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/budgetapp/img/Squared_plus.svg.png")));
+        //BlankProfilePicture.setImage(profilePicture);
+        newUserLabel.setText("New user");
     }
 
 

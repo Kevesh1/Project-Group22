@@ -14,9 +14,6 @@ import java.util.concurrent.Callable;
 
 public class DependencyInjection {
 
-    /**
-     * A map of all Controllers that can be injected, and the methods responsible for doing so.
-     */
     private static final Map<Class<?>, Callback<Class<?>, Object>> injectionMethods = new HashMap<>();
 
     private static ResourceBundle bundle = null;
@@ -36,15 +33,9 @@ public class DependencyInjection {
                 bundle,
                 new JavaFXBuilderFactory(),
                 DependencyInjection::constructController);
+
     }
 
-    /**
-     * Determine whether a stored method is available
-     * If one is, return the custom controller
-     * If one is not, return the default controller
-     * @param controllerClass the class of controller to be created
-     * @return the controller created
-     */
     private static Object constructController(Class<?> controllerClass) {
         if(injectionMethods.containsKey(controllerClass)) {
             return loadControllerWithSavedMethod(controllerClass);
@@ -53,11 +44,6 @@ public class DependencyInjection {
         }
     }
 
-    /**
-     * Load a controller using the saved method
-     * @param controller the class of the controller to be loaded
-     * @return the loaded controller
-     */
     private static Object loadControllerWithSavedMethod(Class<?> controller){
         try {
             return injectionMethods.get(controller).call(controller);
