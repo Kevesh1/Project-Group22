@@ -1,5 +1,8 @@
 package budgetapp.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private String firstName;
     private String lastName;
@@ -79,6 +82,29 @@ public class User {
 
     public void setEnablePassword(boolean enablePassword) {
         this.enablePassword = enablePassword;
+    }
+
+    public static List<User> userList(){
+        List<User> allUsers = new ArrayList<>();
+
+        User user = new User("Sven", "Svensson", "omg");
+        user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
+        user.setUserID(1);
+        allUsers.add(user);
+
+        user = new User("Jacob","West","Di1");
+        user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
+        user.setUserID(2);
+        allUsers.add(user);
+
+        user = new User("Sigfrid","Bort","2d");
+        user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
+        user.setUserID(3);
+        allUsers.add(user);
+
+        return allUsers;
+
+
     }
 
 }

@@ -9,6 +9,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
+import java.util.List;
+
 public class CreateNewUserController {
 
     @FXML
@@ -41,6 +43,7 @@ public class CreateNewUserController {
         if (controlAllInputs() && samePassword()){
             User user = new User(firstNameInput.getText(), lastNameInput.getText(), createPassword.getText());
             user.setProfilePicture(chooseProfilePictureButton.toString());
+            User.userList().add(user);
         }
 
     }

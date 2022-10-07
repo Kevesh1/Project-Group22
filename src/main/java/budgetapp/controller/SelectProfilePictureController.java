@@ -17,9 +17,9 @@ public class SelectProfilePictureController {
 
 
 
-    /*
+
     public void initialize() {
-        profileCards = profileIconList();
+        profileCards = ProfileIcon.profileIconList();
         profileSelectionContainer.getChildren().clear();
         for (ProfileIcon profileIcon : profileCards) {
             ProfilePictureCardController profilePictureCardController = new ProfilePictureCardController(this, profileIcon);
@@ -28,26 +28,13 @@ public class SelectProfilePictureController {
     }
 
     public void initilizeProfileCards(){
-        profileCards = new ArrayList<>(profileIconList());
+        profileCards = new ArrayList<>(ProfileIcon.profileIconList());
         for(ProfileIcon profileIcon : profileCards){
             ProfilePictureCardController profilePictureCardController = new ProfilePictureCardController(this, profileIcon);
             profileSelectionContainer.getChildren().add(profilePictureCardController);
 
         }
     }
-     */
 
-    //should be moved to model
-    public List<ProfileIcon> profileIconList(){
-        List<ProfileIcon> allProfileIcons = new ArrayList<>();
-
-        ProfileIcon profileIcon = new ProfileIcon();
-        profileIcon.setProfilePicture("/budgetapp/img/Mario.png");
-        allProfileIcons.add(profileIcon);
-
-        return allProfileIcons;
-
-
-    }
 
 }
