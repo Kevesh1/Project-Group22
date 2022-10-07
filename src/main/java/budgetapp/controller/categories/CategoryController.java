@@ -3,6 +3,7 @@ package budgetapp.controller.categories;
 import budgetapp.controller.ExpenseController;
 import budgetapp.controller.MainController;
 import budgetapp.model.Expense;
+import budgetapp.model.Transaction;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import javafx.fxml.FXML;
@@ -92,17 +93,15 @@ public class CategoryController extends AnchorPane {
     @FXML
     public void updateInformation(){
         updateSubCategories();
-        showLatestPurchases();
+        showMatchingPurchases();
     }
-
-    public void showLatestPurchases(){
+    public void showMatchingPurchases(){
         parentController.latestPurchases.getChildren().clear();
-        for (Expense expense : parentController.selectedBudgetMonth.getExpenses()){
+        for (Transaction expense : parentController.selectedBudgetMonth.getTransactions()){
             if (expense.getCategory().equals(categoryItem.getCategory())){
                 System.out.println("GOES IN IF STATEMENT");
                 ExpenseController expenseController = new ExpenseController(parentController, expense);
                 parentController.latestPurchases.getChildren().add(expenseController);
-
             }
         }
         System.out.println("SHOW PURCHASES");

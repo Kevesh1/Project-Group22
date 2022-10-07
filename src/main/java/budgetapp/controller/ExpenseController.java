@@ -2,6 +2,7 @@ package budgetapp.controller;
 
 import budgetapp.controller.categories.CategoryController;
 import budgetapp.model.Expense;
+import budgetapp.model.Transaction;
 import budgetapp.model.categories.CategorySubItem;
 import com.sun.tools.javac.Main;
 import javafx.fxml.FXML;
@@ -19,10 +20,10 @@ public class ExpenseController extends AnchorPane {
     @FXML
     Label latestPurchaseCost;
 
-    private Expense expense;
+    private Transaction transaction;
     private MainController parentController;
 
-    public ExpenseController(MainController parentController, Expense expense) {
+    public ExpenseController(MainController parentController, Transaction transaction) {
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/Expense.fxml"));
         root.setRoot(this);
         root.setController(this);
@@ -32,21 +33,21 @@ public class ExpenseController extends AnchorPane {
         }
 
         this.parentController = parentController;
-        this.expense = expense;
+        this.transaction = transaction;
 
         setLabels();
 
     }
     private void setLabels(){
-        latestPurchaseNotation.setText(expense.getAnnotation());
-        latestPurchaseDate.setText(Integer.toString(expense.getDate()));
-        latestPurchaseCost.setText(String.valueOf(expense.getCost()));
+        latestPurchaseNotation.setText(transaction.getAnnotation());
+        latestPurchaseDate.setText(String.valueOf(transaction.getDate()));
+        latestPurchaseCost.setText(String.valueOf(transaction.getSum()));
     }
 
     @FXML
     private void deleteExpense(){
-        parentController.selectedBudgetMonth.removeExpense(expense);
-        parentController.updateLatestPurchases();
+        parentController.selectedBudgetMonth.removeTransaction(transaction);
+        parentController.updateLatestTransaction();
 
     }
 }

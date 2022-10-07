@@ -12,14 +12,15 @@ public final class BudgetMonth {
     private double budgetSpent;
     private final YearMonth yearMonth;
     private final ArrayList<CategoryItem> categoryItems;
-    private final ArrayList<Expense> expenseList;
+    private final ArrayList<Transaction> transactions;
 
     public BudgetMonth(double budget, int year, Month month) {
         this.budget = budget;
         this.budgetSpent = 0;
         this.yearMonth = YearMonth.of(year, month);
         categoryItems = new ArrayList<CategoryItem>();
-        expenseList = new ArrayList<>();
+        transactions = new ArrayList<>();
+
     }
 
     public int getYear() {
@@ -33,7 +34,10 @@ public final class BudgetMonth {
         return budget;
     }
     public void setBudget(double budget) {
-        this.budget = budget;
+        this.budget += budget;
+    }
+    public void addBudget(Income income){
+        setBudget(income.getSum());
     }
 
     public double getBudgetSpent() {
@@ -51,15 +55,16 @@ public final class BudgetMonth {
         categoryItems.add(categoryItem);
     }
 
-    public void addExpense(Expense expense){
-        expenseList.add(expense);
+    public void addTransaction(Transaction transaction){
+        transactions.add(transaction);
     }
 
-    public void removeExpense(Expense expense){
-        expenseList.remove(expense);
+    public void removeTransaction(Transaction transaction){
+        transactions.remove(transaction);
     }
 
-    public ArrayList<Expense> getExpenses(){
-        return expenseList;
+    public ArrayList<Transaction> getTransactions(){
+        return transactions;
     }
+
 }

@@ -27,9 +27,10 @@ public class App extends Application {
         MongoDBService.createDataBase("budgetapp");
         setUpDependencyInjector();
         //Parent root = DependencyInjection.load("/budgetapp/fxml/AccountLoginView.fxml");
-        AccountLoginController accountLoginController = new AccountLoginController();
+        //AccountLoginController accountLoginController = new AccountLoginController();
+        MainController mainController = new MainController();
 
-        primaryStage.setScene(new Scene(accountLoginController));
+        primaryStage.setScene(new Scene(mainController));
         primaryStage.setTitle("Hello World");
         primaryStage.show();
     }

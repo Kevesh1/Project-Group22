@@ -24,162 +24,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="1025.0" styleClass="mainBackground" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="1025.0" styleClass="mainBackground" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane fx:id="iEWindow" layoutX="325.0" layoutY="101.0" styleClass="getinthefuckingmiddle" stylesheets="@../css/Styleheet.css">
-         <children>
-            <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../css/Styleheet.css" tabClosingPolicy="UNAVAILABLE">
-               <tabs>
-                  <Tab text="Expense">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="313.0" prefWidth="600.0">
-                           <children>
-                              <AnchorPane prefHeight="397.0" prefWidth="475.0" style="-fx-background-radius: 7;" styleClass="darkModeThemeDarker" stylesheets="@../css/Styleheet.css">
-                                 <children>
-                                    <Label layoutX="199.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                       <styleClass>
-                                          <String fx:value="darkModeTextColor" />
-                                          <String fx:value="standardFontSize" />
-                                       </styleClass>
-                                    </Label>
-                                    <Label layoutX="37.0" layoutY="98.0" stylesheets="@../css/Styleheet.css" text="Expense">
-                                       <font>
-                                          <Font />
-                                       </font>
-                                       <styleClass>
-                                          <String fx:value="darkModeTextColor" />
-                                          <String fx:value="standardFontSize" />
-                                       </styleClass>
-                                    </Label>
-                                    <Label layoutX="37.0" layoutY="189.0" stylesheets="@../css/Styleheet.css" text="Date">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                       <styleClass>
-                                          <String fx:value="darkModeTextColor" />
-                                          <String fx:value="standardFontSize" />
-                                       </styleClass>
-                                    </Label>
-                                    <Label layoutX="35.0" layoutY="263.0" stylesheets="@../css/Styleheet.css" text="Note">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                       <styleClass>
-                                          <String fx:value="darkModeTextColor" />
-                                          <String fx:value="standardFontSize" />
-                                       </styleClass>
-                                    </Label>
-                                    <Label layoutX="192.0" layoutY="131.0" stylesheets="@../css/Styleheet.css" text="Kr">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                       <styleClass>
-                                          <String fx:value="darkModeTextColor" />
-                                          <String fx:value="standardFontSize" />
-                                       </styleClass>
-                                    </Label>
-                                    <TextField fx:id="sumWindow" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/Styleheet.css">
-                                       <styleClass>
-                                          <String fx:value="darkModeThemeDark" />
-                                          <String fx:value="inputbox" />
-                                       </styleClass>
-                                    </TextField>
-                                    <DatePicker fx:id="transaktionDate" layoutX="36.0" layoutY="215.0" styleClass="darkModeThemeDark">
-                                       <stylesheets>
-                                          <URL value="@../css" />
-                                          <URL value="@../css/DatePicker.css" />
-                                       </stylesheets>
-                                    </DatePicker>
-                                    <TextArea fx:id="note" layoutX="37.0" layoutY="290.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
-                                    <Button layoutX="419.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="X" />
-                                    <ComboBox fx:id="categoryComboBox2" layoutX="37.0" layoutY="39.0" prefWidth="150.0" stylesheets="@../css/Styleheet.css" />
-                                    <Button layoutX="387.0" layoutY="341.0" mnemonicParsing="false" text="Done" />
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-                  <Tab text="Income">
-                     <content>
-                        <AnchorPane prefHeight="396.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../css/Styleheet.css">
-                           <children>
-                              <Label layoutX="199.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <styleClass>
-                                    <String fx:value="darkModeTextColor" />
-                                    <String fx:value="standardFontSize" />
-                                 </styleClass>
-                              </Label>
-                              <Label layoutX="37.0" layoutY="98.0" stylesheets="@../css/Styleheet.css" text="Income">
-                                 <font>
-                                    <Font />
-                                 </font>
-                                 <styleClass>
-                                    <String fx:value="darkModeTextColor" />
-                                    <String fx:value="standardFontSize" />
-                                 </styleClass>
-                              </Label>
-                              <Label layoutX="37.0" layoutY="189.0" stylesheets="@../css/Styleheet.css" text="Date">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <styleClass>
-                                    <String fx:value="darkModeTextColor" />
-                                    <String fx:value="standardFontSize" />
-                                 </styleClass>
-                              </Label>
-                              <Label layoutX="35.0" layoutY="263.0" stylesheets="@../css/Styleheet.css" text="Note">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <styleClass>
-                                    <String fx:value="darkModeTextColor" />
-                                    <String fx:value="standardFontSize" />
-                                 </styleClass>
-                              </Label>
-                              <Label layoutX="192.0" layoutY="131.0" stylesheets="@../css/Styleheet.css" text="Kr">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <styleClass>
-                                    <String fx:value="darkModeTextColor" />
-                                    <String fx:value="standardFontSize" />
-                                 </styleClass>
-                              </Label>
-                              <TextField fx:id="sumWindow1" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/Styleheet.css">
-                                 <styleClass>
-                                    <String fx:value="darkModeThemeDark" />
-                                    <String fx:value="inputbox" />
-                                 </styleClass>
-                              </TextField>
-                              <DatePicker fx:id="transaktionDate1" layoutX="36.0" layoutY="215.0" styleClass="darkModeThemeDark">
-                                 <stylesheets>
-                                    <URL value="@../css" />
-                                    <URL value="@../css/DatePicker.css" />
-                                 </stylesheets>
-                              </DatePicker>
-                              <TextArea fx:id="note1" layoutX="37.0" layoutY="290.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
-                              <Button layoutX="419.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="X" />
-                              <ComboBox layoutX="37.0" layoutY="39.0" prefWidth="150.0" />
-                              <Button layoutX="387.0" layoutY="341.0" mnemonicParsing="false" text="Done" />
-                           </children>
-                           <styleClass>
-                              <String fx:value="darkModeThemeDarker" />
-                              <String fx:value="getinthefuckingmiddle" />
-                           </styleClass>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-               </tabs>
-            </TabPane>
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="confirmDeletePane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
          <children>
             <AnchorPane layoutX="351.0" layoutY="222.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: white;">
@@ -311,10 +157,164 @@
             <Button layoutX="886.0" layoutY="100.0" mnemonicParsing="false" onAction="#openIE" text="OpenIE" AnchorPane.rightAnchor="100.0" />
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="iEWindow" layoutX="325.0" layoutY="101.0" styleClass="getinthefuckingmiddle" stylesheets="@../css/Styleheet.css">
+         <children>
+            <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../css/Styleheet.css" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Expense">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="313.0" prefWidth="600.0">
+                           <children>
+                              <AnchorPane prefHeight="397.0" prefWidth="475.0" style="-fx-background-radius: 7;" styleClass="darkModeThemeDarker" stylesheets="@../css/Styleheet.css">
+                                 <children>
+                                    <Label layoutX="199.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="darkModeTextColor" />
+                                          <String fx:value="standardFontSize" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label layoutX="37.0" layoutY="98.0" stylesheets="@../css/Styleheet.css" text="Expense">
+                                       <font>
+                                          <Font />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="darkModeTextColor" />
+                                          <String fx:value="standardFontSize" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label layoutX="37.0" layoutY="189.0" stylesheets="@../css/Styleheet.css" text="Date">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="darkModeTextColor" />
+                                          <String fx:value="standardFontSize" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label layoutX="35.0" layoutY="263.0" stylesheets="@../css/Styleheet.css" text="Note">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="darkModeTextColor" />
+                                          <String fx:value="standardFontSize" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label layoutX="192.0" layoutY="131.0" stylesheets="@../css/Styleheet.css" text="Kr">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="darkModeTextColor" />
+                                          <String fx:value="standardFontSize" />
+                                       </styleClass>
+                                    </Label>
+                                    <TextField fx:id="newExpenseAmount" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/Styleheet.css">
+                                       <styleClass>
+                                          <String fx:value="darkModeThemeDark" />
+                                          <String fx:value="inputbox" />
+                                       </styleClass>
+                                    </TextField>
+                                    <DatePicker fx:id="newExpenseDate" layoutX="36.0" layoutY="215.0" styleClass="darkModeThemeDark">
+                                       <stylesheets>
+                                          <URL value="@../css" />
+                                          <URL value="@../css/DatePicker.css" />
+                                       </stylesheets>
+                                    </DatePicker>
+                                    <TextArea fx:id="newExpenseNote" layoutX="37.0" layoutY="290.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
+                                    <Button layoutX="419.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="X" />
+                                    <ComboBox fx:id="newExpenseCategoryComboBox" layoutX="37.0" layoutY="39.0" prefWidth="150.0" stylesheets="@../css/Styleheet.css" />
+                                    <Button layoutX="387.0" layoutY="341.0" mnemonicParsing="false" onAction="#addExpense" text="Done" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Income">
+                     <content>
+                        <AnchorPane prefHeight="396.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../css/Styleheet.css">
+                           <children>
+                              <Label layoutX="199.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="darkModeTextColor" />
+                                    <String fx:value="standardFontSize" />
+                                 </styleClass>
+                              </Label>
+                              <Label layoutX="37.0" layoutY="98.0" stylesheets="@../css/Styleheet.css" text="Income">
+                                 <font>
+                                    <Font />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="darkModeTextColor" />
+                                    <String fx:value="standardFontSize" />
+                                 </styleClass>
+                              </Label>
+                              <Label layoutX="37.0" layoutY="189.0" stylesheets="@../css/Styleheet.css" text="Date">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="darkModeTextColor" />
+                                    <String fx:value="standardFontSize" />
+                                 </styleClass>
+                              </Label>
+                              <Label layoutX="35.0" layoutY="263.0" stylesheets="@../css/Styleheet.css" text="Note">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="darkModeTextColor" />
+                                    <String fx:value="standardFontSize" />
+                                 </styleClass>
+                              </Label>
+                              <Label layoutX="192.0" layoutY="131.0" stylesheets="@../css/Styleheet.css" text="Kr">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="darkModeTextColor" />
+                                    <String fx:value="standardFontSize" />
+                                 </styleClass>
+                              </Label>
+                              <TextField fx:id="newIncomeAmount" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/Styleheet.css">
+                                 <styleClass>
+                                    <String fx:value="darkModeThemeDark" />
+                                    <String fx:value="inputbox" />
+                                 </styleClass>
+                              </TextField>
+                              <DatePicker fx:id="newIncomeDate" layoutX="36.0" layoutY="215.0" styleClass="darkModeThemeDark">
+                                 <stylesheets>
+                                    <URL value="@../css" />
+                                    <URL value="@../css/DatePicker.css" />
+                                 </stylesheets>
+                              </DatePicker>
+                              <TextArea fx:id="newIncomeNote" layoutX="37.0" layoutY="290.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
+                              <Button layoutX="419.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="X" />
+                              <ComboBox fx:id="newIncomeCategoryComboBox" disable="true" layoutX="37.0" layoutY="39.0" prefWidth="150.0" />
+                              <Button layoutX="387.0" layoutY="341.0" mnemonicParsing="false" onAction="#addIncome" text="Done" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="darkModeThemeDarker" />
+                              <String fx:value="getinthefuckingmiddle" />
+                           </styleClass>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
    </children>
    <stylesheets>
       <URL value="@../css/mainView.css" />
       <URL value="@../css/buttons.css" />
       <URL value="@../css/labels.css" />
    </stylesheets>
-</AnchorPane>
+</fx:root>
