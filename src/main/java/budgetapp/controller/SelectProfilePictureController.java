@@ -16,8 +16,6 @@ public class SelectProfilePictureController {
     List<ProfileIcon> profileCards;
 
 
-
-
     /*
     public void initialize() {
         profileCards = ProfileIcon.profileIconList();
@@ -38,6 +36,7 @@ public class SelectProfilePictureController {
     }
 
      */
+
 
 
 }
