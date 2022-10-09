@@ -1,9 +1,9 @@
 package budgetapp;
 
 import DAO.MongoDB.MongoDBService;
-import budgetapp.controller.AccountLoginController;
 import budgetapp.controller.FrontPageController;
 import budgetapp.controller.MainController;
+import budgetapp.controller.WindowController;
 import budgetapp.model.Account;
 import budgetapp.model.User;
 import javafx.application.Application;
@@ -12,11 +12,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import org.modelmapper.internal.util.Callable;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 public class App extends Application {
 
@@ -25,14 +24,18 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         MongoDBService.createDataBase("budgetapp");
-        setUpDependencyInjector();
+        //setUpDependencyInjector();
         //Parent root = DependencyInjection.load("/budgetapp/fxml/AccountLoginView.fxml");
-        //AccountLoginController accountLoginController = new AccountLoginController();
-        MainController mainController = new MainController();
 
-        primaryStage.setScene(new Scene(mainController));
-        primaryStage.setTitle("Hello World");
-        primaryStage.show();
+        WindowController windowController = new WindowController();
+        Optional<Account> account = windowController.ShowLoginStage();
+        if(account.isPresent()) {
+            System.out.printf("%s, %s", account.get().getUsername(), account.get().getPassword());;
+            primaryStage.setScene(new Scene(new FrontPageController(account.get())));
+            System.out.println("SCENE SET");
+            primaryStage.setMaximized(true);//primaryStage.show();
+            primaryStage.show();
+        }
     }
 
     private void setUpDependencyInjector() {

@@ -27,7 +27,6 @@ public class AccountDao implements IAccountDao {
     @Override
     public Optional<Account> getAccountById(ObjectId id) {
         AccountDto accountDto = collection.find(Filters.eq("_id", id), AccountDto.class).first();
-        System.out.println(accountDto);
         return Optional.of(modelMapper.map(accountDto, Account.class));
     }
 
@@ -40,6 +39,7 @@ public class AccountDao implements IAccountDao {
         collection.find(new Document(), AccountDto.class)
                 .into(new ArrayList<>())
                 .forEach(accountDto -> accounts.add(modelMapper.map(accountDto, Account.class)));
+        System.out.println(accounts.get(0).getUsername());
         return accounts;
     }
 
@@ -50,7 +50,7 @@ public class AccountDao implements IAccountDao {
                 .stream()
                 .map(user -> modelMapper.map(user, UserDto.class))
                 .collect(Collectors.toList());
-        accountDto.setUsers(users);
+        //accountDto.setUsers(users);
         collection.insertOne(accountDto);
     }
 
@@ -62,13 +62,16 @@ public class AccountDao implements IAccountDao {
 
     @Override
     public Optional<Account> validateAccount(String username, String password) {
+        modelMapper.getConfiguration()
+                .setFieldMatchingEnabled(true)
+                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
         Optional<AccountDto> account = Optional.ofNullable(collection.find(
                 and(Filters.eq("username", username), Filters.eq("password", password)), AccountDto.class).first());
-        System.out.println(account);
-        Optional<Account> acc = Optional.empty();
-        if (account.isPresent())
-            acc = Optional.of(modelMapper.map(account, Account.class));
-        return acc;
+        Optional<Account> newAccount = Optional.empty();
+        if (account.isPresent()) {
+            newAccount = Optional.of(modelMapper.map(account.get(), Account.class));
+        }
+        return newAccount;
     }
 
     @Override

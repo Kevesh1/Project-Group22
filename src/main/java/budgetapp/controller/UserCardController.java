@@ -13,8 +13,15 @@ public class UserCardController extends VBox {
     @FXML
     Label usernameLabel;
 
+    FrontPageController parentController;
 
-    public UserCardController(User user) {
+    @FXML
+    User user;
+
+
+    public UserCardController(FrontPageController parentController, User user) {
+        this.user = user;
+        //this.parentController = parentController;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/userCard.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -27,5 +34,11 @@ public class UserCardController extends VBox {
         }
 
         usernameLabel.setText(user.getFirstName());
+    }
+
+    @FXML
+    public void selectUser() {
+        parentController.selectedUser = user;
+
     }
 }

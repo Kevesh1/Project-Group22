@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.FrontPageController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox layoutX="33.0" layoutY="107.0" prefHeight="220.0" prefWidth="536.0">
          <children>
@@ -27,4 +27,4 @@
       <Button layoutX="224.0" layoutY="341.0" mnemonicParsing="false" text="Manage Accounts" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutAction" text="Logout" />
    </children>
-</AnchorPane>
+</fx:root>

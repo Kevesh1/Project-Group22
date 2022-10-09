@@ -2,9 +2,12 @@ package budgetapp.controller;
 
 import DAO.MongoDB.AccountDao;
 import budgetapp.DependencyInjection;
+import budgetapp.model.Account;
+import budgetapp.model.User;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,8 +16,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class AccountLoginController extends BorderPane {
 
@@ -31,10 +36,12 @@ public class AccountLoginController extends BorderPane {
     private Label wrongPassword;
 
     private final AccountDao accountDao;
+    private final RegistrationController registrationController;
+    private Optional<Account> account;
+
 
     public AccountLoginController() {
         accountDao = new AccountDao();
-        //sceneManager.switchScene("/budgetapp/fxml/AccountLoginView.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/AccountLoginView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -45,21 +52,36 @@ public class AccountLoginController extends BorderPane {
         {
             throw new RuntimeException(exception);
         }
+        registrationController = new RegistrationController();
+    }
+
+    public void showRegistration() {
+        this.getScene().setRoot(registrationController);
     }
 
     @FXML
     public void toRegistration() {
-        Scene scene = this.getScene();
-        scene.setRoot(new RegistrationController());
+        showRegistration();
     }
 
     @FXML
-    public void loginEvent(Event event) throws IOException {
-        if(accountDao.validateAccount(username.getText(), password.getText()).isPresent()) {
-            Parent root = DependencyInjection.load("/budgetapp/fxml/FrontPage.fxml");
-            this.getScene().setRoot(root);
+    public void loginEvent(Event event) {
+        final Node node = (Node)event.getSource();
+        Stage stage = (Stage)node.getScene().getWindow();
+        accountDao.getAllAccounts();
+        account = accountDao.validateAccount(username.getText(), password.getText());
+        System.out.println(account);
+        if(account.isPresent()) {
+
+            stage.close();
         }
+
         event.consume();
+    }
+
+    public Optional<Account> getAccount() {
+        System.out.println("returning" + account.get().getUsername());
+        return account;
     }
 
     /*@FXML

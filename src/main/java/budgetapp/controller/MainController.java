@@ -25,6 +25,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
@@ -169,7 +170,7 @@ public class MainController extends AnchorPane{
     }
 
     @FXML
-    private void onClickNextMonth() {
+    private void onClickNextMonth() throws IOException {
         yearMonthComboBox.getSelectionModel().selectNext();
     }
 
@@ -305,6 +306,7 @@ public class MainController extends AnchorPane{
         }
 
     }
+
 
     public void initialize() {
         budgetMonthsMockUp();

@@ -23,6 +23,10 @@ public class User {
         allUsers.add(this);
     }
 
+    public User() {
+
+    }
+
     public String getFirstName() {
         return firstName;
     }

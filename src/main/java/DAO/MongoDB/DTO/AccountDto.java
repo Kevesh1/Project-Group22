@@ -1,11 +1,8 @@
 package DAO.MongoDB.DTO;
 
-import budgetapp.model.User;
-import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
 import java.util.List;
-import java.util.Objects;
 
 public final class AccountDto {
     private ObjectId id;
