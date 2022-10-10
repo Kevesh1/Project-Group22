@@ -24,9 +24,12 @@ public class NewUserCardController extends VBox {
     @FXML
     Label newUserLabel;
 
+    private final FrontPageController parentController;
 
-    public NewUserCardController() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/NewUserCard.fxml"));
+
+    public NewUserCardController(FrontPageController parentController) {
+        this.parentController = parentController;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/addUserCard.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try
@@ -40,8 +43,8 @@ public class NewUserCardController extends VBox {
     }
 
     public void setCardData(){
-        //Image profilePicture = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/budgetapp/img/Squared_plus.svg.png")));
-        //BlankProfilePicture.setImage(profilePicture);
+        Image profilePicture = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/budgetapp/img/Squared_plus.svg.png")));
+        BlankProfilePicture.setImage(profilePicture);
         newUserLabel.setText("New user");
     }
 

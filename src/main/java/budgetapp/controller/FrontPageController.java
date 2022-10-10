@@ -59,13 +59,6 @@ public class FrontPageController extends StackPane {
         }
     }
 
-
-
-    @FXML
-    public void createUser(Event event) {
-
-    }
-
     public void addNewUser() {
         this.getChildren().get(1).toFront();
     }

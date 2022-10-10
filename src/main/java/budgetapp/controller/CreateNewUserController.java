@@ -38,6 +38,7 @@ public class CreateNewUserController {
         
     }
 
+
     @FXML
     public void profileFinishedAction(ActionEvent event) {
         if (controlAllInputs() && samePassword()){
