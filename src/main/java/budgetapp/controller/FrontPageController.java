@@ -78,7 +78,7 @@ public class FrontPageController extends StackPane {
             UserCardController userCardController = new UserCardController(this, user);
             userCardContainer.getChildren().add(userCardController);
         }
-        userCardContainer.getChildren().add(new AddUserCardController(this));
+        userCardContainer.getChildren().add(new NewUserCardController(this));
 
     }
 

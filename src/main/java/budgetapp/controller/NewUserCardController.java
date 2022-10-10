@@ -1,6 +1,5 @@
 package budgetapp.controller;
 
-import budgetapp.model.User;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +11,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.Objects;
+
 
 public class NewUserCardController extends VBox {
 
@@ -36,7 +36,7 @@ public class NewUserCardController extends VBox {
 
     public NewUserCardController(FrontPageController parentController) {
         this.parentController = parentController;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/addUserCard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/NewUserCard.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try
@@ -58,3 +58,4 @@ public class NewUserCardController extends VBox {
 
 
 }
+
