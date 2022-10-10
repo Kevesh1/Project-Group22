@@ -62,6 +62,7 @@ public class FrontPageController extends StackPane {
         this.getChildren().get(1).toFront();
     }
 
+    //Should be connected with login function built in for user
     public void loginToUser(User user) {
         createMainView(user);
     }
