@@ -70,7 +70,6 @@ public class AccountLoginController extends BorderPane {
         Stage stage = (Stage)node.getScene().getWindow();
         accountDao.getAllAccounts();
         account = accountDao.validateAccount(username.getText(), password.getText());
-        System.out.println(account);
         if(account.isPresent()) {
 
             stage.close();

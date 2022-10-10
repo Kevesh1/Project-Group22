@@ -293,7 +293,8 @@ public class MainController extends AnchorPane{
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
 
-    public MainController() {
+    public MainController(User user) {
+        this.user = user;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

@@ -10,7 +10,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.concurrent.Callable;
 
 public class DependencyInjection {
 
