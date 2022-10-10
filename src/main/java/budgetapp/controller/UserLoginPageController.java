@@ -28,7 +28,7 @@ public class UserLoginPageController extends AnchorPane {
 
     public UserLoginPageController(User user){
         this.user = user;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/LoginPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try
