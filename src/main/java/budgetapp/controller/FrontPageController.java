@@ -63,6 +63,7 @@ public class FrontPageController extends StackPane {
     }
 
     //Should be connected with login function built in for user
+    /*
     public void loginToUser(User user) {
         createMainView(user);
     }
@@ -71,6 +72,18 @@ public class FrontPageController extends StackPane {
         MainController mainController = new MainController(user);
         this.getScene().setRoot(mainController);
     }
+
+     */
+
+    public void loginToUser(User user) {
+        createUserLoginPage(user);
+    }
+
+    public void createUserLoginPage(User user) {
+        UserLoginPageController userLoginPageController = new UserLoginPageController(user);
+        this.getScene().setRoot(userLoginPageController);
+    }
+
 
     public void updateUserCards(List<User> userCards) {
         userCardContainer.getChildren().clear();
