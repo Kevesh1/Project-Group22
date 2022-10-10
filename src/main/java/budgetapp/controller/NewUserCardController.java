@@ -37,8 +37,9 @@ public class NewUserCardController extends VBox {
     public NewUserCardController(FrontPageController parentController) {
         this.parentController = parentController;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/NewUserCard.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
+        setCardData();
+        //fxmlLoader.setRoot(this);
+        //fxmlLoader.setController(this);
         try
         {
             fxmlLoader.load();
@@ -46,7 +47,7 @@ public class NewUserCardController extends VBox {
         {
             throw new RuntimeException(exception);
         }
-        setCardData();
+        //setCardData();
     }
 
     public void setCardData(){

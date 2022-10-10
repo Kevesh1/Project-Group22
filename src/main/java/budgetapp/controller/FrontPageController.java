@@ -46,6 +46,10 @@ public class FrontPageController extends StackPane {
     public FrontPageController(Account account) {
         this.account = account;
         userCards = account.getUsers();
+        loadCurrentView();
+    }
+
+    private void loadCurrentView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/FrontPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -76,10 +80,10 @@ public class FrontPageController extends StackPane {
      */
 
     public void loginToUser(User user) {
-        createUserLoginPage(user);
+        createLoginPage(user);
     }
 
-    public void createUserLoginPage(User user) {
+    public void createLoginPage(User user) {
         UserLoginPageController userLoginPageController = new UserLoginPageController(user);
         this.getScene().setRoot(userLoginPageController);
     }
@@ -108,8 +112,6 @@ public class FrontPageController extends StackPane {
 
     @FXML
     public void createNewUserAction(ActionEvent event) throws IOException {
-        App app = new App();
-        app.changeScene("userCreateView.fxml");
     }
 
     @FXML
@@ -118,8 +120,6 @@ public class FrontPageController extends StackPane {
 
     @FXML
     public void logoutAction(ActionEvent event) throws IOException {
-        App app = new App();
-        app.changeScene("AccountLoginView.fxml");
     }
 
 
