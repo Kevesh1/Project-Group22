@@ -16,13 +16,14 @@ public class ProfilePictureCardController extends AnchorPane {
     SelectProfilePictureController parentController;
 
     @FXML
-    ProfileIcon profileIcon
+    ProfileIcon profileIcon;
 
     @FXML
     private ImageView profilePicture;
 
     @FXML
     void profilePictureSelected(ActionEvent event) {
+
 
     }
 
@@ -39,11 +40,11 @@ public class ProfilePictureCardController extends AnchorPane {
         {
             throw new RuntimeException(exception);
         }
-        setCardData(profileIcon);
+        setIconData(profileIcon);
 
     }
 
-    public void setCardData(ProfileIcon profileIcon){
+    public void setIconData(ProfileIcon profileIcon){
         Image profilePicture = new Image(Objects.requireNonNull(getClass().getResourceAsStream(profileIcon.getProfilePicture())));
     }
 

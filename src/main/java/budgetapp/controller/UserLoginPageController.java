@@ -1,6 +1,7 @@
 package budgetapp.controller;
 
 import budgetapp.App;
+import budgetapp.model.Account;
 import budgetapp.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,14 +26,12 @@ public class UserLoginPageController extends AnchorPane {
 
 
     public void userLogin(ActionEvent event, User user) throws IOException{
-        passwordValidity();
+        passwordValidity(user);
         createMainView(user);
     }
 
-    public void passwordValidity() throws IOException{
-        App app = new App();
-        if(passwordField.getText().toString().equals("OMG")){     /*later connect with user class*/
-           app.changeScene("MainView.fxml");
+    public void passwordValidity(User user) throws IOException{
+        if(passwordField.getText().toString().equals(user.getPassword())){     /*later connect with user class*/
         }
 
     }
@@ -43,11 +42,12 @@ public class UserLoginPageController extends AnchorPane {
     }
 
 
-    public void returnToFrontPage(ActionEvent event) throws IOException{
-        App app = new App();
-        app.changeScene("FrontPage.fxml");
-
+    public void returnToFrontPage(ActionEvent event, Account account) throws IOException{
+        FrontPageController frontPageController = new FrontPageController(account);
+        this.getScene().setRoot(frontPageController);
     }
+
+
 
 
 }

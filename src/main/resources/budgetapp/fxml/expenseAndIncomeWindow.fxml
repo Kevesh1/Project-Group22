@@ -161,7 +161,7 @@
                               </ScrollPane>
                            </children>
                         </AnchorPane>
-                        <DatePicker fx:id="transaktionDate" layoutX="36.0" layoutY="215.0" styleClass="darkModeThemeDark">
+                        <DatePicker fx:id="transactionDate" layoutX="36.0" layoutY="215.0" styleClass="darkModeThemeDark">
                            <stylesheets>
                               <URL value="@../css" />
                               <URL value="@../css/DatePicker.css" />
