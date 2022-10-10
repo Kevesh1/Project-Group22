@@ -35,7 +35,6 @@ public class CreateNewUserController {
     public Button profileFinishedButton;
 
     public void chooseProfilePicture(ActionEvent event){
-        
     }
 
     @FXML
@@ -54,9 +53,6 @@ public class CreateNewUserController {
         else{
             return true;
         }
-    }
-
-    public void profilePictureToString(){
     }
 
     public boolean samePassword(){

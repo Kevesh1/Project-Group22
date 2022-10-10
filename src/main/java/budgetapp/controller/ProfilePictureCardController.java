@@ -23,8 +23,6 @@ public class ProfilePictureCardController extends AnchorPane {
 
     @FXML
     void profilePictureSelected(ActionEvent event) {
-
-
     }
 
     public ProfilePictureCardController(SelectProfilePictureController parentController, ProfileIcon profileIcon) {

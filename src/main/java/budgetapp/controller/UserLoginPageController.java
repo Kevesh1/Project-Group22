@@ -27,11 +27,11 @@ public class UserLoginPageController extends AnchorPane {
 
     public void userLogin(ActionEvent event, User user) throws IOException{
         passwordValidity(user);
-        createMainView(user);
     }
 
     public void passwordValidity(User user) throws IOException{
-        if(passwordField.getText().toString().equals(user.getPassword())){     /*later connect with user class*/
+        if(passwordField.getText().toString().equals(user.getPassword())){
+            createMainView(user);
         }
 
     }
