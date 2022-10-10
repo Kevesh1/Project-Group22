@@ -1,6 +1,7 @@
 package budgetapp.controller;
 
 import budgetapp.model.User;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -23,6 +24,12 @@ public class NewUserCardController extends VBox {
 
     @FXML
     Label newUserLabel;
+
+    @FXML
+    public void CreateNewUser(Event event) {
+        parentController.addNewUser();
+    }
+
 
     private final FrontPageController parentController;
 
@@ -47,6 +54,7 @@ public class NewUserCardController extends VBox {
         BlankProfilePicture.setImage(profilePicture);
         newUserLabel.setText("New user");
     }
+
 
 
 }

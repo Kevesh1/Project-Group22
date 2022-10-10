@@ -4,7 +4,6 @@ import budgetapp.App;
 import budgetapp.model.Account;
 import budgetapp.model.User;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.PasswordField;
@@ -63,7 +62,7 @@ public class FrontPageController extends StackPane {
         this.getChildren().get(1).toFront();
     }
 
-    public void userSelected(User user) {
+    public void loginToUser(User user) {
         createMainView(user);
     }
 
@@ -91,11 +90,7 @@ public class FrontPageController extends StackPane {
             }
     }
 
-    @FXML
-    public void loginToUserAction(ActionEvent event) throws IOException {
-        App app = new App();
-        app.changeScene("LoginPage.fxml");
-    }
+
 
     @FXML
     public void createNewUserAction(ActionEvent event) throws IOException {
