@@ -134,7 +134,9 @@ public class MainController extends AnchorPane{
         Double cost = Double.valueOf(newExpenseAmount.getText());
         String note = newExpenseNote.getText();
         String date = newExpenseDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        Category category = Category.valueOf(newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().toString());
+        System.out.println((newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().toString()));
+        Category category = Category.valueOf(newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getName());
+
         String subCategory = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem().toString();
         selectedBudgetMonth.addTransaction(new Expense(cost, note, date, category, subCategory));
 
@@ -406,8 +408,8 @@ public class MainController extends AnchorPane{
     public void updateLatestTransaction(){
         latestPurchases.getChildren().clear();
         for (Transaction transaction : selectedBudgetMonth.getTransactions()){
-            TransactionController expenseController = new TransactionController(this, transaction);
-            latestPurchases.getChildren().add(expenseController);
+            TransactionController transactionController = new TransactionController(this, transaction);
+            latestPurchases.getChildren().add(transactionController);
         }
     }
 
@@ -494,7 +496,6 @@ public class MainController extends AnchorPane{
             return null;
         }
     };
-
 
 
 }

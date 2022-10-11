@@ -40,8 +40,9 @@ public class TransactionController extends AnchorPane {
         latestPurchaseCost.setText(String.valueOf(transaction.getSum()));
     }
 
+    //TODO Fix so the corresponding subcategory removes the transaction cost from itself
     @FXML
-    private void deleteExpense(){
+    private void deleteTransaction(){
         parentController.selectedBudgetMonth.removeTransaction(transaction);
         parentController.updateLatestTransaction();
 

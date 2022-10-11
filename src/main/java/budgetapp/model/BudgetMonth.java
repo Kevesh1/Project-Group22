@@ -69,14 +69,6 @@ public final class BudgetMonth {
         transactions.remove(transaction);
     }
 
-    public CategoryItem getCategory(Category category){
-        for (CategoryItem categoryItem : getCategories()){
-            if (Objects.equals(categoryItem.getCategory(),category)){
-                return categoryItem;
-            }
-        }
-        return null;
-    }
 
     public List<Transaction> getTransactions(){
         return transactions;
