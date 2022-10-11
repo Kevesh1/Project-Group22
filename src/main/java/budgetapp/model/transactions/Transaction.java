@@ -4,19 +4,17 @@ import budgetapp.model.categories.Category;
 
 import java.time.YearMonth;
 
-public class Transaction {
+public abstract class Transaction {
 
     private double sum;
     private String annotation;
     private String date;
     private YearMonth yearMonth;
-    private Category category;
 
-    public Transaction(Double sum, String annotation, String date, Category category) {
+    public Transaction(Double sum, String annotation, String date) {
         this.sum = sum;
         this.annotation = annotation;
         this.date = date;
-        this.category = category;
     }
 
 
@@ -47,11 +45,5 @@ public class Transaction {
         this.yearMonth = yearMonth;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
 }

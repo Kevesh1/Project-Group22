@@ -105,7 +105,7 @@ public class MainController extends AnchorPane{
     @FXML
     AnchorPane iEWindow;
     @FXML
-    ComboBox newExpenseCategoryComboBox;
+    ComboBox<CategoryItem> newExpenseCategoryComboBox;
     @FXML
     TextField newExpenseAmount;
     @FXML
@@ -120,17 +120,10 @@ public class MainController extends AnchorPane{
     DatePicker newIncomeDate;
     @FXML
     TextArea newIncomeNote;
-
-
-
     @FXML
-    private void OpenIEWindow(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/budgetapp/fxml/expenseAndIncomeWindow.fxml"));
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+    ComboBox<CategorySubItem> newExpenseSubCategoryComboBox;
+
+
     @FXML
     private void openIE(){
         iEWindow.toFront();
@@ -142,8 +135,14 @@ public class MainController extends AnchorPane{
         String note = newExpenseNote.getText();
         String date = newExpenseDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         Category category = Category.valueOf(newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().toString());
-        selectedBudgetMonth.addTransaction(new Expense(cost, note, date, category));
+        String subCategory = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem().toString();
+        selectedBudgetMonth.addTransaction(new Expense(cost, note, date, category, subCategory));
+
+        CategorySubItem subItem = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
+        subItem.incrementBudgetSpent(Integer.parseInt(newExpenseAmount.getText()));
+
         updateLatestTransaction();
+        updateCategoryList();
         showMainView();
     }
 
@@ -279,6 +278,15 @@ public class MainController extends AnchorPane{
         showMainView();
     }
 
+    @FXML
+    private void LoadSubCategoryComboBox(){
+        ObservableList<CategorySubItem> subCategories = FXCollections.observableArrayList();
+        subCategories.addAll(newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getSubCategories());
+
+        newExpenseSubCategoryComboBox.setItems(subCategories);
+        newExpenseSubCategoryComboBox.setConverter(comboBoxSubCategoryStringConverter);
+    }
+
     private void resetNewCategoryInputs(){
         categoryComboBox.getSelectionModel().selectFirst();
         newCategoryBudget.setText("");
@@ -292,6 +300,7 @@ public class MainController extends AnchorPane{
     private SubCategoryController subCategoryController;
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
+
 
     public MainController(User user) {
         this.user = user;
@@ -317,6 +326,7 @@ public class MainController extends AnchorPane{
         updateMainView();
         initializeCategoryComboBox();
         updateLatestTransaction();
+        LoadExpenseCategoriesComboBox();
 
     }
     public void updateMainView() {
@@ -365,7 +375,14 @@ public class MainController extends AnchorPane{
         categories.addAll(Arrays.asList(Category.values()));
         categoryComboBox.setItems(categories);
         categoryComboBox.getSelectionModel().selectFirst();
+
+    }
+
+    private void LoadExpenseCategoriesComboBox(){
+        ObservableList<CategoryItem> categories = FXCollections.observableArrayList();
+        categories.addAll(selectedBudgetMonth.getCategories());
         newExpenseCategoryComboBox.setItems(categories);
+        newExpenseCategoryComboBox.setConverter(comboBoxCategoryStringConverter);
         newExpenseCategoryComboBox.getSelectionModel().selectFirst();
     }
 
@@ -398,19 +415,19 @@ public class MainController extends AnchorPane{
         BudgetMonth tempBudgetMonth1 = new BudgetMonth(5000, 2022, Month.AUGUST);
         BudgetMonth tempBudgetMonth2 = (new BudgetMonth(4000, 2022, Month.SEPTEMBER));
         BudgetMonth tempBudgetMonth3 = (new BudgetMonth(7000, 2022, Month.OCTOBER));
-        CategoryItem tempCategoryItem1 = new CategoryItem(100, Category.Food);
+        CategoryItem tempCategoryItem1 = new CategoryItem(0, Category.Food);
         CategoryItem tempCategoryItem2 = new CategoryItem(300, Category.Transportation);
         tempCategoryItem1.addSubCategory(new CategorySubItem(40, "AHHH"));
 
-        tempBudgetMonth1.addTransaction(new Expense(100.0,"McDonalds", "7 -23-2018", Category.Food));
-        tempBudgetMonth1.addTransaction(new Expense(100.0,"Taxi", "7-23-2018", Category.Transportation));
-        tempBudgetMonth1.addTransaction(new Expense(100.0,"Dator", "7-23-2018", Category.Hobbies));
-        tempBudgetMonth1.addTransaction(new Expense(100.0,"Investment", "7-23-2018", Category.Savings));
-        tempBudgetMonth2.addTransaction(new Expense(100.0,"Shopping", "2018- 07 - 23", Category.Hobbies));
+        tempBudgetMonth1.addTransaction(new Expense(100.0,"McDonalds", "7 -23-2018", Category.Food,"a"));
+        tempBudgetMonth1.addTransaction(new Expense(100.0,"Taxi", "7-23-2018", Category.Transportation,"b"));
+        tempBudgetMonth1.addTransaction(new Expense(100.0,"Dator", "7-23-2018", Category.Hobbies,"s"));
+        tempBudgetMonth1.addTransaction(new Expense(100.0,"Investment", "7-23-2018", Category.Savings,"a"));
+        tempBudgetMonth2.addTransaction(new Expense(100.0,"Shopping", "2018- 07 - 23", Category.Hobbies,"f"));
 
         tempBudgetMonth1.addTransaction(new Income(10000.0, "Salary", "2022-07-07"));
 
-        tempCategoryItem1.incrementBudgetSpent(50);
+        //tempCategoryItem1.incrementBudgetSpent(50);
         tempBudgetMonth1.addCategoryItem(new CategoryItem(200, Category.Savings));
         tempBudgetMonth1.addCategoryItem(tempCategoryItem1);
         tempBudgetMonth2.addCategoryItem(tempCategoryItem2);
@@ -450,6 +467,34 @@ public class MainController extends AnchorPane{
             return null;
         }
     };
+
+    private StringConverter<CategoryItem> comboBoxCategoryStringConverter = new StringConverter<CategoryItem>() {
+
+        @Override
+        public String toString(CategoryItem categoryItem) {
+            return categoryItem.getName();
+        }
+
+        @Override
+        public CategoryItem fromString(String string) {
+            return null;
+        }
+
+    };
+
+    private StringConverter<CategorySubItem> comboBoxSubCategoryStringConverter = new StringConverter<CategorySubItem>() {
+
+        @Override
+        public String toString(CategorySubItem categorySubItem) {
+            return categorySubItem.getName();
+        }
+
+        @Override
+        public CategorySubItem fromString(String string) {
+            return null;
+        }
+    };
+
 
 
 }

@@ -1,12 +1,17 @@
 package budgetapp.model;
 
+import budgetapp.model.categories.Category;
 import budgetapp.model.categories.CategoryItem;
+import budgetapp.model.transactions.Expense;
 import budgetapp.model.transactions.Income;
 import budgetapp.model.transactions.Transaction;
 
 import java.time.Month;
 import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public final class BudgetMonth {
     private double budget;
@@ -64,8 +69,23 @@ public final class BudgetMonth {
         transactions.remove(transaction);
     }
 
-    public ArrayList<Transaction> getTransactions(){
+    public CategoryItem getCategory(Category category){
+        for (CategoryItem categoryItem : getCategories()){
+            if (Objects.equals(categoryItem.getCategory(),category)){
+                return categoryItem;
+            }
+        }
+        return null;
+    }
+
+    public List<Transaction> getTransactions(){
         return transactions;
+    }
+
+    public List<Expense> getExpenses(){
+        return  getTransactions().stream().filter(expense -> expense instanceof Expense)
+                .map(expense -> (Expense)expense)
+                .collect(Collectors.toList());
     }
 
 }

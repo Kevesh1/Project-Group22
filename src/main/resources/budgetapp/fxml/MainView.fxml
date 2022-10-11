@@ -24,7 +24,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="1025.0" styleClass="mainBackground" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="1025.0" styleClass="mainBackground" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="confirmDeletePane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
          <children>
@@ -77,6 +77,86 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1072.0" styleClass="mainBackground" stylesheets="@../css/mainView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ScrollPane layoutX="664.0" layoutY="142.0" prefHeight="447.0" prefWidth="435.0" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="142.0">
+               <content>
+                  <FlowPane fx:id="categoriesFlowPane" prefHeight="0.0" prefWidth="221.0" style="-fx-background-insets: yellow;" stylesheets="@../css/mainView.css" />
+               </content>
+            </ScrollPane>
+            <PieChart fx:id="pieChart" layoutX="409.0" layoutY="142.0" prefHeight="214.0" prefWidth="227.0" AnchorPane.bottomAnchor="246.60000000000002" AnchorPane.leftAnchor="409.0" AnchorPane.rightAnchor="265.79999999999995" AnchorPane.topAnchor="142.0">
+               <stylesheets>
+                  <URL value="@../css/mainView.css" />
+                  <URL value="@../css/Chartas.css" />
+               </stylesheets></PieChart>
+            <HBox layoutX="91.0" layoutY="54.0" prefWidth="200.0" AnchorPane.bottomAnchor="517.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="611.0" AnchorPane.topAnchor="54.0">
+               <children>
+                  <Button fx:id="previousMonthButton" mnemonicParsing="false" onAction="#onClickPreviousMonth">
+                     <graphic>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/material/arrow_back_ios.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <ComboBox fx:id="yearMonthComboBox" onAction="#onChangeBudgetMonthComboBox" prefHeight="10.0" prefWidth="121.0" stylesheets="@../css/Styleheet.css" />
+                  <Button fx:id="nextMonthButton" mnemonicParsing="false" onAction="#onClickNextMonth">
+                     <graphic>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/material/arrow_forward_ios.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <StackedBarChart fx:id="stackedBarChart" layoutX="13.0" layoutY="142.0" prefHeight="214.0" prefWidth="34.0" stylesheets="@../css/Chartas.css" AnchorPane.bottomAnchor="247.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="855.0" AnchorPane.topAnchor="142.0">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+            </StackedBarChart>
+            <HBox layoutX="68.0" layoutY="113.0" AnchorPane.rightAnchor="726.8">
+               <children>
+                  <Label text="Budget:" />
+                  <Label fx:id="budgetLabel" text="budgetLabel" />
+               </children>
+            </HBox>
+            <HBox layoutX="227.0" layoutY="113.0" AnchorPane.rightAnchor="543.8">
+               <children>
+                  <Label text="Spent:" />
+                  <Label fx:id="budgetSpentLabel" text="budgetSpentLabel" />
+               </children>
+            </HBox>
+            <ImageView fx:id="profileImage" fitHeight="80.0" fitWidth="80.0" layoutX="806.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="budgetRemainingLabel" layoutX="316.0" layoutY="357.0" text="budgetRemainingLabel" AnchorPane.bottomAnchor="228.4" AnchorPane.rightAnchor="462.8" />
+            <ScrollPane layoutX="13.0" layoutY="379.0" prefHeight="175.0" prefWidth="533.0" styleClass="flowPaneBackground" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="479.0">
+               <content>
+                  <FlowPane fx:id="latestPurchases" />
+               </content>
+            </ScrollPane>
+            <HBox layoutX="13.0" layoutY="353.0" AnchorPane.bottomAnchor="224.39999999999998" />
+            <Label layoutX="14.0" layoutY="14.0" text="Label" />
+            <Label layoutX="490.0" layoutY="111.0" prefHeight="17.0" prefWidth="80.0" styleClass="category-list" text="Categories" AnchorPane.rightAnchor="332.0" />
+            <Button fx:id="addCategoryButton" layoutX="839.0" layoutY="87.0" mnemonicParsing="false" onAction="#showAddCategoryWindow" text="+" AnchorPane.rightAnchor="14.200000000000003">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <ToggleButton layoutX="190.0" layoutY="422.0" mnemonicParsing="false" text="ToggleButton" />
+            <ToggleButton layoutX="281.0" layoutY="419.0" mnemonicParsing="false" text="ToggleButton" />
+            <Label layoutX="14.0" layoutY="459.0" prefHeight="27.0" prefWidth="114.0" text="Senaste köp" AnchorPane.bottomAnchor="206.0" AnchorPane.leftAnchor="14.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="886.0" layoutY="100.0" mnemonicParsing="false" onAction="#openIE" text="OpenIE" AnchorPane.rightAnchor="100.0" />
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="iEWindow" layoutX="325.0" layoutY="101.0" styleClass="getinthefuckingmiddle" stylesheets="@../css/Styleheet.css">
          <children>
             <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../css/Styleheet.css" tabClosingPolicy="UNAVAILABLE">
@@ -87,7 +167,7 @@
                            <children>
                               <AnchorPane prefHeight="397.0" prefWidth="475.0" style="-fx-background-radius: 7;" styleClass="darkModeThemeDarker" stylesheets="@../css/Styleheet.css">
                                  <children>
-                                    <Label layoutX="199.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
+                                    <Label layoutX="39.0" layoutY="22.0" stylesheets="@../css/Styleheet.css" text="Category">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -146,8 +226,18 @@
                                     </DatePicker>
                                     <TextArea fx:id="newExpenseNote" layoutX="37.0" layoutY="290.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
                                     <Button layoutX="419.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="X" />
-                                    <ComboBox fx:id="newExpenseCategoryComboBox" layoutX="37.0" layoutY="39.0" prefWidth="150.0" stylesheets="@../css/Styleheet.css" />
+                                    <ComboBox fx:id="newExpenseCategoryComboBox" layoutX="38.0" layoutY="53.0" onHidden="#LoadSubCategoryComboBox" prefWidth="150.0" stylesheets="@../css/Styleheet.css" />
                                     <Button layoutX="387.0" layoutY="341.0" mnemonicParsing="false" onAction="#addExpense" text="Done" />
+                                    <Label layoutX="215.0" layoutY="21.0" stylesheets="@../css/Styleheet.css" text="Subcategory">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="darkModeTextColor" />
+                                          <String fx:value="standardFontSize" />
+                                       </styleClass>
+                                    </Label>
+                                    <ComboBox fx:id="newExpenseSubCategoryComboBox" layoutX="214.0" layoutY="52.0" onShown="#LoadSubCategoryComboBox" prefWidth="150.0" stylesheets="@../css/Styleheet.css" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -229,86 +319,6 @@
                   </Tab>
                </tabs>
             </TabPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1072.0" styleClass="mainBackground" stylesheets="@../css/mainView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <ScrollPane layoutX="664.0" layoutY="142.0" prefHeight="447.0" prefWidth="435.0" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="142.0">
-               <content>
-                  <FlowPane fx:id="categoriesFlowPane" prefHeight="0.0" prefWidth="221.0" style="-fx-background-insets: yellow;" stylesheets="@../css/mainView.css" />
-               </content>
-            </ScrollPane>
-            <PieChart fx:id="pieChart" layoutX="409.0" layoutY="142.0" prefHeight="214.0" prefWidth="227.0" AnchorPane.bottomAnchor="246.60000000000002" AnchorPane.leftAnchor="409.0" AnchorPane.rightAnchor="265.79999999999995" AnchorPane.topAnchor="142.0">
-               <stylesheets>
-                  <URL value="@../css/mainView.css" />
-                  <URL value="@../css/Chartas.css" />
-               </stylesheets></PieChart>
-            <HBox layoutX="91.0" layoutY="54.0" prefWidth="200.0" AnchorPane.bottomAnchor="517.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="611.0" AnchorPane.topAnchor="54.0">
-               <children>
-                  <Button fx:id="previousMonthButton" mnemonicParsing="false" onAction="#onClickPreviousMonth">
-                     <graphic>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/material/arrow_back_ios.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <ComboBox fx:id="yearMonthComboBox" onAction="#onChangeBudgetMonthComboBox" prefHeight="10.0" prefWidth="121.0" stylesheets="@../css/Styleheet.css" />
-                  <Button fx:id="nextMonthButton" mnemonicParsing="false" onAction="#onClickNextMonth">
-                     <graphic>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/material/arrow_forward_ios.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-            <StackedBarChart fx:id="stackedBarChart" layoutX="13.0" layoutY="142.0" prefHeight="214.0" prefWidth="34.0" stylesheets="@../css/Chartas.css" AnchorPane.bottomAnchor="247.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="855.0" AnchorPane.topAnchor="142.0">
-               <xAxis>
-                  <CategoryAxis side="BOTTOM" />
-               </xAxis>
-               <yAxis>
-                  <NumberAxis side="LEFT" />
-               </yAxis>
-            </StackedBarChart>
-            <HBox layoutX="68.0" layoutY="113.0" AnchorPane.rightAnchor="726.8">
-               <children>
-                  <Label text="Budget:" />
-                  <Label fx:id="budgetLabel" text="budgetLabel" />
-               </children>
-            </HBox>
-            <HBox layoutX="227.0" layoutY="113.0" AnchorPane.rightAnchor="543.8">
-               <children>
-                  <Label text="Spent:" />
-                  <Label fx:id="budgetSpentLabel" text="budgetSpentLabel" />
-               </children>
-            </HBox>
-            <ImageView fx:id="profileImage" fitHeight="80.0" fitWidth="80.0" layoutX="806.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="budgetRemainingLabel" layoutX="316.0" layoutY="357.0" text="budgetRemainingLabel" AnchorPane.bottomAnchor="228.4" AnchorPane.rightAnchor="462.8" />
-            <ScrollPane layoutX="13.0" layoutY="379.0" prefHeight="175.0" prefWidth="533.0" styleClass="flowPaneBackground" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="479.0">
-               <content>
-                  <FlowPane fx:id="latestPurchases" />
-               </content>
-            </ScrollPane>
-            <HBox layoutX="13.0" layoutY="353.0" AnchorPane.bottomAnchor="224.39999999999998" />
-            <Label layoutX="14.0" layoutY="14.0" text="Label" />
-            <Label layoutX="490.0" layoutY="111.0" prefHeight="17.0" prefWidth="80.0" styleClass="category-list" text="Categories" AnchorPane.rightAnchor="332.0" />
-            <Button fx:id="addCategoryButton" layoutX="839.0" layoutY="87.0" mnemonicParsing="false" onAction="#showAddCategoryWindow" text="+" AnchorPane.rightAnchor="14.200000000000003">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <ToggleButton layoutX="190.0" layoutY="422.0" mnemonicParsing="false" text="ToggleButton" />
-            <ToggleButton layoutX="281.0" layoutY="419.0" mnemonicParsing="false" text="ToggleButton" />
-            <Label layoutX="14.0" layoutY="459.0" prefHeight="27.0" prefWidth="114.0" text="Senaste köp" AnchorPane.bottomAnchor="206.0" AnchorPane.leftAnchor="14.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Button layoutX="886.0" layoutY="100.0" mnemonicParsing="false" onAction="#openIE" text="OpenIE" AnchorPane.rightAnchor="100.0" />
          </children>
       </AnchorPane>
    </children>

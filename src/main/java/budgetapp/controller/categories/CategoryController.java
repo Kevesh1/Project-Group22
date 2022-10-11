@@ -2,6 +2,7 @@ package budgetapp.controller.categories;
 
 import budgetapp.controller.TransactionController;
 import budgetapp.controller.MainController;
+import budgetapp.model.transactions.Expense;
 import budgetapp.model.transactions.Transaction;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
@@ -86,7 +87,6 @@ public class CategoryController extends AnchorPane {
         categoryItem.addSubCategory(subCategory1);
         categoryItem.addSubCategory(subCategory2);
         categoryItem.addSubCategory(subCategory3);
-
     }
 
     @FXML
@@ -96,7 +96,7 @@ public class CategoryController extends AnchorPane {
     }
     public void showMatchingPurchases(){
         parentController.latestPurchases.getChildren().clear();
-        for (Transaction expense : parentController.selectedBudgetMonth.getTransactions()){
+        for (Expense expense : parentController.selectedBudgetMonth.getExpenses()){
             if (expense.getCategory().equals(categoryItem.getCategory())){
                 System.out.println("GOES IN IF STATEMENT");
                 TransactionController expenseController = new TransactionController(parentController, expense);

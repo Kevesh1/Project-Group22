@@ -14,7 +14,7 @@ public class SubCategoryController extends AnchorPane {
     public CategorySubItem subCategory;
 
     @FXML
-    private Label subCateogryName;
+    private Label subCategoryName;
 
     @FXML
     private ProgressBar subCategoryProgressBar;
@@ -39,7 +39,7 @@ public class SubCategoryController extends AnchorPane {
     }
 
     private void setLabels(){
-        subCateogryName.setText(subCategory.getName());
+        subCategoryName.setText(subCategory.getName());
         subCategoryBudget.setText(subCategory.getBudget() + " kr");
         subCategoryProgressBar.setProgress(subCategory.getBudgetSpent()/subCategory.getBudget());
     }
