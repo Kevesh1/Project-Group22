@@ -81,7 +81,12 @@ public class FrontPageController extends AnchorPane {
 
 
     public void loginToUser(User user) {
-        createLoginPage(user);
+        if(user.getPassword() == null){
+            createMainView(user);
+        }
+        else{
+            createLoginPage(user);
+        }
     }
 
     public void createLoginPage(User user) {
@@ -89,6 +94,10 @@ public class FrontPageController extends AnchorPane {
         this.getScene().setRoot(userLoginPageController);
     }
 
+    public void createMainView(User user) {
+        MainController mainController = new MainController(user);
+        this.getScene().setRoot(mainController);
+    }
 
     public void updateUserCards(List<User> userCards) {
         userCardContainer.getChildren().clear();
