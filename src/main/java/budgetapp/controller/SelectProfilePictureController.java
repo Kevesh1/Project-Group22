@@ -3,6 +3,7 @@ package budgetapp.controller;
 import budgetapp.model.ProfileIcon;
 import budgetapp.model.User;
 import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
@@ -16,13 +17,12 @@ public class SelectProfilePictureController {
     List<ProfileIcon> profileCards;
 
 
-    /*
     public void initialize() {
         profileCards = ProfileIcon.profileIconList();
         profileSelectionContainer.getChildren().clear();
         for (ProfileIcon profileIcon : profileCards) {
             ProfilePictureCardController profilePictureCardController = new ProfilePictureCardController(this, profileIcon);
-            profileSelectionContainer.getChildren().add(ProfilePictureCardController);
+            profileSelectionContainer.getChildren().add(profilePictureCardController);
         }
     }
 
@@ -35,7 +35,10 @@ public class SelectProfilePictureController {
         }
     }
 
-     */
+
+
+
+
 
 
 

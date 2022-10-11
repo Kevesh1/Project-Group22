@@ -57,7 +57,7 @@ public class RegistrationController extends BorderPane {
 
     private Account registerAccount() {
         //TODO Create factory for account
-        Account account = new Account(username.getText(), password.getText(), List.of(new User(username.getText(), "templast", "temppass")));
+        Account account = new Account(username.getText(), password.getText(), List.of(new User(username.getText(), "Account", null)));
         accountDao.updateAccount(account);
         return account;
     }

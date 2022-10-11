@@ -1,6 +1,6 @@
 package budgetapp.controller;
 
-import budgetapp.model.User;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.Objects;
+
 
 public class NewUserCardController extends VBox {
 
@@ -24,9 +25,18 @@ public class NewUserCardController extends VBox {
     @FXML
     Label newUserLabel;
 
+    @FXML
+    public void createUserSelect(Event event) {
+        parentController.addNewUser();
+    }
 
-    public NewUserCardController() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/NewUserCard.fxml"));
+
+    private final FrontPageController parentController;
+
+
+    public NewUserCardController(FrontPageController parentController) {
+        this.parentController = parentController;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/AddUserCard.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try
@@ -36,14 +46,20 @@ public class NewUserCardController extends VBox {
         {
             throw new RuntimeException(exception);
         }
+    }
+
+    @FXML
+    public void initilize(){
         setCardData();
     }
 
     public void setCardData(){
-        //Image profilePicture = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/budgetapp/img/Squared_plus.svg.png")));
-        //BlankProfilePicture.setImage(profilePicture);
+        Image profilePicture = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/budgetapp/img/Squared_plus.svg.png")));
+        BlankProfilePicture.setImage(profilePicture);
         newUserLabel.setText("New user");
     }
 
 
+
 }
+

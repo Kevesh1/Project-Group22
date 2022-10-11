@@ -4,7 +4,6 @@ import budgetapp.App;
 import budgetapp.model.Account;
 import budgetapp.model.User;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.PasswordField;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FrontPageController extends StackPane {
+public class FrontPageController extends AnchorPane {
 
     @FXML
     public AnchorPane createUserAnchorPane;
@@ -47,6 +46,10 @@ public class FrontPageController extends StackPane {
     public FrontPageController(Account account) {
         this.account = account;
         userCards = account.getUsers();
+        loadCurrentView();
+    }
+
+    private void loadCurrentView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/FrontPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -59,19 +62,36 @@ public class FrontPageController extends StackPane {
         }
     }
 
-
-
-    @FXML
-    public void createUser(Event event) {
-
-    }
-
     public void addNewUser() {
         this.getChildren().get(1).toFront();
     }
 
-    public void userSelected(User user) {
+    //Should be connected with login function built in for user
+    /*
+    public void loginToUser(User user) {
         createMainView(user);
+    }
+
+    public void createMainView(User user) {
+        MainController mainController = new MainController(user);
+        this.getScene().setRoot(mainController);
+    }
+
+     */
+
+
+    public void loginToUser(User user) {
+        if(user.getPassword() == null){
+            createMainView(user);
+        }
+        else{
+            createLoginPage(user);
+        }
+    }
+
+    public void createLoginPage(User user) {
+        UserLoginPageController userLoginPageController = new UserLoginPageController(user);
+        this.getScene().setRoot(userLoginPageController);
     }
 
     public void createMainView(User user) {
@@ -85,7 +105,7 @@ public class FrontPageController extends StackPane {
             UserCardController userCardController = new UserCardController(this, user);
             userCardContainer.getChildren().add(userCardController);
         }
-        userCardContainer.getChildren().add(new AddUserCardController(this));
+        userCardContainer.getChildren().add(new NewUserCardController(this));
 
     }
 
@@ -98,26 +118,19 @@ public class FrontPageController extends StackPane {
             }
     }
 
+
+
     @FXML
-    public void loginToUserAction(ActionEvent event) throws IOException {
-        App app = new App();
-        app.changeScene("LoginPage.fxml");
+    public void createUserSelect(ActionEvent event) throws IOException {
+
     }
 
     @FXML
-    public void createNewUserAction(ActionEvent event) throws IOException {
-        App app = new App();
-        app.changeScene("userCreateView.fxml");
-    }
-
-    @FXML
-    public void manageUserAccounts(ActionEvent event) throws IOException{
+    public void manageUserAccountsAction(ActionEvent event) throws IOException{
     }
 
     @FXML
     public void logoutAction(ActionEvent event) throws IOException {
-        App app = new App();
-        app.changeScene("AccountLoginView.fxml");
     }
 
 
