@@ -1,30 +1,33 @@
 package budgetapp.controller;
 
-import budgetapp.App;
-import budgetapp.model.Account;
 import budgetapp.model.User;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class UserLoginPageController extends AnchorPane {
 
     @FXML
-    private Button returnFrontButton;
+    public Button returnFrontButton;
 
     @FXML
-    private Image profilePicture;
+    public ImageView profilePicture;
 
     @FXML
-    private PasswordField passwordField;
+    public PasswordField passwordField;
 
-    private User user;
+    @FXML
+    public Text fullName;
+
+    public User user;
 
     public UserLoginPageController(User user){
         this.user = user;
@@ -38,12 +41,14 @@ public class UserLoginPageController extends AnchorPane {
         {
             throw new RuntimeException(exception);
         }
+        setCharacterizedProfile(user);
 
 
     }
 
 
-    public void userLogin(ActionEvent event, User user) throws IOException{
+    @FXML
+    public void userLogin(ActionEvent event) throws IOException{
         passwordValidity(user);
     }
 
@@ -59,10 +64,24 @@ public class UserLoginPageController extends AnchorPane {
         this.getScene().setRoot(mainController);
     }
 
+    public void setDisplayName(User user){
+        fullName.toString().equals(user.getLastName() + " " + user.getFirstName());
+    }
 
-    public void returnToFrontPage(ActionEvent event, Account account) throws IOException{
-        FrontPageController frontPageController = new FrontPageController(account);
-        this.getScene().setRoot(frontPageController);
+    public void setUserProfile(User user){
+        profilePicture.toString().equals(user.getProfilePicture());
+    }
+
+    public void setCharacterizedProfile(User user){
+        setDisplayName(user);
+        setUserProfile(user);
+    }
+
+
+    @FXML
+    public void returnToFrontPage(Event event) throws IOException{
+        //FrontPageController frontPageController = new FrontPageController();
+        //this.getScene().setRoot(frontPageController);
     }
 
 

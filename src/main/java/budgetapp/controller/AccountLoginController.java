@@ -22,10 +22,10 @@ public class AccountLoginController extends BorderPane {
     private Button loginButton;
 
     @FXML
-    private TextField accountName;
+    private TextField username;
 
     @FXML
-    private PasswordField accountPassword;
+    private PasswordField password;
 
     @FXML
     private Label wrongPassword;
@@ -64,7 +64,7 @@ public class AccountLoginController extends BorderPane {
         final Node node = (Node)event.getSource();
         Stage stage = (Stage)node.getScene().getWindow();
         accountDao.getAllAccounts();
-        account = accountDao.validateAccount(accountName.getText(), accountPassword.getText());
+        account = accountDao.validateAccount(username.getText(), password.getText());
         if(account.isPresent()) {
 
             stage.close();
@@ -75,10 +75,10 @@ public class AccountLoginController extends BorderPane {
     }
 
     private void loginFail() {
-        if(accountName.getText().isEmpty()){
+        if(username.getText().isEmpty()){
             wrongPassword.setText("Please enter your name");
         }
-        else if(accountPassword.getText().isEmpty()){
+        else if(password.getText().isEmpty()){
             wrongPassword.setText("Please enter your password");
         }
         else{

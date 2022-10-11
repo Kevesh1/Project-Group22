@@ -26,7 +26,7 @@ public class NewUserCardController extends VBox {
     Label newUserLabel;
 
     @FXML
-    public void CreateNewUser(Event event) {
+    public void createUserSelect(Event event) {
         parentController.addNewUser();
     }
 
@@ -36,10 +36,9 @@ public class NewUserCardController extends VBox {
 
     public NewUserCardController(FrontPageController parentController) {
         this.parentController = parentController;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/NewUserCard.fxml"));
-        setCardData();
-        //fxmlLoader.setRoot(this);
-        //fxmlLoader.setController(this);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/AddUserCard.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
         try
         {
             fxmlLoader.load();
@@ -47,7 +46,11 @@ public class NewUserCardController extends VBox {
         {
             throw new RuntimeException(exception);
         }
-        //setCardData();
+    }
+
+    @FXML
+    public void initilize(){
+        setCardData();
     }
 
     public void setCardData(){

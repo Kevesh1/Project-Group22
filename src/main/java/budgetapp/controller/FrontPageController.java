@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FrontPageController extends StackPane {
+public class FrontPageController extends AnchorPane {
 
     @FXML
     public AnchorPane createUserAnchorPane;
@@ -79,6 +79,7 @@ public class FrontPageController extends StackPane {
 
      */
 
+
     public void loginToUser(User user) {
         createLoginPage(user);
     }
@@ -111,11 +112,12 @@ public class FrontPageController extends StackPane {
 
 
     @FXML
-    public void createNewUserAction(ActionEvent event) throws IOException {
+    public void createUserSelect(ActionEvent event) throws IOException {
+
     }
 
     @FXML
-    public void manageUserAccounts(ActionEvent event) throws IOException{
+    public void manageUserAccountsAction(ActionEvent event) throws IOException{
     }
 
     @FXML

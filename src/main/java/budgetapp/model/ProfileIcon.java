@@ -9,7 +9,7 @@ public class ProfileIcon {
     private String profileGif;
     private boolean locked;
 
-    private static List<ProfileIcon> allProfileIcons = new ArrayList<>();
+    private static final List<ProfileIcon> allProfileIcons = new ArrayList<>();
 
     public ProfileIcon(){
         allProfileIcons.add(this);

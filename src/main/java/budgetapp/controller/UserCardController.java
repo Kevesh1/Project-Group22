@@ -42,7 +42,7 @@ public class UserCardController extends VBox {
         {
             throw new RuntimeException(exception);
         }
-        setCardData(user);
+
 
     }
 
@@ -52,9 +52,14 @@ public class UserCardController extends VBox {
         firstNameCard.setText(user.getFirstName());
     }
 
+    @FXML
+    public void initilize(){
+        setCardData(user);
+    }
+
 
     @FXML
-    public void selectUser() {
+    public void selectUserAction() {
         parentController.loginToUser(user);
 
     }
