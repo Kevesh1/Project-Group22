@@ -1,9 +1,6 @@
 package budgetapp.model.transactions;
 
 import budgetapp.model.categories.Category;
-import budgetapp.model.categories.CategorySubItem;
-
-import java.time.YearMonth;
 
 public class Expense extends Transaction {
 

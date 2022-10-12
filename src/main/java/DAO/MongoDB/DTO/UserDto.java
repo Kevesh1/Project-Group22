@@ -43,4 +43,14 @@ public final class UserDto implements Dto {
         this.password = password;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

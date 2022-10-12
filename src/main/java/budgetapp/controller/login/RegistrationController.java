@@ -1,8 +1,9 @@
-package budgetapp.controller;
+package budgetapp.controller.login;
 
 import DAO.MongoDB.AccountDao;
-import budgetapp.model.Account;
-import budgetapp.model.User;
+import budgetapp.controller.login.AccountLoginController;
+import budgetapp.model.account.Account;
+import budgetapp.model.account.User;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,12 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 public class RegistrationController extends BorderPane {

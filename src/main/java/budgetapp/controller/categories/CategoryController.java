@@ -3,7 +3,6 @@ package budgetapp.controller.categories;
 import budgetapp.controller.TransactionController;
 import budgetapp.controller.MainController;
 import budgetapp.model.transactions.Expense;
-import budgetapp.model.transactions.Transaction;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import javafx.fxml.FXML;
@@ -111,6 +110,7 @@ public class CategoryController extends AnchorPane {
         parentController.updateCategoryList();
         System.out.println(index);
         for (CategorySubItem subCategory : categoryItem.getSubCategories()) {
+
             SubCategoryController subCategoryController = new SubCategoryController(this, subCategory);
             parentController.categoriesFlowPane.getChildren().add(index,subCategoryController);
             index += 1;

@@ -1,6 +1,7 @@
-package budgetapp.controller;
+package budgetapp.controller.login;
 
-import budgetapp.model.User;
+import budgetapp.controller.MainController;
+import budgetapp.model.account.User;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;

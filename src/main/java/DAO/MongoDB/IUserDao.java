@@ -1,8 +1,7 @@
 package DAO.MongoDB;
 
-import DAO.IDao;
-import budgetapp.model.Account;
-import budgetapp.model.User;
+import budgetapp.model.account.Account;
+import budgetapp.model.account.User;
 import org.bson.types.ObjectId;
 
 import java.util.List;

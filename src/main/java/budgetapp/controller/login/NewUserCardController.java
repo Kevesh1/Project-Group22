@@ -1,5 +1,6 @@
-package budgetapp.controller;
+package budgetapp.controller.login;
 
+import budgetapp.controller.login.FrontPageController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
