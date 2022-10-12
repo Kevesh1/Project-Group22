@@ -209,7 +209,7 @@ public class MainController extends AnchorPane{
         subCategoryController.parentController.categoryItem.removeSubcategoryBudget(subCategoryController.subCategory);
         subCategoryController.subCategory.setName(newSubCategoryName.getText());
         subCategoryController.subCategory.setBudget(Double.parseDouble(newSubCategoryBudget.getText()));
-        subCategoryController.parentController.categoryItem.addSubcategoryBudget();
+        subCategoryController.parentController.categoryItem.addSubcategoryBudget(subCategoryController.subCategory);
         updateCategoryList();
         showMainView();
     }

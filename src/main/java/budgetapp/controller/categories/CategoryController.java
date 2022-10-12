@@ -109,9 +109,11 @@ public class CategoryController extends AnchorPane {
     public void updateSubCategories(){
         System.out.println(categoryItem.getSubCategories());
         parentController.updateCategoryList();
+        System.out.println(index);
         for (CategorySubItem subCategory : categoryItem.getSubCategories()) {
             SubCategoryController subCategoryController = new SubCategoryController(this, subCategory);
             parentController.categoriesFlowPane.getChildren().add(index,subCategoryController);
+            index += 1;
         }
     }
 

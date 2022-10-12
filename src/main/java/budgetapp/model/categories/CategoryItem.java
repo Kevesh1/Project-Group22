@@ -36,8 +36,15 @@ public class CategoryItem extends AbstractCategoryItem{
         subCategories.remove(subcategory);
     }
 
+    //Overload
     public void addSubcategoryBudget(){
         incrementBudget((int) subCategories.get(subCategories.size() - 1).getBudget());
+
+    }
+    //Overload
+    public void addSubcategoryBudget(CategorySubItem subCategory){
+        incrementBudget((int)subCategory.getBudget());
+
     }
 
     public void removeSubcategoryBudget(CategorySubItem subCategory){
