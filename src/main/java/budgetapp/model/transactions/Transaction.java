@@ -10,8 +10,9 @@ public abstract class Transaction {
     private String annotation;
     private String date;
     private YearMonth yearMonth;
+    private Category category;
 
-    public Transaction(Double sum, String annotation, String date) {
+    public Transaction(Double sum, String annotation, String date, Category category) {
         this.sum = sum;
         this.annotation = annotation;
         this.date = date;
@@ -44,6 +45,16 @@ public abstract class Transaction {
     public void setYearMonth(YearMonth yearMonth) {
         this.yearMonth = yearMonth;
     }
+
+
+
+    public Category getCategory() {
+        return category;
+    }
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
 
 
 }

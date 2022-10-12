@@ -1,5 +1,10 @@
 package budgetapp.controller;
 
+import budgetapp.controller.categories.CategoryController;
+import budgetapp.model.categories.Category;
+import budgetapp.model.categories.CategoryItem;
+import budgetapp.model.categories.CategorySubItem;
+import budgetapp.model.transactions.Expense;
 import budgetapp.model.transactions.Transaction;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +21,10 @@ public class TransactionController extends AnchorPane {
     @FXML
     Label latestPurchaseCost;
 
-    private Transaction transaction;
+    private Expense expense;
     private MainController parentController;
 
-    public TransactionController(MainController parentController, Transaction transaction) {
+    public TransactionController(MainController parentController, Expense expense) {
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/Expense.fxml"));
         root.setRoot(this);
         root.setController(this);
@@ -29,22 +34,22 @@ public class TransactionController extends AnchorPane {
         }
 
         this.parentController = parentController;
-        this.transaction = transaction;
-
+        this.expense = expense;
         setLabels();
-
     }
+
     private void setLabels(){
-        latestPurchaseNotation.setText(transaction.getAnnotation());
-        latestPurchaseDate.setText(String.valueOf(transaction.getDate()));
-        latestPurchaseCost.setText(String.valueOf(transaction.getSum()));
+        latestPurchaseNotation.setText(expense.getAnnotation());
+        latestPurchaseDate.setText(String.valueOf(expense.getDate()));
+        latestPurchaseCost.setText(String.valueOf(expense.getSum()));
     }
 
     //TODO Fix so the corresponding subcategory removes the transaction cost from itself
     @FXML
     private void deleteTransaction(){
-        parentController.selectedBudgetMonth.removeTransaction(transaction);
+        expense.getSubCategory().decrementBudgetSpent((int) expense.getSum());
+        parentController.selectedBudgetMonth.removeExpense(expense);
         parentController.updateLatestTransaction();
-
+        parentController.updateCategoryList();
     }
 }

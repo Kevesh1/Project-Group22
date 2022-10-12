@@ -1,6 +1,7 @@
 package budgetapp.controller.categories;
 
 import budgetapp.model.categories.CategorySubItem;
+import budgetapp.model.transactions.Expense;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -46,9 +47,21 @@ public class SubCategoryController extends AnchorPane {
 
     @FXML
     private void removeSubCategory(){
+        int i = 0;
+        for (Expense expense : subCategory.getExpenses()){
+            if (expense == parentController.parentController.selectedBudgetMonth.getExpenses().get(i)){
+                parentController.parentController.selectedBudgetMonth.removeExpense(expense);
+                System.out.println("INSIDE FOR");
+            }
+            else
+                i+=1;
+            System.out.println("AFTER FOR LOOP");
+        }
         parentController.categoryItem.removeSubcategory(this.subCategory);
         parentController.categoryItem.removeSubcategoryBudget(subCategory);
         parentController.updateSubCategories();
+        parentController.parentController.updateLatestTransaction();
+
     }
 
     //try and fix this method

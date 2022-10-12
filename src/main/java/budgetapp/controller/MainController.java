@@ -128,13 +128,17 @@ public class MainController extends AnchorPane{
     @FXML
     private void addExpense(){
         Double cost = Double.valueOf(newExpenseAmount.getText());
+        System.out.println(cost);
         String note = newExpenseNote.getText();
         String date = newExpenseDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         System.out.println((newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().toString()));
         Category category = Category.valueOf(newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getName());
 
-        String subCategory = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem().toString();
-        selectedBudgetMonth.addTransaction(new Expense(cost, note, date, category, subCategory));
+
+        CategorySubItem subCategory = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
+        Expense expense = new Expense(cost, note, date, category, subCategory);
+        selectedBudgetMonth.addExpense(expense);
+        subCategory.addExpense(expense);
 
         CategorySubItem subItem = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
         subItem.incrementBudgetSpent(Integer.parseInt(newExpenseAmount.getText()));
@@ -150,7 +154,7 @@ public class MainController extends AnchorPane{
         String note = newIncomeNote.getText();
         String date = newIncomeDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         //Category category = Category.valueOf(newIncomeCategoryComboBox.getSelectionModel().getSelectedItem().toString());
-        selectedBudgetMonth.addTransaction(new Income(cost, note, date));
+        //selectedBudgetMonth.addIncome(new Income(cost, note, date, Category.Income));
         updateLatestTransaction();
         showMainView();
     }
@@ -403,8 +407,8 @@ public class MainController extends AnchorPane{
 
     public void updateLatestTransaction(){
         latestPurchases.getChildren().clear();
-        for (Transaction transaction : selectedBudgetMonth.getTransactions()){
-            TransactionController transactionController = new TransactionController(this, transaction);
+        for (Expense expense : selectedBudgetMonth.getExpenses()){
+            TransactionController transactionController = new TransactionController(this, expense);
             latestPurchases.getChildren().add(transactionController);
         }
     }
@@ -417,13 +421,13 @@ public class MainController extends AnchorPane{
         CategoryItem tempCategoryItem2 = new CategoryItem(300, Category.Transportation);
         tempCategoryItem1.addSubCategory(new CategorySubItem(40, "AHHH"));
 
-        tempBudgetMonth1.addTransaction(new Expense(100.0,"McDonalds", "7 -23-2018", Category.Food,"a"));
+       /* tempBudgetMonth1.addTransaction(new Expense(100.0,"McDonalds", "7 -23-2018", Category.Food,"a"));
         tempBudgetMonth1.addTransaction(new Expense(100.0,"Taxi", "7-23-2018", Category.Transportation,"b"));
         tempBudgetMonth1.addTransaction(new Expense(100.0,"Dator", "7-23-2018", Category.Hobbies,"s"));
         tempBudgetMonth1.addTransaction(new Expense(100.0,"Investment", "7-23-2018", Category.Savings,"a"));
         tempBudgetMonth2.addTransaction(new Expense(100.0,"Shopping", "2018- 07 - 23", Category.Hobbies,"f"));
-
-        tempBudgetMonth1.addTransaction(new Income(10000.0, "Salary", "2022-07-07"));
+*/
+        //tempBudgetMonth1.addIncome(new Income(10000.0, "Salary", "2022-07-07", Category.Income));
 
         //tempCategoryItem1.incrementBudgetSpent(50);
         tempBudgetMonth1.addCategoryItem(new CategoryItem(200, Category.Savings));
