@@ -1,10 +1,9 @@
-package DAO.MongoDB.DTO;
+package DAO.MongoDB.DTO.categories;
 
 import budgetapp.model.categories.Category;
-import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
 
-public final class CategoryDto {
+public final class CategoryItemDto {
 
     private ObjectId id;
 
@@ -22,7 +21,7 @@ public final class CategoryDto {
         return category;
     }
 
-    public CategoryDto setCategory(Category category) {
+    public CategoryItemDto setCategory(Category category) {
         this.category = category;
         return this;
     }
@@ -31,7 +30,7 @@ public final class CategoryDto {
         return budget;
     }
 
-    public CategoryDto setBudget(double budget) {
+    public CategoryItemDto setBudget(double budget) {
         this.budget = budget;
         return this;
     }
@@ -40,8 +39,18 @@ public final class CategoryDto {
         return budgetSpent;
     }
 
-    public CategoryDto setBudgetSpent(double budgetSpent) {
+    public CategoryItemDto setBudgetSpent(double budgetSpent) {
         this.budgetSpent = budgetSpent;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoryDto{" +
+                "id=" + id +
+                ", category=" + category +
+                ", budget=" + budget +
+                ", budgetSpent=" + budgetSpent +
+                '}';
     }
 }

@@ -1,9 +1,7 @@
-package budgetapp.controller;
+package budgetapp.controller.users;
 
-import budgetapp.model.ProfileIcon;
-import budgetapp.model.User;
+import budgetapp.model.account.ProfileIcon;
 import javafx.fxml.FXML;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;

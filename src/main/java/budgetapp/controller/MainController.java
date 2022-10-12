@@ -4,20 +4,18 @@ import DAO.MongoDB.AccountDao;
 import budgetapp.controller.categories.CategoryController;
 import budgetapp.controller.categories.SubCategoryController;
 import budgetapp.model.*;
+import budgetapp.model.account.User;
 import budgetapp.model.categories.AbstractCategoryItem;
 import budgetapp.model.categories.Category;
 import budgetapp.model.categories.CategoryItem;
-import budgetapp.model.categories.CategorySubItem;
+import budgetapp.model.categories.SubCategoryItem;
 import budgetapp.model.transactions.Expense;
 import budgetapp.model.transactions.Income;
 import budgetapp.model.transactions.Transaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
@@ -25,8 +23,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import org.jetbrains.annotations.NotNull;
@@ -121,7 +117,7 @@ public class MainController extends AnchorPane{
     @FXML
     TextArea newIncomeNote;
     @FXML
-    ComboBox<CategorySubItem> newExpenseSubCategoryComboBox;
+    ComboBox<SubCategoryItem> newExpenseSubCategoryComboBox;
 
 
     @FXML
@@ -140,7 +136,7 @@ public class MainController extends AnchorPane{
         String subCategory = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem().toString();
         selectedBudgetMonth.addTransaction(new Expense(cost, note, date, category, subCategory));
 
-        CategorySubItem subItem = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
+        SubCategoryItem subItem = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
         subItem.incrementBudgetSpent(Integer.parseInt(newExpenseAmount.getText()));
 
         updateLatestTransaction();
@@ -258,8 +254,8 @@ public class MainController extends AnchorPane{
     private void addNewSubCategory(){
         String name = newSubCategoryName.getText();
         double budget = Double.parseDouble(newSubCategoryBudget.getText());
-        CategorySubItem categorySubItem = new CategorySubItem(budget,name);
-        categoryController.categoryItem.addSubCategory(categorySubItem);
+        SubCategoryItem subCategoryItem = new SubCategoryItem(budget,name);
+        categoryController.categoryItem.addSubCategory(subCategoryItem);
         categoryController.categoryItem.addSubcategoryBudget();
         //categoryController.subCategories.add(categorySubItem);
         categoryController.updateSubCategories();
@@ -282,7 +278,7 @@ public class MainController extends AnchorPane{
 
     @FXML
     private void LoadSubCategoryComboBox(){
-        ObservableList<CategorySubItem> subCategories = FXCollections.observableArrayList();
+        ObservableList<SubCategoryItem> subCategories = FXCollections.observableArrayList();
         subCategories.addAll(newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getSubCategories());
 
         newExpenseSubCategoryComboBox.setItems(subCategories);
@@ -419,7 +415,7 @@ public class MainController extends AnchorPane{
         BudgetMonth tempBudgetMonth3 = (new BudgetMonth(7000, 2022, Month.OCTOBER));
         CategoryItem tempCategoryItem1 = new CategoryItem(0, Category.Food);
         CategoryItem tempCategoryItem2 = new CategoryItem(300, Category.Transportation);
-        tempCategoryItem1.addSubCategory(new CategorySubItem(40, "AHHH"));
+        tempCategoryItem1.addSubCategory(new SubCategoryItem(40, "AHHH"));
 
         tempBudgetMonth1.addTransaction(new Expense(100.0,"McDonalds", "7 -23-2018", Category.Food,"a"));
         tempBudgetMonth1.addTransaction(new Expense(100.0,"Taxi", "7-23-2018", Category.Transportation,"b"));
@@ -484,15 +480,15 @@ public class MainController extends AnchorPane{
 
     };
 
-    private StringConverter<CategorySubItem> comboBoxSubCategoryStringConverter = new StringConverter<CategorySubItem>() {
+    private StringConverter<SubCategoryItem> comboBoxSubCategoryStringConverter = new StringConverter<SubCategoryItem>() {
 
         @Override
-        public String toString(CategorySubItem categorySubItem) {
-            return categorySubItem.getName();
+        public String toString(SubCategoryItem subCategoryItem) {
+            return subCategoryItem.getName();
         }
 
         @Override
-        public CategorySubItem fromString(String string) {
+        public SubCategoryItem fromString(String string) {
             return null;
         }
     };

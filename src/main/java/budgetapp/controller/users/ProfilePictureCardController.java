@@ -1,6 +1,7 @@
-package budgetapp.controller;
+package budgetapp.controller.users;
 
-import budgetapp.model.ProfileIcon;
+import budgetapp.controller.users.SelectProfilePictureController;
+import budgetapp.model.account.ProfileIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

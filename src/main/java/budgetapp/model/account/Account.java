@@ -1,4 +1,4 @@
-package budgetapp.model;
+package budgetapp.model.account;
 
 import org.bson.types.ObjectId;
 

@@ -3,9 +3,8 @@ package budgetapp.controller.categories;
 import budgetapp.controller.TransactionController;
 import budgetapp.controller.MainController;
 import budgetapp.model.transactions.Expense;
-import budgetapp.model.transactions.Transaction;
 import budgetapp.model.categories.CategoryItem;
-import budgetapp.model.categories.CategorySubItem;
+import budgetapp.model.categories.SubCategoryItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -80,9 +79,9 @@ public class CategoryController extends AnchorPane {
     }
 
     private void subCategoriesMock(){
-        CategorySubItem subCategory1 = new CategorySubItem(20,"Food");
-        CategorySubItem subCategory2 = new CategorySubItem(20,"Buzz");
-        CategorySubItem subCategory3 = new CategorySubItem(20,"Food");
+        SubCategoryItem subCategory1 = new SubCategoryItem(20,"Food");
+        SubCategoryItem subCategory2 = new SubCategoryItem(20,"Buzz");
+        SubCategoryItem subCategory3 = new SubCategoryItem(20,"Food");
 
         categoryItem.addSubCategory(subCategory1);
         categoryItem.addSubCategory(subCategory2);
@@ -109,7 +108,7 @@ public class CategoryController extends AnchorPane {
     public void updateSubCategories(){
         System.out.println(categoryItem.getSubCategories());
         parentController.updateCategoryList();
-        for (CategorySubItem subCategory : categoryItem.getSubCategories()) {
+        for (SubCategoryItem subCategory : categoryItem.getSubCategories()) {
             SubCategoryController subCategoryController = new SubCategoryController(this, subCategory);
             parentController.categoriesFlowPane.getChildren().add(index,subCategoryController);
         }

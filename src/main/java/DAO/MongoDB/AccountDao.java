@@ -2,7 +2,7 @@ package DAO.MongoDB;
 
 import DAO.MongoDB.DTO.AccountDto;
 import DAO.MongoDB.DTO.UserDto;
-import budgetapp.model.Account;
+import budgetapp.model.account.Account;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
@@ -10,12 +10,10 @@ import org.bson.types.ObjectId;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
 
-import javax.swing.text.html.Option;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.mongodb.client.model.Filters.and;
-import static com.mongodb.client.model.Filters.mod;
 
 public class AccountDao implements IAccountDao {
 

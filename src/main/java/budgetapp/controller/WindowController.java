@@ -1,6 +1,7 @@
 package budgetapp.controller;
 
-import budgetapp.model.Account;
+import budgetapp.controller.login.AccountLoginController;
+import budgetapp.model.account.Account;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 

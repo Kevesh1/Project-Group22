@@ -1,8 +1,9 @@
-package budgetapp.controller;
+package budgetapp.controller.login;
 
-import budgetapp.App;
-import budgetapp.model.Account;
-import budgetapp.model.User;
+import budgetapp.controller.MainController;
+import budgetapp.controller.users.UserCardController;
+import budgetapp.model.account.Account;
+import budgetapp.model.account.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +11,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.util.ArrayList;

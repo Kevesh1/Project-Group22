@@ -9,13 +9,13 @@ import java.util.Objects;
 
 
 public class CategoryItem extends AbstractCategoryItem{
-    private List<CategorySubItem> subCategories;
+    private List<SubCategoryItem> subCategories;
     private Category category;
 
 
     public CategoryItem(double budget, @NotNull Category category) {
         super(category.toString(), budget);
-        this.subCategories = new ArrayList<CategorySubItem>();
+        this.subCategories = new ArrayList<SubCategoryItem>();
         this.category = category;
     }
 
@@ -25,14 +25,14 @@ public class CategoryItem extends AbstractCategoryItem{
                 "budgetapp/img/categories/" + getCategory().toString().toLowerCase() + ".png"))));
     }
 
-    public List<CategorySubItem> getSubCategories() {
+    public List<SubCategoryItem> getSubCategories() {
         return subCategories;
     }
 
-    public void addSubCategory(CategorySubItem subCategory) {
+    public void addSubCategory(SubCategoryItem subCategory) {
         subCategories.add(subCategory);
     }
-    public void removeSubcategory(CategorySubItem subcategory) {
+    public void removeSubcategory(SubCategoryItem subcategory) {
         subCategories.remove(subcategory);
     }
 
@@ -40,7 +40,7 @@ public class CategoryItem extends AbstractCategoryItem{
         incrementBudget((int) subCategories.get(subCategories.size() - 1).getBudget());
     }
 
-    public void removeSubcategoryBudget(CategorySubItem subCategory){
+    public void removeSubcategoryBudget(SubCategoryItem subCategory){
         decrementBudget((int)subCategory.getBudget());
     }
 

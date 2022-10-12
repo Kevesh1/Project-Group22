@@ -1,7 +1,7 @@
-package budgetapp.controller;
+package budgetapp.controller.login;
 
 import DAO.MongoDB.AccountDao;
-import budgetapp.model.Account;
+import budgetapp.model.account.Account;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

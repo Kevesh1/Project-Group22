@@ -1,11 +1,10 @@
 package budgetapp;
 
 import DAO.MongoDB.MongoDBService;
-import budgetapp.controller.FrontPageController;
-import budgetapp.controller.MainController;
+import budgetapp.controller.login.FrontPageController;
 import budgetapp.controller.WindowController;
-import budgetapp.model.Account;
-import budgetapp.model.User;
+import budgetapp.model.account.Account;
+import budgetapp.model.account.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

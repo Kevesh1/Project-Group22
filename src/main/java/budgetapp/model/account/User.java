@@ -1,4 +1,4 @@
-package budgetapp.model;
+package budgetapp.model.account;
 
 import java.util.ArrayList;
 import java.util.List;

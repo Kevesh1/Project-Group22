@@ -1,6 +1,7 @@
-package budgetapp.controller;
+package budgetapp.controller.users;
 
-import budgetapp.model.User;
+import budgetapp.controller.login.FrontPageController;
+import budgetapp.model.account.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;

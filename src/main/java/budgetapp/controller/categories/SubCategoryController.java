@@ -1,6 +1,6 @@
 package budgetapp.controller.categories;
 
-import budgetapp.model.categories.CategorySubItem;
+import budgetapp.model.categories.SubCategoryItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 public class SubCategoryController extends AnchorPane {
 
     public CategoryController parentController;
-    public CategorySubItem subCategory;
+    public SubCategoryItem subCategory;
 
     @FXML
     private Label subCategoryName;
@@ -24,7 +24,7 @@ public class SubCategoryController extends AnchorPane {
 
 
 
-    public SubCategoryController(CategoryController parentController, CategorySubItem subCategory) {
+    public SubCategoryController(CategoryController parentController, SubCategoryItem subCategory) {
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/subCategory.fxml"));
         root.setRoot(this);
         root.setController(this);

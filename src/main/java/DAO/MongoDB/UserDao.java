@@ -1,14 +1,12 @@
 package DAO.MongoDB;
 
 import DAO.MongoDB.DTO.UserDto;
-import budgetapp.model.Account;
-import budgetapp.model.User;
+import budgetapp.model.account.Account;
+import budgetapp.model.account.User;
 import com.mongodb.client.MongoCollection;
-import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.modelmapper.ModelMapper;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;

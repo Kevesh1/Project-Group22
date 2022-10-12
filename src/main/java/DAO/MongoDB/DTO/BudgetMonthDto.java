@@ -1,7 +1,7 @@
 package DAO.MongoDB.DTO;
 
+import DAO.MongoDB.DTO.categories.CategoryItemDto;
 import org.bson.codecs.pojo.annotations.BsonId;
-import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
 import java.time.Month;
@@ -17,7 +17,7 @@ public class BudgetMonthDto {
 
     private Month month;
 
-    private List<CategoryDto> categories;
+    private List<CategoryItemDto> categories;
 
     public ObjectId getId() {
         return id;
@@ -50,12 +50,23 @@ public class BudgetMonthDto {
         return this;
     }
 
-    public List<CategoryDto> getCategories() {
+    public List<CategoryItemDto> getCategories() {
         return categories;
     }
 
-    public BudgetMonthDto setCategories(List<CategoryDto> categories) {
+    public BudgetMonthDto setCategories(List<CategoryItemDto> categories) {
         this.categories = categories;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "BudgetMonthDto{" +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", year=" + year +
+                ", month=" + month +
+                ", categories=" + categories +
+                '}';
     }
 }
