@@ -24,7 +24,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="1025.0" styleClass="mainBackground" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="1025.0" styleClass="mainBackground" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="confirmDeletePane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
          <children>
@@ -33,46 +33,6 @@
                   <Label layoutX="15.0" layoutY="14.0" text="Are you sure you want to delete" />
                   <Button fx:id="confirmButton" layoutX="43.0" layoutY="40.0" mnemonicParsing="false" onAction="#removeCategory" text="Yes" />
                   <Button layoutX="100.0" layoutY="40.0" mnemonicParsing="false" onAction="#showMainView" text="Cancel" />
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="addNewSubCategoryPane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
-         <children>
-            <AnchorPane layoutX="351.0" layoutY="194.0" prefHeight="214.0" prefWidth="200.0" style="-fx-background-color: white;">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <children>
-                  <Label layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Subcategory" />
-                  <TextField fx:id="newSubCategoryName" layoutX="26.0" layoutY="68.0" />
-                  <Label fx:id="newCategoryBudgetLabel" layoutX="26.0" layoutY="101.0" prefHeight="26.0" prefWidth="64.0" text="Budget" />
-                  <TextField fx:id="newSubCategoryBudget" layoutX="25.0" layoutY="127.0" />
-                  <Label layoutX="54.0" layoutY="14.0" text="Add Subcategory" />
-                  <Button fx:id="addNewSubCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#addNewSubCategory" text="Add" />
-                  <Button layoutX="75.0" layoutY="174.0" mnemonicParsing="false" text="Cancel" />
-                  <Button layoutX="175.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="x" />
-                  <Button fx:id="updateSubCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#updateSubCategory" text="Update" />
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="addNewCategoryPane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
-         <children>
-            <AnchorPane layoutX="351.0" layoutY="194.0" prefHeight="214.0" prefWidth="200.0" style="-fx-background-color: white;">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <children>
-                  <Button fx:id="updateCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#updateCategory" text="Update" />
-                  <Label fx:id="newCategoryLabel" layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Category" />
-                  <Label fx:id="newCategoryBudgetLabel1" layoutX="26.0" layoutY="101.0" prefHeight="26.0" prefWidth="64.0" text="Budget" />
-                  <TextField fx:id="newCategoryBudget" layoutX="25.0" layoutY="127.0" />
-                  <Label layoutX="63.0" layoutY="14.0" text="Add Category" />
-                  <Button fx:id="addNewCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#addNewCategory" text="Add" />
-                  <Button layoutX="75.0" layoutY="174.0" mnemonicParsing="false" text="Cancel" />
-                  <Button layoutX="175.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="x" />
-                  <ComboBox fx:id="categoryComboBox" layoutX="26.0" layoutY="68.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
          </children>
@@ -157,9 +117,9 @@
             <Button layoutX="886.0" layoutY="100.0" mnemonicParsing="false" onAction="#openIE" text="OpenIE" AnchorPane.rightAnchor="100.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="iEWindow" layoutX="325.0" layoutY="101.0" styleClass="getinthefuckingmiddle" stylesheets="@../css/Styleheet.css">
+      <AnchorPane fx:id="iEWindow" layoutX="1.0" prefHeight="692.0" prefWidth="1025.0" style="-fx-background-color: rgba(0,0,0,0.75);" styleClass="getinthefuckingmiddle">
          <children>
-            <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../css/Styleheet.css" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutX="275.0" layoutY="133.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../css/Styleheet.css" tabClosingPolicy="UNAVAILABLE">
                <tabs>
                   <Tab text="Expense">
                      <content>
@@ -319,6 +279,59 @@
                   </Tab>
                </tabs>
             </TabPane>
+         </children>
+         <stylesheets>
+            <URL value="@../css/Styleheet.css" />
+            <URL value="@../css/modalTab.css" />
+         </stylesheets>
+      </AnchorPane>
+      <AnchorPane fx:id="addNewCategoryPane" prefHeight="693.0" prefWidth="1026.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+         <children>
+            <AnchorPane layoutX="351.0" layoutY="194.0" prefHeight="230.0" prefWidth="250.0" style="-fx-background-color: #36393e; -fx-background-radius: 7;" stylesheets="@../css/Styleheet.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <Button fx:id="updateCategoryButton" layoutX="198.0" layoutY="186.0" mnemonicParsing="false" onAction="#updateCategory" text="Update" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="5.5" />
+                  <Label fx:id="newCategoryLabel" layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Category" />
+                  <Label fx:id="newCategoryBudgetLabel1" layoutX="26.0" layoutY="101.0" prefHeight="26.0" prefWidth="64.0" text="Budget" />
+                  <TextField fx:id="newCategoryBudget" layoutX="25.0" layoutY="127.0">
+                     <stylesheets>
+                        <URL value="@../css/labels.css" />
+                        <URL value="@../css/Styleheet.css" />
+                        <URL value="@../css/modalTab.css" />
+                     </stylesheets></TextField>
+                  <Label layoutX="63.0" layoutY="14.0" text="Add Category" />
+                  <Button fx:id="addNewCategoryButton" layoutX="212.0" layoutY="131.0" mnemonicParsing="false" onAction="#addNewCategory" text="Add" AnchorPane.rightAnchor="5.5" />
+                  <Button layoutX="5.5" layoutY="188.0" mnemonicParsing="false" text="Cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.5" />
+                  <Button layoutX="218.0" layoutY="11.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="x" AnchorPane.rightAnchor="5.5" />
+                  <ComboBox fx:id="categoryComboBox" layoutX="26.0" layoutY="68.0" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="addNewSubCategoryPane" prefHeight="693.0" prefWidth="1026.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+         <children>
+            <AnchorPane layoutX="351.0" layoutY="194.0" prefHeight="230.0" prefWidth="250.0" style="-fx-background-color: #36393e; -fx-background-radius: 7;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <Label layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Subcategory" />
+                  <TextField fx:id="newSubCategoryName" layoutX="26.0" layoutY="68.0" prefHeight="29.0" prefWidth="170.0" />
+                  <Label fx:id="newCategoryBudgetLabel" layoutX="26.0" layoutY="101.0" prefHeight="26.0" prefWidth="64.0" text="Budget" />
+                  <TextField fx:id="newSubCategoryBudget" layoutX="25.0" layoutY="127.0" prefHeight="29.0" prefWidth="170.0" />
+                  <Label layoutX="54.0" layoutY="14.0" text="Add Subcategory" />
+                  <Button fx:id="addNewSubCategoryButton" layoutX="209.0" layoutY="130.0" mnemonicParsing="false" onAction="#addNewSubCategory" text="Add" AnchorPane.rightAnchor="8.5" />
+                  <Button layoutX="75.0" layoutY="174.0" mnemonicParsing="false" text="Cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="8.5" />
+                  <Button layoutX="199.0" layoutY="11.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="x" AnchorPane.rightAnchor="8.5" />
+                  <Button fx:id="updateSubCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#updateSubCategory" text="Update" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="8.5" />
+               </children>
+               <stylesheets>
+                  <URL value="@../css/Styleheet.css" />
+                  <URL value="@../css/modalTab.css" />
+               </stylesheets>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

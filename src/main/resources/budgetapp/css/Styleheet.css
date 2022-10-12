@@ -3,6 +3,14 @@
     -fx-font-family: "Montserrat";
     src:local("./font/montserrat/Montserrat-ExtraBold.ttf")
 }
+*{
+    -fx-theme-color: #33455e;
+    -fx-dark-color: #424549;
+    -fx-darker-color: #36393E;
+    -fx-darkest-color:#282b30;                 
+    -fx-text-color: #BCBCBC;
+}
+
 .label{
     -fx-font-weight: bold;
 }
@@ -131,6 +139,8 @@
     -fx-text-fill: -fx-text-color;
     -fx-font-size: 15;
     -fx-font-weight: bold;
+     -fx-effect: dropshadow( one-pass-box, rgba(36,36,36,0.32),6,0.0,-1,2);
+
 }
 .text-area .content {
     -fx-background-color: -fx-dark-color;
@@ -141,15 +151,6 @@
     -fx-padding: 0.0em 0.0em 0.0em 3.583em;
     -fx-alignment: center;
 }
-
-*{
-    -fx-theme-color: #33455e;
-    -fx-dark-color: #424549;
-    -fx-darker-color: #36393E;
-    -fx-darkest-color:#282b30;
-    -fx-text-color: #BCBCBC;
-}
-
 .tab-pane .tab-header-area .tab-header-background {
     -fx-opacity: 0;
 }
@@ -186,6 +187,8 @@
 .combo-box{
     -fx-background-color: -fx-dark-color;
     -fx-text-fill: -fx-text-color;
+    -fx-effect: dropshadow( one-pass-box, rgba(36,36,36,0.32),6,0.0,-1,2);
+
 }
 
 .combo-box .content{
@@ -211,9 +214,12 @@
 .button{
     -fx-background-color: -fx-theme-color;
     -fx-text-fill: -fx-text-color;
-    -fx-font-size: 20;
-    -fx-border-color: -fx-dark-color;
+    -fx-font-size: 10;
+    -fx-border-color: transparent;
     -fx-background-radius: 7;
+    -fx-effect: dropshadow( one-pass-box, rgba(36,36,36,0.32),6,0.0,-1,2);
+
+
 }
 
 .button:hover{

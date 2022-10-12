@@ -10,7 +10,7 @@
     -fx-background-color: -fx-theme-color;
     -fx-text-fill: -fx-text-color;
     -fx-font-size: 20;
-    -fx-border-color: -fx-dark-color;
+    -fx-border-color: transparent;
     -fx-background-radius: 7;
 }
 
