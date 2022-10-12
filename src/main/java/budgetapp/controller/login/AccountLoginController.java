@@ -1,6 +1,6 @@
 package budgetapp.controller.login;
 
-import DAO.MongoDB.AccountDao;
+import dataaccess.mongodb.dao.account.AccountDao;
 import budgetapp.model.account.Account;
 import javafx.event.Event;
 import javafx.fxml.FXML;

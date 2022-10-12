@@ -1,4 +1,4 @@
-package DAO.MongoDB.DTO.categories;
+package dataaccess.mongodb.dto.categories;
 
 import budgetapp.model.categories.Category;
 import org.bson.types.ObjectId;

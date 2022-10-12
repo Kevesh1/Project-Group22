@@ -1,6 +1,6 @@
-package DAO.MongoDB.DTO;
+package dataaccess.mongodb.dto;
 
-import DAO.MongoDB.DTO.categories.CategoryItemDto;
+import dataaccess.mongodb.dto.categories.CategoryItemDto;
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
 

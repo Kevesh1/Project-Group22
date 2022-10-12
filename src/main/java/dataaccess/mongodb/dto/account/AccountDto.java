@@ -1,10 +1,11 @@
-package DAO.MongoDB.DTO;
+package dataaccess.mongodb.dto.account;
 
+import dataaccess.mongodb.dto.Dto;
 import org.bson.types.ObjectId;
 
 import java.util.List;
 
-public final class AccountDto {
+public final class AccountDto implements Dto {
     private ObjectId id;
 
     private String username;

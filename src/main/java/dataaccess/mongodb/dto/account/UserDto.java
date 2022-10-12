@@ -1,6 +1,6 @@
-package DAO.MongoDB.DTO;
+package dataaccess.mongodb.dto.account;
 
-import org.bson.codecs.pojo.annotations.BsonProperty;
+import dataaccess.mongodb.dto.Dto;
 import org.bson.types.ObjectId;
 
 public final class UserDto implements Dto {

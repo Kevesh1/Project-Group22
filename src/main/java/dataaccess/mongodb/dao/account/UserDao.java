@@ -1,6 +1,7 @@
-package DAO.MongoDB;
+package dataaccess.mongodb.dao.account;
 
-import DAO.MongoDB.DTO.UserDto;
+import dataaccess.mongodb.MongoDBService;
+import dataaccess.mongodb.dto.account.UserDto;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
 import com.mongodb.client.MongoCollection;

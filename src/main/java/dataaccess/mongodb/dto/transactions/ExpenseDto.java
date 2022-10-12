@@ -1,4 +1,4 @@
-package DAO.MongoDB.DTO.transactions;
+package dataaccess.mongodb.dto.transactions;
 
 import org.bson.types.ObjectId;
 

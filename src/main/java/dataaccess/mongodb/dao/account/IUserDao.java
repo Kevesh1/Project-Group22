@@ -1,4 +1,4 @@
-package DAO.MongoDB;
+package dataaccess.mongodb.dao.account;
 
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;

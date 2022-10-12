@@ -1,7 +1,8 @@
-package DAO.MongoDB;
+package dataaccess.mongodb.dao.account;
 
-import DAO.MongoDB.DTO.AccountDto;
-import DAO.MongoDB.DTO.UserDto;
+import dataaccess.mongodb.MongoDBService;
+import dataaccess.mongodb.dto.account.AccountDto;
+import dataaccess.mongodb.dto.account.UserDto;
 import budgetapp.model.account.Account;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
@@ -33,11 +34,10 @@ public class AccountDao implements IAccountDao {
         modelMapper.getConfiguration()
                 .setFieldMatchingEnabled(true)
                 .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
-        ArrayList<Account> accounts = new ArrayList<>();
+        List<Account> accounts = new ArrayList<>();
         collection.find(new Document(), AccountDto.class)
                 .into(new ArrayList<>())
                 .forEach(accountDto -> accounts.add(modelMapper.map(accountDto, Account.class)));
-        System.out.println(accounts.get(0).getUsername());
         return accounts;
     }
 
@@ -55,7 +55,7 @@ public class AccountDao implements IAccountDao {
     @Override
     public void deleteAccount(Account account) {
         AccountDto accountDto = modelMapper.map(account, AccountDto.class);
-        //collection.deleteOne(new Document(),Filters.eq("id", account.getUsername()), accountDto);
+        //collection.deleteOne(new Document(), );
     }
 
     @Override

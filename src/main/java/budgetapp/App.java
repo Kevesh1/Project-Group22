@@ -1,6 +1,6 @@
 package budgetapp;
 
-import DAO.MongoDB.MongoDBService;
+import dataaccess.mongodb.MongoDBService;
 import budgetapp.controller.login.FrontPageController;
 import budgetapp.controller.WindowController;
 import budgetapp.model.account.Account;
