@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.users.CreateNewUserController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="214.0" layoutY="39.0" mnemonicParsing="false" onAction="#chooseProfilePicture" AnchorPane.leftAnchor="214.0">
          <graphic>
@@ -31,4 +31,4 @@
       <Text layoutX="126.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="63.58447265625" />
       <Text layoutX="65.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Re-enter password:" />
    </children>
-</AnchorPane>
+</fx:root>

@@ -1,6 +1,8 @@
-package budgetapp.controller.login;
+package budgetapp.controller.users;
 
 import budgetapp.controller.login.FrontPageController;
+import budgetapp.model.account.Account;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +18,11 @@ import java.util.Objects;
 
 public class NewUserCardController extends VBox {
 
+
     FrontPageController parentController;
+
+    @FXML
+    public Account account;
 
     @FXML
     public ImageView BlankProfilePicture;
@@ -58,13 +64,13 @@ public class NewUserCardController extends VBox {
         newUserLabel.setText("New user");
     }
 
-    /*
+
     @FXML
-    public void selectUserAction() {
-        parentController.createUserSelect();
+    public void selectUserAction(Event event) {
+        parentController.createUserCreateViewController(account);
 
     }
-     */
+
 
 }
 

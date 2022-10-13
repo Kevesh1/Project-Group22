@@ -1,6 +1,7 @@
 package budgetapp.controller.login;
 
 import budgetapp.controller.MainController;
+import budgetapp.controller.users.NewUserCardController;
 import budgetapp.controller.users.UserCreateViewController;
 import budgetapp.controller.users.UserCardController;
 import budgetapp.model.account.Account;
@@ -87,9 +88,14 @@ public class FrontPageController extends AnchorPane {
     }
 
 
-    public void createUserCreateViewController() {
-        UserCreateViewController userCreateViewController = new UserCreateViewController(account);
+    public void createUserCreateViewController(Account account) {
+        UserCreateViewController userCreateViewController = new UserCreateViewController(this.account);
         this.getScene().setRoot(userCreateViewController);
+    }
+
+    public void createAccountLoginController() {
+        AccountLoginController accountLoginController = new AccountLoginController();
+        this.getScene().setRoot(accountLoginController);
     }
 
 
@@ -113,20 +119,13 @@ public class FrontPageController extends AnchorPane {
     }
 
 
-
-    /*
-    @FXML
-    public void createUserSelect(ActionEvent event) throws IOException {
-        createUserCreateViewController(account);
-    }
-     */
-
     @FXML
     public void manageUserAccountsAction(ActionEvent event) throws IOException{
     }
 
     @FXML
     public void logoutAction(ActionEvent event) throws IOException {
+        createAccountLoginController();
     }
 
 
