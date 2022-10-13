@@ -3,7 +3,7 @@ package budgetapp.model.account;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User implements ILocked{
     private String firstName;
     private String lastName;
     private String profilePicture;
@@ -110,4 +110,13 @@ public class User {
     }
 
 
+    @Override
+    public void lock() {
+
+    }
+
+    @Override
+    public void unlock() {
+
+    }
 }

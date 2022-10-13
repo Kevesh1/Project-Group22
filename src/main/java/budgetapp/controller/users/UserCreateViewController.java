@@ -67,11 +67,15 @@ public class UserCreateViewController extends AnchorPane {
     @FXML
     public void profileFinishedAction(ActionEvent event) {
         if (controlAllInputs() && samePassword()){
-            User user = new User(firstNameInput.getText(), lastNameInput.getText(), createPassword.getText());
-            user.setProfilePicture(chooseProfilePictureButton.toString());
+            createNewUser();
             createFrontPage();
         }
 
+    }
+
+    private void createNewUser() {
+        User user = new User(firstNameInput.getText(), lastNameInput.getText(), createPassword.getText());
+        user.setProfilePicture(chooseProfilePictureButton.toString());
     }
 
     @FXML

@@ -39,8 +39,12 @@ public class ProfilePictureCardController extends AnchorPane {
         {
             throw new RuntimeException(exception);
         }
-        setIconData(profileIcon);
 
+    }
+
+    @FXML
+    public void initilize(){
+        setIconData(profileIcon);
     }
 
     public void setIconData(ProfileIcon profileIcon){
