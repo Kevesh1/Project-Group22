@@ -26,6 +26,7 @@ import javafx.util.StringConverter;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -64,7 +65,7 @@ public class MainController extends AnchorPane{
 
 
     @FXML
-    ComboBox categoryComboBox;
+    ComboBox<Category> categoryComboBox;
     @FXML
     ComboBox categoryComboBox2;
     @FXML
@@ -299,11 +300,12 @@ public class MainController extends AnchorPane{
     private CategoryController categoryController;
     private SubCategoryController subCategoryController;
     public BudgetMonth selectedBudgetMonth;
-    ObservableList<BudgetMonth> budgetMonths =  FXCollections.observableArrayList();
+    ObservableList<BudgetMonth> budgetMonths;
 
 
     public MainController(User user) {
         this.user = user;
+        this.budgetMonths = FXCollections.observableArrayList();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -372,13 +374,15 @@ public class MainController extends AnchorPane{
 
     private void initializeCategoryComboBox(){
         ObservableList<Category> categories = FXCollections.observableArrayList();
-        categories.addAll(Arrays.asList(Category.values()));
+        categories.addAll(List.of(Category.values()));
         categoryComboBox.setItems(categories);
         categoryComboBox.getSelectionModel().selectFirst();
 
     }
 
     private void LoadExpenseCategoriesComboBox(){
+        newExpenseDate.setValue(LocalDate.now());
+        newIncomeDate.setValue(LocalDate.now());
         ObservableList<CategoryItem> categories = FXCollections.observableArrayList();
         categories.addAll(selectedBudgetMonth.getCategories());
         newExpenseCategoryComboBox.setItems(categories);

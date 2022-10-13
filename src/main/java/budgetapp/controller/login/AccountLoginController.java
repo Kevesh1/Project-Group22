@@ -2,6 +2,7 @@ package budgetapp.controller.login;
 
 import dataaccess.mongodb.dao.account.AccountDao;
 import budgetapp.model.account.Account;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -60,17 +63,26 @@ public class AccountLoginController extends BorderPane {
     }
 
     @FXML
-    public void loginEvent(Event event) {
-        final Node node = (Node)event.getSource();
-        Stage stage = (Stage)node.getScene().getWindow();
-        accountDao.getAllAccounts();
+    public void onEnter(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER)
+        {
+            tryLogin();
+        }
+        event.consume();
+    }
+
+    private void tryLogin() {
         account = accountDao.validateAccount(username.getText(), password.getText());
         if(account.isPresent()) {
-
+            Stage stage = (Stage)this.getScene().getWindow();
             stage.close();
         }
         else loginFail();
+    }
 
+    @FXML
+    public void loginEvent(Event event) {
+        tryLogin();
         event.consume();
     }
 
