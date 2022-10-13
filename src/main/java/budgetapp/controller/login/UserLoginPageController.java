@@ -1,6 +1,7 @@
 package budgetapp.controller.login;
 
 import budgetapp.controller.MainController;
+import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -30,8 +31,17 @@ public class UserLoginPageController extends AnchorPane {
 
     public User user;
 
-    public UserLoginPageController(User user){
+    public Account account;
+
+    public UserLoginPageController(User user, Account account){
         this.user = user;
+        this.account = account;
+        loadCurrentView();
+        setCharacterizedProfile(user);
+
+    }
+
+    private void loadCurrentView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/LoginPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -42,9 +52,6 @@ public class UserLoginPageController extends AnchorPane {
         {
             throw new RuntimeException(exception);
         }
-        setCharacterizedProfile(user);
-
-
     }
 
 
@@ -81,8 +88,8 @@ public class UserLoginPageController extends AnchorPane {
 
     @FXML
     public void returnToFrontPage(Event event) throws IOException{
-        //FrontPageController frontPageController = new FrontPageController();
-        //this.getScene().setRoot(frontPageController);
+        FrontPageController frontPageController = new FrontPageController(account);
+        this.getScene().setRoot(frontPageController);
     }
 
 

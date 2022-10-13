@@ -1,6 +1,7 @@
 package budgetapp.controller.login;
 
 import budgetapp.controller.MainController;
+import budgetapp.controller.users.CreateNewUserController;
 import budgetapp.controller.users.UserCardController;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
@@ -66,20 +67,6 @@ public class FrontPageController extends AnchorPane {
         this.getChildren().get(1).toFront();
     }
 
-    //Should be connected with login function built in for user
-    /*
-    public void loginToUser(User user) {
-        createMainView(user);
-    }
-
-    public void createMainView(User user) {
-        MainController mainController = new MainController(user);
-        this.getScene().setRoot(mainController);
-    }
-
-     */
-
-
     public void loginToUser(User user) {
         if(user.getPassword() == null){
             createMainView(user);
@@ -90,7 +77,7 @@ public class FrontPageController extends AnchorPane {
     }
 
     public void createLoginPage(User user) {
-        UserLoginPageController userLoginPageController = new UserLoginPageController(user);
+        UserLoginPageController userLoginPageController = new UserLoginPageController(user, account);
         this.getScene().setRoot(userLoginPageController);
     }
 
@@ -98,6 +85,13 @@ public class FrontPageController extends AnchorPane {
         MainController mainController = new MainController(user);
         this.getScene().setRoot(mainController);
     }
+
+    /*
+    public void createCreateNewUserController() {
+        CreateNewUserController createNewUserController = new CreateNewUserController();
+        this.getScene().setRoot(getParent());
+    }
+    */
 
     public void updateUserCards(List<User> userCards) {
         userCardContainer.getChildren().clear();
