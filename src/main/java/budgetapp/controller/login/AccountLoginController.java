@@ -99,10 +99,7 @@ public class AccountLoginController extends BorderPane {
     }
 
     public Optional<Account> getAccount() {
-        System.out.println("returning" + account.get().getUsername());
         return account;
     }
 
 }
-
-
