@@ -88,6 +88,11 @@ public class UserCreateViewController extends AnchorPane {
         this.getScene().setRoot(frontPageController);
     }
 
+    private void createSelectProfilePictureController() {
+        SelectProfilePictureController selectProfilePictureController = new SelectProfilePictureController();
+        this.getScene().setRoot(selectProfilePictureController);
+    }
+
     public boolean controlAllInputs(){
         if (firstNameInput.getText().toString().isEmpty() || lastNameInput.getText().toString().isEmpty() || createPassword.getText().toString().isEmpty() || createPasswordRepeat.getText().toString().isEmpty() || !chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/plus.png")){
             return false;
@@ -100,4 +105,11 @@ public class UserCreateViewController extends AnchorPane {
     public boolean samePassword(){
         return createPassword.getText().toString().equals(createPasswordRepeat.getText().toString());
     }
+
+    /*
+    @FXML
+    public void chooseAvatarAction(Event event){
+        createSelectProfilePictureController();
+    }
+     */
 }

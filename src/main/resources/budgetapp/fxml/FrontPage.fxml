@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root fx:id="showUsersAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="showUsersAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4A6DE5 #4A6DE5;" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox layoutX="33.0" layoutY="107.0" prefHeight="220.0" prefWidth="536.0">
          <children>
@@ -19,12 +19,22 @@
             </ScrollPane>
          </children>
       </VBox>
-      <Text layoutX="-13.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blue Vault" textAlignment="CENTER" underline="true" wrappingWidth="601.4325485229492">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Text>
       <Button layoutX="224.0" layoutY="341.0" mnemonicParsing="false" onAction="#manageUserAccountsAction" text="Manage Accounts" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutAction" text="Logout" />
+      <Text fill="#2006e1" layoutX="210.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLUE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="289.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vault" wrappingWidth="60.89453125">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="211.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLUE">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
    </children>
 </fx:root>
