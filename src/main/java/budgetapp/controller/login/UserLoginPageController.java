@@ -31,7 +31,7 @@ public class UserLoginPageController extends AnchorPane {
 
     public User user;
 
-    public Account account;
+    public final Account account;
 
     public UserLoginPageController(User user, Account account){
         this.user = user;
@@ -72,6 +72,11 @@ public class UserLoginPageController extends AnchorPane {
         this.getScene().setRoot(mainController);
     }
 
+    private void createFrontPage() {
+        FrontPageController frontPageController = new FrontPageController(account);
+        this.getScene().setRoot(frontPageController);
+    }
+
     public void setDisplayName(User user){
         fullName.toString().equals(user.getLastName() + " " + user.getFirstName());
     }
@@ -88,11 +93,8 @@ public class UserLoginPageController extends AnchorPane {
 
     @FXML
     public void returnToFrontPage(Event event) throws IOException{
-        FrontPageController frontPageController = new FrontPageController(account);
-        this.getScene().setRoot(frontPageController);
+        createFrontPage();
     }
-
-
 
 
 }

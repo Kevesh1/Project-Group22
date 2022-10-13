@@ -16,6 +16,7 @@ import java.util.Objects;
 
 public class NewUserCardController extends VBox {
 
+    FrontPageController parentController;
 
     @FXML
     public ImageView BlankProfilePicture;
@@ -30,9 +31,6 @@ public class NewUserCardController extends VBox {
     public void createUserSelect(Event event) {
         parentController.addNewUser();
     }
-
-
-    private final FrontPageController parentController;
 
 
     public NewUserCardController(FrontPageController parentController) {
@@ -60,7 +58,13 @@ public class NewUserCardController extends VBox {
         newUserLabel.setText("New user");
     }
 
+    /*
+    @FXML
+    public void selectUserAction() {
+        parentController.createUserSelect();
 
+    }
+     */
 
 }
 

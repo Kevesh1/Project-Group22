@@ -1,7 +1,7 @@
 package budgetapp.controller.login;
 
 import budgetapp.controller.MainController;
-import budgetapp.controller.users.CreateNewUserController;
+import budgetapp.controller.users.UserCreateViewController;
 import budgetapp.controller.users.UserCardController;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
@@ -86,12 +86,12 @@ public class FrontPageController extends AnchorPane {
         this.getScene().setRoot(mainController);
     }
 
-    /*
-    public void createCreateNewUserController() {
-        CreateNewUserController createNewUserController = new CreateNewUserController();
-        this.getScene().setRoot(getParent());
+
+    public void createUserCreateViewController() {
+        UserCreateViewController userCreateViewController = new UserCreateViewController(account);
+        this.getScene().setRoot(userCreateViewController);
     }
-    */
+
 
     public void updateUserCards(List<User> userCards) {
         userCardContainer.getChildren().clear();
@@ -114,10 +114,12 @@ public class FrontPageController extends AnchorPane {
 
 
 
+    /*
     @FXML
     public void createUserSelect(ActionEvent event) throws IOException {
-
+        createUserCreateViewController(account);
     }
+     */
 
     @FXML
     public void manageUserAccountsAction(ActionEvent event) throws IOException{
