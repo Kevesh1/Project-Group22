@@ -9,6 +9,7 @@ import budgetapp.model.categories.Category;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import budgetapp.model.transactions.Expense;
+import budgetapp.model.transactions.Transaction;
 import dataaccess.mongodb.dao.account.AccountDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,8 +27,10 @@ import javafx.util.StringConverter;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -190,6 +193,7 @@ public class MainController extends AnchorPane{
     @FXML
     private void showMainView(){
         mainView.toFront();
+        updateMainView();
     }
 
 
@@ -238,7 +242,7 @@ public class MainController extends AnchorPane{
         }*/
 
         Category category = Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString());
-        CategoryItem categoryItem = new CategoryItem(Double.parseDouble(newCategoryBudget.getText()), category);
+        CategoryItem categoryItem = new CategoryItem(category);
         selectedBudgetMonth.addCategoryItem(categoryItem);
         updateCategoryList();
         showMainView();
@@ -321,29 +325,46 @@ public class MainController extends AnchorPane{
 
 
     public void initialize() {
-        budgetMonthsMockUp();
+        intializeMonths();
+        //budgetMonthsMockUp();
         initializeComboBox();
         initializeBudgetMonths();
         updateBarChart(budgetMonths);
         updateMainView();
+        updateLists();
         initializeCategoryComboBox();
-        updateLatestTransaction();
         LoadExpenseCategoriesComboBox();
+
+    }
+
+    private void updateLists(){
+        updateCategoryList();
+        updateLatestTransaction();
 
     }
     public void updateMainView() {
         budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
         budgetSpentLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetSpent()));
         budgetRemainingLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()-selectedBudgetMonth.getBudgetSpent()));
-        updateCategoryList();
-        updatePieChart(selectedBudgetMonth.getCategories());
-        updateLatestTransaction();
+
+        updatePieChartCategories(selectedBudgetMonth.getCategories());
 
     }
 
-    private void updatePieChart(@NotNull ArrayList<CategoryItem> categories) {
+    public void updatePieChartCategories(@NotNull ArrayList<CategoryItem> categories) {
         List<PieChart.Data> data = new ArrayList<PieChart.Data>();
-        for(AbstractCategoryItem category : categories) {
+        for(CategoryItem category : categories) {
+            if (category.getBudget() > 0){
+                data.add(new PieChart.Data(category.getName(), category.getBudget()));
+
+            }
+        }
+        pieChart.setData(FXCollections.observableArrayList(data));
+    }
+
+    private void updatePieChartSubCategories(@NotNull ArrayList<CategorySubItem> categories) {
+        List<PieChart.Data> data = new ArrayList<PieChart.Data>();
+        for(CategorySubItem category : categories) {
             data.add(new PieChart.Data(category.getName(), category.getBudget()));
         }
         pieChart.setData(FXCollections.observableArrayList(data));
@@ -393,7 +414,12 @@ public class MainController extends AnchorPane{
 
 
     public void initializeBudgetMonths() {
-        yearMonthComboBox.getSelectionModel().selectFirst();
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
+
+        int currentBudget = ((currentYear)-(currentYear-1))*12 + currentMonth;
+        System.out.println(currentBudget);
+        yearMonthComboBox.getSelectionModel().select(currentBudget);
         selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
     }
 
@@ -415,12 +441,32 @@ public class MainController extends AnchorPane{
         }
     }
 
+    private void intializeMonths(){
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        for (int i = year -1; i < year +2; i++){
+            for (Month month : Month.values()){
+                BudgetMonth newBudgetMonth = new BudgetMonth(0, i, month);
+                intializeCategories(newBudgetMonth);
+                budgetMonths.add(newBudgetMonth);
+            }
+        }
+    }
+
+    private void intializeCategories(BudgetMonth month){
+        for (Category category : Category.values()){
+            CategoryItem newCategoryItem = new CategoryItem(category);
+            month.addCategoryItem(newCategoryItem);
+            if (category == Category.Transportation)
+                break;
+        }
+    }
+
     private void budgetMonthsMockUp() {
         BudgetMonth tempBudgetMonth1 = new BudgetMonth(5000, 2022, Month.AUGUST);
         BudgetMonth tempBudgetMonth2 = (new BudgetMonth(4000, 2022, Month.SEPTEMBER));
         BudgetMonth tempBudgetMonth3 = (new BudgetMonth(7000, 2022, Month.OCTOBER));
-        CategoryItem tempCategoryItem1 = new CategoryItem(0, Category.Food);
-        CategoryItem tempCategoryItem2 = new CategoryItem(300, Category.Transportation);
+        CategoryItem tempCategoryItem1 = new CategoryItem(Category.Food);
+        CategoryItem tempCategoryItem2 = new CategoryItem(Category.Transportation);
         tempCategoryItem1.addSubCategory(new CategorySubItem(40, "AHHH"));
 
        /* tempBudgetMonth1.addTransaction(new Expense(100.0,"McDonalds", "7 -23-2018", Category.Food,"a"));
@@ -432,11 +478,11 @@ public class MainController extends AnchorPane{
         //tempBudgetMonth1.addIncome(new Income(10000.0, "Salary", "2022-07-07", Category.Income));
 
         //tempCategoryItem1.incrementBudgetSpent(50);
-        tempBudgetMonth1.addCategoryItem(new CategoryItem(200, Category.Savings));
+        tempBudgetMonth1.addCategoryItem(new CategoryItem(Category.Savings));
         tempBudgetMonth1.addCategoryItem(tempCategoryItem1);
         tempBudgetMonth2.addCategoryItem(tempCategoryItem2);
-        tempBudgetMonth3.addCategoryItem(new CategoryItem(300, Category.Transportation));
-        tempBudgetMonth3.addCategoryItem(new CategoryItem(300, Category.Food));
+        tempBudgetMonth3.addCategoryItem(new CategoryItem(Category.Transportation));
+        tempBudgetMonth3.addCategoryItem(new CategoryItem(Category.Food));
         budgetMonths.add(tempBudgetMonth1);
         budgetMonths.add(tempBudgetMonth2);
         budgetMonths.add(tempBudgetMonth3);

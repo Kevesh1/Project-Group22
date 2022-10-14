@@ -13,8 +13,9 @@ public class CategoryItem extends AbstractCategoryItem{
     private Category category;
 
 
-    public CategoryItem(double budget, @NotNull Category category) {
-        super(category.toString(), budget);
+
+    public CategoryItem(@NotNull Category category) {
+        super(category.toString(), 0);
         this.subCategories = new ArrayList<CategorySubItem>();
         this.category = category;
     }

@@ -15,7 +15,7 @@ public class CategoryItemTest {
 
     @BeforeEach
     void setUp(){
-        categoryItem = new CategoryItem(100, Category.Food);
+        categoryItem = new CategoryItem(Category.Food);
     }
 
 
@@ -38,7 +38,7 @@ public class CategoryItemTest {
 
     @Test
     void getBudget() {
-        assertEquals(100,categoryItem.getBudget());
+        assertEquals(0,categoryItem.getBudget());
     }
 
     @Test
@@ -66,13 +66,13 @@ public class CategoryItemTest {
     @Test
     void incrementBudget(){
         categoryItem.incrementBudget(100);
-        assertEquals(200,categoryItem.getBudget());
+        assertEquals(100,categoryItem.getBudget());
     }
 
     @Test
     void decrementBudget(){
         categoryItem.decrementBudget(100);
-        assertEquals(0,categoryItem.getBudget());
+        assertEquals(-100,categoryItem.getBudget());
     }
 
     @Test

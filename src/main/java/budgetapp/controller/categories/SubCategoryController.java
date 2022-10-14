@@ -61,6 +61,9 @@ public class SubCategoryController extends AnchorPane {
         parentController.categoryItem.removeSubcategoryBudget(subCategory);
         parentController.updateSubCategories();
         parentController.parentController.updateLatestTransaction();
+        parentController.parentController.updateMainView();
+
+
 
     }
 
