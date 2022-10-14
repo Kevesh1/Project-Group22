@@ -4,13 +4,14 @@ import budgetapp.model.account.ProfileIcon;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectProfilePictureController extends Parent {
+public class SelectProfilePictureController extends AnchorPane {
 
     @FXML
     private HBox profileSelectionContainer;
