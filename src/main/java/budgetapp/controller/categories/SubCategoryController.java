@@ -2,6 +2,7 @@ package budgetapp.controller.categories;
 
 import budgetapp.model.categories.CategorySubItem;
 import budgetapp.model.transactions.Expense;
+import budgetapp.model.transactions.Transaction;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -48,13 +49,18 @@ public class SubCategoryController extends AnchorPane {
     @FXML
     private void removeSubCategory(){
         int i = 0;
-        for (Expense expense : subCategory.getExpenses()){
-            if (expense == parentController.parentController.selectedBudgetMonth.getExpenses().get(i)){
-                parentController.parentController.selectedBudgetMonth.removeExpense(expense);
+        for (Transaction transaction : parentController.parentController.selectedBudgetMonth.getTransactions()){
+            System.out.println(transaction.getClass());
+            if (!(transaction instanceof Expense)) {
+                System.out.println("GOES IN ANTI IF");
+                continue;
+            }
+            if (subCategory.getExpenses().get(i) == transaction){
+                parentController.parentController.selectedBudgetMonth.removeTransaction(transaction);
                 System.out.println("INSIDE FOR");
             }
-            else
-                i+=1;
+            i+=1;
+
             System.out.println("AFTER FOR LOOP");
         }
         parentController.categoryItem.removeSubcategory(this.subCategory);
@@ -62,8 +68,6 @@ public class SubCategoryController extends AnchorPane {
         parentController.updateSubCategories();
         parentController.parentController.updateLatestTransaction();
         parentController.parentController.updateMainView();
-
-
 
     }
 

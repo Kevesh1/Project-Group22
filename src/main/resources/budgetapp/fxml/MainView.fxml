@@ -219,6 +219,17 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="confirmDeletePane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+         <children>
+            <AnchorPane layoutX="351.0" layoutY="222.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <Label layoutX="15.0" layoutY="14.0" text="Are you sure you want to delete" />
+                  <Button fx:id="confirmButton" layoutX="43.0" layoutY="40.0" mnemonicParsing="false" onAction="#removeCategory" text="Yes" />
+                  <Button layoutX="100.0" layoutY="40.0" mnemonicParsing="false" onAction="#showMainView" text="Cancel" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="addNewSubCategoryPane" prefHeight="693.0" prefWidth="1026.0" style="-fx-background-color: rgba(0,0,0,0.75);">
          <children>
             <AnchorPane layoutX="351.0" layoutY="194.0" prefHeight="230.0" prefWidth="250.0" style="-fx-background-color: #36393e; -fx-background-radius: 7;">
@@ -240,17 +251,6 @@
                   <URL value="@../css/Styleheet.css" />
                   <URL value="@../css/modalTab.css" />
                </stylesheets>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="confirmDeletePane" prefHeight="603.0" prefWidth="902.0" style="-fx-background-color: rgba(0,0,0,0.75);">
-         <children>
-            <AnchorPane layoutX="351.0" layoutY="222.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: white;">
-               <children>
-                  <Label layoutX="15.0" layoutY="14.0" text="Are you sure you want to delete" />
-                  <Button fx:id="confirmButton" layoutX="43.0" layoutY="40.0" mnemonicParsing="false" onAction="#removeCategory" text="Yes" />
-                  <Button layoutX="100.0" layoutY="40.0" mnemonicParsing="false" onAction="#showMainView" text="Cancel" />
-               </children>
             </AnchorPane>
          </children>
       </AnchorPane>
@@ -299,18 +299,17 @@
             </StackedBarChart>
             <HBox layoutX="68.0" layoutY="113.0" AnchorPane.rightAnchor="726.8">
                <children>
-                  <Label text="Budget:" />
-                  <Label fx:id="budgetLabel" text="budgetLabel" />
+                  <Label text="Budget: " />
+                  <Label fx:id="budgetLabel" text="0" />
                </children>
             </HBox>
             <HBox layoutX="227.0" layoutY="113.0" AnchorPane.rightAnchor="543.8">
                <children>
-                  <Label text="Spent:" />
-                  <Label fx:id="budgetSpentLabel" text="budgetSpentLabel" />
+                  <Label text="Spent: " />
+                  <Label fx:id="budgetSpentLabel" text="0" />
                </children>
             </HBox>
             <ImageView fx:id="profileImage" fitHeight="80.0" fitWidth="80.0" layoutX="806.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="budgetRemainingLabel" layoutX="316.0" layoutY="357.0" text="budgetRemainingLabel" AnchorPane.bottomAnchor="228.4" AnchorPane.rightAnchor="462.8" />
             <ScrollPane layoutX="13.0" layoutY="379.0" prefHeight="175.0" prefWidth="533.0" styleClass="flowPaneBackground" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="479.0">
                <content>
                   <FlowPane fx:id="latestPurchases" />
@@ -332,6 +331,12 @@
                </font>
             </Label>
             <Button layoutX="886.0" layoutY="100.0" mnemonicParsing="false" onAction="#openIE" text="OpenIE" AnchorPane.rightAnchor="100.0" />
+            <HBox layoutX="396.0" layoutY="437.0" prefHeight="21.0" prefWidth="170.0">
+               <children>
+                  <Label text="budgetRemainingLabel: " />
+                  <Label fx:id="budgetRemainingLabel" text="0" />
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </children>
