@@ -49,7 +49,7 @@ public class CategoryItemTest {
 
     @Test
     void isBudgetEmpty(){
-        assertFalse(categoryItem.isBudgetEmpty());
+        assertTrue(categoryItem.isBudgetEmpty());
     }
 
     @Test
