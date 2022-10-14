@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,17 +18,19 @@
                   <Image url="@../img/BlankProfilePicture.png" />
                </image>
             </ImageView>
-         </graphic></Button>
+         </graphic>
+      </Button>
       <TextField fx:id="firstNameInput" layoutX="217.0" layoutY="208.0" promptText="First name" />
       <Text layoutX="124.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name:" />
       <TextField fx:id="lastNameInput" layoutX="217.0" layoutY="246.0" promptText="Last name" />
       <Text layoutX="125.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name:" />
       <PasswordField fx:id="createPassword" layoutX="217.0" layoutY="281.0" promptText="Password" />
       <PasswordField fx:id="createPasswordRepeat" layoutX="217.0" layoutY="313.0" promptText="Re-enter password" />
-      <RadioButton fx:id="adaptedElderlyButton" layoutX="184.0" layoutY="340.0" mnemonicParsing="false" text="I do not want to have a password" />
       <Button layoutX="214.0" layoutY="363.0" mnemonicParsing="false" onAction="#profileFinishedAction" prefHeight="25.0" prefWidth="167.0" text="Create new user" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToFrontPage" text="Return" />
-      <Text layoutX="126.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="63.58447265625" />
-      <Text layoutX="65.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Re-enter password:" />
+      <Text fx:id="passwordText" layoutX="126.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="63.58447265625" />
+      <Text fx:id="reenterText" layoutX="65.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Re-enter password:" />
+      <CheckBox fx:id="passwordCheckbox" layoutX="187.0" layoutY="342.0" mnemonicParsing="false" onAction="#passwordCheckboxAction" text="I do not want to have a password" />
+      <Text fx:id="warningText" fill="RED" layoutX="397.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.0" />
    </children>
 </fx:root>
