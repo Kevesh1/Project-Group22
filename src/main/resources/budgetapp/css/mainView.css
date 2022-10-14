@@ -22,7 +22,7 @@
 }
 
 .mainBackground{
-    -fx-background-color: -fx-darker-color;
+    -fx-background-color: -fx-darkest-color;
 }
 
 .pane{
