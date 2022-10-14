@@ -77,31 +77,72 @@ public class CategoryItemTest {
 
     @Test
     void getSubCategories() {
+        CategorySubItem subCategory = new CategorySubItem(20.0,"Test");
+        categoryItem.getSubCategories().add(subCategory);
+        assertEquals(subCategory,categoryItem.getSubCategories().get(0));
     }
 
 
     @Test
     void addSubCategory() {
+        CategorySubItem subCategory = new CategorySubItem(20.0, "Test");
+        categoryItem.addSubCategory(subCategory);
+        assertEquals(subCategory, categoryItem.getSubCategories().get(0));
     }
 
     @Test
     void removeSubcategory() {
-
+        CategorySubItem subCategory = new CategorySubItem(20.0, "Test");
+        categoryItem.addSubCategory(subCategory);
+        categoryItem.removeSubcategory(subCategory);
+        assertTrue(categoryItem.getSubCategories().isEmpty());
     }
 
     @Test
     void addSubcategoryBudget() {
+        CategorySubItem subCategory = new CategorySubItem(50.0, "Test");
+        CategorySubItem subCategory2 = new CategorySubItem(100.0, "Test");
+        categoryItem.addSubCategory(subCategory);
+        categoryItem.addSubCategory(subCategory2);
+
+        categoryItem.addSubcategoryBudget(subCategory);
+        categoryItem.addSubcategoryBudget();
+
+        assertEquals(150, categoryItem.getBudget());
+
     }
 
     @Test
     void removeSubcategoryBudget() {
+        CategorySubItem subCategory = new CategorySubItem(50.0, "Test");
+        categoryItem.removeSubcategoryBudget(subCategory);
+
+        assertEquals(-50, categoryItem.getBudget());
+
     }
 
     @Test
     void getCategory() {
+
+        assertEquals(Category.Food, categoryItem.getCategory());
     }
 
     @Test
     void setCategory() {
+        categoryItem.setCategory(Category.Home);
+        assertEquals(Category.Home, categoryItem.getCategory());
+    }
+
+    @Test
+    void incrementBudgetSpent(){
+        categoryItem.incrementBudgetSpent(100);
+        assertEquals(100, categoryItem.getBudgetSpent());
+    }
+
+    @Test
+    void decrementBudgetSpent(){
+        categoryItem.decrementBudgetSpent(100);
+        assertEquals(-100,categoryItem.getBudgetSpent());
+
     }
 }

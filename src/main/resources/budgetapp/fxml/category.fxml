@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root fx:id="CategoryPane" onMouseClicked="#updateInformation" prefHeight="78.0" prefWidth="428.0" style="-fx-background-color: lightgray;" stylesheets="@../css/Categories.css" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="CategoryPane" onMouseClicked="#updateInformation" prefHeight="98.0" prefWidth="429.0" styleClass="categoryBoxx" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="categoryName" layoutX="11.0" layoutY="3.0" styleClass="title" text="Transport" />
-      <Label fx:id="categoryBudget" layoutX="370.0" layoutY="51.0" styleClass="amount" text="5000 kr" />
-      <ImageView fx:id="categoryImage" fitHeight="43.0" fitWidth="54.0" layoutX="11.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
-      <ProgressBar fx:id="progressBar" layoutX="65.0" layoutY="57.0" prefHeight="12.0" prefWidth="298.0" progress="0.0" />
-      <Button fx:id="editButton" layoutX="345.0" layoutY="6.0" mnemonicParsing="false" onAction="#getEditCategoryWindow" text="Edit" />
-      <Button fx:id="removeCategoryButton" layoutX="385.0" layoutY="6.0" mnemonicParsing="false" onAction="#removeCategoryCheck" text="X" />
-      <Button fx:id="addSubCategoryButton" layoutX="202.0" layoutY="6.0" mnemonicParsing="false" onAction="#getAddSubCategoryWindow" text="+" />
+      <Label fx:id="categoryName" layoutX="70.0" layoutY="31.0" styleClass="title" stylesheets="@../css/labels.css" text="Transport" />
+      <Label fx:id="categoryBudget" layoutX="310.0" layoutY="35.0" styleClass="amount" stylesheets="@../css/labels.css" text="5000 kr" />
+      <ImageView fx:id="categoryImage" fitHeight="43.0" fitWidth="54.0" layoutX="11.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: white;">
+         <effect>
+            <Blend mode="BLUE" />
+         </effect></ImageView>
+      <ProgressBar fx:id="progressBar" layoutX="70.0" layoutY="62.0" prefHeight="12.0" prefWidth="298.0" progress="0.0" />
+      <Button fx:id="editButton" layoutX="70.0" layoutY="8.0" mnemonicParsing="false" onAction="#getEditCategoryWindow" text="Edit" />
+      <Button fx:id="removeCategoryButton" layoutX="400.0" layoutY="11.0" mnemonicParsing="false" onAction="#removeCategoryCheck" text="X" />
+      <Button fx:id="addSubCategoryButton" layoutX="374.0" layoutY="56.0" mnemonicParsing="false" onAction="#getAddSubCategoryWindow" text="+" />
    </children>
+   <stylesheets>
+      <URL value="@../css/Categories.css" />
+      <URL value="@../css/Styleheet.css" />
+   </stylesheets>
 </fx:root>
