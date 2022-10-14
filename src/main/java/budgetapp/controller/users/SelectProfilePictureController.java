@@ -1,5 +1,6 @@
 package budgetapp.controller.users;
 
+import budgetapp.model.account.Account;
 import budgetapp.model.account.ProfileIcon;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,8 +21,11 @@ public class SelectProfilePictureController extends AnchorPane {
 
     UserCreateViewController parentController;
 
-    public SelectProfilePictureController(){
+    public final Account account;
+
+    public SelectProfilePictureController(Account account){
         loadCurrentView();
+        this.account = account;
     }
 
     private void loadCurrentView() {
@@ -42,15 +46,16 @@ public class SelectProfilePictureController extends AnchorPane {
         profileCards = ProfileIcon.profileIconList();
         profileSelectionContainer.getChildren().clear();
         for (ProfileIcon profileIcon : profileCards) {
-            ProfilePictureCardController profilePictureCardController = new ProfilePictureCardController(this, profileIcon);
+            ProfilePictureCardController profilePictureCardController = new ProfilePictureCardController(this, profileIcon, account);
             profileSelectionContainer.getChildren().add(profilePictureCardController);
         }
     }
 
-    public void initilizeProfileCards(){
+    @FXML
+    public void initilize(){
         profileCards = new ArrayList<>(ProfileIcon.profileIconList());
         for(ProfileIcon profileIcon : profileCards){
-            ProfilePictureCardController profilePictureCardController = new ProfilePictureCardController(this, profileIcon);
+            ProfilePictureCardController profilePictureCardController = new ProfilePictureCardController(this, profileIcon, account);
             profileSelectionContainer.getChildren().add(profilePictureCardController);
 
         }

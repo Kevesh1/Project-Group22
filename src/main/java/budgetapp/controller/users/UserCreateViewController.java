@@ -53,10 +53,10 @@ public class UserCreateViewController extends AnchorPane {
 
     public UserCreateViewController(Account account){
         this.account = account;
-        loadStackPane();
+        loadCurrentView();
     }
 
-    private void loadStackPane() {
+    private void loadCurrentView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/userCreateView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -109,7 +109,7 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     private void createSelectProfilePictureController() {
-        SelectProfilePictureController selectProfilePictureController = new SelectProfilePictureController();
+        SelectProfilePictureController selectProfilePictureController = new SelectProfilePictureController(account);
         this.getScene().setRoot(selectProfilePictureController);
     }
 
