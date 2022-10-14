@@ -44,6 +44,9 @@ public class UserCreateViewController extends AnchorPane {
     @FXML
     private CheckBox passwordCheckbox;
 
+    @FXML
+    private Text warningText;
+
     public final Account account;
 
     public User user;
@@ -75,9 +78,12 @@ public class UserCreateViewController extends AnchorPane {
             createNewUserWithoutPassword();
             createFrontPage();
         }
-        if (controlAllInputsWithPassword() && samePassword()){
+        else if (controlAllInputsWithPassword() && samePassword()){
             createNewUser();
             createFrontPage();
+        }
+        else{
+            warningText.setText("Please enter all required data");
         }
 
     }
