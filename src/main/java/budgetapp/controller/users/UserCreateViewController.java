@@ -17,6 +17,14 @@ import java.io.IOException;
 
 public class UserCreateViewController extends AnchorPane {
 
+    public ImageView getChooseProfilePictureButton() {
+        return chooseProfilePictureButton;
+    }
+
+    public void setChooseProfilePictureButton(ImageView chooseProfilePictureButton) {
+        this.chooseProfilePictureButton = chooseProfilePictureButton;
+    }
+
     @FXML
     private ImageView chooseProfilePictureButton;
 
