@@ -4,12 +4,10 @@ import budgetapp.model.account.Account;
 import budgetapp.model.account.ProfileIcon;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SelectProfilePictureController extends AnchorPane {
@@ -24,8 +22,9 @@ public class SelectProfilePictureController extends AnchorPane {
     public final Account account;
 
     public SelectProfilePictureController(Account account){
-        loadCurrentView();
         this.account = account;
+        profileCards = ProfileIcon.profileIconList();
+        loadCurrentView();
     }
 
     private void loadCurrentView() {
@@ -42,8 +41,7 @@ public class SelectProfilePictureController extends AnchorPane {
     }
 
 
-    public void updatePictureCards() {
-        profileCards = ProfileIcon.profileIconList();
+    public void updatePictureCards(List<ProfileIcon> profileCards) {
         profileSelectionContainer.getChildren().clear();
         for (ProfileIcon profileIcon : profileCards) {
             ProfilePictureCardController profilePictureCardController = new ProfilePictureCardController(this, profileIcon, account);
@@ -53,6 +51,12 @@ public class SelectProfilePictureController extends AnchorPane {
 
     @FXML
     public void initilize(){
+        updatePictureCards(profileCards);
+    }
+
+
+    /*
+    public void initilizePictureCards(){
         profileCards = new ArrayList<>(ProfileIcon.profileIconList());
         for(ProfileIcon profileIcon : profileCards){
             ProfilePictureCardController profilePictureCardController = new ProfilePictureCardController(this, profileIcon, account);
@@ -60,6 +64,8 @@ public class SelectProfilePictureController extends AnchorPane {
 
         }
     }
+
+     */
 
 
 

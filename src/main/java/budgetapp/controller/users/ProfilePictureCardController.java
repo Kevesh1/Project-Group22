@@ -35,6 +35,7 @@ public class ProfilePictureCardController extends AnchorPane {
         this.profileIcon = profileIcon;
         this.parentController = parentController;
         this.account = account;
+        //this.profilePicture = new ImageView(String.valueOf(getClass().getResourceAsStream(profileIcon.getProfilePicture())));
         loadCurrentView();
 
     }
@@ -52,13 +53,15 @@ public class ProfilePictureCardController extends AnchorPane {
         }
     }
 
+
     @FXML
     public void initilize(){
         setIconData(profileIcon);
     }
 
+
     public void setIconData(ProfileIcon profileIcon){
-        Image profilePicture = new Image(Objects.requireNonNull(getClass().getResourceAsStream(profileIcon.getProfilePicture())));
+        ImageView profilePicture = new ImageView(String.valueOf(profileIcon.getProfilePicture()));
     }
 
 
