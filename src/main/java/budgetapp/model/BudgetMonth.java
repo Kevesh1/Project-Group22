@@ -21,14 +21,16 @@ public final class BudgetMonth {
     private final ArrayList<CategoryItem> categoryItems;
     private final List<Expense> expenses;
     private final List<Income> incomes;
+    private final List<Transaction> transactions;
 
-    public BudgetMonth(double budget, int year, Month month) {
-        this.budget = budget;
+    public BudgetMonth(int year, Month month) {
+        this.budget = 0;
         this.budgetSpent = 0;
         this.yearMonth = YearMonth.of(year, month);
         categoryItems = new ArrayList<CategoryItem>();
         expenses = new ArrayList<>();
         incomes = new ArrayList<>();
+        transactions = new ArrayList<>();
 
 
     }
@@ -40,7 +42,16 @@ public final class BudgetMonth {
         return yearMonth.getMonth();
     }
 
+    public double getBudgetRemaining(){
+        return (getBudget() - getBudgetSpent());
+    }
+
     public double getBudget() {
+        budget = 0;
+        for (Transaction transaction : transactions){
+            if (transaction instanceof Income)
+                budget += transaction.getSum();
+        }
         return budget;
     }
     public void setBudget(double budget) {
@@ -51,6 +62,11 @@ public final class BudgetMonth {
     }
 
     public double getBudgetSpent() {
+        budgetSpent = 0;
+        for (Transaction transaction : expenses){
+            if (transaction instanceof Expense)
+                budgetSpent += transaction.getSum();
+        }
         return budgetSpent;
     }
     public void setBudgetSpent(double budgetSpent) {
@@ -68,35 +84,23 @@ public final class BudgetMonth {
         categoryItems.add(categoryItem);
     }
 
-    public void addExpense(Expense expense){
-        expenses.add(expense);
 
+    public void removeTransaction(Transaction transaction){
+        transactions.remove(transaction);
     }
 
-    public void removeExpense(Expense expense){
-        expenses.remove(expense);
+    public void addTransaction(Transaction transaction){
+        transactions.add(transaction);
+    }
+
+    public List<Transaction> getTransactions(){
+        return transactions;
     }
 
     public List<Expense> getExpenses(){
-        return expenses;
-    }
-
-    public void addIncome(Income income){
-        incomes.add(income);
-    }
-
-    public void removeIncome(Income income){
-        incomes.remove(income);
-    }
-
-    public List<Income> getIncomes(){
-        return incomes;
-    }
-
-    /*public List<Expense> getExpenses(){
         return  getTransactions().stream().filter(expense -> expense instanceof Expense)
                 .map(expense -> (Expense)expense)
                 .collect(Collectors.toList());
-    }*/
+    }
 
 }

@@ -44,16 +44,19 @@ public class UserCreateViewController extends AnchorPane {
     @FXML
     private CheckBox passwordCheckbox;
 
+    @FXML
+    private Text warningText;
+
     public final Account account;
 
     public User user;
 
     public UserCreateViewController(Account account){
         this.account = account;
-        loadStackPane();
+        loadCurrentView();
     }
 
-    private void loadStackPane() {
+    private void loadCurrentView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/userCreateView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -75,9 +78,12 @@ public class UserCreateViewController extends AnchorPane {
             createNewUserWithoutPassword();
             createFrontPage();
         }
-        if (controlAllInputsWithPassword() && samePassword()){
+        else if (controlAllInputsWithPassword() && samePassword()){
             createNewUser();
             createFrontPage();
+        }
+        else{
+            warningText.setText("Please enter all required data");
         }
 
     }
@@ -103,7 +109,7 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     private void createSelectProfilePictureController() {
-        SelectProfilePictureController selectProfilePictureController = new SelectProfilePictureController();
+        SelectProfilePictureController selectProfilePictureController = new SelectProfilePictureController(account);
         this.getScene().setRoot(selectProfilePictureController);
     }
 

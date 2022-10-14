@@ -12,7 +12,7 @@ public abstract class Transaction {
     private YearMonth yearMonth;
     private Category category;
 
-    public Transaction(Double sum, String annotation, String date, Category category) {
+    public Transaction(Double sum, String annotation, String date) {
         this.sum = sum;
         this.annotation = annotation;
         this.date = date;
@@ -39,6 +39,7 @@ public abstract class Transaction {
     public void setAnnotation(String annotation) {
         this.annotation = annotation;
     }
+
     public YearMonth getYearMonth() {
         return yearMonth;
     }
