@@ -29,6 +29,11 @@ public class ProfilePictureCardController extends AnchorPane {
     public ProfilePictureCardController(SelectProfilePictureController parentController, ProfileIcon profileIcon) {
         this.profileIcon = profileIcon;
         this.parentController = parentController;
+        loadCurrentView();
+
+    }
+
+    private void loadCurrentView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/ProfilePictureCard.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -39,7 +44,6 @@ public class ProfilePictureCardController extends AnchorPane {
         {
             throw new RuntimeException(exception);
         }
-
     }
 
     @FXML

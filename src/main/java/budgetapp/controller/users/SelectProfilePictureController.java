@@ -2,9 +2,11 @@ package budgetapp.controller.users;
 
 import budgetapp.model.account.ProfileIcon;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,23 @@ public class SelectProfilePictureController extends Parent {
     List<ProfileIcon> profileCards;
 
     UserCreateViewController parentController;
+
+    public SelectProfilePictureController(){
+        loadCurrentView();
+    }
+
+    private void loadCurrentView() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/SelectProfilePictureView.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try
+        {
+            fxmlLoader.load();
+        } catch (IOException exception)
+        {
+            throw new RuntimeException(exception);
+        }
+    }
 
 
     public void updatePictureCards() {

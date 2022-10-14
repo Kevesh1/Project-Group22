@@ -25,7 +25,7 @@
       <Text layoutX="125.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name:" />
       <PasswordField fx:id="createPassword" layoutX="217.0" layoutY="281.0" promptText="Password" />
       <PasswordField fx:id="createPasswordRepeat" layoutX="217.0" layoutY="313.0" promptText="Re-enter password" />
-      <RadioButton fx:id="adaptedElderlyButton" layoutX="173.0" layoutY="338.0" mnemonicParsing="false" text="I want an interface adapted for the elderly" />
+      <RadioButton fx:id="adaptedElderlyButton" layoutX="184.0" layoutY="340.0" mnemonicParsing="false" text="I do not want to have a password" />
       <Button layoutX="214.0" layoutY="363.0" mnemonicParsing="false" onAction="#profileFinishedAction" prefHeight="25.0" prefWidth="167.0" text="Create new user" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToFrontPage" text="Return" />
       <Text layoutX="126.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="63.58447265625" />

@@ -78,7 +78,7 @@ public class UserLoginPageController extends AnchorPane {
     }
 
     public void setDisplayName(User user){
-        fullName.toString().equals(user.getLastName() + " " + user.getFirstName());
+        fullName.getText().toString().equals(user.getLastName() + " " + user.getFirstName());
     }
 
     public void setUserProfile(User user){

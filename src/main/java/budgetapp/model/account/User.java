@@ -8,8 +8,6 @@ public class User implements ILocked{
     private String lastName;
     private String profilePicture;
     private String password;
-    private boolean familyShare;
-    private boolean elderlyAdjusted;
     private int userID;
     private boolean enablePassword;
 
@@ -57,22 +55,6 @@ public class User implements ILocked{
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public boolean isFamilyShare() {
-        return familyShare;
-    }
-
-    public void setFamilyShare(boolean familyShare) {
-        this.familyShare = familyShare;
-    }
-
-    public boolean isElderlyAdjusted() {
-        return elderlyAdjusted;
-    }
-
-    public void setElderlyAdjusted(boolean elderlyAdjusted) {
-        this.elderlyAdjusted = elderlyAdjusted;
     }
 
     public int getUserID() {

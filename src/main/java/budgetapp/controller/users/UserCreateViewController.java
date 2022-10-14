@@ -106,10 +106,10 @@ public class UserCreateViewController extends AnchorPane {
         return createPassword.getText().toString().equals(createPasswordRepeat.getText().toString());
     }
 
-    /*
+
     @FXML
-    public void chooseAvatarAction(Event event){
+    public void chooseProfilePicture(Event event){
         createSelectProfilePictureController();
     }
-     */
+
 }
