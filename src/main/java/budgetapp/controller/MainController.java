@@ -12,7 +12,8 @@ import budgetapp.model.categories.CategorySubItem;
 import budgetapp.model.transactions.Expense;
 import budgetapp.model.transactions.Income;
 import budgetapp.model.transactions.Transaction;
-import dataaccess.mongodb.BudgetMonthDao;
+
+import dataaccess.mongodb.dao.BudgetMonthDao;
 import dataaccess.mongodb.dao.account.AccountDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -308,11 +309,13 @@ public class MainController extends AnchorPane{
     private SubCategoryController subCategoryController;
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths;
+    private BudgetMonthDao budgetMonthDao;
 
 
     public MainController(User user) {
         this.user = user;
         this.budgetMonths = FXCollections.observableArrayList();
+        budgetMonthDao = new BudgetMonthDao();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -323,6 +326,8 @@ public class MainController extends AnchorPane{
         {
             throw new RuntimeException(exception);
         }
+
+
 
     }
 
@@ -425,7 +430,6 @@ public class MainController extends AnchorPane{
         yearMonthComboBox.getSelectionModel().select(currentBudget);
         selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
     }
-
 
     public void updateCategoryList() {
         categoriesFlowPane.getChildren().clear();

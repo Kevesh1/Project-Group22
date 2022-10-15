@@ -1,5 +1,6 @@
 package dataaccess.mongodb.dao.account;
 
+import budgetapp.model.account.User;
 import dataaccess.mongodb.MongoDBService;
 import dataaccess.mongodb.dto.account.AccountDto;
 import dataaccess.mongodb.dto.account.UserDto;
@@ -19,9 +20,17 @@ import static com.mongodb.client.model.Filters.and;
 public class AccountDao implements IAccountDao {
 
     MongoCollection<AccountDto> collection = MongoDBService.database.getCollection(
-            AccountDto.class.getSimpleName().toLowerCase(Locale.ROOT), AccountDto.class);
+            Account.class.getSimpleName().toLowerCase(Locale.ROOT), AccountDto.class);
 
-    ModelMapper modelMapper = new ModelMapper();
+    private final ModelMapper modelMapper;
+    private final UserDao userDao = new UserDao();
+
+    public AccountDao() {
+        modelMapper = new ModelMapper();
+        modelMapper.getConfiguration()
+                .setFieldMatchingEnabled(true)
+                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
+    }
 
     @Override
     public Optional<Account> getAccountById(ObjectId id) {
@@ -31,9 +40,7 @@ public class AccountDao implements IAccountDao {
 
     @Override
     public List<Account> getAllAccounts() {
-        modelMapper.getConfiguration()
-                .setFieldMatchingEnabled(true)
-                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
+
         List<Account> accounts = new ArrayList<>();
         collection.find(new Document(), AccountDto.class)
                 .into(new ArrayList<>())
@@ -42,14 +49,15 @@ public class AccountDao implements IAccountDao {
     }
 
     @Override
-    public void addAccount(Account account) {
+    public Account addAccount(Account account) {
         AccountDto accountDto = modelMapper.map(account, AccountDto.class);
-        List<UserDto> users = account.getUsers()
-                .stream()
-                .map(user -> modelMapper.map(user, UserDto.class).setId(new ObjectId()))
-                .collect(Collectors.toList());
-        accountDto.setUsers(users);
         collection.insertOne(accountDto);
+        User user = new User("Test", null);
+        userDao.addUser(user, account);
+        Account acc = modelMapper.map(accountDto, Account.class);
+        System.out.println("ID");
+        System.out.println(acc.getId());
+        return acc;
     }
 
     @Override
@@ -71,9 +79,6 @@ public class AccountDao implements IAccountDao {
 
     @Override
     public Optional<Account> validateAccount(String username, String password) {
-        modelMapper.getConfiguration()
-                .setFieldMatchingEnabled(true)
-                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
         Optional<AccountDto> account = Optional.ofNullable(collection.find(
                 and(Filters.eq("username", username), Filters.eq("password", password)), AccountDto.class).first());
         Optional<Account> newAccount = Optional.empty();

@@ -14,7 +14,9 @@ public interface IUserDao {
 
     void addUser(User user);
 
-    void addUser(Account account, User user);
+    void addUser(User user, Account account);
 
     void deleteUser(User user);
+
+    List<User> getUsersByUsername(String username);
 }

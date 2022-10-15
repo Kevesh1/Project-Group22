@@ -97,12 +97,12 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     private void createNewUser() {
-        User user = new User(firstNameInput.getText(), lastNameInput.getText(), createPassword.getText());
+        User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), createPassword.getText());
         user.setProfilePicture(chooseProfilePictureButton.toString());
     }
 
     private void createNewUserWithoutPassword() {
-        User user = new User(firstNameInput.getText(), lastNameInput.getText(), null);
+        User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), null);
         user.setProfilePicture(chooseProfilePictureButton.toString());
     }
 
