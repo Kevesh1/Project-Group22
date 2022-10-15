@@ -11,10 +11,9 @@ public class Account {
     private List<User> users;
     private ObjectId id;
 
-    public Account(String username, String password, List<User> users) {
+    public Account(String username, String password) {
         this.username = username;
         this.password = password;
-        this.users = users;
     }
 
     public Account() {

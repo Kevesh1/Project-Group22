@@ -39,8 +39,9 @@ public class App extends Application {
 
     private void setUpDependencyInjector() {
         Callback<Class<?>, Object> controllerFactory = param -> {
-            Account account = new Account("a", "c", List.of(new User("Test1", "User", null), new User("Test2", "user", "pass")));
-            return new FrontPageController(account);
+            //Account account = new Account("a", "c", List.of(new User("Test1", "User", null), new User("Test2", "user", "pass")));
+            //return new FrontPageController(account);
+            return null;
         };
         DependencyInjection.addInjectionMethod(
                 FrontPageController.class, controllerFactory

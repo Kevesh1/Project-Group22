@@ -3,6 +3,7 @@ package budgetapp.controller.login;
 import dataaccess.mongodb.dao.account.AccountDao;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
+import dataaccess.mongodb.dao.account.UserDao;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,9 +27,11 @@ public class RegistrationController extends BorderPane {
     private Label wrongPassword;
 
     private final AccountDao accountDao;
+    private final UserDao userDao;
 
     public RegistrationController() {
         accountDao = new AccountDao();
+        userDao = new UserDao();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/AccountRegistrationView.fxml"));
         fxmlLoader.setRoot(this);
@@ -54,8 +57,9 @@ public class RegistrationController extends BorderPane {
 
     private Account registerAccount() {
         //TODO Create factory for account
-        Account account = new Account(username.getText(), password.getText(), List.of(new User(username.getText(), "Account", null)));
-        accountDao.addAccount(account);
+        Account account = new Account(username.getText(), password.getText());
+        User user = new User(username.getText(), "");
+        account = accountDao.addAccount(account);
         return account;
     }
     //TODO Change

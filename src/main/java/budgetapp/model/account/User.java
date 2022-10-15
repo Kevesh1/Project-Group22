@@ -4,25 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User implements ILocked{
+    private String username;
     private String firstName;
     private String lastName;
     private String profilePicture;
     private String password;
-<<<<<<< Updated upstream
-    private int userID;
-=======
+    private String userId;
     private boolean familyShare;
     private boolean elderlyAdjusted;
-    private String userID;
->>>>>>> Stashed changes
+
     private boolean enablePassword;
 
     private static List<User> allUsers = new ArrayList<>();
 
     //expand
-    public User(String firstName, String lastName, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String username, String password) {
+        this.username = username;
         this.password = password;
         allUsers.add(this);
     }
@@ -63,9 +60,6 @@ public class User implements ILocked{
         this.password = password;
     }
 
-<<<<<<< Updated upstream
-    public int getUserID() {
-=======
     public boolean isFamilyShare() {
         return familyShare;
     }
@@ -83,12 +77,11 @@ public class User implements ILocked{
     }
 
     public String getUserID() {
->>>>>>> Stashed changes
-        return userID;
+        return userId;
     }
 
     public void setUserID(String userID) {
-        this.userID = userID;
+        this.userId = userID;
     }
 
     public boolean isEnablePassword() {
@@ -101,15 +94,15 @@ public class User implements ILocked{
 
     public static List<User> userList(){
 
-        User user = new User("Sven", "Svensson", "omg");
+        User user = new User("Sven Svensson", "omg");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
         user.setUserID("1");
 
-        user = new User("Jacob","West","Di1");
+        user = new User("Jacob West","Di1");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
         user.setUserID("2");
 
-        user = new User("Sigfrid","Bort","2d");
+        user = new User("Sigfrid Bort","2d");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
         user.setUserID("3");
 
@@ -126,5 +119,14 @@ public class User implements ILocked{
     @Override
     public void unlock() {
 
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public User setUsername(String username) {
+        this.username = username;
+        return this;
     }
 }

@@ -10,12 +10,9 @@ import budgetapp.model.categories.Category;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import budgetapp.model.transactions.Expense;
-<<<<<<< Updated upstream
 import budgetapp.model.transactions.Income;
 import budgetapp.model.transactions.Transaction;
-=======
-import dataaccess.mongodb.BudgetMonthDao;
->>>>>>> Stashed changes
+import dataaccess.mongodb.dao.BudgetMonthDao;
 import dataaccess.mongodb.dao.account.AccountDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -311,11 +308,13 @@ public class MainController extends AnchorPane{
     private SubCategoryController subCategoryController;
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths;
+    private BudgetMonthDao budgetMonthDao;
 
 
     public MainController(User user) {
         this.user = user;
         this.budgetMonths = FXCollections.observableArrayList();
+        budgetMonthDao = new BudgetMonthDao();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -326,6 +325,8 @@ public class MainController extends AnchorPane{
         {
             throw new RuntimeException(exception);
         }
+
+
 
     }
 
@@ -340,12 +341,7 @@ public class MainController extends AnchorPane{
         updateLists();
         initializeCategoryComboBox();
         LoadExpenseCategoriesComboBox();
-    }
-    private void initializeBudgetMonths() {
-        BudgetMonthDao budgetMonthDao = new BudgetMonthDao();
 
-        budgetMonths = FXCollections.observableArrayList(budgetMonthDao.getAllBudgetMonthsByUserId(new ObjectId(user.getUserID())));
-        selectedBudgetMonth = budgetMonths.get(0);
     }
 
     //This can be in UpdateMainView if issues regarding removing subcategories gets resolved
@@ -423,7 +419,6 @@ public class MainController extends AnchorPane{
         newExpenseCategoryComboBox.getSelectionModel().selectFirst();
     }
 
-<<<<<<< Updated upstream
 
 
     public void initializeBudgetMonths() {
@@ -436,8 +431,6 @@ public class MainController extends AnchorPane{
         selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
     }
 
-=======
->>>>>>> Stashed changes
     public void updateCategoryList() {
         categoriesFlowPane.getChildren().clear();
         int i = 0;

@@ -1,12 +1,13 @@
-package dataaccess.mongodb;
+package dataaccess.mongodb.dao;
 
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.UpdateOptions;
+import dataaccess.mongodb.MongoDBService;
 import dataaccess.mongodb.dto.BudgetMonthDto;
 import budgetapp.model.BudgetMonth;
 import com.mongodb.client.MongoCollection;
+import dataaccess.mongodb.dto.account.AccountDto;
+import dataaccess.mongodb.dto.account.UserDto;
+import dataaccess.mongodb.dto.categories.CategoryItemDto;
 import org.bson.Document;
-import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class BudgetMonthDao implements IBudgetMonthDao {
 
@@ -63,7 +65,18 @@ public class BudgetMonthDao implements IBudgetMonthDao {
 
     @Override
     public void addBudgetMonth(BudgetMonth budgetMonth) {
+        /*BudgetMonthDto budgetMonthDto = modelMapper.map(budgetMonth, BudgetMonthDto.class);
+
+        collection.insertOne(budgetMonthDto);*/
+
+
         BudgetMonthDto budgetMonthDto = modelMapper.map(budgetMonth, BudgetMonthDto.class);
+        budgetMonthDto.setId(new ObjectId());
+        List<CategoryItemDto> categoryItems = budgetMonth.getCategories()
+                .stream()
+                .map(categoryItem -> modelMapper.map(categoryItem, CategoryItemDto.class))
+                .collect(Collectors.toList());
+        budgetMonthDto.setCategories(categoryItems);
         collection.insertOne(budgetMonthDto);
 
     }

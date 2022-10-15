@@ -6,8 +6,9 @@ import org.bson.types.ObjectId;
 
 public final class UserDto implements Dto {
 
-    @BsonId
     private ObjectId _id;
+
+    private String accountId;
 
     private String firstName;
 
@@ -59,5 +60,14 @@ public final class UserDto implements Dto {
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public UserDto setAccountId(String accountId) {
+        this.accountId = accountId;
+        return this;
     }
 }

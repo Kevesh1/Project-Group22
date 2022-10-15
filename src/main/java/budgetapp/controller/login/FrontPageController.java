@@ -6,6 +6,7 @@ import budgetapp.controller.users.UserCreateViewController;
 import budgetapp.controller.users.UserCardController;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
+import dataaccess.mongodb.dao.account.UserDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +37,7 @@ public class FrontPageController extends AnchorPane {
 
     List<User> userCards;
 
-    private User selectedUser;
+    private final UserDao userDao;
 
     private final Account account;
 
@@ -46,7 +47,13 @@ public class FrontPageController extends AnchorPane {
     }
 
     public FrontPageController(Account account) {
+        userDao = new UserDao();
         this.account = account;
+        System.out.println("USER");
+        account.setUsers(userDao.getUsersByUsername(account.getUsername()));
+        for (User user: account.getUsers()) {
+            System.out.println(user);
+        }
         userCards = account.getUsers();
         loadCurrentView();
     }
