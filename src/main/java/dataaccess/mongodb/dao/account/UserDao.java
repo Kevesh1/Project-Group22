@@ -1,6 +1,7 @@
 package dataaccess.mongodb.dao.account;
 
 import dataaccess.mongodb.MongoDBService;
+import dataaccess.mongodb.dto.account.AccountDto;
 import dataaccess.mongodb.dto.account.UserDto;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
@@ -15,7 +16,7 @@ import java.util.Optional;
 public class UserDao implements IUserDao {
 
     MongoCollection<UserDto> collection = MongoDBService.database.getCollection(
-            UserDto.class.getSimpleName().toLowerCase(Locale.ROOT), UserDto.class);
+            AccountDto.class.getSimpleName().toLowerCase(Locale.ROOT), UserDto.class);
 
     ModelMapper modelMapper = new ModelMapper();
 
@@ -34,6 +35,16 @@ public class UserDao implements IUserDao {
                 .append("lastname", user.getLastName())
                 .append("password", user.getPassword());
         collection.insertOne(doc);*/
+    }
+
+    @Override
+    public void addUser(User user) {
+
+    }
+
+    @Override
+    public void addUser(Account account, User user) {
+
     }
 
     @Override

@@ -42,13 +42,24 @@ public class AccountDao implements IAccountDao {
     }
 
     @Override
+    public void addAccount(Account account) {
+        AccountDto accountDto = modelMapper.map(account, AccountDto.class);
+        List<UserDto> users = account.getUsers()
+                .stream()
+                .map(user -> modelMapper.map(user, UserDto.class).setId(new ObjectId()))
+                .collect(Collectors.toList());
+        accountDto.setUsers(users);
+        collection.insertOne(accountDto);
+    }
+
+    @Override
     public void updateAccount(Account account) {
         AccountDto accountDto = modelMapper.map(account, AccountDto.class);
         List<UserDto> users = account.getUsers()
                 .stream()
                 .map(user -> modelMapper.map(user, UserDto.class))
                 .collect(Collectors.toList());
-        //accountDto.setUsers(users);
+        accountDto.setUsers(users);
         collection.insertOne(accountDto);
     }
 

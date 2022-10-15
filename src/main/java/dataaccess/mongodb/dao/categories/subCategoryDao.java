@@ -1,6 +1,7 @@
 package dataaccess.mongodb.dao.categories;
 
 import budgetapp.model.categories.Category;
+import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
@@ -31,6 +32,19 @@ public class subCategoryDao implements ISubCategoryDao {
 
     @Override
     public List<CategorySubItem> getAllSubCategoriesByCategory(ObjectId id, Category category) {
+        return null;
+    }
+
+    @Override
+    public List<CategorySubItem> getAllSubCategoriesByCategory(CategoryItem category) {
+        /*modelMapper.getConfiguration()
+                .setFieldMatchingEnabled(true)
+                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
+        List<CategorySubItem> subCategories = new ArrayList<>();
+        collection.find(
+                Filters.eq("_id", category.)new Document(), CategorySubItem.class)
+                .into(new ArrayList<>())
+                .forEach(subCategoryDto -> subCategories.add(modelMapper.map(subCategoryDto, CategorySubItem.class)));*/
         return null;
     }
 

@@ -3,7 +3,9 @@ package dataaccess.mongodb.dto.categories;
 import org.bson.types.ObjectId;
 
 public final class SubCategoryItemDto {
-    private ObjectId id;
+    private ObjectId _id;
+
+    private ObjectId CategoryId;
 
     private String name;
 
@@ -12,11 +14,11 @@ public final class SubCategoryItemDto {
     private double budgetSpent;
 
     public ObjectId getId() {
-        return id;
+        return _id;
     }
 
-    public SubCategoryItemDto setId(ObjectId id) {
-        this.id = id;
+    public SubCategoryItemDto setId(ObjectId _id) {
+        this._id = _id;
         return this;
     }
 
@@ -50,10 +52,19 @@ public final class SubCategoryItemDto {
     @Override
     public String toString() {
         return "SubCategoryDto{" +
-                "id=" + id +
+                "id=" + _id +
                 ", name='" + name + '\'' +
                 ", budget=" + budget +
                 ", budgetSpent=" + budgetSpent +
                 '}';
+    }
+
+    public ObjectId getCategoryId() {
+        return CategoryId;
+    }
+
+    public SubCategoryItemDto setCategoryId(ObjectId categoryId) {
+        CategoryId = categoryId;
+        return this;
     }
 }

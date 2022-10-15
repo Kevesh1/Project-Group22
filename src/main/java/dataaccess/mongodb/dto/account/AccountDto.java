@@ -6,7 +6,8 @@ import org.bson.types.ObjectId;
 import java.util.List;
 
 public final class AccountDto implements Dto {
-    private ObjectId id;
+
+    private ObjectId _id;
 
     private String username;
 
@@ -15,7 +16,12 @@ public final class AccountDto implements Dto {
     private List<UserDto> users;
 
     public ObjectId getId() {
-        return id;
+        return _id;
+    }
+
+    public AccountDto setId(ObjectId id) {
+        this._id = id;
+        return this;
     }
 
     public String getUsername() {
@@ -48,7 +54,7 @@ public final class AccountDto implements Dto {
     @Override
     public String toString() {
         return "AccountDto{" +
-                "id=" + id +
+                "id=" + _id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", users=" + users +

@@ -8,7 +8,13 @@ public class User implements ILocked{
     private String lastName;
     private String profilePicture;
     private String password;
+<<<<<<< Updated upstream
     private int userID;
+=======
+    private boolean familyShare;
+    private boolean elderlyAdjusted;
+    private String userID;
+>>>>>>> Stashed changes
     private boolean enablePassword;
 
     private static List<User> allUsers = new ArrayList<>();
@@ -57,11 +63,31 @@ public class User implements ILocked{
         this.password = password;
     }
 
+<<<<<<< Updated upstream
     public int getUserID() {
+=======
+    public boolean isFamilyShare() {
+        return familyShare;
+    }
+
+    public void setFamilyShare(boolean familyShare) {
+        this.familyShare = familyShare;
+    }
+
+    public boolean isElderlyAdjusted() {
+        return elderlyAdjusted;
+    }
+
+    public void setElderlyAdjusted(boolean elderlyAdjusted) {
+        this.elderlyAdjusted = elderlyAdjusted;
+    }
+
+    public String getUserID() {
+>>>>>>> Stashed changes
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 
@@ -77,15 +103,15 @@ public class User implements ILocked{
 
         User user = new User("Sven", "Svensson", "omg");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
-        user.setUserID(1);
+        user.setUserID("1");
 
         user = new User("Jacob","West","Di1");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
-        user.setUserID(2);
+        user.setUserID("2");
 
         user = new User("Sigfrid","Bort","2d");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
-        user.setUserID(3);
+        user.setUserID("3");
 
         return allUsers;
 
