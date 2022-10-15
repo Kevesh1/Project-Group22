@@ -54,26 +54,14 @@ public final class BudgetMonth {
         }
         return budget;
     }
-    public void setBudget(double budget) {
-        this.budget += budget;
-    }
-    public void addBudget(Income income){
-        setBudget(income.getSum());
-    }
 
     public double getBudgetSpent() {
         budgetSpent = 0;
-        for (Transaction transaction : expenses){
+        for (Transaction transaction : transactions){
             if (transaction instanceof Expense)
                 budgetSpent += transaction.getSum();
         }
         return budgetSpent;
-    }
-    public void setBudgetSpent(double budgetSpent) {
-        this.budgetSpent += budgetSpent;
-    }
-    public void addBudgetSpent(Expense expense){
-        setBudgetSpent(expense.getSum());
     }
 
     public ArrayList<CategoryItem> getCategories() {

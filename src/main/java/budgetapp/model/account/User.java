@@ -8,13 +8,9 @@ public class User implements ILocked{
     private String lastName;
     private String profilePicture;
     private String password;
-<<<<<<< Updated upstream
-    private int userID;
-=======
     private boolean familyShare;
     private boolean elderlyAdjusted;
     private String userID;
->>>>>>> Stashed changes
     private boolean enablePassword;
 
     private static List<User> allUsers = new ArrayList<>();
@@ -63,9 +59,6 @@ public class User implements ILocked{
         this.password = password;
     }
 
-<<<<<<< Updated upstream
-    public int getUserID() {
-=======
     public boolean isFamilyShare() {
         return familyShare;
     }
@@ -83,7 +76,6 @@ public class User implements ILocked{
     }
 
     public String getUserID() {
->>>>>>> Stashed changes
         return userID;
     }
 

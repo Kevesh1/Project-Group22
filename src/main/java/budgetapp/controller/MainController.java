@@ -10,12 +10,9 @@ import budgetapp.model.categories.Category;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import budgetapp.model.transactions.Expense;
-<<<<<<< Updated upstream
 import budgetapp.model.transactions.Income;
 import budgetapp.model.transactions.Transaction;
-=======
 import dataaccess.mongodb.BudgetMonthDao;
->>>>>>> Stashed changes
 import dataaccess.mongodb.dao.account.AccountDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -341,12 +338,6 @@ public class MainController extends AnchorPane{
         initializeCategoryComboBox();
         LoadExpenseCategoriesComboBox();
     }
-    private void initializeBudgetMonths() {
-        BudgetMonthDao budgetMonthDao = new BudgetMonthDao();
-
-        budgetMonths = FXCollections.observableArrayList(budgetMonthDao.getAllBudgetMonthsByUserId(new ObjectId(user.getUserID())));
-        selectedBudgetMonth = budgetMonths.get(0);
-    }
 
     //This can be in UpdateMainView if issues regarding removing subcategories gets resolved
     private void updateLists(){
@@ -423,7 +414,6 @@ public class MainController extends AnchorPane{
         newExpenseCategoryComboBox.getSelectionModel().selectFirst();
     }
 
-<<<<<<< Updated upstream
 
 
     public void initializeBudgetMonths() {
@@ -436,8 +426,7 @@ public class MainController extends AnchorPane{
         selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
     }
 
-=======
->>>>>>> Stashed changes
+
     public void updateCategoryList() {
         categoriesFlowPane.getChildren().clear();
         int i = 0;
