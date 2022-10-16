@@ -1,15 +1,16 @@
 package budgetapp.model.account;
 
-import org.bson.types.ObjectId;
-
 import java.util.List;
 
 public class Account {
 
     private String username;
+
     private String password;
+
     private List<User> users;
-    private ObjectId id;
+
+    private String id;
 
     public Account(String username, String password) {
         this.username = username;
@@ -44,12 +45,21 @@ public class Account {
         this.users = users;
     }
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public Account setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
-        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", users=" + users +
+                ", id='" + id + '\'' +
+                '}';
     }
 }

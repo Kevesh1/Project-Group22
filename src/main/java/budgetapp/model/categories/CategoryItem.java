@@ -9,7 +9,9 @@ import java.util.Objects;
 
 
 public class CategoryItem extends AbstractCategoryItem{
+
     private List<CategorySubItem> subCategories;
+
     private Category category;
 
 

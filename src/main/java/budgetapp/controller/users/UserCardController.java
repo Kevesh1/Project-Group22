@@ -17,11 +17,10 @@ public class UserCardController extends VBox {
 
     FrontPageController parentController;
 
-    @FXML
     User user;
 
     @FXML
-    public Label firstNameCard;
+    public Label usernameLabel;
 
     @FXML
     public ImageView profilePictureCard;
@@ -51,15 +50,15 @@ public class UserCardController extends VBox {
         }
     }
 
-    public void setCardData(User user){
-        Image profilePicture = new Image(Objects.requireNonNull(getClass().getResourceAsStream(user.getProfilePicture())));
-        profilePictureCard.setImage(profilePicture);
-        firstNameCard.setText(user.getFirstName());
+    public void setCardData(){
+        //Image profilePicture = new Image(Objects.requireNonNull(getClass().getResourceAsStream(user.getProfilePicture())));
+        //profilePictureCard.setImage(profilePicture);
+        usernameLabel.setText(user.getUsername());
     }
 
     @FXML
-    public void initilize(){
-        setCardData(user);
+    public void initialize(){
+        setCardData();
     }
 
 

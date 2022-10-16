@@ -52,11 +52,11 @@ public class AccountDao implements IAccountDao {
     public Account addAccount(Account account) {
         AccountDto accountDto = modelMapper.map(account, AccountDto.class);
         collection.insertOne(accountDto);
-        User user = new User("Test", null);
+        User user = new User(account.getUsername(), null);
         userDao.addUser(user, account);
         Account acc = modelMapper.map(accountDto, Account.class);
-        System.out.println("ID");
-        System.out.println(acc.getId());
+        System.out.println(accountDto);
+        System.out.println(acc);
         return acc;
     }
 

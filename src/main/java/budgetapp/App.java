@@ -29,9 +29,7 @@ public class App extends Application {
         WindowController windowController = new WindowController();
         Optional<Account> account = windowController.ShowLoginStage();
         if(account.isPresent()) {
-            System.out.printf("%s, %s", account.get().getUsername(), account.get().getPassword());;
             primaryStage.setScene(new Scene(new FrontPageController(account.get())));
-            System.out.println("SCENE SET");
             primaryStage.setMaximized(true);//primaryStage.show();
             primaryStage.show();
         }

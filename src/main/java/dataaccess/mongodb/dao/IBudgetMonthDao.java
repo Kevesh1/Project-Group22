@@ -12,13 +12,14 @@ public interface IBudgetMonthDao {
 
     public List<BudgetMonth> getAllBudgetMonths();
 
-    Optional<List<BudgetMonth>> getAllBudgetMonthsByUserId(ObjectId id);
+    Optional<List<BudgetMonth>> getAllBudgetMonthsByUserId(String id);
 
     public void updateBudgetMonth(BudgetMonth budgetMonth);
 
     void addBudgetMonth(BudgetMonth budgetMonth);
 
-    void addManyBudgetMonths(List<BudgetMonth> budgetMonths);
+
+    void addManyBudgetMonths(List<BudgetMonth> budgetMonths, String userId);
 
     public void deleteBudgetMonth(BudgetMonth budgetMonth);
 }

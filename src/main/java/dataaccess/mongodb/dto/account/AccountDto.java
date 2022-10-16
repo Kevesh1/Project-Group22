@@ -54,7 +54,7 @@ public final class AccountDto implements Dto {
     @Override
     public String toString() {
         return "AccountDto{" +
-                "id=" + _id +
+                "_id=" + _id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", users=" + users +

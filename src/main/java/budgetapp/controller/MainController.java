@@ -316,6 +316,9 @@ public class MainController extends AnchorPane{
         this.user = user;
         this.budgetMonths = FXCollections.observableArrayList();
         budgetMonthDao = new BudgetMonthDao();
+
+        loadBudgetMonths();
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -328,12 +331,49 @@ public class MainController extends AnchorPane{
         }
 
 
-
     }
 
+    private void loadBudgetMonths() {
+        //budgetMonthDao.addManyBudgetMonths(createDefaultBudgetMonths(), user.getId());
+        Optional<List<BudgetMonth>> dbBudgetMonths = budgetMonthDao.getAllBudgetMonthsByUserId(user.getId());
+        if (dbBudgetMonths.isPresent()) {
+            budgetMonths.addAll(dbBudgetMonths.get());
+        }
+        else {
+            budgetMonths = FXCollections.observableArrayList(createDefaultBudgetMonths());
+            //budgetMonthDao.addManyBudgetMonths(createDefaultBudgetMonths(), user.getId());
+            //budgetMonthDao.getAllBudgetMonthsByUserId(user.getId());
+        }
+        selectedBudgetMonth = budgetMonths.get(0);
+    }
 
+    private List<BudgetMonth> createDefaultBudgetMonths() {
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        List<BudgetMonth> budgetMonths = new ArrayList<>();
+        for (int i = year -1; i < year +2; i++){
+            for (Month month : Month.values()){
+                BudgetMonth budgetMonth = new BudgetMonth(i, month);
+                budgetMonth.setCategoryItems(createDefaultCategoryItems());
+                budgetMonths.add(budgetMonth);
+            }
+        }
+        return budgetMonths;
+    }
+
+    private List<CategoryItem> createDefaultCategoryItems() {
+        List<CategoryItem> categoryItems = new ArrayList<>();
+        for (Category category : Category.values()){
+            if (category != Category.Transportation) {
+                categoryItems.add(new CategoryItem(category));
+            } else {
+                break;
+            }
+        }
+        return categoryItems;
+    }
+
+    @FXML
     public void initialize() {
-        intializeMonths();
         //budgetMonthsMockUp();
         initializeComboBox();
         initializeBudgetMonths();
@@ -359,7 +399,7 @@ public class MainController extends AnchorPane{
 
     }
 
-    public void updatePieChartCategories(@NotNull ArrayList<CategoryItem> categories) {
+    public void updatePieChartCategories(List<CategoryItem> categories) {
         List<PieChart.Data> data = new ArrayList<PieChart.Data>();
         for(CategoryItem category : categories) {
             if (category.getBudget() > 0){
@@ -455,25 +495,6 @@ public class MainController extends AnchorPane{
         }
     }
 
-    private void intializeMonths(){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
-        for (int i = year -1; i < year +2; i++){
-            for (Month month : Month.values()){
-                BudgetMonth newBudgetMonth = new BudgetMonth(i, month);
-                intializeCategories(newBudgetMonth);
-                budgetMonths.add(newBudgetMonth);
-            }
-        }
-    }
-
-    private void intializeCategories(BudgetMonth month){
-        for (Category category : Category.values()){
-            CategoryItem newCategoryItem = new CategoryItem(category);
-            month.addCategoryItem(newCategoryItem);
-            if (category == Category.Transportation)
-                break;
-        }
-    }
 
     private void budgetMonthsMockUp() {
        /* BudgetMonth tempBudgetMonth1 = new BudgetMonth(5000, 2022, Month.AUGUST);

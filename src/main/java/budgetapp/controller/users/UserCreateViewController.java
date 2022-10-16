@@ -3,6 +3,7 @@ package budgetapp.controller.users;
 import budgetapp.controller.login.FrontPageController;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
+import dataaccess.mongodb.dao.account.UserDao;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -63,8 +64,11 @@ public class UserCreateViewController extends AnchorPane {
 
     public User user;
 
+    private final UserDao userDao;
+
     public UserCreateViewController(Account account){
         this.account = account;
+        userDao = new UserDao();
         loadCurrentView();
     }
 
@@ -86,6 +90,7 @@ public class UserCreateViewController extends AnchorPane {
 
     @FXML
     public void profileFinishedAction(ActionEvent event) {
+        createNewUserWithoutPassword();
         if(passwordCheckbox.isSelected() && controlAllInputsWithoutPassword()){
             createNewUserWithoutPassword();
             createFrontPage();
@@ -104,13 +109,16 @@ public class UserCreateViewController extends AnchorPane {
     private void createNewUser() {
         User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), createPassword.getText());
         user.setProfilePicture(chooseProfilePictureButton.toString());
+        userDao.addUser(user, account);
     }
 
     //should be part of model
     private void createNewUserWithoutPassword() {
         User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), null);
         user.setProfilePicture(chooseProfilePictureButton.toString());
+        userDao.addUser(user, account);
     }
+
 
     @FXML
     public void returnToFrontPage(Event event) throws IOException{

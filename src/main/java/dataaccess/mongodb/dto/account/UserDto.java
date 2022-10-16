@@ -1,45 +1,24 @@
 package dataaccess.mongodb.dto.account;
 
 import dataaccess.mongodb.dto.Dto;
-import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
 
 public final class UserDto implements Dto {
 
-    private ObjectId _id;
+    private ObjectId id;
 
-    private String accountId;
+    private String account;
 
-    private String firstName;
-
-    private String lastName;
+    private String username;
 
     private String password;
 
     public ObjectId getId() {
-        return _id;
+        return id;
     }
 
     public UserDto setId(ObjectId id) {
-        this._id = id;
-        return this;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public UserDto setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public UserDto setLastName(String lastName) {
-        this.lastName = lastName;
+        this.id = id;
         return this;
     }
 
@@ -52,22 +31,32 @@ public final class UserDto implements Dto {
         return this;
     }
 
+
+    public String getAccount() {
+        return account;
+    }
+
+    public UserDto setAccount(String account) {
+        this.account = account;
+        return this;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public UserDto setUsername(String username) {
+        this.username = username;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "UserDto{" +
-                "id=" + _id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "id=" + id +
+                ", account='" + account + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public UserDto setAccountId(String accountId) {
-        this.accountId = accountId;
-        return this;
     }
 }

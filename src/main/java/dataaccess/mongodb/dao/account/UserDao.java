@@ -2,12 +2,10 @@ package dataaccess.mongodb.dao.account;
 
 import com.mongodb.client.model.Filters;
 import dataaccess.mongodb.MongoDBService;
-import dataaccess.mongodb.dto.account.AccountDto;
 import dataaccess.mongodb.dto.account.UserDto;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
 import com.mongodb.client.MongoCollection;
-import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
@@ -19,6 +17,9 @@ import java.util.Optional;
 
 public class UserDao implements IUserDao {
 
+
+
+
     MongoCollection<UserDto> collection = MongoDBService.database.getCollection(
             User.class.getSimpleName().toLowerCase(Locale.ROOT), UserDto.class);
 
@@ -26,13 +27,11 @@ public class UserDao implements IUserDao {
 
     public UserDao() {
         modelMapper = new ModelMapper();
-        configureModelMapper(modelMapper);
-    }
-
-    private void configureModelMapper(ModelMapper modelMapper) {
         modelMapper.getConfiguration()
                 .setFieldMatchingEnabled(true)
                 .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
+
+
     }
 
     @Override
@@ -60,9 +59,12 @@ public class UserDao implements IUserDao {
     @Override
     public void addUser(User user, Account account) {
         UserDto userDto = modelMapper.map(user, UserDto.class);
-        userDto.setAccountId(account.getUsername());
-        System.out.println(userDto.getAccountId());
+        userDto.setAccount(account.getUsername());
         collection.insertOne(userDto);
+        System.out.println(userDto);
+        User user1 = modelMapper.map(userDto, User.class);
+        //user1.setId(userDto.getId().toString());
+        System.out.println(user1);
     }
 
     @Override
@@ -73,9 +75,9 @@ public class UserDao implements IUserDao {
     @Override
     public List<User> getUsersByUsername(String username) {
         List<User> users = new ArrayList<>();
-        collection.find(Filters.eq("accountId", username))
+        collection.find(Filters.eq("account", username))
                 .into(new ArrayList<>())
-                .forEach(userDto -> users.add(modelMapper.map(userDto, User.class)));
+                .forEach(userDto -> users.add(modelMapper.map(userDto, User.class).setId(userDto.getId().toString())));
         return users;
     }
 

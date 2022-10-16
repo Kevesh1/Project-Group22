@@ -3,13 +3,22 @@ package budgetapp.model.account;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User implements ILocked{
+public class User{
+
+    private String id;
+
     private String username;
+
     private String firstName;
+
     private String lastName;
+
     private String profilePicture;
+
     private String password;
+
     private boolean familyShare;
+
     private boolean elderlyAdjusted;
     private String userID;
     private boolean enablePassword;
@@ -20,7 +29,7 @@ public class User implements ILocked{
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        allUsers.add(this);
+        //allUsers.add(this);
     }
 
     public User() {
@@ -75,12 +84,23 @@ public class User implements ILocked{
         this.elderlyAdjusted = elderlyAdjusted;
     }
 
+
     public String getUserID() {
         return userID;
     }
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public User setId(String id) {
+        this.id = id;
+        return this;
+
     }
 
     public boolean isEnablePassword() {
@@ -95,30 +115,22 @@ public class User implements ILocked{
 
         User user = new User("Sven Svensson", "omg");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
-        user.setUserID("1");
+        user.setId("1");
 
         user = new User("Jacob West","Di1");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
-        user.setUserID("2");
+        user.setId("2");
 
         user = new User("Sigfrid Bort","2d");
         user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
-        user.setUserID("3");
+        user.setId("3");
 
         return allUsers;
 
     }
 
 
-    @Override
-    public void lock() {
 
-    }
-
-    @Override
-    public void unlock() {
-
-    }
 
     public String getUsername() {
         return username;
@@ -127,5 +139,20 @@ public class User implements ILocked{
     public User setUsername(String username) {
         this.username = username;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", profilePicture='" + profilePicture + '\'' +
+                ", password='" + password + '\'' +
+                ", id='" + id + '\'' +
+                ", familyShare=" + familyShare +
+                ", elderlyAdjusted=" + elderlyAdjusted +
+                ", enablePassword=" + enablePassword +
+                '}';
     }
 }

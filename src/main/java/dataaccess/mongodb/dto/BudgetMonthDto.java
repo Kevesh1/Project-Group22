@@ -2,7 +2,6 @@ package dataaccess.mongodb.dto;
 
 import budgetapp.model.transactions.Expense;
 import dataaccess.mongodb.dto.categories.CategoryItemDto;
-import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
 
 import java.time.Month;
@@ -12,26 +11,24 @@ public class BudgetMonthDto {
 
     private ObjectId _id;
 
-    private String userId;
+    private ObjectId user;
 
     private int year;
 
     private Month month;
 
-    private List<CategoryItemDto> categories;
-
-    private List<Expense> expenses;
+    //private List<CategoryItemDto> categoryItems;
 
     public ObjectId getId() {
         return _id;
     }
 
-    public String getUserId() {
-        return userId;
+    public ObjectId getUser() {
+        return user;
     }
 
-    public BudgetMonthDto setUserId(String userId) {
-        this.userId = userId;
+    public BudgetMonthDto setUser(ObjectId user) {
+        this.user = user;
         return this;
     }
 
@@ -53,37 +50,27 @@ public class BudgetMonthDto {
         return this;
     }
 
-    public List<CategoryItemDto> getCategories() {
-        return categories;
+    /*public List<CategoryItemDto> getCategories() {
+        return categoryItems;
     }
 
     public BudgetMonthDto setCategories(List<CategoryItemDto> categories) {
-        this.categories = categories;
+        this.categoryItems = categories;
+        return this;
+    }*/
+
+    public BudgetMonthDto setId(ObjectId _id) {
+        this._id = _id;
         return this;
     }
 
     @Override
     public String toString() {
         return "BudgetMonthDto{" +
-                "id=" + _id +
-                ", userId='" + userId + '\'' +
+                "_id=" + _id +
+                ", user=" + user +
                 ", year=" + year +
                 ", month=" + month +
-                ", categories=" + categories +
                 '}';
-    }
-
-    public List<Expense> getExpenses() {
-        return expenses;
-    }
-
-    public BudgetMonthDto setExpenses(List<Expense> expenses) {
-        this.expenses = expenses;
-        return this;
-    }
-
-    public BudgetMonthDto setId(ObjectId _id) {
-        this._id = _id;
-        return this;
     }
 }
