@@ -133,6 +133,7 @@ public class FrontPageController extends AnchorPane {
     @FXML
     public void logoutAction(ActionEvent event) throws IOException {
         createAccountLoginController();
+        //currently unable to re-login
     }
 
 

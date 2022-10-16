@@ -32,5 +32,6 @@
       <Text fx:id="reenterText" layoutX="65.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Re-enter password:" />
       <CheckBox fx:id="passwordCheckbox" layoutX="187.0" layoutY="342.0" mnemonicParsing="false" onAction="#passwordCheckboxAction" text="I do not want to have a password" />
       <Text fx:id="warningText" fill="RED" layoutX="397.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.0" />
+      <Text fx:id="passwordComplex" fill="RED" layoutX="384.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.0" />
    </children>
 </fx:root>

@@ -14,6 +14,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class UserCreateViewController extends AnchorPane {
 
@@ -55,6 +56,9 @@ public class UserCreateViewController extends AnchorPane {
     @FXML
     private Text warningText;
 
+    @FXML
+    private Text passwordComplex;
+
     public final Account account;
 
     public User user;
@@ -86,7 +90,7 @@ public class UserCreateViewController extends AnchorPane {
             createNewUserWithoutPassword();
             createFrontPage();
         }
-        else if (controlAllInputsWithPassword() && samePassword()){
+        else if (controlAllInputsWithPassword() && samePassword() && passwordComplexity()){
             createNewUser();
             createFrontPage();
         }
@@ -96,11 +100,13 @@ public class UserCreateViewController extends AnchorPane {
 
     }
 
+    //should be part of model
     private void createNewUser() {
         User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), createPassword.getText());
         user.setProfilePicture(chooseProfilePictureButton.toString());
     }
 
+    //should be part of model
     private void createNewUserWithoutPassword() {
         User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), null);
         user.setProfilePicture(chooseProfilePictureButton.toString());
@@ -139,11 +145,32 @@ public class UserCreateViewController extends AnchorPane {
         }
     }
 
+    //should be part of model
     public boolean samePassword(){
         return createPassword.getText().toString().equals(createPasswordRepeat.getText().toString());
     }
 
+    //should be part of model
+    public boolean passwordComplexity(){
+        if (passwordLength() && passwordCharacterTest()){
+            return true;
+        }
+        else{
+            passwordComplex.setText("Minimum 8 characters with letters and numbers");
+            return false;
+        }
+    }
 
+    //should be part of model
+    public boolean passwordLength(){
+        return createPassword.getText().toString().length() >= 8;
+    }
+
+    //should be part of model
+    public boolean passwordCharacterTest() {
+        return Pattern.matches("[a-zA-Z]+", createPassword.toString()) && Pattern.matches("[0-9]+", createPassword.toString());
+
+    }
     @FXML
     public void chooseProfilePicture(Event event){
         createSelectProfilePictureController();
