@@ -20,7 +20,6 @@ public class Expense extends Transaction {
         return subCategory;
     }
 
-
     public Category getCategory() {
         return category;
     }
