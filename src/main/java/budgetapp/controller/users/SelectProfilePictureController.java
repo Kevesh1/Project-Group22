@@ -42,36 +42,19 @@ public class SelectProfilePictureController extends AnchorPane {
 
 
     public void updatePictureCards(List<ProfileIcon> profileCards) {
-        profileSelectionContainer.getChildren().clear();
+        profileSelectionContainer.getChildren().clear(); //borde rensa
         for (ProfileIcon profileIcon : profileCards) {
             ProfilePictureCardController profilePictureCardController = new ProfilePictureCardController(this, profileIcon, account);
             profileSelectionContainer.getChildren().add(profilePictureCardController);
         }
     }
 
+
     @FXML
-    public void initilize(){
+    public void initialize(){
+        profileSelectionContainer.getChildren().clear();
         updatePictureCards(profileCards);
     }
-
-
-    /*
-    public void initilizePictureCards(){
-        profileCards = new ArrayList<>(ProfileIcon.profileIconList());
-        for(ProfileIcon profileIcon : profileCards){
-            ProfilePictureCardController profilePictureCardController = new ProfilePictureCardController(this, profileIcon, account);
-            profileSelectionContainer.getChildren().add(profilePictureCardController);
-
-        }
-    }
-
-     */
-
-
-
-
-
-
 
 
 }

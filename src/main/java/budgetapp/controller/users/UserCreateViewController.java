@@ -85,9 +85,6 @@ public class UserCreateViewController extends AnchorPane {
         }
     }
 
-    public void chooseProfilePicture(ActionEvent event){
-    }
-
     @FXML
     public void profileFinishedAction(ActionEvent event) {
         createNewUserWithoutPassword();
@@ -136,7 +133,7 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     public boolean controlAllInputsWithPassword(){
-        if (firstNameInput.getText().toString().isEmpty() || lastNameInput.getText().toString().isEmpty() || createPassword.getText().toString().isEmpty() || createPasswordRepeat.getText().toString().isEmpty() || !chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/plus.png")){
+        if (firstNameInput.getText().toString().isEmpty() || lastNameInput.getText().toString().isEmpty() || createPassword.getText().toString().isEmpty() || createPasswordRepeat.getText().toString().isEmpty() || !chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/BlankProfilePicture.png")){
             return false;
         }
         else{
@@ -145,7 +142,7 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     public boolean controlAllInputsWithoutPassword(){
-        if (firstNameInput.getText().toString().isEmpty() || lastNameInput.getText().toString().isEmpty() || !chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/plus.png")){
+        if (firstNameInput.getText().toString().isEmpty() || lastNameInput.getText().toString().isEmpty() || !chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/BlankProfilePicture.png")){
             return false;
         }
         else{
@@ -164,7 +161,7 @@ public class UserCreateViewController extends AnchorPane {
             return true;
         }
         else{
-            passwordComplex.setText("Minimum 8 characters with letters and numbers");
+            passwordComplex.setText("minimum 8 characters with letters and numbers");
             return false;
         }
     }
@@ -181,6 +178,7 @@ public class UserCreateViewController extends AnchorPane {
     }
     @FXML
     public void chooseProfilePicture(Event event){
+        System.out.println("EVENT");
         createSelectProfilePictureController();
     }
 

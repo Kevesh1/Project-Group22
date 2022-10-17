@@ -21,7 +21,7 @@ public class ProfilePictureCardController extends AnchorPane {
     public final Account account;
 
     @FXML
-    ProfileIcon profileIcon;
+    public ProfileIcon profileIcon;
 
     @FXML
     private ImageView profilePicture;
@@ -38,12 +38,13 @@ public class ProfilePictureCardController extends AnchorPane {
         this.profileIcon = profileIcon;
         this.parentController = parentController;
         this.account = account;
-        //this.profilePicture = new ImageView(String.valueOf(getClass().getResourceAsStream(profileIcon.getProfilePicture())));
-        loadCurrentView();
+
+        loadCard();
+
 
     }
 
-    private void loadCurrentView() {
+    private void loadCard() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/ProfilePictureCard.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -54,17 +55,17 @@ public class ProfilePictureCardController extends AnchorPane {
         {
             throw new RuntimeException(exception);
         }
+        //this.profilePicture = new ImageView(String.valueOf(getClass().getResourceAsStream(profileIcon.getProfilePicture())));
     }
 
-
     @FXML
-    public void initilize(){
+    public void initialize(){
         setIconData(profileIcon);
     }
 
 
     public void setIconData(ProfileIcon profileIcon){
-        ImageView profilePicture = new ImageView(String.valueOf(profileIcon.getProfilePicture()));
+        profilePicture = new ImageView(profileIcon.getProfilePicture());
     }
 
 
