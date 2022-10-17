@@ -47,12 +47,12 @@ public class SelectProfilePictureController extends AnchorPane {
             ProfilePictureCardController profilePictureCardController = new ProfilePictureCardController(this, profileIcon, account);
             profileSelectionContainer.getChildren().add(profilePictureCardController);
         }
+        profileCards.clear();
     }
 
 
     @FXML
     public void initialize(){
-        profileSelectionContainer.getChildren().clear();
         updatePictureCards(profileCards);
     }
 
