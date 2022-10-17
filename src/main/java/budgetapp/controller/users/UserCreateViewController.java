@@ -59,6 +59,8 @@ public class UserCreateViewController extends AnchorPane {
 
     private final UserDao userDao;
 
+    public String imageFileSave;
+
     public UserCreateViewController(Account account){
         this.account = account;
         userDao = new UserDao();
@@ -80,7 +82,6 @@ public class UserCreateViewController extends AnchorPane {
 
     @FXML
     public void profileFinishedAction(ActionEvent event) {
-        createNewUserWithoutPassword();
         if(passwordCheckbox.isSelected() && controlAllInputsWithoutPassword()){
             createNewUserWithoutPassword();
             createFrontPage();
@@ -98,14 +99,14 @@ public class UserCreateViewController extends AnchorPane {
     //should be part of model
     private void createNewUser() {
         User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), createPassword.getText());
-        user.setProfilePicture(chooseProfilePictureButton.toString());
+        user.setProfilePicture(imageFileSave);
         userDao.addUser(user, account);
     }
 
     //should be part of model
     private void createNewUserWithoutPassword() {
         User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), null);
-        user.setProfilePicture(chooseProfilePictureButton.toString());
+        user.setProfilePicture(imageFileSave);
         userDao.addUser(user, account);
     }
 
@@ -126,7 +127,7 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     public boolean controlAllInputsWithPassword(){
-        if (firstNameInput.getText().toString().isEmpty() || lastNameInput.getText().toString().isEmpty() || createPassword.getText().toString().isEmpty() || createPasswordRepeat.getText().toString().isEmpty() || !chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/BlankProfilePicture.png")){
+        if (firstNameInput.getText().isEmpty() || lastNameInput.getText().isEmpty() || createPassword.getText().isEmpty() || createPasswordRepeat.getText().isEmpty() || chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/BlankProfilePicture.png")){
             return false;
         }
         else{
@@ -135,7 +136,7 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     public boolean controlAllInputsWithoutPassword(){
-        if (firstNameInput.getText().toString().isEmpty() || lastNameInput.getText().toString().isEmpty() || !chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/BlankProfilePicture.png")){
+        if (firstNameInput.getText().isEmpty() || lastNameInput.getText().isEmpty() || chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/BlankProfilePicture.png")){
             return false;
         }
         else{
@@ -197,6 +198,7 @@ public class UserCreateViewController extends AnchorPane {
 
 
     public void setChooseProfilePictureButton(String imageFile) {
+        imageFileSave = imageFile;
         Image image = new Image(imageFile);
         chooseProfilePictureButton.setImage(image);
     }

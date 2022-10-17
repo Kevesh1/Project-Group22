@@ -41,6 +41,10 @@ public class NewUserCardController extends VBox {
 
     public NewUserCardController(FrontPageController parentController) {
         this.parentController = parentController;
+        loadCurrentView();
+    }
+
+    private void loadCurrentView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/AddUserCard.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
