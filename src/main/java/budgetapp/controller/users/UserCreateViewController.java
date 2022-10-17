@@ -9,23 +9,16 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class UserCreateViewController extends AnchorPane {
-
-    public ImageView getChooseProfilePictureButton() {
-        return chooseProfilePictureButton;
-    }
-
-    public void setChooseProfilePictureButton(ImageView chooseProfilePictureButton) {
-        this.chooseProfilePictureButton = chooseProfilePictureButton;
-    }
 
     @FXML
     private ImageView chooseProfilePictureButton;
@@ -178,7 +171,6 @@ public class UserCreateViewController extends AnchorPane {
     }
     @FXML
     public void chooseProfilePicture(Event event){
-        System.out.println("EVENT");
         createSelectProfilePictureController();
     }
 
@@ -197,4 +189,16 @@ public class UserCreateViewController extends AnchorPane {
             createPasswordRepeat.setVisible(true);
         }
     }
+
+
+    public ImageView getChooseProfilePictureButton() {
+        return chooseProfilePictureButton;
+    }
+
+
+    public void setChooseProfilePictureButton(String imageFile) {
+        Image image = new Image(imageFile);
+        chooseProfilePictureButton.setImage(image);
+    }
+
 }
