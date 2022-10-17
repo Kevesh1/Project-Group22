@@ -11,14 +11,16 @@ abstract public class AbstractCategoryItem {
     private String name;
     private double budget;
     private double budgetSpent;
-    private Image icon;
-
 
 
     public AbstractCategoryItem(String name, double budget) {
         this.name = name;
         this.budget = budget;
         this.budgetSpent = 0;
+    }
+
+    public AbstractCategoryItem() {
+
     }
 
 
@@ -29,14 +31,6 @@ abstract public class AbstractCategoryItem {
         this.name = name;
     }
 
-
-    public Image getIcon() {
-        return null;
-    }
-
-    /*public void setIcon(Image icon) {
-        this.icon = icon;
-    }*/
 
     public double getBudget() {
         return budget;

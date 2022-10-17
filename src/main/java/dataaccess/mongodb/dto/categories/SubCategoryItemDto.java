@@ -3,9 +3,10 @@ package dataaccess.mongodb.dto.categories;
 import org.bson.types.ObjectId;
 
 public final class SubCategoryItemDto {
+
     private ObjectId _id;
 
-    private ObjectId CategoryId;
+    private ObjectId category;
 
     private String name;
 
@@ -59,12 +60,12 @@ public final class SubCategoryItemDto {
                 '}';
     }
 
-    public ObjectId getCategoryId() {
-        return CategoryId;
+    public ObjectId getCategory() {
+        return category;
     }
 
-    public SubCategoryItemDto setCategoryId(ObjectId categoryId) {
-        CategoryId = categoryId;
+    public SubCategoryItemDto setCategory(ObjectId categoryId) {
+        category = categoryId;
         return this;
     }
 }

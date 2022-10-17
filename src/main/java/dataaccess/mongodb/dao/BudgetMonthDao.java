@@ -1,27 +1,23 @@
 package dataaccess.mongodb.dao;
 
+import budgetapp.model.categories.CategoryItem;
 import com.mongodb.client.model.Filters;
 import dataaccess.mongodb.MongoDBService;
+import dataaccess.mongodb.dao.categories.CategoryDao;
 import dataaccess.mongodb.dto.BudgetMonthDto;
 import budgetapp.model.BudgetMonth;
 import com.mongodb.client.MongoCollection;
-import dataaccess.mongodb.dto.account.AccountDto;
-import dataaccess.mongodb.dto.account.UserDto;
 import dataaccess.mongodb.dto.categories.CategoryItemDto;
-import org.bson.Document;
 import org.bson.types.ObjectId;
-import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
 import org.modelmapper.config.Configuration;
+import org.modelmapper.spi.MappingContext;
 
-import javax.swing.text.html.Option;
 import java.time.Month;
 import java.time.YearMonth;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class BudgetMonthDao implements IBudgetMonthDao {
 
@@ -31,33 +27,30 @@ public class BudgetMonthDao implements IBudgetMonthDao {
 
     private final ModelMapper modelMapper;
 
+    private CategoryDao categoryDao;
+
     public BudgetMonthDao() {
+        categoryDao = new CategoryDao();
         modelMapper = new ModelMapper();
         configureModelMapper(modelMapper);
-
-
-    }
-
-    private YearMonth mapYearMonth(int year, Month month) {
-        return YearMonth.of(year, month);
     }
 
     private void configureModelMapper(ModelMapper modelMapper) {
         modelMapper.getConfiguration()
                 .setFieldMatchingEnabled(true)
                 .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
+        //modelMapper.addConverter(testConverter);
+
 
         /*modelMapper.createTypeMap(BudgetMonthDto.class, BudgetMonth.class)
                 .addMappings(
                         new PropertyMap<BudgetMonthDto, BudgetMonth>() {
                             @Override
                             protected void configure() {
-                                // define a converter that takes the whole "person"
                                 using(ctx -> mapYearMonth(
                                         ((BudgetMonthDto) ctx.getSource()).getYear(),
                                         ((BudgetMonthDto) ctx.getSource()).getMonth())
                                 )
-                                        // Map the compliete source here
                                         .map(source, BudgetMonth.class);
                             }
                         });*/
@@ -117,6 +110,31 @@ public class BudgetMonthDao implements IBudgetMonthDao {
 
     @Override
     public void deleteBudgetMonth(BudgetMonth budgetMonth) {
+
+    }
+
+    @Override
+    public List<BudgetMonth> initNewBudgetMonths(List<BudgetMonth> budgetMonths, List<CategoryItem> categoryItems, String userId) {
+        List<BudgetMonthDto> budgetMonthDtos = new ArrayList<>();
+
+        budgetMonths.forEach(budgetMonth -> budgetMonthDtos
+                .add(modelMapper.map(budgetMonth, BudgetMonthDto.class)
+                .setUser(new ObjectId(userId))));
+
+        collection.insertMany(budgetMonthDtos);
+
+        for (BudgetMonthDto budgetMonthDto : budgetMonthDtos) {
+            System.out.println(budgetMonthDto.getYearMonth().getMonth());
+        }
+
+        List<BudgetMonth> budgetMonthList = budgetMonthDtos.stream().map(budgetMonthDto -> modelMapper.map(budgetMonthDto, BudgetMonth.class)).collect(Collectors.toList());
+
+        for (BudgetMonth budgetMonth : budgetMonthList) {
+            System.out.println(budgetMonth);
+        }
+        categoryDao.setCategoryItems(categoryItems, budgetMonthList);
+
+        return budgetMonthList;
 
     }
 }

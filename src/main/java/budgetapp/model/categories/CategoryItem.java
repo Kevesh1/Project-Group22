@@ -14,7 +14,7 @@ public class CategoryItem extends AbstractCategoryItem{
 
     private Category category;
 
-
+    private String id;
 
     public CategoryItem(@NotNull Category category) {
         super(category.toString(), 0);
@@ -22,8 +22,10 @@ public class CategoryItem extends AbstractCategoryItem{
         this.category = category;
     }
 
-    @Override
-    public Image getIcon() {
+    public CategoryItem() {
+    }
+
+    public Image applyIcon() {
         return (new Image(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(
                 "budgetapp/img/categories/" + getCategory().toString().toLowerCase() + ".png"))));
     }
@@ -62,5 +64,11 @@ public class CategoryItem extends AbstractCategoryItem{
         this.category = category;
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 }

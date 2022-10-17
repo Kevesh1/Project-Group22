@@ -75,7 +75,7 @@ public class CategoryController extends AnchorPane {
         categoryName.setText(categoryItem.getName());
         categoryBudget.setText(categoryItem.getBudget() + " kr");
         progressBar.setProgress(categoryItem.getBudgetSpent() / categoryItem.getBudget());
-        categoryImage.setImage(categoryItem.getIcon());
+        categoryImage.setImage(categoryItem.applyIcon());
     }
 
     private void subCategoriesMock(){

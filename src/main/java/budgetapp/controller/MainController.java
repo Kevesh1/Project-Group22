@@ -15,6 +15,8 @@ import budgetapp.model.transactions.Transaction;
 
 import dataaccess.mongodb.dao.BudgetMonthDao;
 import dataaccess.mongodb.dao.account.AccountDao;
+import dataaccess.mongodb.dao.categories.CategoryDao;
+import dataaccess.mongodb.dto.categories.CategoryItemDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -310,12 +312,14 @@ public class MainController extends AnchorPane{
     public BudgetMonth selectedBudgetMonth;
     ObservableList<BudgetMonth> budgetMonths;
     private BudgetMonthDao budgetMonthDao;
+    private CategoryDao categoryDao;
 
 
     public MainController(User user) {
         this.user = user;
         this.budgetMonths = FXCollections.observableArrayList();
         budgetMonthDao = new BudgetMonthDao();
+        categoryDao = new CategoryDao();
 
         loadBudgetMonths();
 
@@ -337,13 +341,17 @@ public class MainController extends AnchorPane{
         //budgetMonthDao.addManyBudgetMonths(createDefaultBudgetMonths(), user.getId());
         Optional<List<BudgetMonth>> dbBudgetMonths = budgetMonthDao.getAllBudgetMonthsByUserId(user.getId());
         if (dbBudgetMonths.isPresent()) {
+            System.out.println("ISPRESENT");
             budgetMonths.addAll(dbBudgetMonths.get());
         }
         else {
-            budgetMonths = FXCollections.observableArrayList(createDefaultBudgetMonths());
-            //budgetMonthDao.addManyBudgetMonths(createDefaultBudgetMonths(), user.getId());
-            //budgetMonthDao.getAllBudgetMonthsByUserId(user.getId());
-        }
+            System.out.println("NOT PRESENT");
+            //budgetMonths = FXCollections.observableArrayList(createDefaultBudgetMonths());
+//            budgetMonthDao.addManyBudgetMonths(createDefaultBudgetMonths(), user.getId());
+            List<BudgetMonth> defaultBudgetMonths = budgetMonthDao
+                    .initNewBudgetMonths(createDefaultBudgetMonths(), createDefaultCategoryItems(), user.getId());
+            budgetMonths.addAll(defaultBudgetMonths);
+            }
         selectedBudgetMonth = budgetMonths.get(0);
     }
 
@@ -353,7 +361,6 @@ public class MainController extends AnchorPane{
         for (int i = year -1; i < year +2; i++){
             for (Month month : Month.values()){
                 BudgetMonth budgetMonth = new BudgetMonth(i, month);
-                budgetMonth.setCategoryItems(createDefaultCategoryItems());
                 budgetMonths.add(budgetMonth);
             }
         }
@@ -483,14 +490,16 @@ public class MainController extends AnchorPane{
 
     public void updateLatestTransaction(){
         latestPurchases.getChildren().clear();
-        for (Transaction transaction : selectedBudgetMonth.getTransactions()){
-            if (transaction instanceof Expense){
-                ExpenseController expenseController = new ExpenseController(this, (Expense) transaction);
-                latestPurchases.getChildren().add(expenseController);
-            }
-            else{
-                IncomeController incomeController = new IncomeController(this, (Income)transaction);
-                latestPurchases.getChildren().add(incomeController);
+        if (selectedBudgetMonth.getTransactions() != null) {
+            for (Transaction transaction : selectedBudgetMonth.getTransactions()){
+                if (transaction instanceof Expense){
+                    ExpenseController expenseController = new ExpenseController(this, (Expense) transaction);
+                    latestPurchases.getChildren().add(expenseController);
+                }
+                else{
+                    IncomeController incomeController = new IncomeController(this, (Income)transaction);
+                    latestPurchases.getChildren().add(incomeController);
+                }
             }
         }
     }
