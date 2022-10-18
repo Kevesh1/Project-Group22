@@ -13,6 +13,8 @@ public final class UserDto implements Dto {
 
     private String password;
 
+    private String profilePicture;
+
     public ObjectId getId() {
         return id;
     }
@@ -47,6 +49,15 @@ public final class UserDto implements Dto {
 
     public UserDto setUsername(String username) {
         this.username = username;
+        return this;
+    }
+
+    public String getProfilePictures() {
+        return profilePicture;
+    }
+
+    public UserDto setProfilePictures(String profilePicture) {
+        this.profilePicture = profilePicture;
         return this;
     }
 

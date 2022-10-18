@@ -15,7 +15,7 @@
          <graphic>
             <ImageView fx:id="chooseProfilePictureButton" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/BlankProfilePicture.png" />
+                  <Image url="@../img/profilepictures/BlankProfilePicture.png" />
                </image>
             </ImageView>
          </graphic>
