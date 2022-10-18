@@ -15,7 +15,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class UserCreateViewController extends AnchorPane {
@@ -98,15 +97,13 @@ public class UserCreateViewController extends AnchorPane {
 
     //should be part of model
     private void createNewUser() {
-        User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), createPassword.getText());
-        user.setProfilePicture(imageFileSave);
+        User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), createPassword.getText(), imageFileSave);
         userDao.addUser(user, account);
     }
 
     //should be part of model
     private void createNewUserWithoutPassword() {
-        User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), null);
-        user.setProfilePicture(imageFileSave);
+        User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), null, imageFileSave);
         userDao.addUser(user, account);
     }
 
@@ -127,7 +124,7 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     public boolean controlAllInputsWithPassword(){
-        if (firstNameInput.getText().isEmpty() || lastNameInput.getText().isEmpty() || createPassword.getText().isEmpty() || createPasswordRepeat.getText().isEmpty() || chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/BlankProfilePicture.png")){
+        if (firstNameInput.getText().isEmpty() || lastNameInput.getText().isEmpty() || createPassword.getText().isEmpty() || createPasswordRepeat.getText().isEmpty() || chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/profilepictures/BlankProfilePicture.png")){
             return false;
         }
         else{
@@ -136,7 +133,7 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     public boolean controlAllInputsWithoutPassword(){
-        if (firstNameInput.getText().isEmpty() || lastNameInput.getText().isEmpty() || chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/BlankProfilePicture.png")){
+        if (firstNameInput.getText().isEmpty() || lastNameInput.getText().isEmpty() || chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/profilepictures/BlankProfilePicture.png")){
             return false;
         }
         else{

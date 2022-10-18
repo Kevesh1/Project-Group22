@@ -53,7 +53,7 @@ public class ProfilePictureCardController extends AnchorPane {
 
 
     public void setIconData(ProfileIcon profileIcon){
-        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(profileIcon.getProfilePicture())));
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/budgetapp/img/profilepictures/" + profileIcon.getProfilePicture() +".png")));
         profilePicture.setImage(image);
     }
 
@@ -61,7 +61,7 @@ public class ProfilePictureCardController extends AnchorPane {
     @FXML
     void profilePictureSelected(ActionEvent event) {
         UserCreateViewController userCreateViewController = new UserCreateViewController(account);
-        userCreateViewController.setChooseProfilePictureButton(profileIcon.getProfilePicture());
+        userCreateViewController.setChooseProfilePictureButton("/budgetapp/img/profilepictures/" + profileIcon.getProfilePicture() + ".png");
         this.getScene().setRoot(userCreateViewController);
         //Later upgrade with more information saved
     }
