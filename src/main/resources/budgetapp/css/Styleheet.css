@@ -175,6 +175,19 @@
     -fx-background-color: -fx-darker-color;
 }
 
+.themeColor{
+    -fx-background-color: -fx-theme-color;
+}
+
+.darkcolor{
+    -fx-background-color: -fx-dark-color;
+}
+
+.textcolor{
+    -fx-background-color: -fx-text-color;
+}
+
+
 .mainpain{
     -fx-background-color: -fx-darker-color;
     -fx-background-radius: 7;
