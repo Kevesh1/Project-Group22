@@ -166,7 +166,6 @@
 .categoryBoxx{
     -fx-border-radius: 7;
     -fx-background-radius: 14;
-    -fx-background-color: -fx-dark-color;
     -fx-border-color: -fx-darker-color;
     -fx-border-width: 5;
 }

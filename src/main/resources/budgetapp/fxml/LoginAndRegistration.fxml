@@ -17,55 +17,6 @@
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <left>
-            <AnchorPane prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #4A6DE5;" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fitHeight="210.0" fitWidth="193.0" layoutX="24.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/Blueprint.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="69.0" fitWidth="59.0" layoutX="91.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/vault.png" />
-                     </image>
-                  </ImageView>
-                  <Text fill="#2006e1" layoutX="48.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLUE">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" layoutX="124.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vault" wrappingWidth="60.89453125">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" layoutX="50.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLUE">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-         </left>
-         <right>
-            <AnchorPane prefHeight="400.0" prefWidth="440.0" BorderPane.alignment="CENTER">
-               <children>
-                  <TextField fx:id="username" layoutX="97.0" layoutY="175.0" promptText="User name:" style="-fx-background-color: transparent; -fx-border-color: #4A6DE5 #4A6DE5; -fx-border-width: 0px 0px 2px 0px;" />
-                  <PasswordField fx:id="password" layoutX="97.0" layoutY="216.0" promptText="Password:" style="-fx-background-color: transparent; -fx-border-color: #4A6DE5 #4A6DE5; -fx-border-width: 0px 0px 2px 0px;" />
-                  <Button fx:id="AccountLoginButton" layoutX="142.0" layoutY="284.0" mnemonicParsing="false" onAction="#loginEvent" prefHeight="34.0" prefWidth="76.0" style="-fx-background-color: #4A6DE5 #4A6DE5;" text="Login" textFill="WHITE" />
-                  <Hyperlink layoutX="105.0" layoutY="350.0" onAction="#toRegistration" text="Forgot your password?" />
-                  <Text fill="#4a6de5" layoutX="134.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" wrappingWidth="92.294921875">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <Label fx:id="wrongPassword" layoutX="172.0" layoutY="250.0" textFill="#ff0707" />
-               </children>
-            </AnchorPane>
-         </right>
-      </BorderPane>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
-         <left>
             <AnchorPane prefHeight="400.0" prefWidth="240.0" styleClass="themeColor" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="210.0" fitWidth="193.0" layoutX="24.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
@@ -102,13 +53,62 @@
                   <TextField fx:id="username1" layoutX="105.0" layoutY="172.0" promptText="Username:" style="-fx-background-color: transparent; -fx-border-color: #4A6DE5 #4A6DE5; -fx-border-width: 0px 0px 2px 0px;" />
                   <PasswordField fx:id="password1" layoutX="105.0" layoutY="216.0" promptText="Password:" style="-fx-background-color: transparent; -fx-border-color: #4A6DE5 #4A6DE5; -fx-border-width: 0px 0px 2px 0px;" />
                   <Button fx:id="AccountLoginButton1" layoutX="128.0" layoutY="283.0" mnemonicParsing="false" onAction="#registerAccountEvent" prefHeight="34.0" prefWidth="103.0" text="Create Account" textFill="WHITE" />
-                  <Hyperlink layoutX="105.0" layoutY="350.0" text="Forgot your password?" />
+                  <Hyperlink layoutX="105.0" layoutY="350.0" text="Forgot your password?l" />
                   <Text fill="#ebebeb" layoutX="134.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textcolor" text="Register" textAlignment="CENTER" wrappingWidth="92.294921875">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
                   <Label fx:id="wrongPassword1" layoutX="172.0" layoutY="250.0" textFill="#ff0707" />
+               </children>
+            </AnchorPane>
+         </right>
+      </BorderPane>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <left>
+            <AnchorPane prefHeight="400.0" prefWidth="240.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="210.0" fitWidth="193.0" layoutX="24.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Blueprint.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="69.0" fitWidth="59.0" layoutX="91.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/vault.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#080046" layoutX="48.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLUE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="124.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vault" wrappingWidth="60.89453125">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="50.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLUE">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </left>
+         <right>
+            <AnchorPane prefHeight="400.0" prefWidth="440.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="username" layoutX="97.0" layoutY="175.0" promptText="User name:" style="-fx-background-color: transparent; -fx-border-color: #4A6DE5 #4A6DE5; -fx-border-width: 0px 0px 2px 0px;" />
+                  <PasswordField fx:id="password" layoutX="97.0" layoutY="216.0" promptText="Password:" style="-fx-background-color: transparent; -fx-border-color: #4A6DE5 #4A6DE5; -fx-border-width: 0px 0px 2px 0px;" />
+                  <Button fx:id="AccountLoginButton" layoutX="142.0" layoutY="284.0" mnemonicParsing="false" onAction="#loginEvent" prefHeight="34.0" prefWidth="76.0" text="Login" textFill="WHITE" />
+                  <Hyperlink layoutX="105.0" layoutY="350.0" onAction="#toRegistration" text="Forgot your password?" />
+                  <Text fill="#eeeeee" layoutX="134.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" wrappingWidth="92.294921875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="wrongPassword" layoutX="172.0" layoutY="250.0" textFill="#ff0707" />
                </children>
             </AnchorPane>
          </right>

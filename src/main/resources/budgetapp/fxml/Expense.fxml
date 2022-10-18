@@ -6,24 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="170.0" prefWidth="200.0" styleClass="categoryBoxx" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="200.0" prefWidth="170.0" style="-fx-background-color: #a33c32;" styleClass="categoryBoxx" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="latestPurchaseNotation" layoutX="68.0" layoutY="8.0" prefHeight="105.0" prefWidth="99.0" rotate="90.0" style="-fx-font-size: 10;" text="Label">
+      <Label fx:id="latestPurchaseNotation" layoutX="19.0" layoutY="40.0" prefHeight="83.0" prefWidth="90.0" style="-fx-font-size: 10;" text="Label">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label fx:id="latestPurchaseDate" layoutX="-8.0" layoutY="73.0" rotate="90.0" style="-fx-font-size: 10;" text="Label">
+      <Label fx:id="latestPurchaseDate" layoutX="65.0" layoutY="139.0" style="-fx-font-size: 10;" text="Label" AnchorPane.bottomAnchor="15.0">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label fx:id="latestPurchaseCost" layoutX="35.0" layoutY="86.0" rotate="90.0" style="-fx-font-size: 10;" text="Label">
+      <Label fx:id="latestPurchaseCost" layoutX="88.0" layoutY="107.0" style="-fx-font-size: 10;" text="Label" AnchorPane.bottomAnchor="50.0">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Button layoutX="154.0" layoutY="128.0" mnemonicParsing="false" onAction="#deleteTransaction" rotate="90.0" text="Delete" />
-      <Label layoutX="3.0" layoutY="19.0" rotate="90.0" style="-fx-font-size: 17;" text="Date:" />
-      <Label layoutX="21.0" layoutY="31.0" rotate="90.0" style="-fx-font-size: 17;" text="Amount:" />
-      <Label layoutX="158.0" layoutY="19.0" rotate="90.0" style="-fx-font-size: 17;" text="Note:" />
+      <Button layoutX="146.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteTransaction" text="Delete" />
+      <Label layoutX="16.0" layoutY="152.0" style="-fx-font-size: 17;" text="Date:" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="11.0" />
+      <Label layoutX="5.0" layoutY="102.0" style="-fx-font-size: 17;" text="Amount:" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="11.0" />
+      <Label layoutX="95.0" layoutY="19.0" style="-fx-font-size: 17;" text="Note:" AnchorPane.leftAnchor="11.0" />
    </children>
    <stylesheets>
       <URL value="@../css/Styleheet.css" />
