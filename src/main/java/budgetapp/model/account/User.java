@@ -26,10 +26,10 @@ public class User{
     private static List<User> allUsers = new ArrayList<>();
 
     //expand
-    public User(String username, String password) {
+    public User(String username, String password, String profilePicture) {
         this.username = username;
         this.password = password;
-        //allUsers.add(this);
+        this.profilePicture = profilePicture;
     }
 
     public User() {
@@ -110,26 +110,6 @@ public class User{
     public void setEnablePassword(boolean enablePassword) {
         this.enablePassword = enablePassword;
     }
-
-    public static List<User> userList(){
-
-        User user = new User("Sven Svensson", "omg");
-        user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
-        user.setId("1");
-
-        user = new User("Jacob West","Di1");
-        user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
-        user.setId("2");
-
-        user = new User("Sigfrid Bort","2d");
-        user.setProfilePicture("/budgetapp/img/BlankProfilePicture.png");
-        user.setId("3");
-
-        return allUsers;
-
-    }
-
-
 
 
     public String getUsername() {

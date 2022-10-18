@@ -1,20 +1,19 @@
 package budgetapp.model;
 
-import budgetapp.model.categories.Category;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.transactions.Expense;
 import budgetapp.model.transactions.Income;
 import budgetapp.model.transactions.Transaction;
 
-import javax.swing.*;
 import java.time.Month;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public final class BudgetMonth {
+
+    private String id;
 
     private double budget;
 
@@ -22,9 +21,9 @@ public final class BudgetMonth {
 
     private YearMonth yearMonth;
 
-    private Month month;
+    //private Month month;
 
-    private int year;
+    //private int year;
 
     private List<CategoryItem> categoryItems;
 
@@ -42,7 +41,6 @@ public final class BudgetMonth {
     }
 
     public BudgetMonth() {
-
     }
 
 
@@ -74,17 +72,22 @@ public final class BudgetMonth {
     }
 
     public double getBudgetRemaining(){
-        return (getBudget() - getBudgetSpent());
+        return (budget - getBudgetSpent());
     }
 
     public double getBudget() {
+        return this.budget;
+    }
+
+    /*public double getBudget() {
         budget = 0;
         for (Transaction transaction : transactions){
             if (transaction instanceof Income)
                 budget += transaction.getSum();
         }
         return budget;
-    }
+    }*/
+
 
     public void setBudget(double budget) {
         this.budget += budget;
@@ -94,18 +97,23 @@ public final class BudgetMonth {
         setBudget(income.getSum());
     }
 
-    public double getBudgetSpent() {
+    /*public double getBudgetSpent() {
         budgetSpent = 0;
         for (Transaction transaction : transactions){
             if (transaction instanceof Expense)
                 budgetSpent += transaction.getSum();
         }
         return budgetSpent;
+    }*/
+
+    public double getBudgetSpent() {
+        return this.budgetSpent;
     }
 
     public List<CategoryItem> getCategories() {
         return categoryItems;
     }
+
 
     public void addCategoryItem(CategoryItem categoryItem) {
         categoryItems.add(categoryItem);
@@ -136,7 +144,7 @@ public final class BudgetMonth {
 
     public BudgetMonth setYearMonth(YearMonth yearMonth) {
         this.yearMonth = yearMonth;
-        return this;
+        return null;
     }
 
     public List<CategoryItem> getCategoryItems() {
@@ -147,11 +155,19 @@ public final class BudgetMonth {
         this.categoryItems = categoryItems;
     }
 
-    public void setMonth(Month month) {
-        this.month = month;
+//    public void setMonth(Month month) {
+//        this.month = month;
+//    }
+//
+//    public void setYear(int year) {
+//        this.year = year;
+//    }
+
+    public String getId() {
+        return id;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setId(String id) {
+        this.id = id;
     }
 }

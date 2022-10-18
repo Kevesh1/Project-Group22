@@ -12,7 +12,7 @@
    <children>
       <ImageView fx:id="profilePicture" fitHeight="150.0" fitWidth="150.0" layoutX="225.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="40.0">
          <image>
-            <Image url="@../img/BlankProfilePicture.png" />
+            <Image url="@../img/profilepictures/BlankProfilePicture.png" />
          </image>
       </ImageView>
       <Text fx:id="fullName" layoutX="231.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="231.0" AnchorPane.rightAnchor="229.953125">

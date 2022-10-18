@@ -120,15 +120,6 @@ public class FrontPageController extends AnchorPane {
 
     }
 
-    public void initializeUserCards(){
-        userCards = new ArrayList<>(User.userList());
-            for(User user : userCards){
-                UserCardController userCardController = new UserCardController(this, user);
-                userCardContainer.getChildren().add(userCardController);
-
-            }
-    }
-
 
     @FXML
     public void manageUserAccountsAction(ActionEvent event) throws IOException{

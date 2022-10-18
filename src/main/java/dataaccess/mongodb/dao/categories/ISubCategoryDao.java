@@ -18,6 +18,8 @@ public interface ISubCategoryDao {
 
     public List<CategorySubItem> getAllSubCategories();
 
+    void addSubCategory(CategorySubItem subCategory, String category);
+
     public void updateSubCategory(CategorySubItem subCategory);
 
     public void deleteSubCategory(CategorySubItem subCategory);

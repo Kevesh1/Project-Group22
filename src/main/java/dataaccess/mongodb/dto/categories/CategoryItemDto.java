@@ -7,7 +7,11 @@ public final class CategoryItemDto {
 
     private ObjectId id;
 
+    private ObjectId budgetMonth;
+
     private Category category;
+
+    private String name;
 
     private double budget;
 
@@ -15,6 +19,11 @@ public final class CategoryItemDto {
 
     public ObjectId getId() {
         return id;
+    }
+
+    public CategoryItemDto setId(ObjectId id) {
+        this.id = id;
+        return this;
     }
 
     public Category getCategory() {
@@ -41,6 +50,24 @@ public final class CategoryItemDto {
 
     public CategoryItemDto setBudgetSpent(double budgetSpent) {
         this.budgetSpent = budgetSpent;
+        return this;
+    }
+
+    public ObjectId getBudgetMonth() {
+        return budgetMonth;
+    }
+
+    public CategoryItemDto setBudgetMonth(ObjectId budgetMonth) {
+        this.budgetMonth = budgetMonth;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public CategoryItemDto setName(String name) {
+        this.name = name;
         return this;
     }
 

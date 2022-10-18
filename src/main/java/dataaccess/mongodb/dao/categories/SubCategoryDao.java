@@ -17,12 +17,20 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
-public class subCategoryDao implements ISubCategoryDao {
+public class SubCategoryDao implements ISubCategoryDao {
 
     MongoCollection<SubCategoryItemDto> collection = MongoDBService.database.getCollection(
-            SubCategoryItemDto.class.getSimpleName().toLowerCase(Locale.ROOT), SubCategoryItemDto.class);
+            CategorySubItem.class.getSimpleName().toLowerCase(Locale.ROOT), SubCategoryItemDto.class);
 
-    ModelMapper modelMapper = new ModelMapper();
+    private ModelMapper modelMapper;
+
+    public SubCategoryDao() {
+        modelMapper = new ModelMapper();
+
+        modelMapper.getConfiguration()
+                .setFieldMatchingEnabled(true)
+                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
+    }
 
     @Override
     public Optional<CategorySubItem> getSubCategoryById(ObjectId id) {
@@ -50,14 +58,20 @@ public class subCategoryDao implements ISubCategoryDao {
 
     @Override
     public List<CategorySubItem> getAllSubCategories() {
-        modelMapper.getConfiguration()
-                .setFieldMatchingEnabled(true)
-                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
+
         List<CategorySubItem> subCategories = new ArrayList<>();
         collection.find(new Document(), CategorySubItem.class)
                 .into(new ArrayList<>())
                 .forEach(subCategoryDto -> subCategories.add(modelMapper.map(subCategoryDto, CategorySubItem.class)));
         return subCategories;
+    }
+    
+    @Override
+    public void addSubCategory(CategorySubItem subCategory, String category) {
+        SubCategoryItemDto subCategoryItemDto = modelMapper.map(subCategory, SubCategoryItemDto.class);
+        subCategoryItemDto.setCategory(new ObjectId(category));
+        collection.insertOne(subCategoryItemDto);
+
     }
 
     @Override

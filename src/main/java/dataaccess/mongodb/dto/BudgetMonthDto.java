@@ -5,6 +5,7 @@ import dataaccess.mongodb.dto.categories.CategoryItemDto;
 import org.bson.types.ObjectId;
 
 import java.time.Month;
+import java.time.YearMonth;
 import java.util.List;
 
 public class BudgetMonthDto {
@@ -16,6 +17,17 @@ public class BudgetMonthDto {
     private int year;
 
     private Month month;
+
+    private YearMonth yearMonth;
+
+    public YearMonth getYearMonth() {
+        return yearMonth;
+    }
+
+    public BudgetMonthDto setYearMonth(YearMonth yearMonth) {
+        this.yearMonth = yearMonth;
+        return this;
+    }
 
     //private List<CategoryItemDto> categoryItems;
 

@@ -1,6 +1,7 @@
 package dataaccess.mongodb.dao;
 
 import budgetapp.model.BudgetMonth;
+import budgetapp.model.categories.CategoryItem;
 import org.bson.types.ObjectId;
 
 import java.util.List;
@@ -22,4 +23,7 @@ public interface IBudgetMonthDao {
     void addManyBudgetMonths(List<BudgetMonth> budgetMonths, String userId);
 
     public void deleteBudgetMonth(BudgetMonth budgetMonth);
+
+
+    List<BudgetMonth> initNewBudgetMonths(List<BudgetMonth> budgetMonths, List<CategoryItem> categoryItems, String userId);
 }
