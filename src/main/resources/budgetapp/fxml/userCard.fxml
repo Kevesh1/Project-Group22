@@ -9,7 +9,7 @@
    <children>
       <Button mnemonicParsing="false" onAction="#selectUserAction" prefHeight="150.0" prefWidth="150.0">
          <graphic>
-            <ImageView fx:id="ppImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="profilePictureCard" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Button>
       <Label fx:id="usernameLabel" prefHeight="50.0" prefWidth="150.0" text="username" textAlignment="CENTER" />

@@ -61,7 +61,7 @@ public class ProfilePictureCardController extends AnchorPane {
     @FXML
     void profilePictureSelected(ActionEvent event) {
         UserCreateViewController userCreateViewController = new UserCreateViewController(account);
-        userCreateViewController.setChooseProfilePictureButton("/budgetapp/img/profilepictures/" + profileIcon.getProfilePicture() + ".png");
+        userCreateViewController.setChooseProfilePictureButton(profileIcon.getProfilePicture());
         this.getScene().setRoot(userCreateViewController);
         //Later upgrade with more information saved
     }

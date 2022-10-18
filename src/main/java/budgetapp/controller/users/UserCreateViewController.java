@@ -58,7 +58,7 @@ public class UserCreateViewController extends AnchorPane {
 
     private final UserDao userDao;
 
-    public String imageFileSave;
+    public String profilePictureName;
 
     public UserCreateViewController(Account account){
         this.account = account;
@@ -97,13 +97,13 @@ public class UserCreateViewController extends AnchorPane {
 
     //should be part of model
     private void createNewUser() {
-        User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), createPassword.getText(), imageFileSave);
+        User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), createPassword.getText(), profilePictureName);
         userDao.addUser(user, account);
     }
 
     //should be part of model
     private void createNewUserWithoutPassword() {
-        User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), null, imageFileSave);
+        User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), null, profilePictureName);
         userDao.addUser(user, account);
     }
 
@@ -194,9 +194,10 @@ public class UserCreateViewController extends AnchorPane {
     }
 
 
-    public void setChooseProfilePictureButton(String imageFile) {
-        imageFileSave = imageFile;
-        Image image = new Image(imageFile);
+    public void setChooseProfilePictureButton(String imageFileName) {
+        profilePictureName = imageFileName;
+        System.out.println(imageFileName);
+        Image image = new Image("/budgetapp/img/profilepictures/" + imageFileName + ".png");
         chooseProfilePictureButton.setImage(image);
     }
 

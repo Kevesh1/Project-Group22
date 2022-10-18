@@ -52,7 +52,7 @@ public class AccountDao implements IAccountDao {
     public Account addAccount(Account account) {
         AccountDto accountDto = modelMapper.map(account, AccountDto.class);
         collection.insertOne(accountDto);
-        User user = new User(account.getUsername(), null, "/budgetapp/img/profilepictures/BlankProfilePictures.png");
+        User user = new User(account.getUsername(), null, "mario");
         userDao.addUser(user, account);
         Account acc = modelMapper.map(accountDto, Account.class);
         System.out.println(accountDto);
