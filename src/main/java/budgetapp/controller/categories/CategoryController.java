@@ -47,12 +47,12 @@ public class CategoryController extends AnchorPane {
     //private void updateProgressBar(){
     //    progressBar.setProgress(this.budget - this.spentAmount);}
 
-    public final MainController parentController;
-    public final CategoryItem categoryItem;
+    private final MainController mainController;
+    private final CategoryItem categoryItem;
     //private ArrayList<CategorySubItem> subCategories = new ArrayList<>();
     private int index;
 
-    public CategoryController(MainController parentController, CategoryItem categoryItem, int i) {
+    public CategoryController(MainController mainController, CategoryItem categoryItem, int i) {
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/category.fxml"));
         root.setRoot(this);
         root.setController(this);
@@ -61,9 +61,17 @@ public class CategoryController extends AnchorPane {
         } catch (Exception ignored) {
         }
         this.categoryItem = categoryItem;
-        this.parentController = parentController;
+        this.mainController = mainController;
         this.index = i;
         setLabels();
+    }
+
+    public MainController getMainController(){
+        return mainController;
+    }
+
+    public CategoryItem getCategoryItem(){
+        return categoryItem;
     }
 
     @FXML
@@ -94,12 +102,12 @@ public class CategoryController extends AnchorPane {
         showMatchingPurchases();
     }
     public void showMatchingPurchases(){
-        parentController.latestPurchases.getChildren().clear();
-        for (Expense expense : parentController.selectedBudgetMonth.getExpenses()){
+        mainController.latestPurchases.getChildren().clear();
+        for (Expense expense : mainController.selectedBudgetMonth.getExpenses()){
             if (expense.getCategory().equals(categoryItem.getCategory())){
                 System.out.println("GOES IN IF STATEMENT");
-                ExpenseController expenseController = new ExpenseController(parentController, expense);
-                parentController.latestPurchases.getChildren().add(expenseController);
+                ExpenseController expenseController = new ExpenseController(mainController, expense);
+                mainController.latestPurchases.getChildren().add(expenseController);
             }
         }
         System.out.println("SHOW PURCHASES");
@@ -107,19 +115,19 @@ public class CategoryController extends AnchorPane {
 
     public void updateSubCategories(){
         //System.out.println(categoryItem.getSubCategories());
-        parentController.updateCategoryList();
+        mainController.updateCategoryList();
         //System.out.println(index);
         for (CategorySubItem subCategory : categoryItem.getSubCategories()) {
 
             SubCategoryController subCategoryController = new SubCategoryController(this, subCategory);
-            parentController.categoriesFlowPane.getChildren().add(index,subCategoryController);
+            mainController.categoriesFlowPane.getChildren().add(index,subCategoryController);
             index += 1;
         }
     }
 
     @FXML
     private void getAddSubCategoryWindow(){
-        parentController.showAddSubCategoryWindow(this);
+        mainController.showAddSubCategoryWindow(this);
     }
 
    /* @FXML
@@ -134,17 +142,17 @@ public class CategoryController extends AnchorPane {
             confirmRemoveCategory();
         }
         else
-            parentController.confirmRemoveCategoryWindow(this);
+            mainController.confirmRemoveCategoryWindow(this);
     }
 
     public void confirmRemoveCategory(){
-        parentController.selectedBudgetMonth.getCategories().remove(categoryItem);
-        parentController.updateCategoryList();
+        mainController.selectedBudgetMonth.getCategories().remove(categoryItem);
+        mainController.updateCategoryList();
     }
 
     @FXML
     private void getEditCategoryWindow() {
-        parentController.showEditCategoryWindow(this);
+        mainController.showEditCategoryWindow(this);
     }
     /*private void editCategory(){
         boolean edit = true;

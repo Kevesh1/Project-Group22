@@ -28,7 +28,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
-import org.bson.types.ObjectId;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -201,22 +200,23 @@ public class MainController extends AnchorPane{
     }
 
 
-
     public void showEditSubCategoryWindow(SubCategoryController subCategoryController){
         this.subCategoryController = subCategoryController;
+        CategorySubItem subCategory = subCategoryController.getSubCategory();
         addNewSubCategoryPane.toFront();
         updateSubCategoryButton.setVisible(true);
         addNewSubCategoryButton.setVisible(false);
-        newSubCategoryName.setText(subCategoryController.subCategory.getName());
-        newSubCategoryBudget.setText(String.valueOf(subCategoryController.subCategory.getBudget()));
+        newSubCategoryName.setText(subCategory.getName());
+        newSubCategoryBudget.setText(String.valueOf(subCategory.getBudget()));
     }
 
     @FXML
     private void updateSubCategory(){
-        subCategoryController.parentController.categoryItem.removeSubcategoryBudget(subCategoryController.subCategory);
-        subCategoryController.subCategory.setName(newSubCategoryName.getText());
-        subCategoryController.subCategory.setBudget(Double.parseDouble(newSubCategoryBudget.getText()));
-        subCategoryController.parentController.categoryItem.addSubcategoryBudget(subCategoryController.subCategory);
+        CategorySubItem subCategory = subCategoryController.getSubCategory();
+        subCategoryController.getCategoryItem().removeSubcategoryBudget(subCategory);
+        subCategory.setName(newSubCategoryName.getText());
+        subCategory.setBudget(Double.parseDouble(newSubCategoryBudget.getText()));
+        subCategoryController.getCategoryItem().addSubcategoryBudget(subCategory);
         updateCategoryList();
         showMainView();
     }
@@ -226,15 +226,15 @@ public class MainController extends AnchorPane{
         addNewCategoryPane.toFront();
         updateCategoryButton.setVisible(true);
         addNewCategoryButton.setVisible(false);
-        categoryComboBox.getSelectionModel().select(categoryController.categoryItem.getCategory());
-        newCategoryBudget.setText(String.valueOf(categoryController.categoryItem.getBudget()));
+        categoryComboBox.getSelectionModel().select(categoryController.getCategoryItem().getCategory());
+        newCategoryBudget.setText(String.valueOf(categoryController.getCategoryItem().getBudget()));
 
     }
 
     @FXML
     private void updateCategory(){
-        categoryController.categoryItem.setCategory(Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString()));
-        categoryController.categoryItem.setBudget(Double.parseDouble(newCategoryBudget.getText()));
+        categoryController.getCategoryItem().setCategory(Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString()));
+        categoryController.getCategoryItem().setBudget(Double.parseDouble(newCategoryBudget.getText()));
         updateCategoryList();
         showMainView();
     }
@@ -266,8 +266,8 @@ public class MainController extends AnchorPane{
         String name = newSubCategoryName.getText();
         double budget = Double.parseDouble(newSubCategoryBudget.getText());
         CategorySubItem categorySubItem = new CategorySubItem(budget,name);
-        categoryController.categoryItem.addSubCategory(categorySubItem);
-        categoryController.categoryItem.addSubcategoryBudget();
+        categoryController.getCategoryItem().addSubCategory(categorySubItem);
+        categoryController.getCategoryItem().addSubcategoryBudget();
         //categoryController.subCategories.add(categorySubItem);
         categoryController.updateSubCategories();
         //System.out.println(categoryController.subCategories);
@@ -495,33 +495,6 @@ public class MainController extends AnchorPane{
         }
     }
 
-
-    private void budgetMonthsMockUp() {
-       /* BudgetMonth tempBudgetMonth1 = new BudgetMonth(5000, 2022, Month.AUGUST);
-        BudgetMonth tempBudgetMonth2 = (new BudgetMonth(4000, 2022, Month.SEPTEMBER));
-        BudgetMonth tempBudgetMonth3 = (new BudgetMonth(7000, 2022, Month.OCTOBER));
-        CategoryItem tempCategoryItem1 = new CategoryItem(Category.Food);
-        CategoryItem tempCategoryItem2 = new CategoryItem(Category.Transportation);
-        tempCategoryItem1.addSubCategory(new CategorySubItem(40, "AHHH"));*/
-
-       /* tempBudgetMonth1.addTransaction(new Expense(100.0,"McDonalds", "7 -23-2018", Category.Food,"a"));
-        tempBudgetMonth1.addTransaction(new Expense(100.0,"Taxi", "7-23-2018", Category.Transportation,"b"));
-        tempBudgetMonth1.addTransaction(new Expense(100.0,"Dator", "7-23-2018", Category.Hobbies,"s"));
-        tempBudgetMonth1.addTransaction(new Expense(100.0,"Investment", "7-23-2018", Category.Savings,"a"));
-        tempBudgetMonth2.addTransaction(new Expense(100.0,"Shopping", "2018- 07 - 23", Category.Hobbies,"f"));
-*/
-        //tempBudgetMonth1.addIncome(new Income(10000.0, "Salary", "2022-07-07", Category.Income));
-
-        //tempCategoryItem1.incrementBudgetSpent(50);
-       /* tempBudgetMonth1.addCategoryItem(new CategoryItem(Category.Savings));
-        tempBudgetMonth1.addCategoryItem(tempCategoryItem1);
-        tempBudgetMonth2.addCategoryItem(tempCategoryItem2);
-        tempBudgetMonth3.addCategoryItem(new CategoryItem(Category.Transportation));
-        tempBudgetMonth3.addCategoryItem(new CategoryItem(Category.Food));
-        budgetMonths.add(tempBudgetMonth1);
-        budgetMonths.add(tempBudgetMonth2);
-        budgetMonths.add(tempBudgetMonth3);*/
-    }
 
     private Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>> comboBoxCellFactory = new Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>>() {
         @Override

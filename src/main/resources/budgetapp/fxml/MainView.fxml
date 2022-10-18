@@ -26,9 +26,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1960.0" styleClass="mainBackground" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" styleClass="mainBackground" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane fx:id="addNewSubCategoryPane" prefHeight="1082.0" prefWidth="1962.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+      <AnchorPane fx:id="addNewSubCategoryPane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);">
          <children>
             <AnchorPane layoutX="867.0" layoutY="416.0" prefHeight="230.0" prefWidth="250.0" style="-fx-background-color: #36393e; -fx-background-radius: 7;">
                <opaqueInsets>
@@ -52,7 +52,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="addNewCategoryPane" prefHeight="1084.0" prefWidth="1960.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+      <AnchorPane fx:id="addNewCategoryPane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);">
          <children>
             <AnchorPane layoutX="869.0" layoutY="416.0" prefHeight="230.0" prefWidth="250.0" style="-fx-background-color: #36393e; -fx-background-radius: 7;" stylesheets="@../css/Styleheet.css">
                <opaqueInsets>
@@ -77,7 +77,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="iEWindow" layoutX="1.0" prefHeight="1194.0" prefWidth="2103.0" style="-fx-background-color: rgba(0,0,0,0.75);" styleClass="getinthefuckingmiddle">
+      <AnchorPane fx:id="iEWindow" layoutX="1.0" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);" styleClass="getinthefuckingmiddle">
          <children>
             <TabPane layoutX="821.0" layoutY="295.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../css/Styleheet.css" tabClosingPolicy="UNAVAILABLE">
                <tabs>
@@ -249,7 +249,7 @@
             <URL value="@../css/modalTab.css" />
          </stylesheets>
       </AnchorPane>
-      <AnchorPane fx:id="confirmDeletePane" prefHeight="1087.0" prefWidth="1969.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+      <AnchorPane fx:id="confirmDeletePane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);">
          <children>
             <AnchorPane layoutX="351.0" layoutY="222.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: white;">
                <children>
@@ -260,7 +260,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="1027.0" styleClass="mainBackground" stylesheets="@../css/mainView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" styleClass="mainBackground" stylesheets="@../css/mainView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ScrollPane layoutX="664.0" layoutY="142.0" prefHeight="447.0" prefWidth="435.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="142.0">
                <content>
@@ -297,10 +297,10 @@
             <HBox layoutX="68.0" layoutY="113.0" AnchorPane.rightAnchor="726.8" />
             <HBox layoutX="227.0" layoutY="113.0" AnchorPane.rightAnchor="543.8" />
             <ImageView fx:id="profileImage" fitHeight="80.0" fitWidth="80.0" layoutX="806.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="budgetRemainingLabel" layoutX="421.0" layoutY="71.0" text="budgetRemainingLabel" AnchorPane.bottomAnchor="992.0" AnchorPane.rightAnchor="1412.5" />
-            <ScrollPane layoutX="521.0" layoutY="294.0" prefHeight="1205.0" prefWidth="218.0" rotate="-90.0" styleClass="flowPaneBackground">
+            <Label fx:id="budgetRemainingLabel" layoutX="532.0" layoutY="116.0" text="budgetRemainingLabel" />
+            <ScrollPane layoutX="31.0" layoutY="663.0" prefHeight="190.0" prefWidth="764.0" styleClass="flowPaneBackground" AnchorPane.bottomAnchor="46.599999999999994" AnchorPane.leftAnchor="31.0">
                <content>
-                  <FlowPane fx:id="latestPurchases" prefHeight="0.0" prefWidth="209.0" />
+                  <FlowPane fx:id="latestPurchases" orientation="VERTICAL" prefHeight="0.0" prefWidth="209.0" styleClass="transactions" />
                </content>
                <stylesheets>
                   <URL value="@../css/Styleheet.css" />
@@ -324,13 +324,13 @@
             </Button>
             <ToggleButton layoutX="276.0" layoutY="32.0" mnemonicParsing="false" text="ToggleButton" />
             <ToggleButton layoutX="109.0" layoutY="35.0" mnemonicParsing="false" text="ToggleButton" />
-            <Label layoutX="44.0" layoutY="770.0" prefHeight="30.0" prefWidth="191.0" style="-fx-font-size: 25;" text="Senaste köp" AnchorPane.bottomAnchor="280.0" AnchorPane.leftAnchor="33.0">
+            <Label layoutX="33.0" layoutY="629.0" prefHeight="36.0" prefWidth="300.0" style="-fx-font-size: 25;" text="Transactions" AnchorPane.bottomAnchor="235.0" AnchorPane.leftAnchor="33.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
             <Button layoutX="1772.0" layoutY="89.0" mnemonicParsing="false" onAction="#openIE" text="OpenIE" AnchorPane.rightAnchor="97.0" />
-            <AnchorPane layoutX="38.0" layoutY="215.0" prefHeight="525.0" prefWidth="1390.0" styleClass="mainpain" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="532.0">
+            <AnchorPane layoutX="38.0" layoutY="215.0" prefHeight="525.0" prefWidth="1390.0" styleClass="mainpain" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="532.0" AnchorPane.topAnchor="184.39999999999998">
                <children>
                   <PieChart fx:id="pieChart" layoutX="611.0" layoutY="50.0" prefHeight="407.0" prefWidth="629.0">
                      <stylesheets>
@@ -338,7 +338,7 @@
                         <URL value="@../css/Chartas.css" />
                      </stylesheets>
                   </PieChart>
-                  <StackedBarChart fx:id="stackedBarChart" layoutX="33.0" layoutY="63.0" prefHeight="407.0" prefWidth="582.0" stylesheets="@../css/Chartas.css">
+                  <StackedBarChart fx:id="stackedBarChart" layoutX="37.0" layoutY="14.0" prefHeight="376.0" prefWidth="547.0" stylesheets="@../css/Chartas.css">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -348,11 +348,12 @@
                   </StackedBarChart>
                </children>
             </AnchorPane>
-            <Label layoutX="437.0" layoutY="52.0" text="Budget:" />
+            <Label layoutX="528.0" layoutY="63.0" text="Budget:" />
             <Label fx:id="budgetLabel" layoutX="576.0" layoutY="63.0" text="budgetLabel" />
             <Label fx:id="budgetSpentLabel" layoutX="508.0" layoutY="45.0" text="budgetSpentLabel" />
             <Label layoutX="403.0" layoutY="39.0" text="Spent:" />
-            <AnchorPane layoutX="31.0" layoutY="-2.0" prefHeight="101.0" prefWidth="627.0" />
+            <AnchorPane layoutX="-116.0" layoutY="97.0" prefHeight="101.0" prefWidth="627.0" />
+            <HBox layoutX="656.0" layoutY="109.0" prefHeight="100.0" prefWidth="200.0" />
          </children>
       </AnchorPane>
    </children>

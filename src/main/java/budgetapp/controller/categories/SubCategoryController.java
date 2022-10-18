@@ -1,5 +1,7 @@
 package budgetapp.controller.categories;
 
+import budgetapp.controller.MainController;
+import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import budgetapp.model.transactions.Expense;
 import budgetapp.model.transactions.Transaction;
@@ -12,8 +14,10 @@ import javafx.scene.layout.AnchorPane;
 
 public class SubCategoryController extends AnchorPane {
 
-    public CategoryController parentController;
-    public CategorySubItem subCategory;
+    private final CategoryController categoryController;
+    private final CategorySubItem subCategory;
+    private final MainController mainController;
+    private final CategoryItem categoryItem;
 
     @FXML
     private Label subCategoryName;
@@ -26,7 +30,7 @@ public class SubCategoryController extends AnchorPane {
 
 
 
-    public SubCategoryController(CategoryController parentController, CategorySubItem subCategory) {
+    public SubCategoryController(CategoryController categoryController, CategorySubItem subCategory) {
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/subCategory.fxml"));
         root.setRoot(this);
         root.setController(this);
@@ -35,9 +39,20 @@ public class SubCategoryController extends AnchorPane {
         } catch (Exception ignored) {
         }
 
-        this.parentController = parentController;
+        this.categoryController = categoryController;
         this.subCategory = subCategory;
+        mainController = categoryController.getMainController();
+        categoryItem = categoryController.getCategoryItem();
+
         setLabels();
+    }
+
+    public CategorySubItem getSubCategory(){
+        return subCategory;
+    }
+
+    public CategoryItem getCategoryItem(){
+        return categoryItem;
     }
 
     private void setLabels(){
@@ -49,31 +64,31 @@ public class SubCategoryController extends AnchorPane {
     @FXML
     private void removeSubCategory(){
         int i = 0;
-        for (Transaction transaction : parentController.parentController.selectedBudgetMonth.getTransactions()){
+        for (Transaction transaction : mainController.selectedBudgetMonth.getTransactions()){
             System.out.println(transaction.getClass());
             if (!(transaction instanceof Expense)) {
                 System.out.println("GOES IN ANTI IF");
                 continue;
             }
             if (subCategory.getExpenses().get(i) == transaction){
-                parentController.parentController.selectedBudgetMonth.removeTransaction(transaction);
+                mainController.selectedBudgetMonth.removeTransaction(transaction);
                 System.out.println("INSIDE FOR");
             }
             i+=1;
 
             System.out.println("AFTER FOR LOOP");
         }
-        parentController.categoryItem.removeSubcategory(this.subCategory);
-        parentController.categoryItem.removeSubcategoryBudget(subCategory);
-        parentController.updateSubCategories();
-        parentController.parentController.updateLatestTransaction();
-        parentController.parentController.updateMainView();
+        categoryItem.removeSubcategory(this.subCategory);
+        categoryItem.removeSubcategoryBudget(subCategory);
+        categoryController.updateSubCategories();
+        mainController.updateLatestTransaction();
+        mainController.updateMainView();
 
     }
 
     //try and fix this method
     @FXML
     private void getEditSubCategoryWindow(){
-        parentController.parentController.showEditSubCategoryWindow(this);
+        mainController.showEditSubCategoryWindow(this);
     }
 }
