@@ -404,10 +404,12 @@ public class MainController extends AnchorPane{
         for(CategoryItem category : categories) {
             if (category.getBudget() > 0){
                 data.add(new PieChart.Data(category.getName(), category.getBudget()));
-
+                System.out.println(category.getBudget());
             }
         }
         pieChart.setData(FXCollections.observableArrayList(data));
+        System.out.println(data);
+
     }
 
     private void updatePieChartSubCategories(@NotNull ArrayList<CategorySubItem> categories) {
@@ -475,9 +477,9 @@ public class MainController extends AnchorPane{
         categoriesFlowPane.getChildren().clear();
         int i = 0;
         for (CategoryItem categoryItem : selectedBudgetMonth.getCategories()) {
-            i++;
             CategoryController categoryController = new CategoryController(this, categoryItem,i);
             categoriesFlowPane.getChildren().add(categoryController);
+            i++;
         }
     }
 

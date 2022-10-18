@@ -65,7 +65,6 @@ public class SubCategoryController extends AnchorPane {
     private void removeSubCategory(){
         int i = 0;
         for (Transaction transaction : mainController.selectedBudgetMonth.getTransactions()){
-            System.out.println(transaction.getClass());
             if (!(transaction instanceof Expense)) {
                 System.out.println("GOES IN ANTI IF");
                 continue;
@@ -78,7 +77,7 @@ public class SubCategoryController extends AnchorPane {
 
             System.out.println("AFTER FOR LOOP");
         }
-        categoryItem.removeSubcategory(this.subCategory);
+        categoryItem.removeSubcategory(subCategory);
         categoryItem.removeSubcategoryBudget(subCategory);
         categoryController.updateSubCategories();
         mainController.updateLatestTransaction();

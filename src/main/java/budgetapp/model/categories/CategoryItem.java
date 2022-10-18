@@ -35,8 +35,9 @@ public class CategoryItem extends AbstractCategoryItem{
     public void addSubCategory(CategorySubItem subCategory) {
         subCategories.add(subCategory);
     }
-    public void removeSubcategory(CategorySubItem subcategory) {
-        subCategories.remove(subcategory);
+    public void removeSubcategory(CategorySubItem subCategory) {
+        subCategories.remove(subCategory);
+
     }
 
     //Overload

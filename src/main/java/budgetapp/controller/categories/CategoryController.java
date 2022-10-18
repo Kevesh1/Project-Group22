@@ -74,26 +74,12 @@ public class CategoryController extends AnchorPane {
         return categoryItem;
     }
 
-    @FXML
-    public void initialize() {
-        subCategoriesMock();
-    }
 
     public void setLabels() {
         categoryName.setText(categoryItem.getName());
         categoryBudget.setText(categoryItem.getBudget() + " kr");
         progressBar.setProgress(categoryItem.getBudgetSpent() / categoryItem.getBudget());
         categoryImage.setImage(categoryItem.getIcon());
-    }
-
-    private void subCategoriesMock(){
-        CategorySubItem subCategory1 = new CategorySubItem(20,"Food");
-        CategorySubItem subCategory2 = new CategorySubItem(20,"Buzz");
-        CategorySubItem subCategory3 = new CategorySubItem(20,"Food");
-
-        categoryItem.addSubCategory(subCategory1);
-        categoryItem.addSubCategory(subCategory2);
-        categoryItem.addSubCategory(subCategory3);
     }
 
     @FXML
@@ -114,14 +100,12 @@ public class CategoryController extends AnchorPane {
     }
 
     public void updateSubCategories(){
-        //System.out.println(categoryItem.getSubCategories());
         mainController.updateCategoryList();
-        //System.out.println(index);
+        int i = index;
         for (CategorySubItem subCategory : categoryItem.getSubCategories()) {
-
+            i += 1;
             SubCategoryController subCategoryController = new SubCategoryController(this, subCategory);
-            mainController.categoriesFlowPane.getChildren().add(index,subCategoryController);
-            index += 1;
+            mainController.categoriesFlowPane.getChildren().add(i,subCategoryController);
         }
     }
 
