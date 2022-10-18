@@ -3,6 +3,7 @@ package budgetapp.controller.users;
 import budgetapp.controller.login.FrontPageController;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
+import budgetapp.model.account.UserManagement;
 import dataaccess.mongodb.dao.account.UserDao;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -60,6 +61,8 @@ public class UserCreateViewController extends AnchorPane {
 
     public String profilePictureName;
 
+    public UserManagement userManagement;
+
     public UserCreateViewController(Account account){
         this.account = account;
         userDao = new UserDao();
@@ -96,14 +99,31 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     //should be part of model
+    /*
     private void createNewUser() {
         User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), createPassword.getText(), profilePictureName);
         userDao.addUser(user, account);
     }
 
+
+     */
+
+    private void createNewUser(){
+        userManagement.createNewUser(firstNameInput.getText(), lastNameInput.getText(), createPassword.getText(), profilePictureName);
+        userDao.addUser(user, account);
+    }
+
+
+    /*
     //should be part of model
     private void createNewUserWithoutPassword() {
         User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), null, profilePictureName);
+        userDao.addUser(user, account);
+    }
+    */
+
+    private void createNewUserWithoutPassword(){
+        userManagement.createNewUserWithoutPassword(firstNameInput.getText(), lastNameInput.getText(), profilePictureName);
         userDao.addUser(user, account);
     }
 
@@ -141,11 +161,19 @@ public class UserCreateViewController extends AnchorPane {
         }
     }
 
+    /*
     //should be part of model
     public boolean samePassword(){
         return createPassword.getText().equals(createPasswordRepeat.getText());
     }
 
+    */
+
+    public boolean samePassword(){
+        return userManagement.samePassword(createPassword.getText(), createPasswordRepeat.getText());
+    }
+
+    /*
     //should be part of model
     public boolean passwordComplexity(){
         if (passwordLength() && passwordCharacterTest()){
@@ -157,16 +185,37 @@ public class UserCreateViewController extends AnchorPane {
         }
     }
 
+     */
+
+    public boolean passwordComplexity(){
+        if(userManagement.passwordComplexity(createPassword.getText())){
+            return true;
+        }
+        else{
+            passwordComplex.setText("minimum 8 characters with letters and numbers");
+            return false;
+        }
+    }
+
+    /*
     //should be part of model
     public boolean passwordLength(){
         return createPassword.getText().length() >= 8;
     }
 
+     */
+
+
+    /*
     //should be part of model
     public boolean passwordCharacterTest() {
         return Pattern.matches("[a-zA-Z]+", createPassword.toString()) && Pattern.matches("[0-9]+", createPassword.toString());
 
     }
+
+     */
+
+
     @FXML
     public void chooseProfilePicture(Event event){
         createSelectProfilePictureController();

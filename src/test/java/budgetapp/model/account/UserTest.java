@@ -1,4 +1,4 @@
-package budgetapp.model;
+package budgetapp.model.account;
 
 import budgetapp.model.account.User;
 import org.junit.jupiter.api.BeforeEach;
