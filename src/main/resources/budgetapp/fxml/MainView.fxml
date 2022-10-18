@@ -298,7 +298,7 @@
             <HBox layoutX="227.0" layoutY="113.0" AnchorPane.rightAnchor="543.8" />
             <ImageView fx:id="profileImage" fitHeight="80.0" fitWidth="80.0" layoutX="806.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="budgetRemainingLabel" layoutX="421.0" layoutY="71.0" text="budgetRemainingLabel" AnchorPane.bottomAnchor="992.0" AnchorPane.rightAnchor="1412.5" />
-            <ScrollPane layoutX="521.0" layoutY="294.0" prefHeight="1205.0" prefWidth="218.0" rotate="-90.0" styleClass="flowPaneBackground">
+            <ScrollPane layoutX="30.0" layoutY="824.0" prefHeight="202.0" prefWidth="1396.0" styleClass="flowPaneBackground" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="534.0" AnchorPane.topAnchor="824.0">
                <content>
                   <FlowPane fx:id="latestPurchases" prefHeight="0.0" prefWidth="209.0" />
                </content>
@@ -330,15 +330,15 @@
                </font>
             </Label>
             <Button layoutX="1772.0" layoutY="89.0" mnemonicParsing="false" onAction="#openIE" text="OpenIE" AnchorPane.rightAnchor="97.0" />
-            <AnchorPane layoutX="38.0" layoutY="215.0" prefHeight="525.0" prefWidth="1390.0" styleClass="mainpain" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="532.0">
+            <AnchorPane layoutX="38.0" layoutY="215.0" prefHeight="525.0" prefWidth="1390.0" styleClass="mainpain" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="532.0" AnchorPane.topAnchor="215.0">
                <children>
-                  <PieChart fx:id="pieChart" layoutX="611.0" layoutY="50.0" prefHeight="407.0" prefWidth="629.0">
+                  <PieChart fx:id="pieChart" layoutX="611.0" layoutY="50.0" prefHeight="407.0" prefWidth="629.0" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="611.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="50.0">
                      <stylesheets>
                         <URL value="@../css/mainView.css" />
                         <URL value="@../css/Chartas.css" />
                      </stylesheets>
                   </PieChart>
-                  <StackedBarChart fx:id="stackedBarChart" layoutX="33.0" layoutY="63.0" prefHeight="407.0" prefWidth="582.0" stylesheets="@../css/Chartas.css">
+                  <StackedBarChart fx:id="stackedBarChart" layoutX="33.0" layoutY="63.0" prefHeight="407.0" prefWidth="582.0" stylesheets="@../css/Chartas.css" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="775.0" AnchorPane.topAnchor="63.0">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
