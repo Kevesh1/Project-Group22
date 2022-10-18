@@ -26,6 +26,7 @@ public class ProfilePictureCardController extends AnchorPane {
     @FXML
     public ImageView profilePicture;
 
+
     public ProfilePictureCardController(SelectProfilePictureController parentController, ProfileIcon profileIcon, Account account) {
         this.profileIcon = profileIcon;
         this.parentController = parentController;

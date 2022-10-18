@@ -143,7 +143,7 @@ public class UserCreateViewController extends AnchorPane {
 
     //should be part of model
     public boolean samePassword(){
-        return createPassword.getText().toString().equals(createPasswordRepeat.getText().toString());
+        return createPassword.getText().equals(createPasswordRepeat.getText());
     }
 
     //should be part of model
@@ -159,7 +159,7 @@ public class UserCreateViewController extends AnchorPane {
 
     //should be part of model
     public boolean passwordLength(){
-        return createPassword.getText().toString().length() >= 8;
+        return createPassword.getText().length() >= 8;
     }
 
     //should be part of model

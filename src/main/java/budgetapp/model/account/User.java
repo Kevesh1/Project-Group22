@@ -23,8 +23,6 @@ public class User{
     private String userID;
     private boolean enablePassword;
 
-    private static List<User> allUsers = new ArrayList<>();
-
     //expand
     public User(String username, String password, String profilePicture) {
         this.username = username;
