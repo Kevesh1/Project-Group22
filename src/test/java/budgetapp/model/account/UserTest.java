@@ -17,7 +17,6 @@ public class UserTest {
         user = new User("Jacob Westerberg", "OMG2012again", "mario");
         user.setUserID("1");
 
-
     }
 
 

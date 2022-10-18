@@ -3,7 +3,7 @@ package budgetapp.controller.users;
 import budgetapp.controller.login.FrontPageController;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
-import budgetapp.model.account.UserManagement;
+import budgetapp.model.account.UserManager;
 import dataaccess.mongodb.dao.account.UserDao;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -16,7 +16,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 public class UserCreateViewController extends AnchorPane {
 
@@ -61,11 +60,12 @@ public class UserCreateViewController extends AnchorPane {
 
     public String profilePictureName;
 
-    public UserManagement userManagement;
+    public UserManager userManager;
 
     public UserCreateViewController(Account account){
         this.account = account;
         userDao = new UserDao();
+        userManager = new UserManager();
         loadCurrentView();
     }
 
@@ -109,7 +109,7 @@ public class UserCreateViewController extends AnchorPane {
      */
 
     private void createNewUser(){
-        userManagement.createNewUser(firstNameInput.getText(), lastNameInput.getText(), createPassword.getText(), profilePictureName);
+        user = userManager.createNewUser(firstNameInput.getText(), lastNameInput.getText(), createPassword.getText(), profilePictureName);
         userDao.addUser(user, account);
     }
 
@@ -123,7 +123,7 @@ public class UserCreateViewController extends AnchorPane {
     */
 
     private void createNewUserWithoutPassword(){
-        userManagement.createNewUserWithoutPassword(firstNameInput.getText(), lastNameInput.getText(), profilePictureName);
+        user = userManager.createNewUserWithoutPassword(firstNameInput.getText(), lastNameInput.getText(), profilePictureName);
         userDao.addUser(user, account);
     }
 
@@ -170,7 +170,7 @@ public class UserCreateViewController extends AnchorPane {
     */
 
     public boolean samePassword(){
-        return userManagement.samePassword(createPassword.getText(), createPasswordRepeat.getText());
+        return userManager.samePassword(createPassword.getText(), createPasswordRepeat.getText());
     }
 
     /*
@@ -188,7 +188,7 @@ public class UserCreateViewController extends AnchorPane {
      */
 
     public boolean passwordComplexity(){
-        if(userManagement.passwordComplexity(createPassword.getText())){
+        if(userManager.passwordComplexity(createPassword.getText())){
             return true;
         }
         else{
