@@ -21,14 +21,12 @@ public class App extends Application {
     private static Stage stg;
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) {
         MongoDBService.createDataBase("budgetapp");
-        //setUpDependencyInjector();
-        //Parent root = DependencyInjection.load("/budgetapp/fxml/AccountLoginView.fxml");
 
         WindowController windowController = new WindowController();
         Optional<Account> account = windowController.ShowLoginStage();
-        if(account.isPresent()) {
+        if (account.isPresent()) {
             primaryStage.setScene(new Scene(new FrontPageController(account.get())));
             primaryStage.setMaximized(true);//primaryStage.show();
             primaryStage.show();

@@ -1,6 +1,7 @@
 package dataaccess.mongodb.dto.account;
 
 import dataaccess.mongodb.dto.Dto;
+import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
 import java.util.List;

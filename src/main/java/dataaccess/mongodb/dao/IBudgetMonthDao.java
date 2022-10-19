@@ -24,6 +24,5 @@ public interface IBudgetMonthDao {
 
     public void deleteBudgetMonth(BudgetMonth budgetMonth);
 
-
-    List<BudgetMonth> initNewBudgetMonths(List<BudgetMonth> budgetMonths, List<CategoryItem> categoryItems, String userId);
+    List<BudgetMonth> initNewBudgetMonths(List<BudgetMonth> budgetMonths, String user);
 }

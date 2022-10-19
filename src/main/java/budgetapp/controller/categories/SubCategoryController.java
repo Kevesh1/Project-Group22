@@ -65,6 +65,7 @@ public class SubCategoryController extends AnchorPane {
     private void removeSubCategory(){
         int i = 0;
         for (Transaction transaction : mainController.selectedBudgetMonth.getTransactions()){
+
             if (!(transaction instanceof Expense)) {
                 System.out.println("GOES IN ANTI IF");
                 continue;
