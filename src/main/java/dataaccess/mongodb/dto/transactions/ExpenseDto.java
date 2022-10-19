@@ -1,12 +1,13 @@
 package dataaccess.mongodb.dto.transactions;
 
+import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
 import java.time.YearMonth;
 
 public final class ExpenseDto {
 
-    private ObjectId id;
+    private ObjectId _id;
 
     private double sum;
 
@@ -17,11 +18,11 @@ public final class ExpenseDto {
     private YearMonth yearmonth;
 
     public ObjectId getId() {
-        return id;
+        return _id;
     }
 
-    public ExpenseDto setId(ObjectId id) {
-        this.id = id;
+    public ExpenseDto setId(ObjectId _id) {
+        this._id = _id;
         return this;
     }
 
@@ -64,7 +65,7 @@ public final class ExpenseDto {
     @Override
     public String toString() {
         return "ExpenseDto{" +
-                "id=" + id +
+                "id=" + _id +
                 ", sum=" + sum +
                 ", annotation='" + annotation + '\'' +
                 ", date='" + date + '\'' +

@@ -7,13 +7,9 @@ import com.mongodb.client.model.Filters;
 import dataaccess.mongodb.MongoDBService;
 import dataaccess.mongodb.dto.categories.CategoryItemDto;
 import org.bson.types.ObjectId;
-import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
-import org.modelmapper.spi.MappingContext;
 
-import java.time.Month;
-import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -38,8 +34,9 @@ public class CategoryDao implements ICategoryDao{
 
     @Override
     public List<CategoryItem> getAllCategoriesByBudgetMonth(String budgetMonthId) {
+        ObjectId oid = new ObjectId(budgetMonthId);
         List<CategoryItem> categoryItems = new ArrayList<>();
-        collection.find(Filters.eq("budgetMonth", budgetMonthId)).into(new ArrayList<>())
+        collection.find(Filters.eq("budgetMonth", oid)).into(new ArrayList<>())
                 .forEach(categoryItemDto -> categoryItems
                         .add(modelMapper.map(categoryItemDto, CategoryItem.class)));
         return categoryItems;
@@ -66,10 +63,31 @@ public class CategoryDao implements ICategoryDao{
     }
 
     @Override
-    public void setCategoryItems(List<CategoryItem> categoryItems, List<BudgetMonth> budgetMonths) {
-        budgetMonths.forEach(budgetMonth -> budgetMonth
-                .setCategoryItems(
-                        addCategories(categoryItems, budgetMonth.getId())));
+    public List<CategoryItem> addCategoryItems(List<CategoryItem> categoryItems, String budgetMonths) {
+        return null;
+    }
+
+    @Override
+    public List<CategoryItem> setCategoryItems(List<CategoryItem> categoryItems, String budgetMonths) {
+        List<CategoryItemDto> categoryItemDtos = new ArrayList<>();
+        List<BudgetMonth> budgetMonthList = new ArrayList<>();
+        categoryItems.forEach(categoryItem -> categoryItemDtos
+                .add(modelMapper.map(categoryItem, CategoryItemDto.class)
+                        .setId(new ObjectId(budgetMonths))));
+        collection.insertMany(categoryItemDtos);
+        return categoryItemDtos.stream().map(categoryItemDto -> modelMapper.map(categoryItemDto, CategoryItem.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CategoryItem> initCategoryItems(List<CategoryItem> categoryItems, String budgetMonth) {
+        List<CategoryItemDto> categoryItemDtos = categoryItems.stream().map(
+                categoryItem -> modelMapper.map(categoryItem, CategoryItemDto.class)
+                        .setBudgetMonth(new ObjectId(budgetMonth))).collect(Collectors.toList());
+
+        collection.insertMany(categoryItemDtos);
+
+        return categoryItemDtos.stream().map(categoryItemDto -> modelMapper.map(categoryItemDto, CategoryItem.class)).collect(Collectors.toList());
+
     }
 
 }

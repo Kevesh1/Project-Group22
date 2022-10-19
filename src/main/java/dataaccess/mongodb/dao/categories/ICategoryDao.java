@@ -12,5 +12,9 @@ public interface ICategoryDao {
 
     List<CategoryItem> addCategories(List<CategoryItem> categoryItem, String budgetMonth);
 
-    void setCategoryItems(List<CategoryItem> categoryItems, List<BudgetMonth> budgetMonths);
+    List<CategoryItem> addCategoryItems(List<CategoryItem> categoryItems, String budgetMonths);
+
+    List<CategoryItem> setCategoryItems(List<CategoryItem> categoryItems, String budgetMonths);
+
+    List<CategoryItem> initCategoryItems(List<CategoryItem> categoryItems, String budgetMonth);
 }

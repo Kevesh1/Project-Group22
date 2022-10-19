@@ -1,11 +1,12 @@
 package dataaccess.mongodb.dto.account;
 
 import dataaccess.mongodb.dto.Dto;
+import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
 public final class UserDto implements Dto {
 
-    private ObjectId id;
+    private ObjectId _id;
 
     private String account;
 
@@ -16,11 +17,11 @@ public final class UserDto implements Dto {
     private String profilePicture;
 
     public ObjectId getId() {
-        return id;
+        return _id;
     }
 
-    public UserDto setId(ObjectId id) {
-        this.id = id;
+    public UserDto setId(ObjectId _id) {
+        this._id = _id;
         return this;
     }
 
@@ -64,7 +65,7 @@ public final class UserDto implements Dto {
     @Override
     public String toString() {
         return "UserDto{" +
-                "id=" + id +
+                "id=" + _id +
                 ", account='" + account + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +

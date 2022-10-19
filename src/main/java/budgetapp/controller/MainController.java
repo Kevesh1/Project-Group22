@@ -16,6 +16,7 @@ import budgetapp.model.transactions.Transaction;
 import dataaccess.mongodb.dao.BudgetMonthDao;
 import dataaccess.mongodb.dao.account.AccountDao;
 import dataaccess.mongodb.dao.categories.CategoryDao;
+import dataaccess.mongodb.dao.transactions.TransactionDao;
 import dataaccess.mongodb.dto.categories.CategoryItemDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,14 +34,18 @@ import javafx.util.StringConverter;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
 public class MainController extends AnchorPane{
 
+    //<editor-fold desc="FXML Declarations">
     @FXML
     Button confirmButton;
     @FXML
@@ -69,7 +74,6 @@ public class MainController extends AnchorPane{
     public FlowPane latestPurchases;
     @FXML
     AnchorPane confirmDeletePane;
-
 
     @FXML
     ComboBox<Category> categoryComboBox;
@@ -124,7 +128,7 @@ public class MainController extends AnchorPane{
     TextArea newIncomeNote;
     @FXML
     ComboBox<CategorySubItem> newExpenseSubCategoryComboBox;
-
+    //</editor-fold>
 
     @FXML
     private void openIE(){
@@ -134,12 +138,10 @@ public class MainController extends AnchorPane{
     @FXML
     private void addExpense(){
         Double cost = Double.valueOf(newExpenseAmount.getText());
-        System.out.println(cost);
         String note = newExpenseNote.getText();
-        String date = newExpenseDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        System.out.println((newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().toString()));
+        Date date = (Date) Date.from(newExpenseDate.getValue().atStartOfDay()
+                .atZone(ZoneId.systemDefault()).toInstant());
         Category category = Category.valueOf(newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getName());
-
 
         CategorySubItem subCategory = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
         Expense expense = new Expense(cost, note, date, category, subCategory);
@@ -158,7 +160,8 @@ public class MainController extends AnchorPane{
     private void addIncome(){
         Double cost = Double.valueOf(newIncomeAmount.getText());
         String note = newIncomeNote.getText();
-        String date = newIncomeDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        Date date = (Date) Date.from(newExpenseDate.getValue().atStartOfDay()
+                .atZone(ZoneId.systemDefault()).toInstant());
         selectedBudgetMonth.addTransaction(new Income(cost, note, date));
         updateLatestTransaction();
         updateMainView();
@@ -243,12 +246,9 @@ public class MainController extends AnchorPane{
 
     @FXML
     private void addNewCategory(){
-        /*if (newCategoryBudget == null) {
-            newCategoryBudget.setText("0");
-        }*/
 
         Category category = Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString());
-        CategoryItem categoryItem = new CategoryItem(category);
+        CategoryItem categoryItem = categoryDao.addCategory(new CategoryItem(category), selectedBudgetMonth.getId());
         selectedBudgetMonth.addCategoryItem(categoryItem);
         updateCategoryList();
         showMainView();
@@ -271,8 +271,8 @@ public class MainController extends AnchorPane{
         categoryController.getCategoryItem().addSubCategory(categorySubItem);
         categoryController.getCategoryItem().addSubcategoryBudget();
         //categoryController.subCategories.add(categorySubItem);
+
         categoryController.updateSubCategories();
-        //System.out.println(categoryController.subCategories);
         showMainView();
         resetNewCategoryInputs();
     }
@@ -290,7 +290,7 @@ public class MainController extends AnchorPane{
     }
 
     @FXML
-    private void LoadSubCategoryComboBox(){
+    private void LoadSubCategoryComboBox() {
         ObservableList<CategorySubItem> subCategories = FXCollections.observableArrayList();
         subCategories.addAll(newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getSubCategories());
 
@@ -307,21 +307,31 @@ public class MainController extends AnchorPane{
 
 
     private User user;
+
     private CategoryController categoryController;
+
     private SubCategoryController subCategoryController;
+
     public BudgetMonth selectedBudgetMonth;
+
     ObservableList<BudgetMonth> budgetMonths;
+
     private BudgetMonthDao budgetMonthDao;
+
     private CategoryDao categoryDao;
+
+    private TransactionDao transactionDao;
 
 
     public MainController(User user) {
         this.user = user;
         this.budgetMonths = FXCollections.observableArrayList();
         budgetMonthDao = new BudgetMonthDao();
+        transactionDao = new TransactionDao();
         categoryDao = new CategoryDao();
 
         loadBudgetMonths();
+        loadTransactions();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
         fxmlLoader.setRoot(this);
@@ -333,31 +343,43 @@ public class MainController extends AnchorPane{
         {
             throw new RuntimeException(exception);
         }
-
-
     }
 
     private void loadBudgetMonths() {
-        //budgetMonthDao.addManyBudgetMonths(createDefaultBudgetMonths(), user.getId());
         Optional<List<BudgetMonth>> dbBudgetMonths = budgetMonthDao.getAllBudgetMonthsByUserId(user.getId());
+        List<BudgetMonth> loadedBudgetMonths = new ArrayList<>();
+
+
         if (dbBudgetMonths.isPresent()) {
             System.out.println("ISPRESENT");
-            budgetMonths.addAll(dbBudgetMonths.get());
-        }
-        else {
+            loadedBudgetMonths = dbBudgetMonths.get();
+        } else {
             System.out.println("NOT PRESENT");
-            //budgetMonths = FXCollections.observableArrayList(createDefaultBudgetMonths());
-//            budgetMonthDao.addManyBudgetMonths(createDefaultBudgetMonths(), user.getId());
-            List<BudgetMonth> defaultBudgetMonths = budgetMonthDao
-                    .initNewBudgetMonths(createDefaultBudgetMonths(), createDefaultCategoryItems(), user.getId());
-            budgetMonths.addAll(defaultBudgetMonths);
-            }
-        selectedBudgetMonth = budgetMonths.get(0);
+            loadedBudgetMonths = budgetMonthDao
+                    .initNewBudgetMonths(createDefaultBudgetMonths(), user.getUserID());
+            loadedBudgetMonths.forEach(budgetMonth -> budgetMonth
+                    .setCategoryItems(categoryDao.initCategoryItems(createDefaultCategoryItems(), budgetMonth.getId())));
+        }
+
+        budgetMonths.addAll(loadedBudgetMonths);
+        //selectedBudgetMonth = budgetMonths.get(selectBudgetMonthIndex());
+    }
+
+    private int selectBudgetMonthIndex() {
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
+
+        return ((currentYear)-(currentYear-1))*12 + currentMonth;
+    }
+
+    private void loadTransactions() {
+        Optional<List<Transaction>> dbTransactions;
     }
 
     private List<BudgetMonth> createDefaultBudgetMonths() {
         int year = Calendar.getInstance().get(Calendar.YEAR);
         List<BudgetMonth> budgetMonths = new ArrayList<>();
+
         for (int i = year -1; i < year +2; i++){
             for (Month month : Month.values()){
                 BudgetMonth budgetMonth = new BudgetMonth(i, month);
@@ -369,8 +391,9 @@ public class MainController extends AnchorPane{
 
     private List<CategoryItem> createDefaultCategoryItems() {
         List<CategoryItem> categoryItems = new ArrayList<>();
+
         for (Category category : Category.values()){
-            if (category != Category.Transportation) {
+            if (category != Category.Hobbies) {
                 categoryItems.add(new CategoryItem(category));
             } else {
                 break;
@@ -381,29 +404,38 @@ public class MainController extends AnchorPane{
 
     @FXML
     public void initialize() {
-        //budgetMonthsMockUp();
         initializeComboBox();
         initializeBudgetMonths();
-        updateBarChart(budgetMonths);
+        updateBarChart();
         updateMainView();
         updateLists();
+        initializeExpenseView();
+    }
+
+    private void initializeComboBox() {
+        yearMonthComboBox.setCellFactory(comboBoxCellFactory);
+        yearMonthComboBox.setConverter(comboBoxStringConverter);
+        yearMonthComboBox.setItems(FXCollections.observableArrayList(budgetMonths));
+    }
+
+    public void initializeBudgetMonths() {
+        yearMonthComboBox.getSelectionModel().select(selectBudgetMonthIndex());
+        selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
+    }
+
+    private void initializeExpenseView() {
         initializeCategoryComboBox();
         LoadExpenseCategoriesComboBox();
     }
 
-    //This can be in UpdateMainView if issues regarding removing subcategories gets resolved
     private void updateLists(){
         updateCategoryList();
         updateLatestTransaction();
-
     }
     public void updateMainView() {
         budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
         budgetSpentLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetSpent()));
         budgetRemainingLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetRemaining()));
-
-        updatePieChartCategories(selectedBudgetMonth.getCategories());
-
     }
 
     public void updatePieChartCategories(List<CategoryItem> categories) {
@@ -428,12 +460,12 @@ public class MainController extends AnchorPane{
     }
 
     // TODO Refactor function
-    private void updateBarChart(List<BudgetMonth> budgetMonths) {
+    private void updateBarChart() {
         stackedBarChart.getYAxis().setLabel("Budget");
         stackedBarChart.setTitle("Yearly budget");
         Map<Category ,XYChart.Series<String, Number>> series = new HashMap<>();
         for(BudgetMonth budgetMonth : budgetMonths) {
-            for (CategoryItem categoryItem : budgetMonth.getCategories()) {
+            for (CategoryItem categoryItem : budgetMonth.getCategoryItems()) {
                 series.computeIfAbsent(categoryItem.getCategory(),
                         c -> new XYChart.Series<String, Number>()).setName(categoryItem.getName().toUpperCase());
                 series.get(categoryItem.getCategory()).getData().add(new XYChart.Data<String, Number>(budgetMonth.getMonth().toString(), categoryItem.getBudget()));
@@ -442,12 +474,6 @@ public class MainController extends AnchorPane{
         List<XYChart.Series<String, Number>> temp = new ArrayList<>() ;
         series.forEach((category, stringNumberSeries) -> temp.add(series.get(category)));
         stackedBarChart.setData(FXCollections.observableArrayList(temp));
-    }
-
-    private void initializeComboBox() {
-        yearMonthComboBox.setCellFactory(comboBoxCellFactory);
-        yearMonthComboBox.setConverter(comboBoxStringConverter);
-        yearMonthComboBox.setItems(FXCollections.observableArrayList(budgetMonths));
     }
 
     private void initializeCategoryComboBox(){
@@ -461,30 +487,20 @@ public class MainController extends AnchorPane{
     private void LoadExpenseCategoriesComboBox(){
         newExpenseDate.setValue(LocalDate.now());
         newIncomeDate.setValue(LocalDate.now());
-        ObservableList<CategoryItem> categories = FXCollections.observableArrayList();
-        categories.addAll(selectedBudgetMonth.getCategories());
+        ObservableList<CategoryItem> categories = FXCollections.observableArrayList(
+                selectedBudgetMonth.getCategoryItems());
         newExpenseCategoryComboBox.setItems(categories);
         newExpenseCategoryComboBox.setConverter(comboBoxCategoryStringConverter);
         newExpenseCategoryComboBox.getSelectionModel().selectFirst();
-    }
 
-
-
-    public void initializeBudgetMonths() {
-        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-        int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
-
-        int currentBudget = ((currentYear)-(currentYear-1))*12 + currentMonth;
-        System.out.println(currentBudget);
-        yearMonthComboBox.getSelectionModel().select(currentBudget);
-        selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
     }
 
     public void updateCategoryList() {
         categoriesFlowPane.getChildren().clear();
         int i = 0;
-        for (CategoryItem categoryItem : selectedBudgetMonth.getCategories()) {
-            CategoryController categoryController = new CategoryController(this, categoryItem,i);
+        for (CategoryItem categoryItem : selectedBudgetMonth.getCategoryItems()) {
+            i++;
+            CategoryController categoryController = new CategoryController(this, categoryItem, i);
             categoriesFlowPane.getChildren().add(categoryController);
             i++;
         }

@@ -1,5 +1,6 @@
 package dataaccess.mongodb.dto.categories;
 
+import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
 public final class SubCategoryItemDto {

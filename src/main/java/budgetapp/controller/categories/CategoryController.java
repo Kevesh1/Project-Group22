@@ -14,6 +14,9 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CategoryController extends AnchorPane {
 
 
@@ -94,14 +97,15 @@ public class CategoryController extends AnchorPane {
                 System.out.println("GOES IN IF STATEMENT");
                 ExpenseController expenseController = new ExpenseController(mainController, expense);
                 mainController.latestPurchases.getChildren().add(expenseController);
+
             }
         }
-        System.out.println("SHOW PURCHASES");
     }
 
     public void updateSubCategories(){
         mainController.updateCategoryList();
         int i = index;
+
         for (CategorySubItem subCategory : categoryItem.getSubCategories()) {
             i += 1;
             SubCategoryController subCategoryController = new SubCategoryController(this, subCategory);
@@ -130,8 +134,9 @@ public class CategoryController extends AnchorPane {
     }
 
     public void confirmRemoveCategory(){
-        mainController.selectedBudgetMonth.getCategories().remove(categoryItem);
+        mainController.selectedBudgetMonth.getCategoryItems().remove(categoryItem);
         mainController.updateCategoryList();
+
     }
 
     @FXML
