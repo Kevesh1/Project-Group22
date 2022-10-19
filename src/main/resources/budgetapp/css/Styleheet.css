@@ -11,14 +11,6 @@
     -fx-text-color: #BCBCBC;
 }
 
-.label{
-    -fx-font-weight: bold;
-}
-
-.standardFontSize{
-    -fx-font-size: 20;
-    -fx-font-weight: bold;
-}
 
 .lightModeThemeLight{
     -fx-background-color: #CFCFCF;
@@ -28,6 +20,14 @@
 }
 .lightModeThemeLightest{
     -fx-background-color: #ffffff;
+}
+.label{
+    -fx-font-weight: bold;
+}
+
+.standardFontSize{
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
 }
 
 .categoryImages{
@@ -190,6 +190,10 @@
 .mainpain{
     -fx-background-color: -fx-darker-color;
     -fx-background-radius: 7;
+}
+
+.darkerColor{
+    -fx-background-color: -fx-darker-color;
 }
 
 
