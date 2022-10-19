@@ -38,8 +38,12 @@ public class MongoDBService {
                 .applyConnectionString(connectionString)
                 .codecRegistry(registry)
                         .build();
-        MongoClient mongoClient = MongoClients.create(settings);
-        database = mongoClient.getDatabase(databaseString);
+        try {
+            MongoClient mongoClient = MongoClients.create(settings);
+            database = mongoClient.getDatabase(databaseString);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static CodecRegistry createRegistry() {

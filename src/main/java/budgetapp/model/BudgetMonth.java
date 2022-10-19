@@ -43,6 +43,7 @@ public final class BudgetMonth {
     }
 
     private void initLists() {
+        categoryItems = new ArrayList<>();
         expenses = new ArrayList<>();
         incomes = new ArrayList<>();
         transactions = new ArrayList<>();

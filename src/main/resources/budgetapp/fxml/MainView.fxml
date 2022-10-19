@@ -3,10 +3,6 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -20,6 +16,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.paint.Color?>
@@ -330,24 +327,7 @@
             <Button layoutX="1055.0" layoutY="86.0" mnemonicParsing="false" onAction="#openIE" prefWidth="49.0" text="+" AnchorPane.rightAnchor="195.4000000000001" />
             <AnchorPane layoutX="33.0" layoutY="147.0" prefHeight="482.0" prefWidth="783.0" styleClass="mainpain" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="271.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="484.0" AnchorPane.topAnchor="147.0">
                <children>
-                  <HBox layoutX="14.0" layoutY="14.0" prefHeight="375.6" prefWidth="730.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <StackedBarChart fx:id="stackedBarChart" prefHeight="376.0" prefWidth="794.0" stylesheets="@../css/Graph.css">
-                           <xAxis>
-                              <CategoryAxis side="BOTTOM" />
-                           </xAxis>
-                           <yAxis>
-                              <NumberAxis side="LEFT" />
-                           </yAxis>
-                        </StackedBarChart>
-                        <PieChart fx:id="pieChart" prefHeight="376.0" prefWidth="622.0">
-                           <stylesheets>
-                              <URL value="@../css/mainView.css" />
-                              <URL value="@../css/Graph.css" />
-                           </stylesheets>
-                        </PieChart>
-                     </children>
-                  </HBox>
+                  <BorderPane fx:id="borderPane" layoutX="124.0" layoutY="141.0" prefHeight="482.0" prefWidth="783.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
             <HBox layoutX="485.0" layoutY="109.0">
