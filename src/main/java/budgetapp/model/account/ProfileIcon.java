@@ -8,7 +8,7 @@ public class ProfileIcon implements ILocked{
     //Better having an expandable class than having a String[] with links to pictures
     private String profileGif;
 
-    private static final List<ProfileIcon> allProfileIcons = new ArrayList<>();
+    public static final List<ProfileIcon> allProfileIcons = new ArrayList<>();
 
     public ProfileIcon(){
         allProfileIcons.add(this);

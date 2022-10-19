@@ -16,18 +16,26 @@ public class UserTest {
     void setUp(){
         user = new User("Jacob Westerberg", "OMG2012again", "mario");
         user.setUserID("1");
+        user.setFirstName("Bengt");
+        user.setLastName("Ingvar");
+        user.setElderlyAdjusted(false);
+        user.setFamilyShare(false);
 
     }
 
+    @Test
+    void getUsername(){
+        assertEquals("Jacob Westerberg", user.getUsername());
+    }
 
     @Test
     void getFirstName(){
-        assertEquals("Jacob", user.getFirstName());
+        assertEquals("Bengt", user.getFirstName());
     }
 
     @Test
     void getLastName(){
-        assertEquals("Westerberg", user.getLastName());
+        assertEquals("Ingvar", user.getLastName());
     }
 
     @Test
@@ -46,9 +54,19 @@ public class UserTest {
     }
 
     @Test
+    void isElderlyAdjusted(){
+        assertFalse(user.isElderlyAdjusted());
+    }
+
+    @Test
+    void isFamilyShare(){
+        assertFalse(user.isFamilyShare());
+    }
+
+    @Test
     void setFirstName(){
         user.setFirstName("Bengt");
-        assertEquals("Jacob", user.getFirstName());
+        assertEquals("Bengt", user.getFirstName());
     }
 
     @Test
@@ -59,7 +77,7 @@ public class UserTest {
 
     @Test
     void setPassword(){
-        user.setLastName("OMG2013again");
+        user.setPassword("OMG2013again");
         assertEquals("OMG2013again", user.getPassword());
     }
 
@@ -71,9 +89,32 @@ public class UserTest {
 
     @Test
     void setUserID(){
-        user.setProfilePicture("2");
+        user.setUserID("2");
         assertEquals("2", user.getUserID());
     }
 
+    @Test
+    void setFamilyShareFalse(){
+        user.setFamilyShare(false);
+        assertFalse(user.isFamilyShare());
+    }
+
+    @Test
+    void setFamilyShareTrue(){
+        user.setFamilyShare(true);
+        assertTrue(user.isFamilyShare());
+    }
+
+    @Test
+    void setElderlyAdjustedFalse(){
+        user.setElderlyAdjusted(false);
+        assertFalse(user.isElderlyAdjusted());
+    }
+
+    @Test
+    void setElderlyAdjustedTrue(){
+        user.setElderlyAdjusted(true);
+        assertTrue(user.isElderlyAdjusted());
+    }
 
 }
