@@ -11,6 +11,7 @@ public class ExpenseTest {
 
     private Expense expenseT;
 
+    /*
     @BeforeEach
     void setUp() {
         expenseT = new Expense(10.0, "L", "05-05-05", null, null);
@@ -33,5 +34,7 @@ public class ExpenseTest {
         assertEquals(Category.Pet,expenseT.getCategory());
 
     }
+
+     */
 
 }

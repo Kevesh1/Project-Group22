@@ -8,10 +8,13 @@ public class IncomeTest {
     private Income income;
 
 
+    /*
     @Test
     void test() {
         income = new Income(10.0,"L","05-05-05");
     }
+
+     */
 
 }
 

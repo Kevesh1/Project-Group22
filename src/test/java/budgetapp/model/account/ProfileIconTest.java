@@ -15,12 +15,9 @@ public class ProfileIconTest {
 
     @BeforeEach
     void setUp(){
-        profileCards = ProfileIcon.profileIconList();
+        this.profileCards = ProfileIcon.profileIconList();
 
     }
-
-
-
 
     @Test
     void getProfilePicture(){

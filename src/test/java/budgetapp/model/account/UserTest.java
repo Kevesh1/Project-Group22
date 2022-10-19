@@ -14,12 +14,12 @@ public class UserTest {
 
     @BeforeEach
     void setUp(){
-        user = new User("Jacob Westerberg", "OMG2012again", "mario");
-        user.setUserID("1");
-        user.setFirstName("Bengt");
-        user.setLastName("Ingvar");
-        user.setElderlyAdjusted(false);
-        user.setFamilyShare(false);
+        this.user = new User("Jacob Westerberg", "OMG2012again", "mario");
+        this.user.setUserID("1");
+        this.user.setFirstName("Bengt");
+        this.user.setLastName("Ingvar");
+        this.user.setElderlyAdjusted(false);
+        this.user.setFamilyShare(false);
 
     }
 
