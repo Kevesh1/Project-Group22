@@ -55,8 +55,6 @@ public class AccountDao implements IAccountDao {
         User user = new User(account.getUsername(), null, "mario");
         userDao.addUser(user, account);
         Account acc = modelMapper.map(accountDto, Account.class);
-        System.out.println(accountDto);
-        System.out.println(acc);
         return acc;
     }
 

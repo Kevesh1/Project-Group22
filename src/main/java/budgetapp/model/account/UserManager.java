@@ -1,21 +1,19 @@
 package budgetapp.model.account;
 
-import java.util.List;
 import java.util.regex.Pattern;
-import dataaccess.mongodb.dao.account.UserDao;
 
 
-public class UserManagement {
+public class UserManager {
 
-    public UserManagement() {
+    public UserManager() {
     }
 
-    public void createNewUser(String firstName, String lastName, String password, String profilePicture) {
-        User user = new User(firstName + " " + lastName, password, profilePicture);
+    public User createNewUser(String firstName, String lastName, String password, String profilePicture) {
+        return new User(firstName + " " + lastName, password, profilePicture);
     }
 
-    public void createNewUserWithoutPassword(String firstName, String lastName, String profilePicture) {
-        User user = new User(firstName + " " + lastName, null, profilePicture);
+    public User createNewUserWithoutPassword(String firstName, String lastName, String profilePicture) {
+        return new User(firstName + " " + lastName, null, profilePicture);
     }
 
     public boolean samePassword(String password, String repeatPassword){

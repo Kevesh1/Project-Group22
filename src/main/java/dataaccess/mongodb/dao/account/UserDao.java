@@ -77,7 +77,8 @@ public class UserDao implements IUserDao {
         List<User> users = new ArrayList<>();
         collection.find(Filters.eq("account", username))
                 .into(new ArrayList<>())
-                .forEach(userDto -> users.add(modelMapper.map(userDto, User.class).setId(userDto.getId().toString())));
+                .forEach(userDto -> users.add(modelMapper.map(userDto, User.class)
+                        .setId(userDto.getId().toString())));
         return users;
     }
 

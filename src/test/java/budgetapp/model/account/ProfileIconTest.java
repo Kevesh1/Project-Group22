@@ -12,6 +12,19 @@ public class ProfileIconTest {
 
     @BeforeEach
     void setUp(){
+        profileIcon = new ProfileIcon();
+        profileIcon.setProfilePicture("mario");
 
     }
+
+    @Test
+    void getProfilePicture(){
+        assertEquals("mario", profileIcon.getProfilePicture());
+    }
+
+    @Test
+    void testListExtraction(){
+        profileIcon.
+    }
+
 }

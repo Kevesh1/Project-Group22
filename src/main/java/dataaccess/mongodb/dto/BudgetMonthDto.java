@@ -1,16 +1,12 @@
 package dataaccess.mongodb.dto;
 
-import budgetapp.model.transactions.Expense;
-import dataaccess.mongodb.dto.categories.CategoryItemDto;
 import org.bson.types.ObjectId;
 
 import java.time.Month;
-import java.time.YearMonth;
-import java.util.List;
 
 public class BudgetMonthDto {
 
-    private ObjectId _id;
+    private ObjectId id;
 
     private ObjectId user;
 
@@ -18,21 +14,21 @@ public class BudgetMonthDto {
 
     private Month month;
 
-    private YearMonth yearMonth;
+    //private YearMonth yearMonth;
 
-    public YearMonth getYearMonth() {
+    /*public YearMonth getYearMonth() {
         return yearMonth;
     }
 
     public BudgetMonthDto setYearMonth(YearMonth yearMonth) {
         this.yearMonth = yearMonth;
         return this;
-    }
+    }*/
 
     //private List<CategoryItemDto> categoryItems;
 
     public ObjectId getId() {
-        return _id;
+        return id;
     }
 
     public ObjectId getUser() {
@@ -72,14 +68,14 @@ public class BudgetMonthDto {
     }*/
 
     public BudgetMonthDto setId(ObjectId _id) {
-        this._id = _id;
+        this.id = _id;
         return this;
     }
 
     @Override
     public String toString() {
         return "BudgetMonthDto{" +
-                "_id=" + _id +
+                "_id=" + id +
                 ", user=" + user +
                 ", year=" + year +
                 ", month=" + month +

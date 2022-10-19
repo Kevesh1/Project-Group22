@@ -2,17 +2,18 @@ package budgetapp.model.transactions;
 
 import budgetapp.model.categories.Category;
 
+import java.sql.Date;
 import java.time.YearMonth;
 
 public abstract class Transaction {
 
     private double sum;
     private String annotation;
-    private String date;
+    private Date date;
     private YearMonth yearMonth;
     private Category category;
 
-    public Transaction(Double sum, String annotation, String date) {
+    public Transaction(Double sum, String annotation, Date date) {
         this.sum = sum;
         this.annotation = annotation;
         this.date = date;
@@ -26,10 +27,10 @@ public abstract class Transaction {
         this.sum = sum;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

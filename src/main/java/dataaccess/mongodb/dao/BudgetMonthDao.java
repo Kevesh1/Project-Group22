@@ -70,10 +70,13 @@ public class BudgetMonthDao implements IBudgetMonthDao {
     public Optional<List<BudgetMonth>> getAllBudgetMonthsByUserId(String id) {
         ObjectId oid = new ObjectId(id);
         List<BudgetMonth> budgetMonths = new ArrayList<BudgetMonth>();
-        collection.find(Filters.eq("user", oid), BudgetMonth.class)
+        collection.find(Filters.eq("user", oid), BudgetMonthDto.class)
                 .into(new ArrayList<>())
                 .forEach(budgetMonthDto -> budgetMonths.add(
-                modelMapper.map(budgetMonthDto, BudgetMonth.class)));
+                modelMapper.map(budgetMonthDto, BudgetMonth.class)
+                        .setCategoryItems(categoryDao.getAllCategoriesByBudgetMonth(
+                                budgetMonthDto.getId().toString()))));
+
         Optional<List<BudgetMonth>> newBudgetMonths = Optional.empty();
         if (!budgetMonths.isEmpty()) {
             newBudgetMonths = Optional.of(budgetMonths);
@@ -91,11 +94,10 @@ public class BudgetMonthDao implements IBudgetMonthDao {
 
         BudgetMonthDto budgetMonthDto = modelMapper.map(budgetMonth, BudgetMonthDto.class);
         budgetMonthDto.setId(new ObjectId());
-        List<CategoryItemDto> categoryItems = budgetMonth.getCategories()
+        List<CategoryItemDto> categoryItems = budgetMonth.getCategoryItems()
                 .stream()
                 .map(categoryItem -> modelMapper.map(categoryItem, CategoryItemDto.class))
                 .collect(Collectors.toList());
-        //budgetMonthDto.setCategories(categoryItems);
         collection.insertOne(budgetMonthDto);
 
     }
@@ -114,27 +116,16 @@ public class BudgetMonthDao implements IBudgetMonthDao {
     }
 
     @Override
-    public List<BudgetMonth> initNewBudgetMonths(List<BudgetMonth> budgetMonths, List<CategoryItem> categoryItems, String userId) {
+    public List<BudgetMonth> initNewBudgetMonths(List<BudgetMonth> budgetMonths, String user) {
         List<BudgetMonthDto> budgetMonthDtos = new ArrayList<>();
 
         budgetMonths.forEach(budgetMonth -> budgetMonthDtos
                 .add(modelMapper.map(budgetMonth, BudgetMonthDto.class)
-                .setUser(new ObjectId(userId))));
+                        .setUser(new ObjectId(user))));
 
         collection.insertMany(budgetMonthDtos);
 
-        for (BudgetMonthDto budgetMonthDto : budgetMonthDtos) {
-            System.out.println(budgetMonthDto.getYearMonth().getMonth());
-        }
-
-        List<BudgetMonth> budgetMonthList = budgetMonthDtos.stream().map(budgetMonthDto -> modelMapper.map(budgetMonthDto, BudgetMonth.class)).collect(Collectors.toList());
-
-        for (BudgetMonth budgetMonth : budgetMonthList) {
-            System.out.println(budgetMonth);
-        }
-        categoryDao.setCategoryItems(categoryItems, budgetMonthList);
-
-        return budgetMonthList;
+        return budgetMonthDtos.stream().map(budgetMonthDto -> modelMapper.map(budgetMonthDto, BudgetMonth.class)).collect(Collectors.toList());
 
     }
 }

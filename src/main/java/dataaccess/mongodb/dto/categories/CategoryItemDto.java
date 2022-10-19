@@ -1,11 +1,12 @@
 package dataaccess.mongodb.dto.categories;
 
 import budgetapp.model.categories.Category;
+import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
 public final class CategoryItemDto {
 
-    private ObjectId id;
+    private ObjectId _id;
 
     private ObjectId budgetMonth;
 
@@ -18,11 +19,11 @@ public final class CategoryItemDto {
     private double budgetSpent;
 
     public ObjectId getId() {
-        return id;
+        return _id;
     }
 
-    public CategoryItemDto setId(ObjectId id) {
-        this.id = id;
+    public CategoryItemDto setId(ObjectId _id) {
+        this._id = _id;
         return this;
     }
 
@@ -74,7 +75,7 @@ public final class CategoryItemDto {
     @Override
     public String toString() {
         return "CategoryDto{" +
-                "id=" + id +
+                "id=" + _id +
                 ", category=" + category +
                 ", budget=" + budget +
                 ", budgetSpent=" + budgetSpent +

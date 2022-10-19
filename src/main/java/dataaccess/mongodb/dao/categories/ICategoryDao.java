@@ -1,6 +1,5 @@
 package dataaccess.mongodb.dao.categories;
 
-import budgetapp.model.BudgetMonth;
 import budgetapp.model.categories.CategoryItem;
 
 import java.util.List;
@@ -10,7 +9,13 @@ public interface ICategoryDao {
 
     CategoryItem addCategory(CategoryItem categoryItem, String budgetMonth);
 
+    CategoryItem deleteCategory(CategoryItem categoryItem);
+
     List<CategoryItem> addCategories(List<CategoryItem> categoryItem, String budgetMonth);
 
-    void setCategoryItems(List<CategoryItem> categoryItems, List<BudgetMonth> budgetMonths);
+    List<CategoryItem> addCategoryItems(List<CategoryItem> categoryItems, String budgetMonths);
+
+    List<CategoryItem> setCategoryItems(List<CategoryItem> categoryItems, String budgetMonths);
+
+    List<CategoryItem> initCategoryItems(List<CategoryItem> categoryItems, String budgetMonth);
 }
