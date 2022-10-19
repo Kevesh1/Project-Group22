@@ -5,6 +5,7 @@ import budgetapp.controller.MainController;
 import budgetapp.model.transactions.Expense;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
+import dataaccess.mongodb.dao.categories.CategoryDao;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -52,10 +53,14 @@ public class CategoryController extends AnchorPane {
 
     private final MainController mainController;
     private final CategoryItem categoryItem;
+    private final CategoryDao categoryDao;
     //private ArrayList<CategorySubItem> subCategories = new ArrayList<>();
     private int index;
 
     public CategoryController(MainController mainController, CategoryItem categoryItem, int i) {
+
+        categoryDao = new CategoryDao();
+
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/category.fxml"));
         root.setRoot(this);
         root.setController(this);
@@ -134,9 +139,10 @@ public class CategoryController extends AnchorPane {
     }
 
     public void confirmRemoveCategory(){
-        mainController.selectedBudgetMonth.getCategoryItems().remove(categoryItem);
+        mainController.selectedBudgetMonth.getCategoryItems().remove(
+                categoryDao.deleteCategory(categoryItem)
+        );
         mainController.updateCategoryList();
-
     }
 
     @FXML

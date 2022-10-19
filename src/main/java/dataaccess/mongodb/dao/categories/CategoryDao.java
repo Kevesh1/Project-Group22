@@ -51,6 +51,12 @@ public class CategoryDao implements ICategoryDao{
     }
 
     @Override
+    public CategoryItem deleteCategory(CategoryItem categoryItem) {;
+        collection.deleteOne(Filters.eq("_id", new ObjectId(categoryItem.getId())));
+        return categoryItem;
+    }
+
+    @Override
     public List<CategoryItem> addCategories(List<CategoryItem> categoryItem, String budgetMonth) {
         List<CategoryItemDto> categoryItemDto = new ArrayList<>();
         categoryItem.forEach(categoryItem1 -> categoryItemDto

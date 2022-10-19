@@ -293,9 +293,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox layoutX="68.0" layoutY="113.0" AnchorPane.rightAnchor="726.8" />
-            <HBox layoutX="227.0" layoutY="113.0" AnchorPane.rightAnchor="543.8" />
-            <ImageView fx:id="profileImage" fitHeight="80.0" fitWidth="80.0" layoutX="806.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="profileImage" fitHeight="59.0" fitWidth="59.0" layoutX="1227.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="budgetRemainingLabel" layoutX="584.0" layoutY="649.0" text="budgetRemainingLabel" />
             <ScrollPane layoutX="33.0" layoutY="695.0" prefHeight="190.0" prefWidth="783.0" styleClass="flowPaneBackground" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="483.79999999999995">
                <content>
@@ -306,7 +304,6 @@
                   <URL value="@../css/Scrollpane.css" />
                </stylesheets>
             </ScrollPane>
-            <HBox layoutX="13.0" layoutY="353.0" AnchorPane.bottomAnchor="224.39999999999998" />
             <Label layoutX="40.0" layoutY="18.0" text="Blue Vault">
                <font>
                   <Font size="24.0" />
@@ -325,7 +322,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Label layoutX="37.0" layoutY="658.0" prefHeight="36.0" prefWidth="300.0" style="-fx-font-size: 25;" text="Transactions" AnchorPane.bottomAnchor="206.0" AnchorPane.leftAnchor="37.0">
+            <Label layoutX="37.0" layoutY="658.0" style="-fx-font-size: 25;" text="Transactions">
                <font>
                   <Font size="18.0" />
                </font>
