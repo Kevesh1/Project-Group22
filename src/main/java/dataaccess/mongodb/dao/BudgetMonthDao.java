@@ -4,6 +4,7 @@ import budgetapp.model.categories.CategoryItem;
 import com.mongodb.client.model.Filters;
 import dataaccess.mongodb.MongoDBService;
 import dataaccess.mongodb.dao.categories.CategoryDao;
+import dataaccess.mongodb.dao.categories.SubCategoryDao;
 import dataaccess.mongodb.dto.BudgetMonthDto;
 import budgetapp.model.BudgetMonth;
 import com.mongodb.client.MongoCollection;
@@ -29,8 +30,11 @@ public class BudgetMonthDao implements IBudgetMonthDao {
 
     private CategoryDao categoryDao;
 
+    private SubCategoryDao subCategoryDao;
+
     public BudgetMonthDao() {
         categoryDao = new CategoryDao();
+        subCategoryDao = new SubCategoryDao();
         modelMapper = new ModelMapper();
         configureModelMapper(modelMapper);
     }
@@ -69,13 +73,12 @@ public class BudgetMonthDao implements IBudgetMonthDao {
     @Override
     public Optional<List<BudgetMonth>> getAllBudgetMonthsByUserId(String id) {
         ObjectId oid = new ObjectId(id);
-        List<BudgetMonth> budgetMonths = new ArrayList<BudgetMonth>();
+        List<BudgetMonth> budgetMonths = new ArrayList<>();
+
         collection.find(Filters.eq("user", oid), BudgetMonthDto.class)
                 .into(new ArrayList<>())
                 .forEach(budgetMonthDto -> budgetMonths.add(
-                modelMapper.map(budgetMonthDto, BudgetMonth.class)
-                        .setCategoryItems(categoryDao.getAllCategoriesByBudgetMonth(
-                                budgetMonthDto.getId().toString()))));
+                modelMapper.map(budgetMonthDto, BudgetMonth.class)));
 
         Optional<List<BudgetMonth>> newBudgetMonths = Optional.empty();
         if (!budgetMonths.isEmpty()) {

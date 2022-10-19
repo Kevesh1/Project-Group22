@@ -14,6 +14,10 @@ public class CategorySubItem extends AbstractCategoryItem{
         expenses = new ArrayList<>();
     }
 
+    public CategorySubItem() {
+
+    };
+
     public void addExpense(Expense expense){
         expenses.add(expense);
     }

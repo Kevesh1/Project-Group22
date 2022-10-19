@@ -16,6 +16,7 @@ import budgetapp.model.transactions.Transaction;
 import dataaccess.mongodb.dao.BudgetMonthDao;
 import dataaccess.mongodb.dao.account.AccountDao;
 import dataaccess.mongodb.dao.categories.CategoryDao;
+import dataaccess.mongodb.dao.categories.SubCategoryDao;
 import dataaccess.mongodb.dao.transactions.TransactionDao;
 import dataaccess.mongodb.dto.categories.CategoryItemDto;
 import javafx.collections.FXCollections;
@@ -41,6 +42,7 @@ import java.time.Month;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class MainController extends AnchorPane{
@@ -216,7 +218,7 @@ public class MainController extends AnchorPane{
     }
 
     @FXML
-    private void updateSubCategory(){
+    private void updateSubCategory() {
         CategorySubItem subCategory = subCategoryController.getSubCategory();
         subCategoryController.getCategoryItem().removeSubcategoryBudget(subCategory);
         subCategory.setName(newSubCategoryName.getText());
@@ -268,7 +270,11 @@ public class MainController extends AnchorPane{
         String name = newSubCategoryName.getText();
         double budget = Double.parseDouble(newSubCategoryBudget.getText());
         CategorySubItem categorySubItem = new CategorySubItem(budget,name);
-        categoryController.getCategoryItem().addSubCategory(categorySubItem);
+        System.out.println("NEW SUBCATEGORY");
+        System.out.println(categoryController.getCategoryItem().getName());
+        categoryController.getCategoryItem().addSubCategory(
+                subCategoryDao.addSubCategory(categorySubItem, categoryController.getCategoryItem().getId())
+        );
         categoryController.getCategoryItem().addSubcategoryBudget();
         //categoryController.subCategories.add(categorySubItem);
 
@@ -314,11 +320,15 @@ public class MainController extends AnchorPane{
 
     public BudgetMonth selectedBudgetMonth;
 
-    ObservableList<BudgetMonth> budgetMonths;
+    private CategoryItem selectedCategoryItem;
+
+    private ObservableList<BudgetMonth> budgetMonths;
 
     private BudgetMonthDao budgetMonthDao;
 
     private CategoryDao categoryDao;
+
+    private SubCategoryDao subCategoryDao;
 
     private TransactionDao transactionDao;
 
@@ -329,6 +339,7 @@ public class MainController extends AnchorPane{
         budgetMonthDao = new BudgetMonthDao();
         transactionDao = new TransactionDao();
         categoryDao = new CategoryDao();
+        subCategoryDao = new SubCategoryDao();
 
         loadBudgetMonths();
         loadTransactions();
@@ -351,8 +362,15 @@ public class MainController extends AnchorPane{
 
 
         if (dbBudgetMonths.isPresent()) {
-            System.out.println("ISPRESENT");
             loadedBudgetMonths = dbBudgetMonths.get();
+            loadedBudgetMonths.forEach(budgetMonth -> budgetMonth
+                    .setCategoryItems(
+                            loadCategoryItems(budgetMonth.getId()))
+                    .forEach(categoryItem -> categoryItem
+                            .setSubCategories(
+                                    loadSubCategoryItems(
+                                            categoryItem.getId()))));
+
         } else {
             System.out.println("NOT PRESENT");
             loadedBudgetMonths = budgetMonthDao
@@ -363,6 +381,14 @@ public class MainController extends AnchorPane{
 
         budgetMonths.addAll(loadedBudgetMonths);
         //selectedBudgetMonth = budgetMonths.get(selectBudgetMonthIndex());
+    }
+
+    private List<CategoryItem> loadCategoryItems(String budgetId) {
+        return categoryDao.getAllCategoriesByBudgetMonth(budgetId);
+    }
+
+    private List<CategorySubItem> loadSubCategoryItems(String categoryId) {
+        return subCategoryDao.getAllSubCategoriesByCategory(categoryId);
     }
 
     private int selectBudgetMonthIndex() {

@@ -10,15 +10,14 @@ import java.util.Objects;
 
 public class CategoryItem extends AbstractCategoryItem{
 
-    private List<CategorySubItem> subCategories;
+    private List<CategorySubItem> subCategories = new ArrayList<>();
 
     private Category category;
 
     private String id;
 
-    public CategoryItem(@NotNull Category category) {
+    public CategoryItem(Category category) {
         super(category.toString(), 0);
-        this.subCategories = new ArrayList<CategorySubItem>();
         this.category = category;
     }
 
@@ -37,10 +36,15 @@ public class CategoryItem extends AbstractCategoryItem{
     public void addSubCategory(CategorySubItem subCategory) {
         subCategories.add(subCategory);
     }
+
+    public void setSubCategories(List<CategorySubItem> subCategories) {
+        this.subCategories.addAll(subCategories);
+    }
+
     public void removeSubcategory(CategorySubItem subCategory) {
         subCategories.remove(subCategory);
-
     }
+
 
     //Overload
     public void addSubcategoryBudget(){

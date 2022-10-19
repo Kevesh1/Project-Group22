@@ -128,9 +128,9 @@ public final class BudgetMonth {
         return categoryItems;
     }
 
-    public BudgetMonth setCategoryItems(List<CategoryItem> categoryItems) {
+    public List<CategoryItem> setCategoryItems(List<CategoryItem> categoryItems) {
         this.categoryItems = categoryItems;
-        return this;
+        return categoryItems;
     }
 
 //    public void setMonth(Month month) {

@@ -64,25 +64,28 @@ public class SubCategoryController extends AnchorPane {
     @FXML
     private void removeSubCategory(){
         int i = 0;
-        for (Transaction transaction : mainController.selectedBudgetMonth.getTransactions()){
+        if (mainController.selectedBudgetMonth.getTransactions() != null) {
+            for (Transaction transaction : mainController.selectedBudgetMonth.getTransactions()){
 
-            if (!(transaction instanceof Expense)) {
-                System.out.println("GOES IN ANTI IF");
-                continue;
-            }
-            if (subCategory.getExpenses().get(i) == transaction){
-                mainController.selectedBudgetMonth.removeTransaction(transaction);
-                System.out.println("INSIDE FOR");
-            }
-            i+=1;
+                if (!(transaction instanceof Expense)) {
+                    System.out.println("GOES IN ANTI IF");
+                    continue;
+                }
+                if (subCategory.getExpenses().get(i) == transaction){
+                    mainController.selectedBudgetMonth.removeTransaction(transaction);
+                    System.out.println("INSIDE FOR");
+                }
+                i+=1;
 
-            System.out.println("AFTER FOR LOOP");
+                System.out.println("AFTER FOR LOOP");
+            }
+            categoryItem.removeSubcategory(subCategory);
+            categoryItem.removeSubcategoryBudget(subCategory);
+            categoryController.updateSubCategories();
+            mainController.updateLatestTransaction();
+            mainController.updateMainView();
         }
-        categoryItem.removeSubcategory(subCategory);
-        categoryItem.removeSubcategoryBudget(subCategory);
-        categoryController.updateSubCategories();
-        mainController.updateLatestTransaction();
-        mainController.updateMainView();
+
 
     }
 

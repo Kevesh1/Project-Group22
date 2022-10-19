@@ -1,7 +1,5 @@
 package dataaccess.mongodb.dao.categories;
 
-import budgetapp.model.categories.Category;
-import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
@@ -39,21 +37,11 @@ public class SubCategoryDao implements ISubCategoryDao {
     }
 
     @Override
-    public List<CategorySubItem> getAllSubCategoriesByCategory(ObjectId id, Category category) {
-        return null;
-    }
-
-    @Override
-    public List<CategorySubItem> getAllSubCategoriesByCategory(CategoryItem category) {
-        /*modelMapper.getConfiguration()
-                .setFieldMatchingEnabled(true)
-                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
-        List<CategorySubItem> subCategories = new ArrayList<>();
-        collection.find(
-                Filters.eq("_id", category.)new Document(), CategorySubItem.class)
-                .into(new ArrayList<>())
-                .forEach(subCategoryDto -> subCategories.add(modelMapper.map(subCategoryDto, CategorySubItem.class)));*/
-        return null;
+    public List<CategorySubItem> getAllSubCategoriesByCategory(String category) {
+        List<CategorySubItem> categorySubItems = new ArrayList<>();
+        collection.find(Filters.eq("category", new ObjectId(category))).into(new ArrayList<>())
+                .forEach(categorySubItem -> categorySubItems.add(modelMapper.map(categorySubItems, CategorySubItem.class)));
+        return categorySubItems;
     }
 
     @Override
@@ -67,10 +55,11 @@ public class SubCategoryDao implements ISubCategoryDao {
     }
     
     @Override
-    public void addSubCategory(CategorySubItem subCategory, String category) {
+    public CategorySubItem addSubCategory(CategorySubItem subCategory, String category) {
         SubCategoryItemDto subCategoryItemDto = modelMapper.map(subCategory, SubCategoryItemDto.class);
         subCategoryItemDto.setCategory(new ObjectId(category));
         collection.insertOne(subCategoryItemDto);
+        return modelMapper.map(subCategoryItemDto, CategorySubItem.class);
 
     }
 
