@@ -24,4 +24,6 @@ public class CategorySubItem extends AbstractCategoryItem{
     public List<Expense> getExpenses(){
         return expenses;
     }
+
+
 }

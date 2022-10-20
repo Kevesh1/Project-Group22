@@ -1,49 +1,40 @@
 package budgetapp.controller.graphs;
 
+import budgetapp.controller.MainController;
 import budgetapp.model.BudgetMonth;
 import budgetapp.model.categories.Category;
 import budgetapp.model.categories.CategoryItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.chart.*;
-import javafx.scene.layout.AnchorPane;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StackedBarChartController extends AnchorPane {
+public class StackedBarChartController {
 
     // ADD LISTENER
-    ObservableList<XYChart.Data<String, Number>> stackedBarChartData = FXCollections.observableArrayList();
+    ObservableList<XYChart.Data<String, Number>> stackedBarChartData ;
 
-    @FXML
-    StackedBarChart<String, Number> stackedBarChart;
+    ObservableList<BudgetMonth> budgetMonths;
 
-    public StackedBarChartController() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/stackedBarChart.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-        try
-        {
-            fxmlLoader.load();
-        } catch (IOException exception)
-        {
-            throw new RuntimeException(exception);
-        }
+    private MainController mainController;
+
+    public StackedBarChartController(MainController mainController, ObservableList<BudgetMonth> budgetMonths) {
+        this.mainController = mainController;
+        this.budgetMonths = budgetMonths;
     }
 
-    @FXML
     public void initialize() {
-        stackedBarChart.getYAxis().setLabel("Budget");
-        stackedBarChart.setTitle("Yearly budget");
+        mainController.stackedBarChart.getYAxis().setLabel("Budget");
+        mainController.stackedBarChart.setTitle("Yearly budget");
+        updateBarChart();
     }
 
-    public void updateBarChart(List<BudgetMonth> budgetMonths) {
+    private void updateBarChart() {
         Map<Category, XYChart.Series<String, Number>> series = new HashMap<>();
         for(BudgetMonth budgetMonth : budgetMonths) {
             for (CategoryItem categoryItem : budgetMonth.getCategoryItems()) {
@@ -54,6 +45,7 @@ public class StackedBarChartController extends AnchorPane {
         }
         List<XYChart.Series<String, Number>> temp = new ArrayList<>() ;
         series.forEach((category, stringNumberSeries) -> temp.add(series.get(category)));
-        stackedBarChart.setData(FXCollections.observableArrayList(temp));
+        System.out.println("SETTING BG DATA");
+        mainController.stackedBarChart.setData(FXCollections.observableArrayList(temp));
     }
 }

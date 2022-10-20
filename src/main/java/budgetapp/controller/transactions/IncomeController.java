@@ -1,7 +1,6 @@
 package budgetapp.controller.transactions;
 
 import budgetapp.controller.MainController;
-import budgetapp.model.transactions.Expense;
 import budgetapp.model.transactions.Income;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,9 +18,11 @@ public class IncomeController extends AnchorPane {
     Label latestPurchaseCost;
 
     private final Income income;
-    private final MainController parentController;
+    private final TransactionController transactionController;
 
-    public IncomeController(MainController parentController, Income income) {
+    public IncomeController(TransactionController transactionController, Income income) {
+        this.transactionController = transactionController;
+        this.income = income;
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/Income.fxml"));
         root.setRoot(this);
         root.setController(this);
@@ -29,12 +30,12 @@ public class IncomeController extends AnchorPane {
             root.load();
         } catch (Exception ignored) {
         }
-
-        this.parentController = parentController;
-        this.income = income;
-        setLabels();
     }
 
+    @FXML
+    public void initialize() {
+        setLabels();
+    }
     private void setLabels(){
         latestPurchaseNotation.setText(income.getAnnotation());
         latestPurchaseDate.setText(String.valueOf(income.getDate()));
@@ -43,8 +44,7 @@ public class IncomeController extends AnchorPane {
 
     @FXML
     private void deleteTransaction(){
-        parentController.selectedBudgetMonth.removeTransaction(income);
-        parentController.updateLatestTransaction();
-        parentController.updateMainView();
+        transactionController.deleteTransaction(income);
+
     }
 }

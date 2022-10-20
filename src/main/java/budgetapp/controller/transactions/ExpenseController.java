@@ -18,19 +18,25 @@ public class ExpenseController extends AnchorPane {
     Label latestPurchaseCost;
 
     private Expense expense;
-    private MainController parentController;
+    private TransactionController transactionController;
 
-    public ExpenseController(MainController parentController, Expense expense) {
+    public ExpenseController(TransactionController transactionController, Expense expense) {
+
+        this.transactionController = transactionController;
+        this.expense = expense;
+
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/Expense.fxml"));
         root.setRoot(this);
         root.setController(this);
         try {
             root.load();
         } catch (Exception ignored) {
-        }
 
-        this.parentController = parentController;
-        this.expense = expense;
+        }
+    }
+
+    @FXML
+    public void initialize() {
         setLabels();
     }
 
@@ -42,9 +48,6 @@ public class ExpenseController extends AnchorPane {
 
     @FXML
     private void deleteTransaction(){
-        expense.getSubCategory().decrementBudgetSpent((int) expense.getSum());
-        parentController.selectedBudgetMonth.removeTransaction(expense);
-        parentController.updateLatestTransaction();
-        parentController.updateCategoryList();
+        transactionController.deleteTransaction(expense);
     }
 }

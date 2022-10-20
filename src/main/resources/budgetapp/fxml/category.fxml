@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root fx:id="CategoryPane" onMouseClicked="#updateInformation" prefHeight="98.0" prefWidth="429.0" styleClass="categoryBoxx" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="CategoryPane" onMouseClicked="#categorySelected" prefHeight="98.0" prefWidth="429.0" styleClass="categoryBoxx" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="categoryName" layoutX="70.0" layoutY="31.0" styleClass="title" stylesheets="@../css/labels.css" text="Transport" />
       <Label fx:id="categoryBudget" layoutX="310.0" layoutY="35.0" styleClass="amount" stylesheets="@../css/labels.css" text="5000 kr" />
@@ -19,7 +19,7 @@
       <ProgressBar fx:id="progressBar" layoutX="70.0" layoutY="62.0" prefHeight="12.0" prefWidth="298.0" progress="0.0" />
       <Button fx:id="editButton" layoutX="70.0" layoutY="8.0" mnemonicParsing="false" onAction="#getEditCategoryWindow" text="Edit" />
       <Button fx:id="removeCategoryButton" layoutX="400.0" layoutY="11.0" mnemonicParsing="false" onAction="#removeCategoryCheck" text="X" />
-      <Button fx:id="addSubCategoryButton" layoutX="374.0" layoutY="56.0" mnemonicParsing="false" onAction="#getAddSubCategoryWindow" text="+" />
+      <Button fx:id="addSubCategoryButton" layoutX="374.0" layoutY="56.0" mnemonicParsing="false" onAction="#showAddSubCategoryWindow" text="+" />
    </children>
    <stylesheets>
       <URL value="@../css/Categories.css" />

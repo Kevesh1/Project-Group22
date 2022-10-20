@@ -6,8 +6,7 @@ import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.util.Objects;
-
-abstract public class AbstractCategoryItem {
+ public class AbstractCategoryItem {
 
     private String id;
     private String name;

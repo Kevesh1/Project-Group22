@@ -1,10 +1,6 @@
 package budgetapp.controller.categories;
 
-import budgetapp.controller.transactions.ExpenseController;
-import budgetapp.controller.MainController;
-import budgetapp.model.transactions.Expense;
 import budgetapp.model.categories.CategoryItem;
-import budgetapp.model.categories.CategorySubItem;
 import dataaccess.mongodb.dao.categories.CategoryDao;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,9 +10,6 @@ import javafx.scene.control.ProgressBar;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CategoryController extends AnchorPane {
 
@@ -51,13 +44,13 @@ public class CategoryController extends AnchorPane {
     //private void updateProgressBar(){
     //    progressBar.setProgress(this.budget - this.spentAmount);}
 
-    private final MainController mainController;
+    private final CategoryListController categoryListController;
     private final CategoryItem categoryItem;
     private final CategoryDao categoryDao;
     //private ArrayList<CategorySubItem> subCategories = new ArrayList<>();
     private int index;
 
-    public CategoryController(MainController mainController, CategoryItem categoryItem, int i) {
+    public CategoryController(CategoryListController categoryListController, CategoryItem categoryItem) {
 
         categoryDao = new CategoryDao();
 
@@ -69,14 +62,14 @@ public class CategoryController extends AnchorPane {
         } catch (Exception ignored) {
         }
         this.categoryItem = categoryItem;
-        this.mainController = mainController;
-        this.index = i;
+        this.categoryListController = categoryListController;
+        //this.index = i;
         setLabels();
     }
 
-    public MainController getMainController(){
+    /*public MainController getMainController(){
         return mainController;
-    }
+    }*/
 
     public CategoryItem getCategoryItem(){
         return categoryItem;
@@ -91,11 +84,14 @@ public class CategoryController extends AnchorPane {
     }
 
     @FXML
-    public void updateInformation(){
-        updateSubCategories();
-        showMatchingPurchases();
+    public void categorySelected(){
+        categoryListController.selectedCategoryItem = this.categoryItem;
+        categoryListController.updateCategoryList();
+        System.out.println("SELECTED");
+        //showMatchingPurchases();
     }
-    public void showMatchingPurchases(){
+
+    /*public void showMatchingPurchases(){
         mainController.latestPurchases.getChildren().clear();
         for (Expense expense : mainController.selectedBudgetMonth.getExpenses()){
             if (expense.getCategory().equals(categoryItem.getCategory())){
@@ -105,22 +101,13 @@ public class CategoryController extends AnchorPane {
 
             }
         }
-    }
+    }*/
 
-    public void updateSubCategories(){
-        mainController.updateCategoryList();
-        int i = index;
 
-        for (CategorySubItem subCategory : categoryItem.getSubCategories()) {
-            i += 1;
-            SubCategoryController subCategoryController = new SubCategoryController(this, subCategory);
-            mainController.categoriesFlowPane.getChildren().add(i,subCategoryController);
-        }
-    }
 
     @FXML
-    private void getAddSubCategoryWindow(){
-        mainController.showAddSubCategoryWindow(this);
+    private void showAddSubCategoryWindow(){
+        categoryListController.showAddSubCategoryWindow(this);
     }
 
    /* @FXML
@@ -132,22 +119,22 @@ public class CategoryController extends AnchorPane {
     @FXML
     public void removeCategoryCheck(){
         if (categoryItem.isBudgetEmpty()){
-            confirmRemoveCategory();
+            categoryListController.confirmRemoveCategory();
         }
         else
-            mainController.confirmRemoveCategoryWindow(this);
+            categoryListController.confirmRemoveCategoryWindow(this);
     }
 
-    public void confirmRemoveCategory(){
+    /*public void confirmRemoveCategory(){
         mainController.selectedBudgetMonth.getCategoryItems().remove(
                 categoryDao.deleteCategory(categoryItem)
         );
         mainController.updateCategoryList();
-    }
+    }*/
 
     @FXML
     private void getEditCategoryWindow() {
-        mainController.showEditCategoryWindow(this);
+        categoryListController.showEditCategoryWindow(this);
     }
     /*private void editCategory(){
         boolean edit = true;

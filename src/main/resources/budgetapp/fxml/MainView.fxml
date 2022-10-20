@@ -3,6 +3,10 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -16,7 +20,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.paint.Color?>
@@ -24,7 +27,7 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" styleClass="mainBackground" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane fx:id="addNewSubCategoryPane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+      <AnchorPane fx:id="addNewSubCategoryPane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane layoutX="867.0" layoutY="416.0" prefHeight="230.0" prefWidth="250.0" style="-fx-background-color: #36393e; -fx-background-radius: 7;">
                <opaqueInsets>
@@ -48,7 +51,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="addNewCategoryPane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+      <AnchorPane fx:id="addNewCategoryPane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane layoutX="869.0" layoutY="416.0" prefHeight="230.0" prefWidth="250.0" style="-fx-background-color: #36393e; -fx-background-radius: 7;" stylesheets="@../css/Styleheet.css">
                <opaqueInsets>
@@ -57,13 +60,6 @@
                <children>
                   <Button fx:id="updateCategoryButton" layoutX="198.0" layoutY="186.0" mnemonicParsing="false" onAction="#updateCategory" text="Update" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="5.5" />
                   <Label fx:id="newCategoryLabel" layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Category" />
-                  <Label fx:id="newCategoryBudgetLabel1" layoutX="26.0" layoutY="101.0" prefHeight="26.0" prefWidth="64.0" text="Budget" />
-                  <TextField fx:id="newCategoryBudget" layoutX="25.0" layoutY="127.0">
-                     <stylesheets>
-                        <URL value="@../css/labels.css" />
-                        <URL value="@../css/Styleheet.css" />
-                        <URL value="@../css/modalTab.css" />
-                     </stylesheets></TextField>
                   <Label layoutX="63.0" layoutY="14.0" text="Add Category" />
                   <Button fx:id="addNewCategoryButton" layoutX="212.0" layoutY="131.0" mnemonicParsing="false" onAction="#addNewCategory" text="Add" AnchorPane.rightAnchor="5.5" />
                   <Button layoutX="5.5" layoutY="188.0" mnemonicParsing="false" text="Cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.5" />
@@ -73,7 +69,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="iEWindow" layoutX="1.0" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);" styleClass="getinthefuckingmiddle">
+      <AnchorPane fx:id="iEWindow" layoutX="1.0" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);" styleClass="getinthefuckingmiddle" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TabPane layoutX="821.0" layoutY="295.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../css/Styleheet.css" tabClosingPolicy="UNAVAILABLE">
                <tabs>
@@ -245,7 +241,7 @@
             <URL value="@../css/modalTab.css" />
          </stylesheets>
       </AnchorPane>
-      <AnchorPane fx:id="confirmDeletePane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);">
+      <AnchorPane fx:id="confirmDeletePane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane layoutX="351.0" layoutY="222.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: white;">
                <children>
@@ -278,7 +274,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <ComboBox fx:id="yearMonthComboBox" onAction="#onChangeBudgetMonthComboBox" prefHeight="31.0" prefWidth="188.0" stylesheets="@../css/Styleheet.css" />
+                  <ComboBox fx:id="yearMonthComboBox" prefHeight="31.0" prefWidth="188.0" stylesheets="@../css/Styleheet.css" />
                   <Button fx:id="nextMonthButton" mnemonicParsing="false" onAction="#onClickNextMonth">
                      <graphic>
                         <ImageView pickOnBounds="true" preserveRatio="true">
@@ -319,7 +315,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Label layoutX="37.0" layoutY="658.0" style="-fx-font-size: 25;" text="Transactions">
+            <Label layoutX="37.0" layoutY="658.0" style="-fx-font-size: 25;" text="Transactions" AnchorPane.bottomAnchor="206.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="1115.0" AnchorPane.topAnchor="658.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -327,7 +323,19 @@
             <Button layoutX="1055.0" layoutY="86.0" mnemonicParsing="false" onAction="#openIE" prefWidth="49.0" text="+" AnchorPane.rightAnchor="195.4000000000001" />
             <AnchorPane layoutX="33.0" layoutY="147.0" prefHeight="482.0" prefWidth="783.0" styleClass="mainpain" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="271.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="484.0" AnchorPane.topAnchor="147.0">
                <children>
-                  <BorderPane fx:id="borderPane" layoutX="124.0" layoutY="141.0" prefHeight="482.0" prefWidth="783.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <HBox layoutX="228.0" layoutY="119.0" prefHeight="482.0" prefWidth="783.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <StackedBarChart fx:id="stackedBarChart" stylesheets="@../css/Graph.css">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </StackedBarChart>
+                        <PieChart fx:id="pieChart" stylesheets="@../css/Graph.css" />
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
             <HBox layoutX="485.0" layoutY="109.0">

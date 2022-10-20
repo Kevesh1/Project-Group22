@@ -1,10 +1,7 @@
 package budgetapp.controller.categories;
 
-import budgetapp.controller.MainController;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
-import budgetapp.model.transactions.Expense;
-import budgetapp.model.transactions.Transaction;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -14,10 +11,10 @@ import javafx.scene.layout.AnchorPane;
 
 public class SubCategoryController extends AnchorPane {
 
-    private final CategoryController categoryController;
     private final CategorySubItem subCategory;
-    private final MainController mainController;
+    //private final MainController mainController;
     private final CategoryItem categoryItem;
+    private final CategoryListController categoryListController;
 
     @FXML
     private Label subCategoryName;
@@ -28,9 +25,12 @@ public class SubCategoryController extends AnchorPane {
     @FXML
     private Label subCategoryBudget;
 
+    public SubCategoryController(CategoryListController categoryListController, CategoryController categoryController, CategorySubItem subCategory) {
 
+        this.categoryListController = categoryListController;
+        this.subCategory = subCategory;
+        categoryItem = categoryController.getCategoryItem();
 
-    public SubCategoryController(CategoryController categoryController, CategorySubItem subCategory) {
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/subCategory.fxml"));
         root.setRoot(this);
         root.setController(this);
@@ -39,11 +39,10 @@ public class SubCategoryController extends AnchorPane {
         } catch (Exception ignored) {
         }
 
-        this.categoryController = categoryController;
-        this.subCategory = subCategory;
-        mainController = categoryController.getMainController();
-        categoryItem = categoryController.getCategoryItem();
+    }
 
+    @FXML
+    public void initialize() {
         setLabels();
     }
 
@@ -63,8 +62,8 @@ public class SubCategoryController extends AnchorPane {
 
     @FXML
     private void removeSubCategory(){
-        int i = 0;
-        if (mainController.selectedBudgetMonth.getTransactions() != null) {
+        /*int i = 0;
+        if (selectedBudgetMonth.getTransactions() != null) {
             for (Transaction transaction : mainController.selectedBudgetMonth.getTransactions()){
 
                 if (!(transaction instanceof Expense)) {
@@ -81,17 +80,14 @@ public class SubCategoryController extends AnchorPane {
             }
             categoryItem.removeSubcategory(subCategory);
             categoryItem.removeSubcategoryBudget(subCategory);
-            categoryController.updateSubCategories();
-            mainController.updateLatestTransaction();
+            //categoryController.updateSubCategories();
+            mainController.updateTransactions();
             mainController.updateMainView();
-        }
-
-
+        }*/
     }
 
-    //try and fix this method
     @FXML
     private void getEditSubCategoryWindow(){
-        mainController.showEditSubCategoryWindow(this);
+        categoryListController.showEditSubCategoryWindow(this);
     }
 }

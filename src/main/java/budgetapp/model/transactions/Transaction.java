@@ -5,7 +5,7 @@ import budgetapp.model.categories.Category;
 import java.sql.Date;
 import java.time.YearMonth;
 
-public abstract class Transaction {
+public class Transaction {
 
     private String id;
 

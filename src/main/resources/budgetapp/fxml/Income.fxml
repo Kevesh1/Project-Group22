@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="200.0" prefWidth="170.0" style="-fx-background-color: #358241;" styleClass="categoryBoxx" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="200.0" prefWidth="170.0" style="-fx-background-color: #358241;" styleClass="categoryBoxx" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="latestPurchaseNotation" layoutX="19.0" layoutY="40.0" prefHeight="83.0" prefWidth="90.0" style="-fx-font-size: 10;" text="Label">
          <font>
@@ -32,4 +32,4 @@
       <URL value="@../css/Styleheet.css" />
       <URL value="@../css/labels.css" />
    </stylesheets>
-</AnchorPane>
+</fx:root>

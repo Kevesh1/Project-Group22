@@ -1,11 +1,11 @@
 package budgetapp.controller;
 
 import budgetapp.controller.categories.CategoryController;
+import budgetapp.controller.categories.CategoryListController;
 import budgetapp.controller.categories.SubCategoryController;
 import budgetapp.controller.graphs.PieChartController;
 import budgetapp.controller.graphs.StackedBarChartController;
-import budgetapp.controller.transactions.ExpenseController;
-import budgetapp.controller.transactions.IncomeController;
+import budgetapp.controller.transactions.TransactionController;
 import budgetapp.model.BudgetMonth;
 import budgetapp.model.account.User;
 import budgetapp.model.categories.Category;
@@ -21,6 +21,7 @@ import dataaccess.mongodb.dao.categories.CategoryDao;
 import dataaccess.mongodb.dao.categories.SubCategoryDao;
 import dataaccess.mongodb.dao.transactions.ExpenseDao;
 import dataaccess.mongodb.dao.transactions.TransactionDao;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,9 +30,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.*;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
@@ -56,7 +55,7 @@ public class MainController extends AnchorPane{
     @FXML
     public FlowPane categoriesFlowPane;
     @FXML
-    PieChart pieChart;
+    public PieChart pieChart;
     @FXML
     Button previousMonthButton;
     @FXML
@@ -64,7 +63,7 @@ public class MainController extends AnchorPane{
     @FXML
     ComboBox<BudgetMonth> yearMonthComboBox;
     @FXML
-    StackedBarChart<String, Number> stackedBarChart;
+    public StackedBarChart<String, Number> stackedBarChart;
     @FXML
     Label budgetLabel;
     @FXML
@@ -76,14 +75,14 @@ public class MainController extends AnchorPane{
     @FXML
     public FlowPane latestPurchases;
     @FXML
+    public
     AnchorPane confirmDeletePane;
 
     @FXML
     ComboBox<Category> categoryComboBox;
     @FXML
     ComboBox categoryComboBox2;
-    @FXML
-    TextField newCategoryBudget;
+
     @FXML
     Button addNewCategoryButton;
     @FXML
@@ -134,6 +133,9 @@ public class MainController extends AnchorPane{
 
     @FXML
     public BorderPane borderPane;
+
+    @FXML
+    public GridPane gridPane;
     //</editor-fold>
 
     @FXML
@@ -157,8 +159,8 @@ public class MainController extends AnchorPane{
         CategorySubItem subItem = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
         subItem.incrementBudgetSpent(Integer.parseInt(newExpenseAmount.getText()));
 
-        updateLatestTransaction();
-        updateCategoryList();
+        transactionController.updateTransactions();
+        categoryListController.updateCategoryList();
         showMainView();
     }
 
@@ -166,10 +168,10 @@ public class MainController extends AnchorPane{
     private void addIncome(){
         Double cost = Double.valueOf(newIncomeAmount.getText());
         String note = newIncomeNote.getText();
-        Date date = (Date) Date.from(newExpenseDate.getValue().atStartOfDay()
-                .atZone(ZoneId.systemDefault()).toInstant());
-        selectedBudgetMonth.addTransaction(new Income(cost, note, date));
-        updateLatestTransaction();
+        Date date = Date.valueOf(newExpenseDate.getValue());
+        Income income = new Income(cost, note, date);
+        transactionController.addTransaction(income);
+        transactionController.updateTransactions();
         updateMainView();
         showMainView();
     }
@@ -179,7 +181,6 @@ public class MainController extends AnchorPane{
         mainView.toFront();
         resetNewCategoryInputs();
     }
-    AccountDao accountDao = new AccountDao();
     @FXML
     private void onClickPreviousMonth() {
         yearMonthComboBox.getSelectionModel().selectPrevious();
@@ -188,13 +189,6 @@ public class MainController extends AnchorPane{
     @FXML
     private void onClickNextMonth() throws IOException {
         yearMonthComboBox.getSelectionModel().selectNext();
-    }
-
-    @FXML
-    private void onChangeBudgetMonthComboBox() {
-        selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
-        updateMainView();
-        updateLists();
     }
 
     @FXML
@@ -223,12 +217,14 @@ public class MainController extends AnchorPane{
 
     @FXML
     private void updateSubCategory() {
+        // TODO MOVE TO SUBCATEGORY
         CategorySubItem subCategory = subCategoryController.getSubCategory();
         subCategoryController.getCategoryItem().removeSubcategoryBudget(subCategory);
         subCategory.setName(newSubCategoryName.getText());
         subCategory.setBudget(Double.parseDouble(newSubCategoryBudget.getText()));
+
         subCategoryController.getCategoryItem().addSubcategoryBudget(subCategory);
-        updateCategoryList();
+        categoryListController.updateCategoryList();
         showMainView();
     }
 
@@ -238,25 +234,24 @@ public class MainController extends AnchorPane{
         updateCategoryButton.setVisible(true);
         addNewCategoryButton.setVisible(false);
         categoryComboBox.getSelectionModel().select(categoryController.getCategoryItem().getCategory());
-        newCategoryBudget.setText(String.valueOf(categoryController.getCategoryItem().getBudget()));
-
+        //newCategoryBudget.setText(String.valueOf(categoryController.getCategoryItem().getBudget()));
     }
 
     @FXML
     private void updateCategory(){
         categoryController.getCategoryItem().setCategory(Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString()));
-        categoryController.getCategoryItem().setBudget(Double.parseDouble(newCategoryBudget.getText()));
-        updateCategoryList();
+        categoryDao.updateCategory(categoryController.getCategoryItem());
+        categoryListController.updateCategoryList();
         showMainView();
     }
 
     @FXML
     private void addNewCategory(){
-
+        // TODO MOVE TO CATEGORY
         Category category = Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString());
         CategoryItem categoryItem = categoryDao.addCategory(new CategoryItem(category), selectedBudgetMonth.getId());
         selectedBudgetMonth.addCategoryItem(categoryItem);
-        updateCategoryList();
+        categoryListController.updateCategoryList();
         showMainView();
         resetNewCategoryInputs();
     }
@@ -270,7 +265,7 @@ public class MainController extends AnchorPane{
     }
 
     @FXML
-    private void addNewSubCategory(){
+    private void addNewSubCategory() {
         String name = newSubCategoryName.getText();
         double budget = Double.parseDouble(newSubCategoryBudget.getText());
         CategorySubItem categorySubItem = new CategorySubItem(budget,name);
@@ -282,7 +277,8 @@ public class MainController extends AnchorPane{
         categoryController.getCategoryItem().addSubcategoryBudget();
         //categoryController.subCategories.add(categorySubItem);
 
-        categoryController.updateSubCategories();
+        //categoryListController.updateSubCategories();
+        System.out.println("UPDATESUBCATEGORIES");
         showMainView();
         resetNewCategoryInputs();
     }
@@ -295,7 +291,7 @@ public class MainController extends AnchorPane{
 
     @FXML
     public void removeCategory(){
-        categoryController.confirmRemoveCategory();
+        categoryListController.confirmRemoveCategory();
         showMainView();
     }
 
@@ -310,7 +306,6 @@ public class MainController extends AnchorPane{
 
     private void resetNewCategoryInputs(){
         categoryComboBox.getSelectionModel().selectFirst();
-        newCategoryBudget.setText("");
         newSubCategoryName.setText("");
         newSubCategoryBudget.setText("");
     }
@@ -326,8 +321,6 @@ public class MainController extends AnchorPane{
 
     public BudgetMonth selectedBudgetMonth;
 
-    private CategoryItem selectedCategoryItem;
-
     private ObservableList<BudgetMonth> budgetMonths;
 
     private BudgetMonthDao budgetMonthDao;
@@ -342,20 +335,21 @@ public class MainController extends AnchorPane{
 
     private PieChartController pieChartController;
 
+    private CategoryListController categoryListController;
+
+    private budgetapp.controller.transactions.TransactionController transactionController;
+
 
     public MainController(User user) {
-
         this.user = user;
         this.budgetMonths = FXCollections.observableArrayList();
-        budgetMonthDao = new BudgetMonthDao();
-        transactionDao = new TransactionDao();
-        categoryDao = new CategoryDao();
-        subCategoryDao = new SubCategoryDao();
-        expenseDao = new ExpenseDao();
 
-        stackedBarChartController = new StackedBarChartController();
+        loadDaos();
 
         budgetMonths.addAll(loadBudgetMonths());
+        selectedBudgetMonth = budgetMonths.get(selectBudgetMonthIndex());
+
+        loadControllers();
 
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
@@ -370,10 +364,24 @@ public class MainController extends AnchorPane{
         }
     }
 
+    private void loadDaos() {
+        budgetMonthDao = new BudgetMonthDao();
+        transactionDao = new TransactionDao();
+        categoryDao = new CategoryDao();
+        subCategoryDao = new SubCategoryDao();
+        expenseDao = new ExpenseDao();
+    }
+
+    private void loadControllers() {
+        stackedBarChartController = new StackedBarChartController(this, budgetMonths);
+        pieChartController = new PieChartController(this);
+        categoryListController = new CategoryListController(this, selectedBudgetMonth.getCategoryItems());
+        transactionController = new TransactionController(this);
+    }
+
     private List<BudgetMonth> loadBudgetMonths() {
         Optional<List<BudgetMonth>> dbBudgetMonths = budgetMonthDao.getAllBudgetMonthsByUserId(user.getId());
-        List<BudgetMonth> loadedBudgetMonths = new ArrayList<>();
-
+        List<BudgetMonth> loadedBudgetMonths;
 
         if (dbBudgetMonths.isPresent()) {
             loadedBudgetMonths = dbBudgetMonths.get();
@@ -395,9 +403,8 @@ public class MainController extends AnchorPane{
             loadedBudgetMonths.forEach(budgetMonth -> budgetMonth
                     .setCategoryItems(categoryDao.initCategoryItems(createDefaultCategoryItems(), budgetMonth.getId())));
         }
-
+        loadedBudgetMonths.forEach(budgetMonth -> budgetMonth.getCategoryItems().forEach(categoryItem -> categoryItem.getSubCategories().forEach(categorySubItem -> System.out.printf("SUB %s ", categorySubItem.getName()))));
         return loadedBudgetMonths;
-        //selectedBudgetMonth = budgetMonths.get(selectBudgetMonthIndex());
     }
 
     private List<CategoryItem> loadCategoryItems(String budgetMonthId) {
@@ -447,18 +454,17 @@ public class MainController extends AnchorPane{
 
     @FXML
     public void initialize() {
-
         initializeComboBox();
         initializeBudgetMonths();
-        //stackedBarChartController.updateBarChart(budgetMonths);
         updateMainView();
         updateLists();
         initializeExpenseView();
-        borderPane.setRight(pieChartController);
-        borderPane.setLeft(stackedBarChartController);
+        stackedBarChartController.initialize();
     }
 
     private void initializeComboBox() {
+        yearMonthComboBox.getSelectionModel().selectedItemProperty()
+                .addListener(selectedBudgetMonthChanged);
         yearMonthComboBox.setCellFactory(comboBoxCellFactory);
         yearMonthComboBox.setConverter(comboBoxStringConverter);
         yearMonthComboBox.setItems(FXCollections.observableArrayList(budgetMonths));
@@ -475,8 +481,8 @@ public class MainController extends AnchorPane{
     }
 
     private void updateLists(){
-        updateCategoryList();
-        updateLatestTransaction();
+        categoryListController.updateCategoryList();
+        transactionController.updateTransactions();
     }
     public void updateMainView() {
         budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
@@ -502,35 +508,6 @@ public class MainController extends AnchorPane{
         newExpenseCategoryComboBox.getSelectionModel().selectFirst();
 
     }
-
-    public void updateCategoryList() {
-        categoriesFlowPane.getChildren().clear();
-        int i = 0;
-        for (CategoryItem categoryItem : selectedBudgetMonth.getCategoryItems()) {
-            i++;
-            CategoryController categoryController = new CategoryController(this, categoryItem, i);
-            categoriesFlowPane.getChildren().add(categoryController);
-            i++;
-        }
-    }
-
-    public void updateLatestTransaction(){
-        latestPurchases.getChildren().clear();
-        if (selectedBudgetMonth.getTransactions() != null) {
-            for (Transaction transaction : selectedBudgetMonth.getTransactions()){
-                if (transaction instanceof Expense){
-                    ExpenseController expenseController = new ExpenseController(this, (Expense) transaction);
-                    latestPurchases.getChildren().add(expenseController);
-                }
-                else{
-                    IncomeController incomeController = new IncomeController(this, (Income)transaction);
-                    latestPurchases.getChildren().add(incomeController);
-                }
-            }
-        }
-    }
-
-
     private Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>> comboBoxCellFactory = new Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>>() {
         @Override
         public ListCell<BudgetMonth> call(ListView<BudgetMonth> budgetMonthListView) {
@@ -588,5 +565,12 @@ public class MainController extends AnchorPane{
         }
     };
 
-
+    ChangeListener<BudgetMonth> selectedBudgetMonthChanged = (obs, wasFocused, isFocused) -> {
+        selectedBudgetMonth = isFocused;
+        System.out.println("selected");
+        System.out.println(selectedBudgetMonth.getMonth());
+        pieChartController.updatePieChart(selectedBudgetMonth.getCategoryItems());
+        transactionController.updateTransactions();
+        categoryListController.updateCategoryList();
+    };
 }
