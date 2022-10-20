@@ -7,11 +7,10 @@ import java.util.List;
 
 public class CategorySubItem extends AbstractCategoryItem{
 
-    private List<Expense> expenses;
+    private List<Expense> expenses = new ArrayList<>();
 
     public CategorySubItem(double budget, String categorySubName) {
         super(categorySubName, budget);
-        expenses = new ArrayList<>();
     }
 
     public CategorySubItem() {

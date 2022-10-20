@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 abstract public class AbstractCategoryItem {
+
+    private String id;
     private String name;
     private double budget;
     private double budgetSpent;
@@ -64,6 +66,14 @@ abstract public class AbstractCategoryItem {
     }
     public void decrementBudgetSpent(int amount) {
         setBudgetSpent(budgetSpent - amount);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 }

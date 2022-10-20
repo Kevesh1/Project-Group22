@@ -14,7 +14,6 @@ public class CategoryItem extends AbstractCategoryItem{
 
     private Category category;
 
-    private String id;
 
     public CategoryItem(Category category) {
         super(category.toString(), 0);
@@ -69,11 +68,5 @@ public class CategoryItem extends AbstractCategoryItem{
         this.category = category;
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 }

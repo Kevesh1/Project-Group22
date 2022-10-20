@@ -43,6 +43,7 @@ public final class BudgetMonth {
     }
 
     private void initLists() {
+        categoryItems = new ArrayList<>();
         expenses = new ArrayList<>();
         incomes = new ArrayList<>();
         transactions = new ArrayList<>();
@@ -115,6 +116,11 @@ public final class BudgetMonth {
 
     public List<Transaction> getTransactions(){
         return transactions;
+    }
+
+    public BudgetMonth setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+        return this;
     }
 
     public List<Expense> getExpenses(){

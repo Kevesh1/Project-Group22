@@ -2,18 +2,29 @@ package dataaccess.mongodb.dto.transactions;
 
 import org.bson.types.ObjectId;
 
+import java.sql.Date;
 import java.time.YearMonth;
 
 public class IncomeDto {
+
     private ObjectId id;
+
+    private ObjectId budgetMonth;
 
     private double sum;
 
     private String annotation;
 
-    private String date;
+    private Date date;
 
-    private YearMonth yearmonth;
+    public Date getDate() {
+        return date;
+    }
+
+    public IncomeDto setDate(Date date) {
+        this.date = date;
+        return this;
+    }
 
     public ObjectId getId() {
         return id;
@@ -42,21 +53,12 @@ public class IncomeDto {
         return this;
     }
 
-    public String getDate() {
-        return date;
+    public ObjectId getBudgetMonth() {
+        return budgetMonth;
     }
 
-    public IncomeDto setDate(String date) {
-        this.date = date;
-        return this;
-    }
-
-    public YearMonth getYearmonth() {
-        return yearmonth;
-    }
-
-    public IncomeDto setYearmonth(YearMonth yearmonth) {
-        this.yearmonth = yearmonth;
+    public IncomeDto setBudgetMonth(ObjectId budgetMonth) {
+        this.budgetMonth = budgetMonth;
         return this;
     }
 
@@ -64,10 +66,10 @@ public class IncomeDto {
     public String toString() {
         return "IncomeDto{" +
                 "id=" + id +
+                ", budgetMonth=" + budgetMonth +
                 ", sum=" + sum +
                 ", annotation='" + annotation + '\'' +
-                ", date='" + date + '\'' +
-                ", yearmonth=" + yearmonth +
+                ", date=" + date +
                 '}';
     }
 }

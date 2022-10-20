@@ -10,9 +10,11 @@ import java.util.Optional;
 
 public interface IExpenseDao {
 
+    Expense addExpense(Expense expense, String budgetMonthId);
+
     public Optional<Expense> getExpenseById(ObjectId id);
 
-    List<Expense> getAllExpensesByBudgetMonth(BudgetMonth budgetMonth);
+    List<Expense> getAllExpensesByBudgetMonth(String budgetMonthId);
 
     List<Expense> getAllExpensesByCategory(CategoryItem categoryItem);
 

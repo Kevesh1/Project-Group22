@@ -57,6 +57,12 @@ public class CategoryDao implements ICategoryDao{
     }
 
     @Override
+    public CategoryItem updateCategory(CategoryItem categoryItem) {
+        CategoryItemDto categoryItemDto = collection.findOneAndReplace(Filters.eq("_id", new ObjectId(categoryItem.getId())), modelMapper.map(categoryItem, CategoryItemDto.class));
+        return modelMapper.map(categoryItemDto, CategoryItem.class);
+    }
+
+    @Override
     public List<CategoryItem> addCategories(List<CategoryItem> categoryItem, String budgetMonth) {
         List<CategoryItemDto> categoryItemDto = new ArrayList<>();
         categoryItem.forEach(categoryItem1 -> categoryItemDto

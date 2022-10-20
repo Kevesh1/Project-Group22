@@ -8,13 +8,20 @@ import java.time.YearMonth;
 
 public class Expense extends Transaction {
 
+
+
     private Category category;
+
     private CategorySubItem subCategory;
 
     public Expense(Double sum, String annotation, Date date, Category category, CategorySubItem subCategory) {
         super(sum, annotation, date);
         this.category = category;
         this.subCategory = subCategory;
+    }
+
+    public Expense() {
+
     }
 
     public CategorySubItem getSubCategory() {

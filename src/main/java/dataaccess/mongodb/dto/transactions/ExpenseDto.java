@@ -1,5 +1,6 @@
 package dataaccess.mongodb.dto.transactions;
 
+import budgetapp.model.categories.Category;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
@@ -9,7 +10,11 @@ public final class ExpenseDto {
 
     private ObjectId _id;
 
+    private ObjectId budgetMonth;
+
     private double sum;
+
+    private Category category;
 
     private String annotation;
 
@@ -71,5 +76,23 @@ public final class ExpenseDto {
                 ", date='" + date + '\'' +
                 ", yearmonth=" + yearmonth +
                 '}';
+    }
+
+    public ObjectId getBudgetMonth() {
+        return budgetMonth;
+    }
+
+    public ExpenseDto setBudgetMonth(ObjectId budgetMonth) {
+        this.budgetMonth = budgetMonth;
+        return this;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public ExpenseDto setCategory(Category category) {
+        this.category = category;
+        return this;
     }
 }

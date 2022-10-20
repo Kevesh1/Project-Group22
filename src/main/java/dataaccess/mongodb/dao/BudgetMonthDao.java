@@ -1,6 +1,5 @@
 package dataaccess.mongodb.dao;
 
-import budgetapp.model.categories.CategoryItem;
 import com.mongodb.client.model.Filters;
 import dataaccess.mongodb.MongoDBService;
 import dataaccess.mongodb.dao.categories.CategoryDao;
@@ -8,15 +7,10 @@ import dataaccess.mongodb.dao.categories.SubCategoryDao;
 import dataaccess.mongodb.dto.BudgetMonthDto;
 import budgetapp.model.BudgetMonth;
 import com.mongodb.client.MongoCollection;
-import dataaccess.mongodb.dto.categories.CategoryItemDto;
 import org.bson.types.ObjectId;
-import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
-import org.modelmapper.spi.MappingContext;
 
-import java.time.Month;
-import java.time.YearMonth;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -88,21 +82,16 @@ public class BudgetMonthDao implements IBudgetMonthDao {
     }
 
     @Override
-    public void updateBudgetMonth(BudgetMonth budgetMonth) {
-        BudgetMonthDto budgetMonthDto = modelMapper.map(budgetMonth, BudgetMonthDto.class);
+    public BudgetMonth updateBudgetMonth(BudgetMonth budgetMonth) {
+        BudgetMonthDto budgetMonthDto = collection.findOneAndReplace(Filters.eq("_id", new ObjectId(budgetMonth.getId())), modelMapper.map(budgetMonth, BudgetMonthDto.class));
+        return modelMapper.map(budgetMonthDto, BudgetMonth.class);
     }
 
     @Override
-    public void addBudgetMonth(BudgetMonth budgetMonth) {
-
+    public BudgetMonth addBudgetMonth(BudgetMonth budgetMonth) {
         BudgetMonthDto budgetMonthDto = modelMapper.map(budgetMonth, BudgetMonthDto.class);
-        budgetMonthDto.setId(new ObjectId());
-        List<CategoryItemDto> categoryItems = budgetMonth.getCategoryItems()
-                .stream()
-                .map(categoryItem -> modelMapper.map(categoryItem, CategoryItemDto.class))
-                .collect(Collectors.toList());
         collection.insertOne(budgetMonthDto);
-
+        return modelMapper.map(budgetMonthDto, BudgetMonth.class);
     }
 
     @Override
