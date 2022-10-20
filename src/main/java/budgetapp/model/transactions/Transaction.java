@@ -7,16 +7,21 @@ import java.time.YearMonth;
 
 public abstract class Transaction {
 
+    private String id;
+
     private double sum;
     private String annotation;
     private Date date;
     private YearMonth yearMonth;
-    private Category category;
 
     public Transaction(Double sum, String annotation, Date date) {
         this.sum = sum;
         this.annotation = annotation;
         this.date = date;
+    }
+
+    public Transaction() {
+
     }
 
 
@@ -47,16 +52,5 @@ public abstract class Transaction {
     public void setYearMonth(YearMonth yearMonth) {
         this.yearMonth = yearMonth;
     }
-
-
-
-    public Category getCategory() {
-        return category;
-    }
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-
 
 }

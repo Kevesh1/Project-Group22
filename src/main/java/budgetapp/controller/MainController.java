@@ -19,6 +19,7 @@ import dataaccess.mongodb.dao.BudgetMonthDao;
 import dataaccess.mongodb.dao.account.AccountDao;
 import dataaccess.mongodb.dao.categories.CategoryDao;
 import dataaccess.mongodb.dao.categories.SubCategoryDao;
+import dataaccess.mongodb.dao.transactions.ExpenseDao;
 import dataaccess.mongodb.dao.transactions.TransactionDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,7 +40,10 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Optional;
 
 
 public class MainController extends AnchorPane{
@@ -141,13 +145,13 @@ public class MainController extends AnchorPane{
     private void addExpense(){
         Double cost = Double.valueOf(newExpenseAmount.getText());
         String note = newExpenseNote.getText();
-        Date date = (Date) Date.from(newExpenseDate.getValue().atStartOfDay()
-                .atZone(ZoneId.systemDefault()).toInstant());
+        LocalDate tempDate = newExpenseDate.getValue();
+        Date date = Date.valueOf(tempDate);
         Category category = Category.valueOf(newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getName());
 
         CategorySubItem subCategory = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
         Expense expense = new Expense(cost, note, date, category, subCategory);
-        selectedBudgetMonth.addTransaction(expense);
+        selectedBudgetMonth.addTransaction(expenseDao.addExpense(expense, selectedBudgetMonth.getId()));
         subCategory.addExpense(expense);
 
         CategorySubItem subItem = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
@@ -334,6 +338,8 @@ public class MainController extends AnchorPane{
 
     private TransactionDao transactionDao;
 
+    private ExpenseDao expenseDao;
+
     private PieChartController pieChartController;
 
 
@@ -345,11 +351,12 @@ public class MainController extends AnchorPane{
         transactionDao = new TransactionDao();
         categoryDao = new CategoryDao();
         subCategoryDao = new SubCategoryDao();
+        expenseDao = new ExpenseDao();
 
         stackedBarChartController = new StackedBarChartController();
 
-        loadBudgetMonths();
-        loadTransactions();
+        budgetMonths.addAll(loadBudgetMonths());
+
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
         fxmlLoader.setRoot(this);
@@ -363,7 +370,7 @@ public class MainController extends AnchorPane{
         }
     }
 
-    private void loadBudgetMonths() {
+    private List<BudgetMonth> loadBudgetMonths() {
         Optional<List<BudgetMonth>> dbBudgetMonths = budgetMonthDao.getAllBudgetMonthsByUserId(user.getId());
         List<BudgetMonth> loadedBudgetMonths = new ArrayList<>();
 
@@ -377,25 +384,32 @@ public class MainController extends AnchorPane{
                             .setSubCategories(
                                     loadSubCategoryItems(
                                             categoryItem.getId()))));
+            loadedBudgetMonths.forEach(budgetMonth -> budgetMonth
+                    .setTransactions(
+                            loadTransactions(budgetMonth.getId())
+                    ));
 
         } else {
-            System.out.println("NOT PRESENT");
             loadedBudgetMonths = budgetMonthDao
                     .initNewBudgetMonths(createDefaultBudgetMonths(), user.getUserID());
             loadedBudgetMonths.forEach(budgetMonth -> budgetMonth
                     .setCategoryItems(categoryDao.initCategoryItems(createDefaultCategoryItems(), budgetMonth.getId())));
         }
 
-        budgetMonths.addAll(loadedBudgetMonths);
+        return loadedBudgetMonths;
         //selectedBudgetMonth = budgetMonths.get(selectBudgetMonthIndex());
     }
 
-    private List<CategoryItem> loadCategoryItems(String budgetId) {
-        return categoryDao.getAllCategoriesByBudgetMonth(budgetId);
+    private List<CategoryItem> loadCategoryItems(String budgetMonthId) {
+        return categoryDao.getAllCategoriesByBudgetMonth(budgetMonthId);
     }
 
     private List<CategorySubItem> loadSubCategoryItems(String categoryId) {
         return subCategoryDao.getAllSubCategoriesByCategory(categoryId);
+    }
+
+    private List<Transaction> loadTransactions(String budgetMonthId) {
+        return transactionDao.getAllTransactionsByBudgetMonth(budgetMonthId);
     }
 
     private int selectBudgetMonthIndex() {
@@ -403,10 +417,6 @@ public class MainController extends AnchorPane{
         int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
 
         return ((currentYear)-(currentYear-1))*12 + currentMonth;
-    }
-
-    private void loadTransactions() {
-        Optional<List<Transaction>> dbTransactions;
     }
 
     private List<BudgetMonth> createDefaultBudgetMonths() {

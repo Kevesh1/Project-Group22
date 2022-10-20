@@ -118,6 +118,11 @@ public final class BudgetMonth {
         return transactions;
     }
 
+    public BudgetMonth setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+        return this;
+    }
+
     public List<Expense> getExpenses(){
         return  getTransactions().stream().filter(expense -> expense instanceof Expense)
                 .map(expense -> (Expense)expense)
