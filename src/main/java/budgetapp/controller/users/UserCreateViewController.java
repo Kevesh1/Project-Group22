@@ -130,7 +130,7 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     public boolean controlAllInputsWithPassword(){
-        if (firstNameInput.getText().isEmpty() || lastNameInput.getText().isEmpty() || createPassword.getText().isEmpty() || createPasswordRepeat.getText().isEmpty() || chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/profilepictures/BlankProfilePicture.png")){
+        if (firstNameInput.getText().isEmpty() || lastNameInput.getText().isEmpty() || createPassword.getText().isEmpty() || createPasswordRepeat.getText().isEmpty()){
             return false;
         }
         else{
@@ -139,7 +139,7 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     public boolean controlAllInputsWithoutPassword(){
-        if (firstNameInput.getText().isEmpty() || lastNameInput.getText().isEmpty() || chooseProfilePictureButton.getImage().toString().equals("/budgetapp/img/profilepictures/BlankProfilePicture.png")){
+        if (firstNameInput.getText().isEmpty() || lastNameInput.getText().isEmpty()){
             return false;
         }
         else{
@@ -196,6 +196,11 @@ public class UserCreateViewController extends AnchorPane {
         System.out.println(imageFileName);
         Image image = new Image("/budgetapp/img/profilepictures/" + imageFileName + ".png");
         chooseProfilePictureButton.setImage(image);
+    }
+
+    @FXML
+    public void initialize(){
+        setChooseProfilePictureButton("BlankProfilePicture");
     }
 
 }
