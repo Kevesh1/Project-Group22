@@ -116,29 +116,12 @@ public class UserCreateViewController extends AnchorPane {
 
      */
 
-    //should be part of model
-    /*
-    private void createNewUser() {
-        User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), createPassword.getText(), profilePictureName);
-        userDao.addUser(user, account);
-    }
-
-
-     */
 
     private void createNewUser(){
         user = userManager.createNewUser(firstNameInput.getText(), lastNameInput.getText(), createPassword.getText(), profilePictureName);
         userDao.addUser(user, account);
     }
 
-
-    /*
-    //should be part of model
-    private void createNewUserWithoutPassword() {
-        User user = new User(firstNameInput.getText() + " " + lastNameInput.getText(), null, profilePictureName);
-        userDao.addUser(user, account);
-    }
-    */
 
     private void createNewUserWithoutPassword(){
         user = userManager.createNewUserWithoutPassword(firstNameInput.getText(), lastNameInput.getText(), profilePictureName);
@@ -179,31 +162,10 @@ public class UserCreateViewController extends AnchorPane {
         }
     }
 
-    /*
-    //should be part of model
-    public boolean samePassword(){
-        return createPassword.getText().equals(createPasswordRepeat.getText());
-    }
-
-    */
-
     public boolean samePassword(){
         return userManager.samePassword(createPassword.getText(), createPasswordRepeat.getText());
     }
 
-    /*
-    //should be part of model
-    public boolean passwordComplexity(){
-        if (passwordLength() && passwordCharacterTest()){
-            return true;
-        }
-        else{
-            passwordComplex.setText("minimum 8 characters with letters and numbers");
-            return false;
-        }
-    }
-
-     */
 
     public boolean passwordComplexity(){
         if(userManager.passwordComplexity(createPassword.getText())){
@@ -215,23 +177,6 @@ public class UserCreateViewController extends AnchorPane {
         }
     }
 
-    /*
-    //should be part of model
-    public boolean passwordLength(){
-        return createPassword.getText().length() >= 8;
-    }
-
-     */
-
-
-    /*
-    //should be part of model
-    public boolean passwordCharacterTest() {
-        return Pattern.matches("[a-zA-Z]+", createPassword.toString()) && Pattern.matches("[0-9]+", createPassword.toString());
-
-    }
-
-     */
 
 
     @FXML
