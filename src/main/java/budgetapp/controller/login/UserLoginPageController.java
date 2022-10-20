@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -37,7 +38,6 @@ public class UserLoginPageController extends AnchorPane {
         this.user = user;
         this.account = account;
         loadCurrentView();
-        setCharacterizedProfile(user);
 
     }
 
@@ -77,17 +77,19 @@ public class UserLoginPageController extends AnchorPane {
         this.getScene().setRoot(frontPageController);
     }
 
-    public void setDisplayName(User user){
-        fullName.getText().toString().equals(user.getLastName() + " " + user.getFirstName());
+    public void setDisplayName(){
+        fullName.setText(user.getUsername());
     }
 
-    public void setUserProfile(User user){
-        profilePicture.toString().equals(user.getProfilePicture());
+    public void setUserProfile(){
+        Image image = new Image("/budgetapp/img/profilepictures/" + user.getProfilePicture() + ".png");
+        profilePicture.setImage(image);
     }
 
-    public void setCharacterizedProfile(User user){
-        setDisplayName(user);
-        setUserProfile(user);
+    @FXML
+    public void initialize(){
+        setDisplayName();
+        setUserProfile();
     }
 
 

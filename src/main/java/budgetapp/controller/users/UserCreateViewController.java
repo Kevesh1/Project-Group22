@@ -82,6 +82,7 @@ public class UserCreateViewController extends AnchorPane {
         }
     }
 
+
     @FXML
     public void profileFinishedAction(ActionEvent event) {
         if(passwordCheckbox.isSelected() && controlAllInputsWithoutPassword()){
@@ -94,6 +95,20 @@ public class UserCreateViewController extends AnchorPane {
         }
         else{
             warningText.setText("Please enter all required data");
+        }
+
+    }
+
+
+    @FXML
+    public void profileFinishedAction(ActionEvent event) {
+        if(passwordCheckbox.isSelected()){
+            createNewUserWithoutPassword();
+            createFrontPage();
+        }
+        else{
+            createNewUser();
+            createFrontPage();
         }
 
     }

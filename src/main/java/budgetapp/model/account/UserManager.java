@@ -48,5 +48,4 @@ public class UserManager {
         return matcher.matches() || altMatcher.matches();
     }
 
-
 }
