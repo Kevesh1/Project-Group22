@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="80.0" type="VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="80.0" type="VBox" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="userButtonCard" mnemonicParsing="false" onAction="#loginToUserAction" prefHeight="129.0" prefWidth="80.0">
          <graphic>
@@ -18,7 +18,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="firstNameCard" alignment="CENTER" prefHeight="19.0" prefWidth="80.0" text="Jacob" textAlignment="CENTER">
+      <Label fx:id="firstNameCard" alignment="CENTER" prefHeight="19.0" prefWidth="80.0" text="Jacob" textAlignment="CENTER" textFill="#dadada">
          <font>
             <Font size="15.0" />
          </font>

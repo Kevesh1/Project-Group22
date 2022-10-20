@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.PasswordField?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-position: center;" styleClass="darkerColor" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="214.0" layoutY="39.0" mnemonicParsing="false" onAction="#chooseProfilePicture" AnchorPane.leftAnchor="214.0">
          <graphic>
@@ -20,18 +21,22 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextField fx:id="firstNameInput" layoutX="217.0" layoutY="208.0" promptText="First name" />
-      <Text layoutX="124.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name:" />
-      <TextField fx:id="lastNameInput" layoutX="217.0" layoutY="246.0" promptText="Last name" />
-      <Text layoutX="125.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name:" />
-      <PasswordField fx:id="createPassword" layoutX="217.0" layoutY="281.0" promptText="Password" />
-      <PasswordField fx:id="createPasswordRepeat" layoutX="217.0" layoutY="313.0" promptText="Re-enter password" />
+      <TextField fx:id="firstNameInput" layoutX="217.0" layoutY="208.0" promptText="First name" styleClass="darkcolor" stylesheets="@../css/Styleheet.css" />
+      <Text fill="#dadada" layoutX="124.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name:" />
+      <TextField fx:id="lastNameInput" layoutX="217.0" layoutY="243.0" promptText="Last name" styleClass="darkcolor" />
+      <Text fill="#dadada" layoutX="125.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name:" />
+      <PasswordField fx:id="createPassword" layoutX="217.0" layoutY="277.0" promptText="Password" styleClass="darkcolor" />
+      <PasswordField fx:id="createPasswordRepeat" layoutX="217.0" layoutY="312.0" promptText="Re-enter password" styleClass="darkcolor" />
       <Button layoutX="214.0" layoutY="363.0" mnemonicParsing="false" onAction="#profileFinishedAction" prefHeight="25.0" prefWidth="167.0" text="Create new user" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToFrontPage" text="Return" />
-      <Text fx:id="passwordText" layoutX="126.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="63.58447265625" />
-      <Text fx:id="reenterText" layoutX="65.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Re-enter password:" />
-      <CheckBox fx:id="passwordCheckbox" layoutX="187.0" layoutY="342.0" mnemonicParsing="false" onAction="#passwordCheckboxAction" text="I do not want to have a password" />
+      <Text fx:id="passwordText" fill="#dadada" layoutX="126.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="63.58447265625" />
+      <Text fx:id="reenterText" fill="#dadada" layoutX="76.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Re-enter password:" />
+      <CheckBox fx:id="passwordCheckbox" layoutX="187.0" layoutY="342.0" mnemonicParsing="false" onAction="#passwordCheckboxAction" text="I do not want to have a password" textFill="#dadada" />
       <Text fx:id="warningText" fill="RED" layoutX="397.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.0" />
       <Text fx:id="passwordComplex" fill="RED" layoutX="384.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.0" />
    </children>
+   <stylesheets>
+      <URL value="@../css/Styleheet.css" />
+      <URL value="@../css/labels.css" />
+   </stylesheets>
 </fx:root>

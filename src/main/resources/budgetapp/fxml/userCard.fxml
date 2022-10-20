@@ -5,13 +5,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="150.0" type="VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="150.0" type="VBox" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button mnemonicParsing="false" onAction="#selectUserAction" prefHeight="150.0" prefWidth="150.0">
          <graphic>
             <ImageView fx:id="profilePictureCard" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Button>
-      <Label fx:id="usernameLabel" prefHeight="50.0" prefWidth="150.0" text="username" textAlignment="CENTER" />
+      <Label fx:id="usernameLabel" prefHeight="50.0" prefWidth="150.0" styleClass="userCard" stylesheets="@../css/Styleheet.css" text="username" textAlignment="CENTER" textFill="#dadada" />
    </children>
 </fx:root>

@@ -196,5 +196,17 @@
     -fx-background-color: -fx-darker-color;
 }
 
+.userCard{
+    -fx-text-fill: -fx-text-color;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+}
+
+.InfoLabelMainView{
+    -fx-text-fill: -fx-text-color;
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+}
+
 
 

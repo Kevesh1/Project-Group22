@@ -47,11 +47,11 @@
    <right>
       <AnchorPane prefHeight="400.0" prefWidth="440.0" styleClass="darkcolor" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="username" layoutX="97.0" layoutY="175.0" promptText="User name:" style="-fx-background-color: transparent; -fx-border-color: #4A6DE5 #4A6DE5; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="password" layoutX="97.0" layoutY="216.0" onKeyPressed="#onEnter" promptText="Password:" style="-fx-background-color: transparent; -fx-border-color: #4A6DE5 #4A6DE5; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="username" layoutX="97.0" layoutY="175.0" promptText="User name:" style="-fx-background-color: transparent; -fx-border-color: #4A6DE5 #4A6DE5; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="95.0" />
+            <PasswordField fx:id="password" layoutX="97.0" layoutY="216.0" onKeyPressed="#onEnter" promptText="Password:" style="-fx-background-color: transparent; -fx-border-color: #4A6DE5 #4A6DE5; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="95.0" />
             <Button fx:id="AccountLoginButton" layoutX="142.0" layoutY="284.0" mnemonicParsing="false" onAction="#loginEvent" onKeyPressed="#onEnter" prefHeight="34.0" prefWidth="76.0" text="Login" textFill="WHITE" />
-            <Hyperlink layoutX="105.0" layoutY="350.0" onAction="#toRegistration" text="Forgot your password?" />
-            <Text fill="#dadada" layoutX="134.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" wrappingWidth="92.294921875">
+            <Hyperlink layoutX="132.0" layoutY="347.0" onAction="#toRegistration" text="Create Account" AnchorPane.bottomAnchor="30.0" />
+            <Text fill="#dadada" layoutX="134.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" wrappingWidth="92.294921875" AnchorPane.topAnchor="110.0">
                <font>
                   <Font size="18.0" />
                </font>
