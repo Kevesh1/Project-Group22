@@ -100,6 +100,7 @@ public class UserCreateViewController extends AnchorPane {
     }
 
 
+    /*
     @FXML
     public void profileFinishedAction(ActionEvent event) {
         if(passwordCheckbox.isSelected()){
@@ -112,6 +113,8 @@ public class UserCreateViewController extends AnchorPane {
         }
 
     }
+
+     */
 
     //should be part of model
     /*
