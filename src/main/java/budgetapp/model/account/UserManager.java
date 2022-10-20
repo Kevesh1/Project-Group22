@@ -6,9 +6,8 @@ import java.util.regex.Pattern;
 
 public class UserManager {
 
-    //"^(?=.*[0-9])(?=.*[a-ö])(?=.*[A-Ö])"
-    private final String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-ZåäöÅÄÖ]).*$";
-    private final String altPasswordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-ZåäöÅÄÖ])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).*$";
+    private final String passwordPattern = "^(?=.*[0-9])(?=.*[a-zåäö])(?=.*[A-ZÅÄÖ]).*$";
+    private final String altPasswordPattern = "^(?=.*[0-9])(?=.*[a-zåäö])(?=.*[A-ZÅÄÖ])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).*$";
     private final Pattern pattern = Pattern.compile(passwordPattern);
     private final Pattern altPattern = Pattern.compile(altPasswordPattern);
 
@@ -34,13 +33,6 @@ public class UserManager {
     public boolean passwordLength(String password){
         return password.length() >= 8;
     }
-
-    /*
-    public boolean passwordCharacterTest(String password) {
-        return Pattern.matches("[a-zA-Z0-9]+", password) && Pattern.matches("[0-9]+", password);
-    }
-
-     */
 
     public boolean passwordCharacter(String password) {
         Matcher matcher = pattern.matcher(password);

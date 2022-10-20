@@ -130,17 +130,36 @@ public class UserManagerTest {
         assertTrue(userManager.passwordLength(passwordInput));
     }
 
-    //Är egentligen redan testad
+    //Is already indirectly tested because this method only calls other methods
     @Test
     void passwordComplexityTrueTest(){
         passwordInput = "BaNGBONGGIGA5000.";
         assertTrue(userManager.passwordComplexity(passwordInput));
     }
 
+    //Is already indirectly tested because this method only calls other methods
     @Test
     void passwordComplexityFalseTest(){
         passwordInput = "H5";
         assertFalse(userManager.passwordComplexity(passwordInput));
+    }
+
+    @Test
+    void passwordCharacterTrueWithCapitalSwedishLettersTest(){
+        passwordInput = "BaNGBONGGIGAÅÄ5000";
+        assertTrue(userManager.passwordCharacter(passwordInput));
+    }
+
+    @Test
+    void passwordCharacterTrueWithSmallSwedishLettersTest(){
+        passwordInput = "BaNGBONGGIGAåö5000";
+        assertTrue(userManager.passwordCharacter(passwordInput));
+    }
+
+    @Test
+    void passwordCharacterTrueWithSmallAndCapitalSwedishLettersTest(){
+        passwordInput = "BaNGBONGGIGAåöÖÖÄ5000";
+        assertTrue(userManager.passwordCharacter(passwordInput));
     }
 
 }

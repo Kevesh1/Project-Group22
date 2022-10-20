@@ -100,21 +100,6 @@ public class UserCreateViewController extends AnchorPane {
     }
 
 
-    /*
-    @FXML
-    public void profileFinishedAction(ActionEvent event) {
-        if(passwordCheckbox.isSelected()){
-            createNewUserWithoutPassword();
-            createFrontPage();
-        }
-        else{
-            createNewUser();
-            createFrontPage();
-        }
-
-    }
-
-     */
 
 
     private void createNewUser(){
@@ -172,7 +157,7 @@ public class UserCreateViewController extends AnchorPane {
             return true;
         }
         else{
-            passwordComplex.setText("minimum 8 characters with letters and numbers");
+            passwordComplex.setText("minimum 8 characters with both Capital and small letters and numbers");
             return false;
         }
     }
