@@ -23,9 +23,10 @@ public class CategoryItem extends AbstractCategoryItem{
     public CategoryItem() {
     }
 
+    //TODO - MOVE FROM MODEL
     public Image applyIcon() {
-        return (new Image(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(
-                "budgetapp/img/categories/" + getCategory().toString().toLowerCase() + ".png"))));
+        return (new Image((Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(
+                "budgetapp/img/categories/" + getCategory().toString().toLowerCase() + ".png")))));
     }
 
     public List<CategorySubItem> getSubCategories() {

@@ -138,7 +138,7 @@
                                     </DatePicker>
                                     <TextArea fx:id="newExpenseNote" layoutX="37.0" layoutY="290.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
                                     <Button layoutX="419.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="X" />
-                                    <ComboBox fx:id="newExpenseCategoryComboBox" layoutX="38.0" layoutY="53.0" onHidden="#LoadSubCategoryComboBox" prefWidth="150.0" stylesheets="@../css/Styleheet.css" />
+                                    <ComboBox fx:id="newExpenseCategoryComboBox" layoutX="38.0" layoutY="53.0" onHidden="#loadSubCategoryComboBox" prefWidth="150.0" stylesheets="@../css/Styleheet.css" />
                                     <Button layoutX="387.0" layoutY="341.0" mnemonicParsing="false" onAction="#addExpense" text="Done" />
                                     <Label layoutX="215.0" layoutY="21.0" stylesheets="@../css/Styleheet.css" text="Subcategory">
                                        <font>
@@ -149,7 +149,7 @@
                                           <String fx:value="standardFontSize" />
                                        </styleClass>
                                     </Label>
-                                    <ComboBox fx:id="newExpenseSubCategoryComboBox" layoutX="214.0" layoutY="52.0" onShown="#LoadSubCategoryComboBox" prefWidth="150.0" stylesheets="@../css/Styleheet.css" />
+                                    <ComboBox fx:id="newExpenseSubCategoryComboBox" layoutX="214.0" layoutY="52.0" onShown="#loadSubCategoryComboBox" prefWidth="150.0" stylesheets="@../css/Styleheet.css" />
                                  </children>
                                  <styleClass>
                                     <String fx:value="darkModeThemeDarker" />

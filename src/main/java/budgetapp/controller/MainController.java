@@ -5,6 +5,7 @@ import budgetapp.controller.categories.CategoryListController;
 import budgetapp.controller.categories.SubCategoryController;
 import budgetapp.controller.graphs.PieChartController;
 import budgetapp.controller.graphs.StackedBarChartController;
+import budgetapp.controller.transactions.CreateTransactionController;
 import budgetapp.controller.transactions.TransactionController;
 import budgetapp.model.BudgetMonth;
 import budgetapp.model.account.User;
@@ -16,7 +17,6 @@ import budgetapp.model.transactions.Income;
 import budgetapp.model.transactions.Transaction;
 
 import dataaccess.mongodb.dao.BudgetMonthDao;
-import dataaccess.mongodb.dao.account.AccountDao;
 import dataaccess.mongodb.dao.categories.CategoryDao;
 import dataaccess.mongodb.dao.categories.SubCategoryDao;
 import dataaccess.mongodb.dao.transactions.ExpenseDao;
@@ -38,7 +38,6 @@ import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -79,13 +78,16 @@ public class MainController extends AnchorPane{
     AnchorPane confirmDeletePane;
 
     @FXML
+    public
     ComboBox<Category> categoryComboBox;
     @FXML
     ComboBox categoryComboBox2;
 
     @FXML
+    public
     Button addNewCategoryButton;
     @FXML
+    public
     AnchorPane addNewCategoryPane;
     @FXML
     Button addCategoryButton;
@@ -94,29 +96,37 @@ public class MainController extends AnchorPane{
     @FXML
     Label newCategoryBudgetLabel;
     @FXML
+    public
     Button updateCategoryButton;
     @FXML
+    public
     Button updateSubCategoryButton;
 
     @FXML
+    public
     AnchorPane addNewSubCategoryPane;
     @FXML
+    public
     TextField newSubCategoryName;
     @FXML
+    public
     TextField newSubCategoryBudget;
     @FXML
     Button justabutton;
 
     @FXML
+    public
     Button addNewSubCategoryButton;
 
     @FXML
     AnchorPane iEWindow;
     @FXML
+    public
     ComboBox<CategoryItem> newExpenseCategoryComboBox;
     @FXML
     TextField newExpenseAmount;
     @FXML
+    public
     DatePicker newExpenseDate;
     @FXML
     TextArea newExpenseNote;
@@ -125,10 +135,12 @@ public class MainController extends AnchorPane{
     @FXML
     TextField newIncomeAmount;
     @FXML
+    public
     DatePicker newIncomeDate;
     @FXML
     TextArea newIncomeNote;
     @FXML
+    public
     ComboBox<CategorySubItem> newExpenseSubCategoryComboBox;
 
     @FXML
@@ -145,6 +157,7 @@ public class MainController extends AnchorPane{
 
     @FXML
     private void addExpense(){
+        //TODO REFACTOR
         Double cost = Double.valueOf(newExpenseAmount.getText());
         String note = newExpenseNote.getText();
         LocalDate tempDate = newExpenseDate.getValue();
@@ -178,8 +191,7 @@ public class MainController extends AnchorPane{
 
     @FXML
     public void closeNewCategoryWindow(){
-        mainView.toFront();
-        resetNewCategoryInputs();
+        showMainView();
     }
     @FXML
     private void onClickPreviousMonth() {
@@ -193,75 +205,30 @@ public class MainController extends AnchorPane{
 
     @FXML
     private void showAddCategoryWindow(){
-        addNewCategoryPane.toFront();
-        updateCategoryButton.setVisible(false);
-        addNewCategoryButton.setVisible(true);
+        categoryListController.showAddCategoryWindow();
     }
 
     @FXML
-    private void showMainView(){
+    public void showMainView(){
         mainView.toFront();
         updateMainView();
     }
 
-
-    public void showEditSubCategoryWindow(SubCategoryController subCategoryController){
-        this.subCategoryController = subCategoryController;
-        CategorySubItem subCategory = subCategoryController.getSubCategory();
-        addNewSubCategoryPane.toFront();
-        updateSubCategoryButton.setVisible(true);
-        addNewSubCategoryButton.setVisible(false);
-        newSubCategoryName.setText(subCategory.getName());
-        newSubCategoryBudget.setText(String.valueOf(subCategory.getBudget()));
-    }
-
     @FXML
     private void updateSubCategory() {
-        // TODO MOVE TO SUBCATEGORY
-        CategorySubItem subCategory = subCategoryController.getSubCategory();
-        subCategoryController.getCategoryItem().removeSubcategoryBudget(subCategory);
-        subCategory.setName(newSubCategoryName.getText());
-        subCategory.setBudget(Double.parseDouble(newSubCategoryBudget.getText()));
-
-        subCategoryController.getCategoryItem().addSubcategoryBudget(subCategory);
-        categoryListController.updateCategoryList();
-        showMainView();
-    }
-
-    public void showEditCategoryWindow(CategoryController categoryController){
-        this.categoryController = categoryController;
-        addNewCategoryPane.toFront();
-        updateCategoryButton.setVisible(true);
-        addNewCategoryButton.setVisible(false);
-        categoryComboBox.getSelectionModel().select(categoryController.getCategoryItem().getCategory());
-        //newCategoryBudget.setText(String.valueOf(categoryController.getCategoryItem().getBudget()));
+        categoryListController.updateSubCategory();
     }
 
     @FXML
     private void updateCategory(){
-        categoryController.getCategoryItem().setCategory(Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString()));
-        categoryDao.updateCategory(categoryController.getCategoryItem());
-        categoryListController.updateCategoryList();
-        showMainView();
+        categoryListController.updateCategory();
     }
-
     @FXML
     private void addNewCategory(){
-        // TODO MOVE TO CATEGORY
-        Category category = Category.valueOf(categoryComboBox.getSelectionModel().getSelectedItem().toString());
-        CategoryItem categoryItem = categoryDao.addCategory(new CategoryItem(category), selectedBudgetMonth.getId());
-        selectedBudgetMonth.addCategoryItem(categoryItem);
-        categoryListController.updateCategoryList();
-        showMainView();
-        resetNewCategoryInputs();
+        categoryListController.addNewCategory();
     }
 
-    @FXML
     public void showAddSubCategoryWindow(CategoryController categoryController){
-        addNewSubCategoryPane.toFront();
-        updateSubCategoryButton.setVisible(false);
-        addNewSubCategoryButton.setVisible(true);
-        this.categoryController = categoryController;
     }
 
     @FXML
@@ -269,53 +236,28 @@ public class MainController extends AnchorPane{
         String name = newSubCategoryName.getText();
         double budget = Double.parseDouble(newSubCategoryBudget.getText());
         CategorySubItem categorySubItem = new CategorySubItem(budget,name);
-        System.out.println("NEW SUBCATEGORY");
-        System.out.println(categoryController.getCategoryItem().getName());
-        categoryController.getCategoryItem().addSubCategory(
-                subCategoryDao.addSubCategory(categorySubItem, categoryController.getCategoryItem().getId())
-        );
-        categoryController.getCategoryItem().addSubcategoryBudget();
-        //categoryController.subCategories.add(categorySubItem);
-
-        //categoryListController.updateSubCategories();
-        System.out.println("UPDATESUBCATEGORIES");
-        showMainView();
-        resetNewCategoryInputs();
+        categoryListController.addNewSubCategory(categorySubItem);
     }
 
-    @FXML
+    /*@FXML
     public void confirmRemoveCategoryWindow(CategoryController categoryController){
+        System.out.println("CONFIRM");
         confirmDeletePane.toFront();
-        this.categoryController = categoryController;
-    }
+    }*/
 
     @FXML
     public void removeCategory(){
-        categoryListController.confirmRemoveCategory();
-        showMainView();
+        /*categoryListController.removeCategory();
+        showMainView();*/
     }
 
     @FXML
-    private void LoadSubCategoryComboBox() {
-        ObservableList<CategorySubItem> subCategories = FXCollections.observableArrayList();
-        subCategories.addAll(newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getSubCategories());
-
-        newExpenseSubCategoryComboBox.setItems(subCategories);
-        newExpenseSubCategoryComboBox.setConverter(comboBoxSubCategoryStringConverter);
-    }
-
-    private void resetNewCategoryInputs(){
-        categoryComboBox.getSelectionModel().selectFirst();
-        newSubCategoryName.setText("");
-        newSubCategoryBudget.setText("");
+    private void loadSubCategoryComboBox() {
+        categoryListController.loadSubCategoryComboBox();
     }
 
 
     private User user;
-
-    private CategoryController categoryController;
-
-    private SubCategoryController subCategoryController;
 
     private StackedBarChartController stackedBarChartController;
 
@@ -335,9 +277,11 @@ public class MainController extends AnchorPane{
 
     private PieChartController pieChartController;
 
-    private CategoryListController categoryListController;
+    public CategoryListController categoryListController;
 
-    private budgetapp.controller.transactions.TransactionController transactionController;
+    private TransactionController transactionController;
+
+    private CreateTransactionController createTransactionController;
 
 
     public MainController(User user) {
@@ -377,6 +321,7 @@ public class MainController extends AnchorPane{
         pieChartController = new PieChartController(this);
         categoryListController = new CategoryListController(this, selectedBudgetMonth.getCategoryItems());
         transactionController = new TransactionController(this);
+        createTransactionController = new CreateTransactionController(this);
     }
 
     private List<BudgetMonth> loadBudgetMonths() {
@@ -454,20 +399,21 @@ public class MainController extends AnchorPane{
 
     @FXML
     public void initialize() {
-        initializeComboBox();
-        initializeBudgetMonths();
+        initializeYearMonthComboBox();
+        createTransactionController.initialize();
+        stackedBarChartController.initialize();
         updateMainView();
         updateLists();
-        initializeExpenseView();
-        stackedBarChartController.initialize();
     }
 
-    private void initializeComboBox() {
+    private void initializeYearMonthComboBox() {
         yearMonthComboBox.getSelectionModel().selectedItemProperty()
                 .addListener(selectedBudgetMonthChanged);
         yearMonthComboBox.setCellFactory(comboBoxCellFactory);
         yearMonthComboBox.setConverter(comboBoxStringConverter);
         yearMonthComboBox.setItems(FXCollections.observableArrayList(budgetMonths));
+
+        initializeBudgetMonths();
     }
 
     public void initializeBudgetMonths() {
@@ -475,10 +421,6 @@ public class MainController extends AnchorPane{
         selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
     }
 
-    private void initializeExpenseView() {
-        initializeCategoryComboBox();
-        LoadExpenseCategoriesComboBox();
-    }
 
     private void updateLists(){
         categoryListController.updateCategoryList();
@@ -490,24 +432,7 @@ public class MainController extends AnchorPane{
         budgetRemainingLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetRemaining()));
     }
 
-    private void initializeCategoryComboBox(){
-        ObservableList<Category> categories = FXCollections.observableArrayList();
-        categories.addAll(List.of(Category.values()));
-        categoryComboBox.setItems(categories);
-        categoryComboBox.getSelectionModel().selectFirst();
 
-    }
-
-    private void LoadExpenseCategoriesComboBox(){
-        newExpenseDate.setValue(LocalDate.now());
-        newIncomeDate.setValue(LocalDate.now());
-        ObservableList<CategoryItem> categories = FXCollections.observableArrayList(
-                selectedBudgetMonth.getCategoryItems());
-        newExpenseCategoryComboBox.setItems(categories);
-        newExpenseCategoryComboBox.setConverter(comboBoxCategoryStringConverter);
-        newExpenseCategoryComboBox.getSelectionModel().selectFirst();
-
-    }
     private Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>> comboBoxCellFactory = new Callback<ListView<BudgetMonth>, ListCell<BudgetMonth>>() {
         @Override
         public ListCell<BudgetMonth> call(ListView<BudgetMonth> budgetMonthListView) {
@@ -538,37 +463,8 @@ public class MainController extends AnchorPane{
         }
     };
 
-    private StringConverter<CategoryItem> comboBoxCategoryStringConverter = new StringConverter<CategoryItem>() {
-
-        @Override
-        public String toString(CategoryItem categoryItem) {
-            return categoryItem.getName();
-        }
-
-        @Override
-        public CategoryItem fromString(String string) {
-            return null;
-        }
-
-    };
-
-    private StringConverter<CategorySubItem> comboBoxSubCategoryStringConverter = new StringConverter<CategorySubItem>() {
-
-        @Override
-        public String toString(CategorySubItem categorySubItem) {
-            return categorySubItem.getName();
-        }
-
-        @Override
-        public CategorySubItem fromString(String string) {
-            return null;
-        }
-    };
-
     ChangeListener<BudgetMonth> selectedBudgetMonthChanged = (obs, wasFocused, isFocused) -> {
         selectedBudgetMonth = isFocused;
-        System.out.println("selected");
-        System.out.println(selectedBudgetMonth.getMonth());
         pieChartController.updatePieChart(selectedBudgetMonth.getCategoryItems());
         transactionController.updateTransactions();
         categoryListController.updateCategoryList();

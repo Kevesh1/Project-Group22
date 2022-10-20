@@ -60,7 +60,7 @@ import java.util.Objects;
     }
 
     //TODO Temp probably shouldn't be public
-    public void incrementBudgetSpent(int amount) {
+    public void incrementBudgetSpent(double amount) {
         setBudgetSpent(budgetSpent + amount);
     }
     public void decrementBudgetSpent(int amount) {

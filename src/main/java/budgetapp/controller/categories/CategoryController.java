@@ -45,14 +45,17 @@ public class CategoryController extends AnchorPane {
     //    progressBar.setProgress(this.budget - this.spentAmount);}
 
     private final CategoryListController categoryListController;
-    private final CategoryItem categoryItem;
+
+    final CategoryItem categoryItem;
     private final CategoryDao categoryDao;
+
     //private ArrayList<CategorySubItem> subCategories = new ArrayList<>();
-    private int index;
 
     public CategoryController(CategoryListController categoryListController, CategoryItem categoryItem) {
 
         categoryDao = new CategoryDao();
+        this.categoryItem = categoryItem;
+        this.categoryListController = categoryListController;
 
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/category.fxml"));
         root.setRoot(this);
@@ -61,15 +64,9 @@ public class CategoryController extends AnchorPane {
             root.load();
         } catch (Exception ignored) {
         }
-        this.categoryItem = categoryItem;
-        this.categoryListController = categoryListController;
-        //this.index = i;
+
         setLabels();
     }
-
-    /*public MainController getMainController(){
-        return mainController;
-    }*/
 
     public CategoryItem getCategoryItem(){
         return categoryItem;
@@ -87,7 +84,6 @@ public class CategoryController extends AnchorPane {
     public void categorySelected(){
         categoryListController.selectedCategoryItem = this.categoryItem;
         categoryListController.updateCategoryList();
-        System.out.println("SELECTED");
         //showMatchingPurchases();
     }
 
@@ -110,7 +106,7 @@ public class CategoryController extends AnchorPane {
         categoryListController.showAddSubCategoryWindow(this);
     }
 
-   /* @FXML
+    /*@FXML
     public void addSubCategory(){
         subCategories.add(new CategorySubItem(Double.parseDouble(
                 parentController.newSubCategoryBudget.getText()), parentController.newSubCategoryName.getText()));
@@ -118,15 +114,20 @@ public class CategoryController extends AnchorPane {
 
     @FXML
     public void removeCategoryCheck(){
-        if (categoryItem.isBudgetEmpty()){
-            categoryListController.confirmRemoveCategory();
-        }
-        else
+        System.out.println(categoryItem.getName());
+        System.out.println(categoryItem.getId());
+        /*if (categoryItem.isBudgetEmpty()){
+            System.out.println("Empty");
+            categoryListController.removeCategory(this);
+        } else {
+            System.out.println("ELSE");
             categoryListController.confirmRemoveCategoryWindow(this);
+        }*/
+        categoryListController.removeCategory(this);
     }
 
     /*public void confirmRemoveCategory(){
-        mainController.selectedBudgetMonth.getCategoryItems().remove(
+        mai.selectedBudgetMonth.getCategoryItems().remove(
                 categoryDao.deleteCategory(categoryItem)
         );
         mainController.updateCategoryList();
