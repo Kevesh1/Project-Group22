@@ -139,6 +139,7 @@
     -fx-font-size: 15;
     -fx-font-weight: bold;
     -fx-alignment: center;
+    -fx-border-color: -fx-darker-color;
 }
 
 .combo-box .list-cell{
@@ -146,6 +147,23 @@
     -fx-font-size: 15;
     -fx-font-weight: bold;
     -fx-alignment: center;
+}
+.combo-box-popup .list-view .list-cell:filled:hover{
+    -fx-background-color: -fx-theme-color;
+}
+
+.combo-box-base:hover
+{
+    -fx-color: -fx-theme-color;
+    -fx-background-color: -fx-darker-color;
+}
+combo-box-base
+{
+    -fx-background-color: white, white, white, white;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+
+    -fx-padding: 0;
 }
 
 .button{
