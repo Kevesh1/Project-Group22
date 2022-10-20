@@ -1,7 +1,6 @@
 package dataaccess.mongodb.dao;
 
 import budgetapp.model.BudgetMonth;
-import budgetapp.model.categories.CategoryItem;
 import org.bson.types.ObjectId;
 
 import java.util.List;
@@ -15,9 +14,9 @@ public interface IBudgetMonthDao {
 
     Optional<List<BudgetMonth>> getAllBudgetMonthsByUserId(String id);
 
-    public void updateBudgetMonth(BudgetMonth budgetMonth);
+    public BudgetMonth updateBudgetMonth(BudgetMonth budgetMonth);
 
-    void addBudgetMonth(BudgetMonth budgetMonth);
+    BudgetMonth addBudgetMonth(BudgetMonth budgetMonth);
 
 
     void addManyBudgetMonths(List<BudgetMonth> budgetMonths, String userId);

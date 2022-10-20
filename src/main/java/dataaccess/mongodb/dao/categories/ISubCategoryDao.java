@@ -1,7 +1,5 @@
 package dataaccess.mongodb.dao.categories;
 
-import budgetapp.model.categories.Category;
-import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import org.bson.types.ObjectId;
 
@@ -17,7 +15,7 @@ public interface ISubCategoryDao {
 
     CategorySubItem addSubCategory(CategorySubItem subCategory, String category);
 
-    public void updateSubCategory(CategorySubItem subCategory);
+    public CategorySubItem updateSubCategory(CategorySubItem subCategory);
 
-    public void deleteSubCategory(CategorySubItem subCategory);
+    public CategorySubItem deleteSubCategory(CategorySubItem subCategory);
 }

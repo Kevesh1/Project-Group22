@@ -11,6 +11,8 @@ public interface ICategoryDao {
 
     CategoryItem deleteCategory(CategoryItem categoryItem);
 
+    CategoryItem updateCategory(CategoryItem categoryItem);
+
     List<CategoryItem> addCategories(List<CategoryItem> categoryItem, String budgetMonth);
 
     List<CategoryItem> addCategoryItems(List<CategoryItem> categoryItems, String budgetMonths);
