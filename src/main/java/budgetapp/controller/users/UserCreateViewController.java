@@ -130,21 +130,11 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     public boolean controlAllInputsWithPassword(){
-        if (firstNameInput.getText().isEmpty() || lastNameInput.getText().isEmpty() || createPassword.getText().isEmpty() || createPasswordRepeat.getText().isEmpty()){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return !firstNameInput.getText().isEmpty() && !lastNameInput.getText().isEmpty() && !createPassword.getText().isEmpty() && !createPasswordRepeat.getText().isEmpty();
     }
 
     public boolean controlAllInputsWithoutPassword(){
-        if (firstNameInput.getText().isEmpty() || lastNameInput.getText().isEmpty()){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return !firstNameInput.getText().isEmpty() && !lastNameInput.getText().isEmpty();
     }
 
     public boolean samePassword(){

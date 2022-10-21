@@ -64,8 +64,8 @@ public class RegistrationController extends BorderPane {
     //TODO Change
     @FXML
     public void toLogin() {
-        Scene scene = this.getScene();
-        scene.setRoot(new AccountLoginController());
+        AccountLoginController accountLoginController = new AccountLoginController();
+        this.getScene().setRoot(accountLoginController);
     }
 
 }

@@ -34,12 +34,15 @@ public class AccountLoginController extends BorderPane {
     private Label wrongPassword;
 
     private final AccountDao accountDao;
-    private final RegistrationController registrationController;
     private Optional<Account> account;
 
 
     public AccountLoginController() {
         accountDao = new AccountDao();
+        loadCurrentView();
+    }
+
+    private void loadCurrentView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/AccountLoginView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -50,10 +53,10 @@ public class AccountLoginController extends BorderPane {
         {
             throw new RuntimeException(exception);
         }
-        registrationController = new RegistrationController();
     }
 
     public void showRegistration() {
+        RegistrationController registrationController = new RegistrationController();
         this.getScene().setRoot(registrationController);
     }
 

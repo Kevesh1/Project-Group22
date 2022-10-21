@@ -162,4 +162,17 @@ public class UserManagerTest {
         assertTrue(userManager.passwordCharacter(passwordInput));
     }
 
+    @Test
+    void passwordCharacterTrueWithOnlySwedishLetters(){
+        passwordInput = "åäöåäöåäöÅÄÖÅÄÖÅÄÖ5000";
+        assertTrue(userManager.passwordCharacter(passwordInput));
+    }
+
+    @Test
+    void passwordCharacterTrueWithOnlySwedishLettersPlusSymbols(){
+        passwordInput = "åäöåäöåäöÅÄÖÅÄÖÅÄÖ5000.!";
+        assertTrue(userManager.passwordCharacter(passwordInput));
+    }
+
+
 }
