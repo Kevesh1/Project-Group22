@@ -101,15 +101,6 @@ public class User{
 
     }
 
-    public boolean isEnablePassword() {
-        return enablePassword;
-    }
-
-    public void setEnablePassword(boolean enablePassword) {
-        this.enablePassword = enablePassword;
-    }
-
-
     public String getUsername() {
         return username;
     }
