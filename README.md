@@ -1,3 +1,3 @@
 # Project-Group22
-To run this file run the command
+To run the program enter the following command
 - mvn clean javafx:run
