@@ -28,7 +28,7 @@
 
 .chart-pie-label {
     -fx-fill: -fx-text-color;
-    -fx-font-size: 30;
+    -fx-font-size: 15;
     -fx-font-weight: bold;
 }
 .chart-pie {
