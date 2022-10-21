@@ -5,16 +5,19 @@ import budgetapp.model.categories.CategorySubItem;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.sql.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ExpenseTest {
 
     private Expense expenseT;
 
-    /*
+
     @BeforeEach
     void setUp() {
-        expenseT = new Expense(10.0, "L", "05-05-05", null, null);
+        expenseT = new Expense(10.0, "L", null, null, null);
     }
 
 
@@ -35,6 +38,6 @@ public class ExpenseTest {
 
     }
 
-     */
+
 
 }
