@@ -176,4 +176,10 @@ public final class BudgetMonth {
         budget += amount;
     }
 
+    public void calculateBudget() {
+        budget = 0;
+        for (CategoryItem categoryItem : categoryItems) {
+            incrementBudget(categoryItem.getBudget());
+        }
+    }
 }

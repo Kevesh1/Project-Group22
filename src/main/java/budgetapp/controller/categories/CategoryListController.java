@@ -51,7 +51,6 @@ public class CategoryListController {
                 } else if (change.wasPermutated()) {
                     System.out.println("PERM");
                 }
-
             }
         });
     }
@@ -201,7 +200,7 @@ public class CategoryListController {
         categoryDao.updateCategory(categoryController.getCategoryItem());
         mainController.showMainView();
         System.out.println("upd. cat");
-        updateMainView()
+        updateMainView();
     }
 
     private final StringConverter<CategorySubItem> comboBoxSubCategoryStringConverter = new StringConverter<CategorySubItem>() {

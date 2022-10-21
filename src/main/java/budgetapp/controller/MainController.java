@@ -308,7 +308,7 @@ public class MainController extends AnchorPane{
 
         budgetMonths.addAll(loadBudgetMonths());
         selectedBudgetMonth = budgetMonths.get(selectBudgetMonthIndex());
-
+        selectedBudgetMonth.setTransactions(new ArrayList<>());
         loadControllers();
 
 
@@ -415,7 +415,6 @@ public class MainController extends AnchorPane{
     @FXML
     public void initialize() {
         initializeYearMonthComboBox();
-        loadControllers();
         createTransactionController.initialize();
         initializeCharts();
         updateMainView();
@@ -443,6 +442,7 @@ public class MainController extends AnchorPane{
 
     public void updateMainView() {
         System.out.println("UpdateMainView");
+        selectedBudgetMonth.calculateBudget();
         updateBudgetLabels();
         pieChartController.updatePieChart(selectedBudgetMonth.getCategoryItems());
         stackedBarChartController.updateBarChart();
