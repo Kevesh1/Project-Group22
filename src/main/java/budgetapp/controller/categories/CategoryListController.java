@@ -166,11 +166,20 @@ public class CategoryListController {
 
     public void updateSubCategory() {
         CategorySubItem subCategory = subCategoryController.getSubCategory();
-        subCategoryController.getCategoryItem().decrementBudgetSpent(subCategory.getBudget());
-        subCategory.setName(mainController.newSubCategoryName.getText());
-        subCategory.setBudget(Double.parseDouble(mainController.newSubCategoryBudget.getText()));
+        subCategoryController.getCategoryItem().decrementBudget(subCategory.getBudget());
+        System.out.println("BEFORE TRY");
+        System.out.println(mainController.newSubCategoryBudget.getText());
 
-        subCategoryController.getCategoryItem().incrementBudgetSpent(subCategory.getBudget());
+        try{
+            if (Double.parseDouble(mainController.newSubCategoryBudget.getText()) < 0)
+                throw new IllegalArgumentException();
+            subCategory.setName(mainController.newSubCategoryName.getText());
+            subCategory.setBudget(Double.parseDouble(mainController.newSubCategoryBudget.getText()));
+
+        } catch (IllegalArgumentException exception){
+            System.out.println("Not a valid number!");
+        }
+        subCategoryController.getCategoryItem().incrementBudget(subCategory.getBudget());
         updateCategoryList();
         mainController.showMainView();
     }

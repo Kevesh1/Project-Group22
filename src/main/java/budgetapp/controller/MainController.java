@@ -32,6 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import org.w3c.dom.ls.LSOutput;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -152,19 +153,28 @@ public class MainController extends AnchorPane{
     @FXML
     private void addExpense(){
         //TODO REFACTOR to transactions
-        Double cost = Double.valueOf(newExpenseAmount.getText());
-        String note = newExpenseNote.getText();
-        LocalDate tempDate = newExpenseDate.getValue();
-        Date date = Date.valueOf(tempDate);
-        Category category = Category.valueOf(newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getName());
+        try {
+            Double cost = Double.valueOf(newExpenseAmount.getText());
+            String note = newExpenseNote.getText();
+            LocalDate tempDate = newExpenseDate.getValue();
+            Date date = Date.valueOf(tempDate);
+            Category category = Category.valueOf(newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getName());
 
-        CategorySubItem subCategory = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
-        Expense expense = new Expense(cost, note, date, category, subCategory);
-        selectedBudgetMonth.addTransaction(expenseDao.addExpense(expense, selectedBudgetMonth.getId()));
-        subCategory.addExpense(expense);
 
-        CategorySubItem subItem = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
-        subItem.incrementBudgetSpent(Integer.parseInt(newExpenseAmount.getText()));
+            CategorySubItem subCategory = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
+            Expense expense = new Expense(cost, note, date, category, subCategory);
+
+            selectedBudgetMonth.addTransaction(expenseDao.addExpense(expense, selectedBudgetMonth.getId()));
+            subCategory.addExpense(expense);
+
+
+            CategorySubItem subItem = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
+            subItem.incrementBudgetSpent(Integer.parseInt(newExpenseAmount.getText()));
+
+        }catch (NullPointerException | IllegalArgumentException exception){
+            System.out.println("Not a valid number or/and chose a subcategory");
+        }
+
 
         transactionController.updateTransactions();
         categoryListController.updateCategoryList();
@@ -173,14 +183,22 @@ public class MainController extends AnchorPane{
 
     @FXML
     private void addIncome(){
-        Double cost = Double.valueOf(newIncomeAmount.getText());
-        String note = newIncomeNote.getText();
-        Date date = Date.valueOf(newExpenseDate.getValue());
-        Income income = new Income(cost, note, date);
-        transactionController.addTransaction(income);
-        transactionController.updateTransactions();
-        updateMainView();
-        showMainView();
+        try {
+            Double cost = Double.valueOf(newIncomeAmount.getText());
+            String note = newIncomeNote.getText();
+            Date date = Date.valueOf(newExpenseDate.getValue());
+            Income income = new Income(cost, note, date);
+            transactionController.addTransaction(income);
+        }
+        catch (NumberFormatException exception){
+            System.out.println("Not a valid number!");
+        }
+
+            transactionController.updateTransactions();
+            updateMainView();
+            showMainView();
+
+
     }
 
     @FXML
@@ -227,10 +245,14 @@ public class MainController extends AnchorPane{
 
     @FXML
     private void addNewSubCategory() {
-        String name = newSubCategoryName.getText();
-        double budget = Double.parseDouble(newSubCategoryBudget.getText());
-        System.out.println("NEW SUBITEM 1");
-        categoryListController.addNewSubCategory(new CategorySubItem(budget, name));
+        try {
+            String name = newSubCategoryName.getText();
+            double budget = Double.parseDouble(newSubCategoryBudget.getText());
+            System.out.println("NEW SUBITEM 1");
+            categoryListController.addNewSubCategory(new CategorySubItem(budget, name));
+        } catch (NumberFormatException exception){
+            System.out.println("Not a valid number");
+        }
     }
 
     /*@FXML

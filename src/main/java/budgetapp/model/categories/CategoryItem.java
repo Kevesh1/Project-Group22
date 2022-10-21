@@ -68,6 +68,7 @@ public class CategoryItem extends AbstractCategoryItem{
 
     public void setCategory(Category category) {
         this.category = category;
+
     }
 
     public void calculateBudget() {

@@ -29,7 +29,10 @@ import java.util.Objects;
         return name;
     }
     public void setName(String name) {
-        this.name = name;
+        if (name != null)
+            this.name = name;
+        else
+            throw new IllegalArgumentException();
     }
 
 
@@ -38,6 +41,7 @@ import java.util.Objects;
     }
     public void setBudget(double budget) {
         this.budget = budget;
+
     }
 
     public boolean isBudgetEmpty(){
@@ -52,11 +56,13 @@ import java.util.Objects;
     }
 
 
-    protected void incrementBudget(double amount) {
+    public void incrementBudget(double amount) {
         setBudget(budget + amount);
     }
-    protected void decrementBudget(double amount) {
+
+    public void decrementBudget(double amount) {
         setBudget(budget - amount);
+
     }
 
     public void incrementBudgetSpent(double amount) {

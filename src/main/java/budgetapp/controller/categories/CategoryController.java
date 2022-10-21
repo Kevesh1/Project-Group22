@@ -94,13 +94,17 @@ public class CategoryController extends AnchorPane {
     }
 
     private void subCategoryAdded(ListChangeListener.Change<? extends CategorySubItem> change) {
-        categoryItem.addSubCategory(
-                subCategoryDao.addSubCategory(change.getAddedSubList().get(0), categoryItem.getId())
-        );
-        //categoryController.categoryItem.getSubCategories().add(categorySubItem);
-        //categoryController.categoryItem.incrementBudgetSpent(categorySubItem.getBudgetSpent());
-        categoryListController.updateCategoryList();
-        categoryListController.resetNewCategoryInputs();
+        try {
+            categoryItem.addSubCategory(
+                    subCategoryDao.addSubCategory(change.getAddedSubList().get(0), categoryItem.getId()));
+            //categoryController.categoryItem.getSubCategories().add(categorySubItem);
+            //categoryController.categoryItem.incrementBudgetSpent(categorySubItem.getBudgetSpent());
+            categoryListController.updateCategoryList();
+            categoryListController.resetNewCategoryInputs();
+        } catch (IllegalArgumentException exception){
+            System.out.println("Invalid number");
+        }
+
     }
 
     private void subCategoryRemoved(ListChangeListener.Change<? extends CategorySubItem> change) {
