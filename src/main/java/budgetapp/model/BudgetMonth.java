@@ -6,7 +6,6 @@ import budgetapp.model.transactions.Income;
 import budgetapp.model.transactions.Transaction;
 
 import java.time.Month;
-import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -171,5 +170,16 @@ public final class BudgetMonth {
     public BudgetMonth setYear(int year) {
         this.year = year;
         return this;
+    }
+
+    private void incrementBudget(double amount) {
+        budget += amount;
+    }
+
+    public void calculateBudget() {
+        budget = 0;
+        for (CategoryItem categoryItem : categoryItems) {
+            incrementBudget(categoryItem.getBudget());
+        }
     }
 }

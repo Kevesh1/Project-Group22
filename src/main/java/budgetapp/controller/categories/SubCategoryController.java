@@ -16,6 +16,8 @@ public class SubCategoryController extends AnchorPane {
     private final CategoryItem categoryItem;
     private final CategoryListController categoryListController;
 
+    private final CategoryController categoryController;
+
     @FXML
     private Label subCategoryName;
 
@@ -27,6 +29,7 @@ public class SubCategoryController extends AnchorPane {
 
     public SubCategoryController(CategoryListController categoryListController, CategoryController categoryController, CategorySubItem subCategory) {
 
+        this.categoryController = categoryController;
         this.categoryListController = categoryListController;
         this.subCategory = subCategory;
         categoryItem = categoryController.getCategoryItem();
@@ -62,6 +65,7 @@ public class SubCategoryController extends AnchorPane {
 
     @FXML
     private void removeSubCategory(){
+        categoryController.removeSubCategory(subCategory);
         /*int i = 0;
         if (selectedBudgetMonth.getTransactions() != null) {
             for (Transaction transaction : mainController.selectedBudgetMonth.getTransactions()){

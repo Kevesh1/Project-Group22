@@ -35,6 +35,7 @@ public class CategoryItem extends AbstractCategoryItem{
 
     public void addSubCategory(CategorySubItem subCategory) {
         subCategories.add(subCategory);
+        incrementBudget(subCategory.getBudget());
     }
 
     public void setSubCategories(List<CategorySubItem> subCategories) {
@@ -47,15 +48,15 @@ public class CategoryItem extends AbstractCategoryItem{
 
 
     //Overload
-    public void addSubcategoryBudget(){
+    /*public void addSubcategoryBudget(){
         incrementBudget((int) subCategories.get(subCategories.size() - 1).getBudget());
 
-    }
+    }*/
     //Overload
-    public void addSubcategoryBudget(CategorySubItem subCategory){
+  /*  public void addSubcategoryBudget(double amo){
         incrementBudget((int)subCategory.getBudget());
 
-    }
+    }*/
 
     public void removeSubcategoryBudget(CategorySubItem subCategory){
         decrementBudget((int)subCategory.getBudget());
@@ -69,5 +70,10 @@ public class CategoryItem extends AbstractCategoryItem{
         this.category = category;
     }
 
-
+    public void calculateBudget() {
+        setBudget(0);
+        for (CategorySubItem subCategory : subCategories) {
+            incrementBudget(subCategory.getBudget());
+        }
+    }
 }

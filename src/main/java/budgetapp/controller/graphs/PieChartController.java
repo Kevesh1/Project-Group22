@@ -5,23 +5,23 @@ import budgetapp.model.categories.AbstractCategoryItem;
 import budgetapp.model.categories.CategoryItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PieChartController {
+public class PieChartController{
 
 
     private MainController mainController;
 
     public PieChartController(MainController mainController) {
         this.mainController = mainController;
+
     }
 
-    @FXML
     public void initialize() {
+        mainController.pieChart.setLegendVisible(false);
     }
 
     private ObservableList<PieChart.Data> initializePieChart(List<CategoryItem > categories) {
@@ -42,8 +42,6 @@ public class PieChartController {
                 data.add(new PieChart.Data(category.getName(), category.getBudget()));
                 System.out.println(category.getBudget());
             }
-            System.out.println("SETTING PIE DATA");
-
         }
         mainController.pieChart.setData(FXCollections.observableArrayList(data));
     }

@@ -2,7 +2,6 @@ package budgetapp.controller;
 
 import budgetapp.controller.categories.CategoryController;
 import budgetapp.controller.categories.CategoryListController;
-import budgetapp.controller.categories.SubCategoryController;
 import budgetapp.controller.graphs.PieChartController;
 import budgetapp.controller.graphs.StackedBarChartController;
 import budgetapp.controller.transactions.CreateTransactionController;
@@ -143,11 +142,6 @@ public class MainController extends AnchorPane{
     public
     ComboBox<CategorySubItem> newExpenseSubCategoryComboBox;
 
-    @FXML
-    public BorderPane borderPane;
-
-    @FXML
-    public GridPane gridPane;
     //</editor-fold>
 
     @FXML
@@ -157,7 +151,7 @@ public class MainController extends AnchorPane{
 
     @FXML
     private void addExpense(){
-        //TODO REFACTOR
+        //TODO REFACTOR to transactions
         Double cost = Double.valueOf(newExpenseAmount.getText());
         String note = newExpenseNote.getText();
         LocalDate tempDate = newExpenseDate.getValue();
@@ -199,7 +193,7 @@ public class MainController extends AnchorPane{
     }
 
     @FXML
-    private void onClickNextMonth() throws IOException {
+    private void onClickNextMonth() {
         yearMonthComboBox.getSelectionModel().selectNext();
     }
 
@@ -235,8 +229,8 @@ public class MainController extends AnchorPane{
     private void addNewSubCategory() {
         String name = newSubCategoryName.getText();
         double budget = Double.parseDouble(newSubCategoryBudget.getText());
-        CategorySubItem categorySubItem = new CategorySubItem(budget,name);
-        categoryListController.addNewSubCategory(categorySubItem);
+        System.out.println("NEW SUBITEM 1");
+        categoryListController.addNewSubCategory(new CategorySubItem(budget, name));
     }
 
     /*@FXML
@@ -402,6 +396,7 @@ public class MainController extends AnchorPane{
         initializeYearMonthComboBox();
         createTransactionController.initialize();
         stackedBarChartController.initialize();
+        pieChartController.initialize();
         updateMainView();
         updateLists();
     }
@@ -466,7 +461,10 @@ public class MainController extends AnchorPane{
     ChangeListener<BudgetMonth> selectedBudgetMonthChanged = (obs, wasFocused, isFocused) -> {
         selectedBudgetMonth = isFocused;
         pieChartController.updatePieChart(selectedBudgetMonth.getCategoryItems());
+        stackedBarChartController.updateBarChart();
         transactionController.updateTransactions();
         categoryListController.updateCategoryList();
+        selectedBudgetMonth.calculateBudget();
+        updateMainView();
     };
 }

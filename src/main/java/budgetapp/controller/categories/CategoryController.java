@@ -1,7 +1,12 @@
 package budgetapp.controller.categories;
 
 import budgetapp.model.categories.CategoryItem;
+import budgetapp.model.categories.CategorySubItem;
 import dataaccess.mongodb.dao.categories.CategoryDao;
+import dataaccess.mongodb.dao.categories.SubCategoryDao;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -49,13 +54,18 @@ public class CategoryController extends AnchorPane {
     final CategoryItem categoryItem;
     private final CategoryDao categoryDao;
 
-    //private ArrayList<CategorySubItem> subCategories = new ArrayList<>();
+    private final SubCategoryDao subCategoryDao;
+
+    private ObservableList<CategorySubItem> subCategories;
 
     public CategoryController(CategoryListController categoryListController, CategoryItem categoryItem) {
-
+        subCategories = FXCollections.observableArrayList(categoryItem.getSubCategories());
         categoryDao = new CategoryDao();
+        subCategoryDao = new SubCategoryDao();
         this.categoryItem = categoryItem;
         this.categoryListController = categoryListController;
+
+        loadListeners();
 
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/category.fxml"));
         root.setRoot(this);
@@ -64,8 +74,40 @@ public class CategoryController extends AnchorPane {
             root.load();
         } catch (Exception ignored) {
         }
+    }
 
-        setLabels();
+    private void loadListeners() {
+        subCategories.addListener((ListChangeListener<CategorySubItem>) change -> {
+            while (change.next()) {
+                if (change.wasAdded()) {
+                    subCategoryAdded(change);
+                } else if (change.wasRemoved()) {
+                    subCategoryRemoved(change);
+                } else if (change.wasUpdated()) {
+                    System.out.println("CHANGE");
+                } else if (change.wasPermutated()) {
+                    System.out.println("PERM");
+                }
+
+            }
+        });
+    }
+
+    private void subCategoryAdded(ListChangeListener.Change<? extends CategorySubItem> change) {
+        categoryItem.addSubCategory(
+                subCategoryDao.addSubCategory(change.getAddedSubList().get(0), categoryItem.getId())
+        );
+        //categoryController.categoryItem.getSubCategories().add(categorySubItem);
+        //categoryController.categoryItem.incrementBudgetSpent(categorySubItem.getBudgetSpent());
+        categoryListController.updateCategoryList();
+        categoryListController.resetNewCategoryInputs();
+    }
+
+    private void subCategoryRemoved(ListChangeListener.Change<? extends CategorySubItem> change) {
+        categoryItem.removeSubcategory(
+                subCategoryDao.deleteSubCategory(change.getAddedSubList().get(0))
+        );
+        categoryListController.updateCategoryList();
     }
 
     public CategoryItem getCategoryItem(){
@@ -78,6 +120,11 @@ public class CategoryController extends AnchorPane {
         categoryBudget.setText(categoryItem.getBudget() + " kr");
         progressBar.setProgress(categoryItem.getBudgetSpent() / categoryItem.getBudget());
         categoryImage.setImage(categoryItem.applyIcon());
+    }
+
+    @FXML
+    public void initialize() {
+        setLabels();
     }
 
     @FXML
@@ -145,5 +192,14 @@ public class CategoryController extends AnchorPane {
         parentController.addNewCategoryPane.toFront();
     }*/
 
+    void addNewSubCategory(CategorySubItem categorySubItem) {
+        System.out.println("ADD");
+        subCategories.add(categorySubItem);
 
+    }
+
+    void removeSubCategory(CategorySubItem categorySubItem) {
+        System.out.println("remove");
+        subCategories.remove(categorySubItem);
+    }
 }
