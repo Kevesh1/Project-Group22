@@ -165,8 +165,6 @@ public class CategoryController extends AnchorPane {
 
     @FXML
     public void removeCategoryCheck(){
-        System.out.println(categoryItem.getName());
-        System.out.println(categoryItem.getId());
         /*if (categoryItem.isBudgetEmpty()){
             System.out.println("Empty");
             categoryListController.removeCategory(this);

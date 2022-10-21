@@ -45,7 +45,6 @@ public class StackedBarChartController {
         }
         List<XYChart.Series<String, Number>> temp = new ArrayList<>() ;
         series.forEach((category, stringNumberSeries) -> temp.add(series.get(category)));
-        System.out.println("SETTING BG DATA");
         mainController.stackedBarChart.setData(FXCollections.observableArrayList(temp));
     }
 }

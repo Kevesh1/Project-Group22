@@ -61,10 +61,8 @@ public class UserDao implements IUserDao {
         UserDto userDto = modelMapper.map(user, UserDto.class);
         userDto.setAccount(account.getUsername());
         collection.insertOne(userDto);
-        System.out.println(userDto);
         User user1 = modelMapper.map(userDto, User.class);
         //user1.setId(userDto.getId().toString());
-        System.out.println(user1);
     }
 
     @Override

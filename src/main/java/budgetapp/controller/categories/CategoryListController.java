@@ -125,13 +125,6 @@ public class CategoryListController {
         //mainController.newCategoryBudget.setText(String.valueOf(categoryController.getCategoryItem().getBudget()));
     }
 
-    ChangeListener<ObservableList<CategoryItem>> categoryItemsChanged = (obs, wasFocused, isFocused) -> {
-        System.out.println("OLD");
-        wasFocused.forEach(categoryItem -> System.out.println(categoryItem.getCategory()));
-        System.out.println("NEW");
-        wasFocused.forEach(categoryItem -> System.out.println(categoryItem.getCategory()));
-    };
-
     public void showAddSubCategoryWindow(CategoryController categoryController) {
         this.categoryController = categoryController;
         mainController.addNewSubCategoryPane.toFront();
@@ -180,8 +173,9 @@ public class CategoryListController {
             System.out.println("Not a valid number!");
         }
         subCategoryController.getCategoryItem().incrementBudget(subCategory.getBudget());
-        updateCategoryList();
         mainController.showMainView();
+        System.out.println("upd. sub");
+        updateMainView();
     }
 
 
@@ -205,8 +199,9 @@ public class CategoryListController {
     public void updateCategory() {
         categoryController.getCategoryItem().setCategory(mainController.categoryComboBox.getSelectionModel().getSelectedItem());
         categoryDao.updateCategory(categoryController.getCategoryItem());
-        updateCategoryList();
         mainController.showMainView();
+        System.out.println("upd. cat");
+        updateMainView()
     }
 
     private final StringConverter<CategorySubItem> comboBoxSubCategoryStringConverter = new StringConverter<CategorySubItem>() {
@@ -225,5 +220,9 @@ public class CategoryListController {
 
     public void addNewSubCategory(CategorySubItem categorySubItem) {
         categoryController.addNewSubCategory(categorySubItem);
+    }
+
+    void updateMainView() {
+        mainController.updateMainView();
     }
 }

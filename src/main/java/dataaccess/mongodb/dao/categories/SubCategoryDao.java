@@ -41,7 +41,6 @@ public class SubCategoryDao implements ISubCategoryDao {
         List<CategorySubItem> categorySubItems = new ArrayList<>();
         collection.find(Filters.eq("category", new ObjectId(category))).into(new ArrayList<>())
                 .forEach(categorySubItem -> categorySubItems.add(modelMapper.map(categorySubItem, CategorySubItem.class)));
-        categorySubItems.forEach(categorySubItem -> System.out.println(categorySubItem.getName()));
         return categorySubItems;
     }
 

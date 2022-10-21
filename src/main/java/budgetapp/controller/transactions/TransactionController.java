@@ -17,7 +17,6 @@ public class TransactionController
         mainController.latestPurchases.getChildren().clear();
         if (mainController.selectedBudgetMonth.getTransactions() != null) {
             for (Transaction transaction : mainController.selectedBudgetMonth.getTransactions()){
-                System.out.println(transaction.getSum());
                 if (transaction instanceof Expense){
                     ExpenseController expenseController = new ExpenseController(this, (Expense) transaction);
                     mainController.latestPurchases.getChildren().add(expenseController);
@@ -31,11 +30,11 @@ public class TransactionController
 
     public void addTransaction(Transaction transaction) {
         mainController.selectedBudgetMonth.addTransaction(transaction);
+        mainController.updateMainView();
     }
 
     void deleteTransaction(Transaction transaction) {
         mainController.selectedBudgetMonth.removeTransaction(transaction);
-        updateTransactions();
         mainController.updateMainView();
     }
 }

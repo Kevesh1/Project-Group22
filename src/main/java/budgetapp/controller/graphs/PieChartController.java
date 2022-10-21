@@ -24,12 +24,11 @@ public class PieChartController{
         mainController.pieChart.setLegendVisible(false);
     }
 
-    private ObservableList<PieChart.Data> initializePieChart(List<CategoryItem > categories) {
+    private ObservableList<PieChart.Data> initialize(List<CategoryItem > categories) {
         List<PieChart.Data> data = new ArrayList<PieChart.Data>();
         for(CategoryItem category : categories) {
             if (category.getBudget() > 0){
                 data.add(new PieChart.Data(category.getName(), category.getBudget()));
-                System.out.println(category.getBudget());
             }
         }
         return FXCollections.observableArrayList(data);
@@ -40,7 +39,6 @@ public class PieChartController{
         for (AbstractCategoryItem category : categories) {
             if (category.getBudget() > 0) {
                 data.add(new PieChart.Data(category.getName(), category.getBudget()));
-                System.out.println(category.getBudget());
             }
         }
         mainController.pieChart.setData(FXCollections.observableArrayList(data));

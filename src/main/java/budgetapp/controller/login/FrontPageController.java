@@ -46,8 +46,6 @@ public class FrontPageController extends AnchorPane {
     }
 
     public FrontPageController(Account account) {
-        System.out.println("ACCOUNT");
-        System.out.println(account.getId());
         userDao = new UserDao();
         this.account = account;
         account.setUsers(userDao.getUsersByUsername(account.getUsername()));
@@ -107,7 +105,6 @@ public class FrontPageController extends AnchorPane {
     public void updateUserCards(List<User> userCards) {
         userCardContainer.getChildren().clear();
         for (User user : userCards) {
-            System.out.println("USER");
             UserCardController userCardController = new UserCardController(this, user);
             userCardContainer.getChildren().add(userCardController);
         }

@@ -364,7 +364,6 @@ public class MainController extends AnchorPane{
             loadedBudgetMonths.forEach(budgetMonth -> budgetMonth
                     .setCategoryItems(categoryDao.initCategoryItems(createDefaultCategoryItems(), budgetMonth.getId())));
         }
-        loadedBudgetMonths.forEach(budgetMonth -> budgetMonth.getCategoryItems().forEach(categoryItem -> categoryItem.getSubCategories().forEach(categorySubItem -> System.out.printf("SUB %s ", categorySubItem.getName()))));
         return loadedBudgetMonths;
     }
 
@@ -416,11 +415,15 @@ public class MainController extends AnchorPane{
     @FXML
     public void initialize() {
         initializeYearMonthComboBox();
+        loadControllers();
         createTransactionController.initialize();
-        stackedBarChartController.initialize();
-        pieChartController.initialize();
+        initializeCharts();
         updateMainView();
-        updateLists();
+    }
+
+    private void initializeCharts() {
+        pieChartController.initialize();
+        stackedBarChartController.initialize();
     }
 
     private void initializeYearMonthComboBox() {
@@ -438,12 +441,16 @@ public class MainController extends AnchorPane{
         selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
     }
 
-
-    private void updateLists(){
-        categoryListController.updateCategoryList();
-        transactionController.updateTransactions();
-    }
     public void updateMainView() {
+        System.out.println("UpdateMainView");
+        updateBudgetLabels();
+        pieChartController.updatePieChart(selectedBudgetMonth.getCategoryItems());
+        stackedBarChartController.updateBarChart();
+        transactionController.updateTransactions();
+        categoryListController.updateCategoryList();
+    }
+
+    public void updateBudgetLabels() {
         budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
         budgetSpentLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetSpent()));
         budgetRemainingLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetRemaining()));
@@ -481,12 +488,15 @@ public class MainController extends AnchorPane{
     };
 
     ChangeListener<BudgetMonth> selectedBudgetMonthChanged = (obs, wasFocused, isFocused) -> {
-        selectedBudgetMonth = isFocused;
-        pieChartController.updatePieChart(selectedBudgetMonth.getCategoryItems());
-        stackedBarChartController.updateBarChart();
-        transactionController.updateTransactions();
-        categoryListController.updateCategoryList();
-        selectedBudgetMonth.calculateBudget();
-        updateMainView();
+        if (wasFocused != null) {
+            selectedBudgetMonth = isFocused;
+            pieChartController.updatePieChart(selectedBudgetMonth.getCategoryItems());
+            stackedBarChartController.updateBarChart();
+            transactionController.updateTransactions();
+            categoryListController.updateCategoryList();
+            System.out.println("selectedchanged");
+            updateMainView();
+        }
+
     };
 }

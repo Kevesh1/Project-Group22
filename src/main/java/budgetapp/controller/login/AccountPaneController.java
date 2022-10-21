@@ -41,13 +41,7 @@ public class AccountPaneController extends BorderPane {
 
     @FXML
     public void initialize() {
-        System.out.println("INITIALIZE");
-        System.out.println(this.getScene().getWindow().toString());
         //mainPane.getChildren().add(new AccountPaneController());
-    }
-    @FXML
-    public void init() {
-        System.out.println("INIT");
     }
 
     void showRegistration() {

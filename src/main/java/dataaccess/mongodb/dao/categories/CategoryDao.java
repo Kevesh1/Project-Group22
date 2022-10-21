@@ -52,9 +52,6 @@ public class CategoryDao implements ICategoryDao{
 
     @Override
     public CategoryItem deleteCategory(CategoryItem categoryItem) {
-        System.out.println(categoryItem.getId());
-        System.out.println("DAO");
-        System.out.println(categoryItem.getName());
         collection.deleteOne(Filters.eq("_id", new ObjectId(categoryItem.getId())));
         return categoryItem;
     }

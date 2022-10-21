@@ -183,7 +183,6 @@ public class UserCreateViewController extends AnchorPane {
 
     public void setChooseProfilePictureButton(String imageFileName) {
         profilePictureName = imageFileName;
-        System.out.println(imageFileName);
         Image image = new Image("/budgetapp/img/profilepictures/" + imageFileName + ".png");
         chooseProfilePictureButton.setImage(image);
     }
