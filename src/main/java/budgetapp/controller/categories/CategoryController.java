@@ -16,6 +16,8 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.List;
+
 public class CategoryController extends AnchorPane {
 
 
@@ -56,16 +58,16 @@ public class CategoryController extends AnchorPane {
 
     private final SubCategoryDao subCategoryDao;
 
-    private ObservableList<CategorySubItem> subCategories;
+
+
 
     public CategoryController(CategoryListController categoryListController, CategoryItem categoryItem) {
-        subCategories = FXCollections.observableArrayList(categoryItem.getSubCategories());
         categoryDao = new CategoryDao();
         subCategoryDao = new SubCategoryDao();
         this.categoryItem = categoryItem;
         this.categoryListController = categoryListController;
 
-        loadListeners();
+        //loadListeners();
 
         FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/category.fxml"));
         root.setRoot(this);
@@ -76,8 +78,8 @@ public class CategoryController extends AnchorPane {
         }
     }
 
-    private void loadListeners() {
-        subCategories.addListener((ListChangeListener<CategorySubItem>) change -> {
+    /*private void loadListeners() {
+        categoryItem.addListener((ListChangeListener<CategorySubItem>) change -> {
             while (change.next()) {
                 if (change.wasAdded()) {
                     subCategoryAdded(change);
@@ -91,27 +93,26 @@ public class CategoryController extends AnchorPane {
 
             }
         });
-    }
+    }*/
 
     private void subCategoryAdded(ListChangeListener.Change<? extends CategorySubItem> change) {
         try {
             categoryItem.addSubCategory(
                     subCategoryDao.addSubCategory(change.getAddedSubList().get(0), categoryItem.getId()));
-            //categoryController.categoryItem.getSubCategories().add(categorySubItem);
-            //categoryController.categoryItem.incrementBudgetSpent(categorySubItem.getBudgetSpent());
             categoryListController.updateCategoryList();
             categoryListController.resetNewCategoryInputs();
         } catch (IllegalArgumentException exception){
             System.out.println("Invalid number");
         }
+        categoryListController.updateMainView();
 
     }
 
-    private void subCategoryRemoved(ListChangeListener.Change<? extends CategorySubItem> change) {
+    private void subCategoryRemoved(ListChangeListener.Change<? extends CategorySubItem> change) {;
         categoryItem.removeSubcategory(
-                subCategoryDao.deleteSubCategory(change.getAddedSubList().get(0))
+                subCategoryDao.deleteSubCategory(change.getRemoved().get(0))
         );
-        categoryListController.updateCategoryList();
+        categoryListController.updateMainView();
     }
 
     public CategoryItem getCategoryItem(){
@@ -172,7 +173,7 @@ public class CategoryController extends AnchorPane {
             System.out.println("ELSE");
             categoryListController.confirmRemoveCategoryWindow(this);
         }*/
-        categoryListController.removeCategory(this);
+        categoryListController.removeCategory(categoryItem);
     }
 
     /*public void confirmRemoveCategory(){
@@ -196,12 +197,16 @@ public class CategoryController extends AnchorPane {
 
     void addNewSubCategory(CategorySubItem categorySubItem) {
         System.out.println("ADD");
-        subCategories.add(categorySubItem);
-
+        categoryItem.getSubCategories().add(categorySubItem);
+        categoryListController.updateMainView();
     }
 
     void removeSubCategory(CategorySubItem categorySubItem) {
         System.out.println("remove");
-        subCategories.remove(categorySubItem);
+        categoryItem.getSubCategories().remove(categorySubItem);
+        categoryListController.updateMainView();
+    }
+
+    public void updateCategorySubItemList(List<CategorySubItem> b) {
     }
 }

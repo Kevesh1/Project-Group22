@@ -12,7 +12,6 @@ import javafx.scene.layout.AnchorPane;
 public class SubCategoryController extends AnchorPane {
 
     private final CategorySubItem subCategory;
-    //private final MainController mainController;
     private final CategoryItem categoryItem;
     private final CategoryListController categoryListController;
 

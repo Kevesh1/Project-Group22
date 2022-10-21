@@ -6,7 +6,9 @@ import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import dataaccess.mongodb.dao.categories.CategoryDao;
 import dataaccess.mongodb.dao.categories.SubCategoryDao;
+import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -22,7 +24,7 @@ public class CategoryListController {
 
     private SubCategoryController subCategoryController;
 
-    private ObservableList<CategoryItem> categoryItemList;
+    ObservableList<CategoryItem> categoryItemList;
 
     CategoryItem selectedCategoryItem;
 
@@ -31,8 +33,10 @@ public class CategoryListController {
     private final SubCategoryDao subCategoryDao;
 
     public CategoryListController(MainController mainController, List<CategoryItem> categoryItems) {
-        this.categoryItemList = FXCollections.observableArrayList(categoryItems);
+        categoryItemList = FXCollections.observableArrayList(categoryItems);
+
         this.mainController = mainController;
+
         this.categoryDao = new CategoryDao();
         this.subCategoryDao = new SubCategoryDao();
 
@@ -45,6 +49,7 @@ public class CategoryListController {
                 if (change.wasAdded()) {
                     categoryItemAdded(change);
                 } else if (change.wasRemoved()) {
+                    System.out.println("REMOVED");
                     categoryItemRemoved(change);
                 } else if (change.wasUpdated()) {
                     System.out.println("update");
@@ -65,7 +70,8 @@ public class CategoryListController {
 
     private void categoryItemRemoved(ListChangeListener.Change<? extends CategoryItem> change) {
         mainController.selectedBudgetMonth.getCategoryItems()
-                .remove(categoryDao.deleteCategory(change.getRemoved().get(0)));
+                .remove(categoryDao
+                        .deleteCategory(change.getRemoved().get(0)));
         updateCategoryList();
         mainController.updateMainView();
     }
@@ -191,8 +197,8 @@ public class CategoryListController {
         categoryItemList.add(categoryItem);
     }
 
-    public void removeCategory(CategoryController categoryController){
-        categoryItemList.remove(categoryController.categoryItem);
+    public void removeCategory(CategoryItem categoryItem){
+        categoryItemList.remove(categoryItem);
     }
 
     public void updateCategory() {
