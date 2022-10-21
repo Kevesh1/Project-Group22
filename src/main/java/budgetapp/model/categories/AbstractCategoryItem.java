@@ -52,18 +52,17 @@ import java.util.Objects;
     }
 
 
-    protected void incrementBudget(int amount) {
+    protected void incrementBudget(double amount) {
         setBudget(budget + amount);
     }
-    protected void decrementBudget(int amount) {
+    protected void decrementBudget(double amount) {
         setBudget(budget - amount);
     }
 
-    //TODO Temp probably shouldn't be public
     public void incrementBudgetSpent(double amount) {
         setBudgetSpent(budgetSpent + amount);
     }
-    public void decrementBudgetSpent(int amount) {
+    public void decrementBudgetSpent(double amount) {
         setBudgetSpent(budgetSpent - amount);
     }
 

@@ -8,6 +8,7 @@ import dataaccess.mongodb.dao.categories.CategoryDao;
 import dataaccess.mongodb.dao.categories.SubCategoryDao;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.util.StringConverter;
 
@@ -34,10 +35,41 @@ public class CategoryListController {
         this.mainController = mainController;
         this.categoryDao = new CategoryDao();
         this.subCategoryDao = new SubCategoryDao();
+
+        addListeners();
     }
 
+    private void addListeners() {
+        categoryItemList.addListener((ListChangeListener<CategoryItem>) change -> {
+            while (change.next()) {
+                if (change.wasAdded()) {
+                    categoryItemAdded(change);
+                } else if (change.wasRemoved()) {
+                    categoryItemRemoved(change);
+                } else if (change.wasUpdated()) {
+                    System.out.println("update");
+                } else if (change.wasPermutated()) {
+                    System.out.println("PERM");
+                }
 
+            }
+        });
+    }
 
+    private void categoryItemAdded(ListChangeListener.Change<? extends CategoryItem> change) {
+        mainController.selectedBudgetMonth.getCategoryItems()
+                .add(categoryDao
+                        .addCategory(change.getAddedSubList().get(0), mainController.selectedBudgetMonth.getId()));
+        updateCategoryList();
+        mainController.updateMainView();
+    }
+
+    private void categoryItemRemoved(ListChangeListener.Change<? extends CategoryItem> change) {
+        mainController.selectedBudgetMonth.getCategoryItems()
+                .remove(categoryDao.deleteCategory(change.getRemoved().get(0)));
+        updateCategoryList();
+        mainController.updateMainView();
+    }
 
     /*public void updateCategoryList() {
         categoriesFlowPane.getChildren().clear();
@@ -79,13 +111,6 @@ public class CategoryListController {
 
     }*/
 
-    public void removeCategory(CategoryController categoryController){
-        mainController.selectedBudgetMonth.getCategoryItems().remove(
-                categoryDao.deleteCategory(categoryController.categoryItem)
-        );
-        updateCategoryList();
-    }
-
     void confirmRemoveCategoryWindow(CategoryController categoryController){
         this.categoryController = categoryController;
         mainController.confirmDeletePane.toFront();
@@ -121,22 +146,58 @@ public class CategoryListController {
         mainController.newExpenseSubCategoryComboBox.setConverter(comboBoxSubCategoryStringConverter);
     }
 
-    private void resetNewCategoryInputs(){
+    void resetNewCategoryInputs(){
         mainController.categoryComboBox.getSelectionModel().selectFirst();
         mainController.newSubCategoryName.setText("");
         mainController.newSubCategoryBudget.setText("");
     }
 
-    public void addNewSubCategory(CategorySubItem categorySubItem) {
-        System.out.println("ADD");
-        categoryController.getCategoryItem().addSubCategory(
-                subCategoryDao.addSubCategory(categorySubItem, categoryController.getCategoryItem().getId())
-        );
-        categoryController.categoryItem.addSubcategoryBudget();
-        categoryController.categoryItem.getSubCategories().add(categorySubItem);
+
+
+    public void showEditSubCategoryWindow(SubCategoryController subCategoryController){
+        this.subCategoryController = subCategoryController;
+        CategorySubItem subCategory = subCategoryController.getSubCategory();
+        mainController.addNewSubCategoryPane.toFront();
+        mainController.updateSubCategoryButton.setVisible(true);
+        mainController.addNewSubCategoryButton.setVisible(false);
+        mainController.newSubCategoryName.setText(subCategory.getName());
+        mainController.newSubCategoryBudget.setText(String.valueOf(subCategory.getBudget()));
+    }
+
+    public void updateSubCategory() {
+        CategorySubItem subCategory = subCategoryController.getSubCategory();
+        subCategoryController.getCategoryItem().decrementBudgetSpent(subCategory.getBudget());
+        subCategory.setName(mainController.newSubCategoryName.getText());
+        subCategory.setBudget(Double.parseDouble(mainController.newSubCategoryBudget.getText()));
+
+        subCategoryController.getCategoryItem().incrementBudgetSpent(subCategory.getBudget());
         updateCategoryList();
         mainController.showMainView();
-        resetNewCategoryInputs();
+    }
+
+
+
+    public void showAddCategoryWindow() {
+        mainController.addNewCategoryPane.toFront();
+        mainController.updateCategoryButton.setVisible(false);
+        mainController.addNewCategoryButton.setVisible(true);
+    }
+
+    public void addNewCategory() {
+        Category category = mainController.categoryComboBox.getSelectionModel().getSelectedItem();
+        CategoryItem categoryItem = new CategoryItem(category);
+        categoryItemList.add(categoryItem);
+    }
+
+    public void removeCategory(CategoryController categoryController){
+        categoryItemList.remove(categoryController.categoryItem);
+    }
+
+    public void updateCategory() {
+        categoryController.getCategoryItem().setCategory(mainController.categoryComboBox.getSelectionModel().getSelectedItem());
+        categoryDao.updateCategory(categoryController.getCategoryItem());
+        updateCategoryList();
+        mainController.showMainView();
     }
 
     private final StringConverter<CategorySubItem> comboBoxSubCategoryStringConverter = new StringConverter<CategorySubItem>() {
@@ -153,46 +214,7 @@ public class CategoryListController {
     };
 
 
-    public void showEditSubCategoryWindow(SubCategoryController subCategoryController){
-        this.subCategoryController = subCategoryController;
-        CategorySubItem subCategory = subCategoryController.getSubCategory();
-        mainController.addNewSubCategoryPane.toFront();
-        mainController.updateSubCategoryButton.setVisible(true);
-        mainController.addNewSubCategoryButton.setVisible(false);
-        mainController.newSubCategoryName.setText(subCategory.getName());
-        mainController.newSubCategoryBudget.setText(String.valueOf(subCategory.getBudget()));
-    }
-
-    public void updateSubCategory() {
-        CategorySubItem subCategory = subCategoryController.getSubCategory();
-        subCategoryController.getCategoryItem().removeSubcategoryBudget(subCategory);
-        subCategory.setName(mainController.newSubCategoryName.getText());
-        subCategory.setBudget(Double.parseDouble(mainController.newSubCategoryBudget.getText()));
-
-        subCategoryController.getCategoryItem().addSubcategoryBudget(subCategory);
-        updateCategoryList();
-        mainController.showMainView();
-    }
-
-    public void updateCategory() {
-        categoryController.getCategoryItem().setCategory(Category.valueOf(mainController.categoryComboBox.getSelectionModel().getSelectedItem().toString()));
-        categoryDao.updateCategory(categoryController.getCategoryItem());
-        updateCategoryList();
-        mainController.showMainView();
-    }
-
-    public void showAddCategoryWindow() {
-        mainController.addNewCategoryPane.toFront();
-        mainController.updateCategoryButton.setVisible(false);
-        mainController.addNewCategoryButton.setVisible(true);
-    }
-
-    public void addNewCategory() {
-        Category category = Category.valueOf(mainController.categoryComboBox.getSelectionModel().getSelectedItem().toString());
-        CategoryItem categoryItem = categoryDao.addCategory(new CategoryItem(category), mainController.selectedBudgetMonth.getId());
-        mainController.selectedBudgetMonth.addCategoryItem(categoryItem);
-        mainController.categoryListController.updateCategoryList();
-        mainController.showMainView();
-        //resetNewCategoryInputs();
+    public void addNewSubCategory(CategorySubItem categorySubItem) {
+        categoryController.addNewSubCategory(categorySubItem);
     }
 }

@@ -107,8 +107,8 @@ public class CategoryItemTest {
         categoryItem.addSubCategory(subCategory);
         categoryItem.addSubCategory(subCategory2);
 
-        categoryItem.addSubcategoryBudget(subCategory);
-        categoryItem.addSubcategoryBudget();
+        categoryItem.incrementBudgetSpent(subCategory.getBudget());
+        categoryItem.incrementBudget(subCategory.getBudget());
 
         assertEquals(150, categoryItem.getBudget());
 

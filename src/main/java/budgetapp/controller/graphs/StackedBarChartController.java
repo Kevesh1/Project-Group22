@@ -34,7 +34,7 @@ public class StackedBarChartController {
         updateBarChart();
     }
 
-    private void updateBarChart() {
+    public void updateBarChart() {
         Map<Category, XYChart.Series<String, Number>> series = new HashMap<>();
         for(BudgetMonth budgetMonth : budgetMonths) {
             for (CategoryItem categoryItem : budgetMonth.getCategoryItems()) {
