@@ -134,8 +134,7 @@ public class CategoryController extends AnchorPane {
 
     @FXML
     public void categorySelected(){
-        categoryListController.selectedCategoryItem = this.categoryItem;
-        categoryListController.updateCategoryList();
+        categoryListController.CategoryChanged(this);
         //showMatchingPurchases();
     }
 

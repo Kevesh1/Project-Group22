@@ -38,6 +38,12 @@ public class CategoryListController {
         //addListeners();
     }
 
+    void CategoryChanged(CategoryController categoryController) {
+        this.categoryController = categoryController;
+        this.selectedCategoryItem = categoryController.categoryItem;
+        updateCategoryList();
+    }
+
     /*private void addListeners() {
         categoryItemList.addListener((ListChangeListener<CategoryItem>) change -> {
             while (change.next()) {
@@ -251,6 +257,7 @@ public class CategoryListController {
     public void removeSubCategory(CategorySubItem categorySubItem) {
         System.out.println("PRE");
         categoryController.categoryItem.getSubCategories().forEach(categorySubItem1 -> System.out.println(categorySubItem1.getName()));
+
 
         categoryController.categoryItem.removeSubcategory(subCategoryDao
                 .deleteSubCategory(categorySubItem));

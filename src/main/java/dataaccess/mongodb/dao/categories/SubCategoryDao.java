@@ -72,9 +72,9 @@ public class SubCategoryDao implements ISubCategoryDao {
 
     @Override
     public CategorySubItem deleteSubCategory(CategorySubItem categorySubItem) {
-        SubCategoryItemDto subCategoryItemDto = collection.findOneAndDelete(Filters
+        collection.findOneAndDelete(Filters
                 .eq("_id", new ObjectId(categorySubItem.getId()) ));
-        return modelMapper.map(subCategoryItemDto, CategorySubItem.class);
+        return categorySubItem;
 
     }
 }
