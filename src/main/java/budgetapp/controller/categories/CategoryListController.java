@@ -6,9 +6,6 @@ import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import dataaccess.mongodb.dao.categories.CategoryDao;
 import dataaccess.mongodb.dao.categories.SubCategoryDao;
-import javafx.beans.Observable;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -24,7 +21,7 @@ public class CategoryListController {
 
     private SubCategoryController subCategoryController;
 
-    ObservableList<CategoryItem> categoryItemList;
+    //ObservableList<CategoryItem> categoryItemList;
 
     CategoryItem selectedCategoryItem;
 
@@ -33,17 +30,15 @@ public class CategoryListController {
     private final SubCategoryDao subCategoryDao;
 
     public CategoryListController(MainController mainController, List<CategoryItem> categoryItems) {
-        categoryItemList = FXCollections.observableArrayList(categoryItems);
-
         this.mainController = mainController;
 
         this.categoryDao = new CategoryDao();
         this.subCategoryDao = new SubCategoryDao();
 
-        addListeners();
+        //addListeners();
     }
 
-    private void addListeners() {
+    /*private void addListeners() {
         categoryItemList.addListener((ListChangeListener<CategoryItem>) change -> {
             while (change.next()) {
                 if (change.wasAdded()) {
@@ -58,7 +53,7 @@ public class CategoryListController {
                 }
             }
         });
-    }
+    }*/
 
     private void categoryItemAdded(ListChangeListener.Change<? extends CategoryItem> change) {
         mainController.selectedBudgetMonth.getCategoryItems()
@@ -154,7 +149,9 @@ public class CategoryListController {
 
     public void showEditSubCategoryWindow(SubCategoryController subCategoryController){
         this.subCategoryController = subCategoryController;
+        selectedCategoryItem = subCategoryController.getCategoryItem();
         CategorySubItem subCategory = subCategoryController.getSubCategory();
+
         mainController.addNewSubCategoryPane.toFront();
         mainController.updateSubCategoryButton.setVisible(true);
         mainController.addNewSubCategoryButton.setVisible(false);
@@ -164,11 +161,13 @@ public class CategoryListController {
 
     public void updateSubCategory() {
         CategorySubItem subCategory = subCategoryController.getSubCategory();
-        subCategoryController.getCategoryItem().decrementBudget(subCategory.getBudget());
-        System.out.println("BEFORE TRY");
-        System.out.println(mainController.newSubCategoryBudget.getText());
+        selectedCategoryItem.getSubCategories().remove(subCategory);
 
-        try{
+        double amount = Double.parseDouble(mainController.newSubCategoryBudget.getText());
+        subCategory.setName(mainController.newSubCategoryName.getText());
+        subCategory.setBudget(Double.parseDouble(mainController.newSubCategoryBudget.getText()));
+        selectedCategoryItem.getSubCategories().add(subCategory);
+        /*try{
             if (Double.parseDouble(mainController.newSubCategoryBudget.getText()) < 0)
                 throw new IllegalArgumentException();
             subCategory.setName(mainController.newSubCategoryName.getText());
@@ -176,10 +175,11 @@ public class CategoryListController {
 
         } catch (IllegalArgumentException exception){
             System.out.println("Not a valid number!");
-        }
-        subCategoryController.getCategoryItem().incrementBudget(subCategory.getBudget());
+        }*/
+
+        subCategoryDao.updateSubCategory(subCategory);
+        mainController.selectedBudgetMonth.updateCategoryListItem(selectedCategoryItem);
         mainController.showMainView();
-        System.out.println("upd. sub");
         updateMainView();
     }
 
@@ -194,11 +194,11 @@ public class CategoryListController {
     public void addNewCategory() {
         Category category = mainController.categoryComboBox.getSelectionModel().getSelectedItem();
         CategoryItem categoryItem = new CategoryItem(category);
-        categoryItemList.add(categoryItem);
+        mainController.selectedBudgetMonth.addCategoryItem(categoryItem);
     }
 
     public void removeCategory(CategoryItem categoryItem){
-        categoryItemList.remove(categoryItem);
+        mainController.selectedBudgetMonth.removeCategoryItem(categoryItem);
     }
 
     public void updateCategory() {

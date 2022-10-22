@@ -197,13 +197,15 @@ public class CategoryController extends AnchorPane {
 
     void addNewSubCategory(CategorySubItem categorySubItem) {
         System.out.println("ADD");
-        categoryItem.getSubCategories().add(categorySubItem);
+        categoryItem.getSubCategories()
+                .add(subCategoryDao.addSubCategory(categorySubItem, categoryItem.getId()));
         categoryListController.updateMainView();
     }
 
     void removeSubCategory(CategorySubItem categorySubItem) {
         System.out.println("remove");
-        categoryItem.getSubCategories().remove(categorySubItem);
+        categoryItem.getSubCategories().remove(
+                subCategoryDao.deleteSubCategory(categorySubItem));
         categoryListController.updateMainView();
     }
 

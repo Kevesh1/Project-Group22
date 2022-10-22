@@ -104,6 +104,10 @@ public final class BudgetMonth {
         categoryItems.add(categoryItem);
     }
 
+    public void removeCategoryItem(CategoryItem categoryItem) {
+        categoryItems.remove(categoryItem);
+    }
+
 
     public void removeTransaction(Transaction transaction){
         transactions.remove(transaction);
@@ -180,6 +184,15 @@ public final class BudgetMonth {
         budget = 0;
         for (CategoryItem categoryItem : categoryItems) {
             incrementBudget(categoryItem.getBudget());
+        }
+    }
+
+    public void updateCategoryListItem(CategoryItem categoryItem) {
+        for (int i = 0; i< getCategoryItems().size()-1; i++) {
+            if(getCategoryItems().get(i).getCategory().equals(categoryItem.getCategory())) {
+                getCategoryItems().set(i, categoryItem);
+                break;
+            }
         }
     }
 }

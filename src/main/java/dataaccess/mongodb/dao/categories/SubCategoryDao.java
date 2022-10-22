@@ -65,13 +65,15 @@ public class SubCategoryDao implements ISubCategoryDao {
 
     @Override
     public CategorySubItem updateSubCategory(CategorySubItem subCategory) {
-         SubCategoryItemDto subCategoryItemDto = collection.findOneAndReplace(Filters.eq("_id", new ObjectId(subCategory.getId())), modelMapper.map(subCategory, SubCategoryItemDto.class));
+         SubCategoryItemDto subCategoryItemDto = collection.findOneAndReplace(Filters
+                 .eq("_id", new ObjectId(subCategory.getId())), modelMapper.map(subCategory, SubCategoryItemDto.class));
          return modelMapper.map(subCategoryItemDto, CategorySubItem.class);
     }
 
     @Override
     public CategorySubItem deleteSubCategory(CategorySubItem categorySubItem) {
-        SubCategoryItemDto subCategoryItemDto = collection.findOneAndDelete(Filters.eq("_id", new ObjectId(categorySubItem.getId()) ));
+        SubCategoryItemDto subCategoryItemDto = collection.findOneAndDelete(Filters
+                .eq("_id", new ObjectId(categorySubItem.getId()) ));
         return modelMapper.map(subCategoryItemDto, CategorySubItem.class);
 
     }

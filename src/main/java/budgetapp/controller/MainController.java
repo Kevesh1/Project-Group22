@@ -248,7 +248,7 @@ public class MainController extends AnchorPane{
         try {
             String name = newSubCategoryName.getText();
             double budget = Double.parseDouble(newSubCategoryBudget.getText());
-            System.out.println("NEW SUBITEM 1");
+
             categoryListController.addNewSubCategory(new CategorySubItem(budget, name));
         } catch (NumberFormatException exception){
             System.out.println("Not a valid number");

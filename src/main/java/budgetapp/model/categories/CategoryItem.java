@@ -43,6 +43,7 @@ public class CategoryItem extends AbstractCategoryItem{
     }
 
     public void removeSubcategory(CategorySubItem subCategory) {
+        decrementBudget(subCategory.getBudget());
         subCategories.remove(subCategory);
     }
 
@@ -72,9 +73,10 @@ public class CategoryItem extends AbstractCategoryItem{
     }
 
     public void calculateBudget() {
-        setBudget(0);
+        int budget = 0;
         for (CategorySubItem subCategory : subCategories) {
-            incrementBudget(subCategory.getBudget());
+            budget += subCategory.getBudget();
         }
+        setBudget(budget);
     }
 }
