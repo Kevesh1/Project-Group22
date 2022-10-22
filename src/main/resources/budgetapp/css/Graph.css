@@ -13,13 +13,22 @@
     -fx-border-color: -fx-dark-color;
     -fx-font-size: 15;
 }
+.axis {
+    -fx-font-size: 1.2em;
+    -fx-tick-label-fill: -fx-text-color;
+    -fx-tick-length: 20;
+    -fx-minor-tick-length: 10;
+}
+.axis-label {
+    -fx-text-fill: -fx-text-color;
+}
 
 .chart-legend-item{
     -fx-text-fill: -fx-text-color;
 }
 
 .chart-plot-background {
-    -fx-background-color: -fx-theme-color;
+    -fx-background-color: transparent;
 }
 .chart-pie-label-line {
     -fx-stroke: -fx-text-color;
@@ -37,13 +46,13 @@
 }
 
 .chart-vertical-grid-lines {
-    -fx-stroke: -fx-text-color;
+    -fx-stroke: transparent;
 }
 .chart-horizontal-grid-lines {
-    -fx-stroke: -fx-text-color;
+    -fx-stroke: transparent;
 }
 .chart-alternative-row-fill {
-    -fx-fill: grey;
+    -fx-fill: transparent;
     -fx-stroke: transparent;
     -fx-stroke-width: 0;
 }
