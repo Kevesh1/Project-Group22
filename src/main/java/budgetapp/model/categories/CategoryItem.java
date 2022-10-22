@@ -39,7 +39,8 @@ public class CategoryItem extends AbstractCategoryItem{
     }
 
     public void setSubCategories(List<CategorySubItem> subCategories) {
-        this.subCategories.addAll(subCategories);
+        setBudget(0);
+        subCategories.forEach(this::addSubCategory);
     }
 
     public void removeSubcategory(CategorySubItem subCategory) {

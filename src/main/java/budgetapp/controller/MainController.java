@@ -233,7 +233,7 @@ public class MainController extends AnchorPane{
 
     @FXML
     private void updateCategory(){
-        categoryListController.updateCategory();
+        categoryListController.editCategory();
     }
     @FXML
     private void addNewCategory(){
@@ -248,8 +248,8 @@ public class MainController extends AnchorPane{
         try {
             String name = newSubCategoryName.getText();
             double budget = Double.parseDouble(newSubCategoryBudget.getText());
-
-            categoryListController.addNewSubCategory(new CategorySubItem(budget, name));
+            CategorySubItem categorySubItem = new CategorySubItem(budget, name);
+            categoryListController.addNewSubCategory(categorySubItem);
         } catch (NumberFormatException exception){
             System.out.println("Not a valid number");
         }
@@ -442,7 +442,6 @@ public class MainController extends AnchorPane{
 
     public void updateMainView() {
         System.out.println("UpdateMainView");
-        selectedBudgetMonth.calculateBudget();
         updateBudgetLabels();
         pieChartController.updatePieChart(selectedBudgetMonth.getCategoryItems());
         stackedBarChartController.updateBarChart();

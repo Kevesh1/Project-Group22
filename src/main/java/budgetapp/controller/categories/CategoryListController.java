@@ -197,15 +197,29 @@ public class CategoryListController {
         mainController.selectedBudgetMonth.addCategoryItem(categoryItem);
     }
 
+    /*void addNewSubCategory(CategorySubItem categorySubItem) {
+        System.out.println("ADD");
+        categoryItem.getSubCategories()
+                .add(subCategoryDao.addSubCategory(categorySubItem, categoryItem.getId()));
+        categoryItem = categoryListController.updateCategory(categoryItem);
+        categoryListController.updateMainView();
+    }*/
+
     public void removeCategory(CategoryItem categoryItem){
         mainController.selectedBudgetMonth.removeCategoryItem(categoryItem);
     }
 
-    public void updateCategory() {
+    public void editCategory() {
         categoryController.getCategoryItem().setCategory(mainController.categoryComboBox.getSelectionModel().getSelectedItem());
         categoryDao.updateCategory(categoryController.getCategoryItem());
         mainController.showMainView();
         System.out.println("upd. cat");
+        updateMainView();
+    }
+
+    void updateCategory(CategoryItem categoryItem) {
+        mainController.selectedBudgetMonth.updateCategoryListItem(categoryItem);
+        mainController.selectedBudgetMonth.getCategoryItems().forEach(categoryItem1 -> System.out.println(categoryItem1.getBudget()));
         updateMainView();
     }
 
@@ -224,10 +238,27 @@ public class CategoryListController {
 
 
     public void addNewSubCategory(CategorySubItem categorySubItem) {
-        categoryController.addNewSubCategory(categorySubItem);
+        categoryController.categoryItem.addSubCategory(subCategoryDao
+                .addSubCategory(categorySubItem, categoryController.categoryItem.getId()));
+        mainController.selectedBudgetMonth.updateCategoryListItem(categoryController.getCategoryItem());
+        updateMainView();
     }
 
     void updateMainView() {
         mainController.updateMainView();
+    }
+
+    public void removeSubCategory(CategorySubItem categorySubItem) {
+        System.out.println("PRE");
+        categoryController.categoryItem.getSubCategories().forEach(categorySubItem1 -> System.out.println(categorySubItem1.getName()));
+
+        categoryController.categoryItem.removeSubcategory(subCategoryDao
+                .deleteSubCategory(categorySubItem));
+
+        System.out.println("AFTER");
+        this.categoryController.categoryItem.getSubCategories().forEach(categorySubItem1 -> System.out.println(categorySubItem1.getName()));
+
+        mainController.selectedBudgetMonth.updateCategoryListItem(categoryController.categoryItem);
+        updateMainView();
     }
 }

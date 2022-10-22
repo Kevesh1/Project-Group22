@@ -11,8 +11,8 @@ import javafx.scene.layout.AnchorPane;
 
 public class SubCategoryController extends AnchorPane {
 
-    private final CategorySubItem subCategory;
-    private final CategoryItem categoryItem;
+    final CategorySubItem subCategory;
+    final CategoryItem categoryItem;
     private final CategoryListController categoryListController;
 
     private final CategoryController categoryController;
@@ -64,7 +64,7 @@ public class SubCategoryController extends AnchorPane {
 
     @FXML
     private void removeSubCategory(){
-        categoryController.removeSubCategory(subCategory);
+        categoryListController.removeSubCategory(subCategory);
         /*int i = 0;
         if (selectedBudgetMonth.getTransactions() != null) {
             for (Transaction transaction : mainController.selectedBudgetMonth.getTransactions()){

@@ -107,21 +107,33 @@ public final class BudgetMonth {
         setBudgetSpent(budgetSpent + amount);
     }
 
+    private void decrementBudgetSpent(double amount) {
+        setBudgetSpent(budgetSpent - amount);
+    }
+
     private void decrementBudget(double amount) {
         setBudgetSpent(budget - amount);
     }
 
     public void addCategoryItem(CategoryItem categoryItem) {
+        incrementBudget(categoryItem.getBudget());
         categoryItems.add(categoryItem);
     }
 
     public void removeCategoryItem(CategoryItem categoryItem) {
+        decrementBudget(categoryItem.getBudget());
         categoryItems.remove(categoryItem);
     }
 
 
     public void removeTransaction(Transaction transaction){
-        transactions.remove(transaction);
+        if (transaction instanceof Expense) {
+            transactions.remove(transaction);
+            decrementBudgetSpent(transaction.getSum());
+        } else if (transaction instanceof Income) {
+            transactions.add(transaction);
+            decrementBudget(transaction.getSum());
+        }
     }
 
     public void addTransaction(Transaction transaction){
@@ -157,6 +169,7 @@ public final class BudgetMonth {
 
     public List<CategoryItem> setCategoryItems(List<CategoryItem> categoryItems) {
         this.categoryItems = categoryItems;
+        calculateBudget();
         return categoryItems;
     }
 
@@ -201,12 +214,14 @@ public final class BudgetMonth {
     public void calculateBudget() {
         budget = 0;
         for (CategoryItem categoryItem : categoryItems) {
-            incrementBudget(categoryItem.getBudget());
+            categoryItem.calculateBudget();
+            budget += categoryItem.getBudget();
         }
+        setBudget(budget);
     }
 
     public void updateCategoryListItem(CategoryItem categoryItem) {
-        for (int i = 0; i< getCategoryItems().size()-1; i++) {
+        for (int i = 0; i < getCategoryItems().size(); i++) {
             if(getCategoryItems().get(i).getCategory().equals(categoryItem.getCategory())) {
                 getCategoryItems().set(i, categoryItem);
                 break;
