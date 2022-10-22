@@ -99,6 +99,17 @@ public final class BudgetMonth {
         return this.budgetSpent;
     }
 
+    private void setBudgetSpent(double amount) {
+        budgetSpent = amount;
+    }
+
+    private void incrementBudgetSpent(double amount) {
+        setBudgetSpent(budgetSpent + amount);
+    }
+
+    private void decrementBudget(double amount) {
+        setBudgetSpent(budget - amount);
+    }
 
     public void addCategoryItem(CategoryItem categoryItem) {
         categoryItems.add(categoryItem);
@@ -114,7 +125,14 @@ public final class BudgetMonth {
     }
 
     public void addTransaction(Transaction transaction){
-        transactions.add(transaction);
+        if (transaction instanceof Expense) {
+            transactions.add(transaction);
+            incrementBudgetSpent(transaction.getSum());
+        } else if (transaction instanceof Income) {
+            transactions.add(transaction);
+            incrementBudget(transaction.getSum());
+        }
+
     }
 
     public List<Transaction> getTransactions(){
