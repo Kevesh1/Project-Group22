@@ -34,7 +34,7 @@ public class ExpenseDao implements IExpenseDao {
        ExpenseDto expenseDto = modelMapper.map(expense, ExpenseDto.class)
                .setBudgetMonth(new ObjectId(budgetMonthId));
        collection.insertOne(expenseDto);
-       return expense;
+       return modelMapper.map(expenseDto, Expense.class);
     }
 
     @Override
@@ -63,7 +63,9 @@ public class ExpenseDao implements IExpenseDao {
     }
 
     @Override
-    public void deleteExpense(Expense expense) {
-
+    public Expense deleteExpense(Expense expense) {
+        System.out.println(expense.getId());
+        collection.deleteOne(Filters.eq("_id", new ObjectId(expense.getId())));
+        return expense;
     }
 }

@@ -44,7 +44,7 @@ public class IncomeController extends AnchorPane {
 
     @FXML
     private void deleteTransaction(){
-        transactionController.deleteTransaction(income);
+        transactionController.deleteIncome(income);
 
     }
 }

@@ -124,20 +124,24 @@ public class MainController extends AnchorPane{
     public
     ComboBox<CategoryItem> newExpenseCategoryComboBox;
     @FXML
+    public
     TextField newExpenseAmount;
     @FXML
     public
     DatePicker newExpenseDate;
     @FXML
+    public
     TextArea newExpenseNote;
     @FXML
     ComboBox newIncomeCategoryComboBox;
     @FXML
+    public
     TextField newIncomeAmount;
     @FXML
     public
     DatePicker newIncomeDate;
     @FXML
+    public
     TextArea newIncomeNote;
     @FXML
     public
@@ -152,53 +156,12 @@ public class MainController extends AnchorPane{
 
     @FXML
     private void addExpense(){
-        //TODO REFACTOR to transactions
-        try {
-            Double cost = Double.valueOf(newExpenseAmount.getText());
-            String note = newExpenseNote.getText();
-            LocalDate tempDate = newExpenseDate.getValue();
-            Date date = Date.valueOf(tempDate);
-            Category category = Category.valueOf(newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getName());
-
-
-            CategorySubItem subCategory = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
-            Expense expense = new Expense(cost, note, date, category, subCategory);
-
-            selectedBudgetMonth.addTransaction(expenseDao.addExpense(expense, selectedBudgetMonth.getId()));
-            subCategory.addExpense(expense);
-
-
-            CategorySubItem subItem = newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
-            subItem.incrementBudgetSpent(Integer.parseInt(newExpenseAmount.getText()));
-
-        }catch (NullPointerException | IllegalArgumentException exception){
-            System.out.println("Not a valid number or/and chose a subcategory");
-        }
-
-
-        transactionController.updateTransactions();
-        categoryListController.updateCategoryList();
-        showMainView();
+        transactionController.addExpense();
     }
 
     @FXML
     private void addIncome(){
-        try {
-            Double cost = Double.valueOf(newIncomeAmount.getText());
-            String note = newIncomeNote.getText();
-            Date date = Date.valueOf(newExpenseDate.getValue());
-            Income income = new Income(cost, note, date);
-            transactionController.addTransaction(income);
-        }
-        catch (NumberFormatException exception){
-            System.out.println("Not a valid number!");
-        }
-
-            transactionController.updateTransactions();
-            updateMainView();
-            showMainView();
-
-
+        transactionController.addIncome();
     }
 
     @FXML
@@ -289,8 +252,6 @@ public class MainController extends AnchorPane{
 
     private TransactionDao transactionDao;
 
-    private ExpenseDao expenseDao;
-
     private PieChartController pieChartController;
 
     public CategoryListController categoryListController;
@@ -308,7 +269,6 @@ public class MainController extends AnchorPane{
 
         budgetMonths.addAll(loadBudgetMonths());
         selectedBudgetMonth = budgetMonths.get(selectBudgetMonthIndex());
-        selectedBudgetMonth.setTransactions(new ArrayList<>());
         loadControllers();
 
 
@@ -329,7 +289,6 @@ public class MainController extends AnchorPane{
         transactionDao = new TransactionDao();
         categoryDao = new CategoryDao();
         subCategoryDao = new SubCategoryDao();
-        expenseDao = new ExpenseDao();
     }
 
     private void loadControllers() {

@@ -5,6 +5,7 @@ import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
 import java.time.YearMonth;
+import java.util.Date;
 
 public final class ExpenseDto {
 
@@ -18,7 +19,7 @@ public final class ExpenseDto {
 
     private String annotation;
 
-    private String date;
+    private Date date;
 
     private YearMonth yearmonth;
 
@@ -49,11 +50,11 @@ public final class ExpenseDto {
         return this;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public ExpenseDto setDate(String date) {
+    public ExpenseDto setDate(Date date) {
         this.date = date;
         return this;
     }

@@ -8,6 +8,7 @@ import budgetapp.model.transactions.Transaction;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public final class BudgetMonth {
@@ -39,6 +40,8 @@ public final class BudgetMonth {
     }
 
     public BudgetMonth() {
+        System.out.println("INITLISTS");
+        initLists();
     }
 
     private void initLists() {
@@ -131,7 +134,7 @@ public final class BudgetMonth {
             transactions.remove(transaction);
             decrementBudgetSpent(transaction.getSum());
         } else if (transaction instanceof Income) {
-            transactions.add(transaction);
+            transactions.remove(transaction);
             decrementBudget(transaction.getSum());
         }
     }
@@ -147,20 +150,38 @@ public final class BudgetMonth {
 
     }
 
+
     public List<Transaction> getTransactions(){
         return transactions;
     }
 
-    public BudgetMonth setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-        return this;
+    public void setTransactions(List<Transaction> transactions) {
+        setBudgetSpent(0);
+        decrementBudget(getIncomeBudget());
+        for (Transaction transaction : transactions) {
+            addTransaction(transaction);
+        }
     }
 
-    public List<Expense> getExpenses(){
+    List<Expense> getExpenses(){
         return  getTransactions().stream().filter(expense -> expense instanceof Expense)
                 .map(expense -> (Expense)expense)
                 .collect(Collectors.toList());
     }
+    
+   List<Income> getIncome() {
+       return  getTransactions().stream().filter(income -> income instanceof Income)
+               .map(income -> (Income)income)
+               .collect(Collectors.toList());
+   }
+   
+   private double getIncomeBudget() {
+        double amount = 0;
+       for (Income income : getIncome()) {
+           amount += income.getSum();
+       }
+       return amount;
+   }
 
 
     public List<CategoryItem> getCategoryItems() {
@@ -168,9 +189,9 @@ public final class BudgetMonth {
     }
 
     public List<CategoryItem> setCategoryItems(List<CategoryItem> categoryItems) {
-        this.categoryItems = categoryItems;
-        calculateBudget();
-        return categoryItems;
+        setBudget(0);
+        categoryItems.forEach(this::addCategoryItem);
+        return this.categoryItems;
     }
 
 //    public void setMonth(Month month) {

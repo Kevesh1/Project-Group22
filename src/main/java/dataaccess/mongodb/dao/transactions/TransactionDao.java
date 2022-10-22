@@ -36,8 +36,8 @@ public class TransactionDao implements ITransactionDao{
     @Override
     public List<Transaction> getAllTransactionsByBudgetMonth(String budgetMonthId) {
         List<Transaction> transactions = new ArrayList<>();
-        transactions.addAll(expenseDao.getAllExpensesByBudgetMonth(budgetMonthId));
         transactions.addAll(incomeDao.getAllIncomesByBudgetMonth(budgetMonthId));
+        transactions.addAll(expenseDao.getAllExpensesByBudgetMonth(budgetMonthId));
         return transactions;
     }
 

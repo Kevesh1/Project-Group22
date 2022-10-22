@@ -48,6 +48,6 @@ public class ExpenseController extends AnchorPane {
 
     @FXML
     private void deleteTransaction(){
-        transactionController.deleteTransaction(expense);
+        transactionController.deleteExpense(expense);
     }
 }

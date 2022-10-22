@@ -2,8 +2,8 @@ package budgetapp.model.transactions;
 
 import budgetapp.model.categories.Category;
 
-import java.sql.Date;
 import java.time.YearMonth;
+import java.sql.Date;
 
 public class Transaction {
 
@@ -53,4 +53,11 @@ public class Transaction {
         this.yearMonth = yearMonth;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

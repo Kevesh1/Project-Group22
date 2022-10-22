@@ -1,6 +1,5 @@
 package dataaccess.mongodb.dao.transactions;
 
-import budgetapp.model.BudgetMonth;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.transactions.Expense;
 import org.bson.types.ObjectId;
@@ -20,5 +19,6 @@ public interface IExpenseDao {
 
     public void updateExpense(Expense expense);
 
-    public void deleteExpense(Expense expense);
+    public Expense deleteExpense(Expense expense);
+
 }

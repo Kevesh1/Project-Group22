@@ -8,5 +8,7 @@ public interface IIncomeDao {
 
     Income addIncome(Income income, String budgetMonthId);
 
+    Income deleteIncome(Income income);
+
     List<Income> getAllIncomesByBudgetMonth(String budgetMonthId);
 }

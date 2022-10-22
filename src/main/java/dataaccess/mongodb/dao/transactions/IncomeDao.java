@@ -31,6 +31,12 @@ public class IncomeDao implements IIncomeDao {
         IncomeDto incomeDto = modelMapper.map(income, IncomeDto.class)
                 .setBudgetMonth(new ObjectId(budgetMonthId));
         collection.insertOne(incomeDto);
+        return modelMapper.map(incomeDto, Income.class);
+    }
+
+    @Override
+    public Income deleteIncome(Income income) {
+        collection.deleteOne(Filters.eq("_id", new ObjectId(income.getId())));
         return income;
     }
 
