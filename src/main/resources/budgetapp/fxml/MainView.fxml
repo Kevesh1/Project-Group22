@@ -315,7 +315,7 @@
                </font>
             </Label>
             <Button layoutX="200.0" layoutY="644.0" mnemonicParsing="false" onAction="#openIE" prefWidth="49.0" text="+" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="200.0" />
-            <AnchorPane layoutX="33.0" layoutY="147.0" prefHeight="460.0" prefWidth="783.0" styleClass="mainpain" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="293.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="484.0" AnchorPane.topAnchor="147.0">
+            <AnchorPane layoutX="33.0" layoutY="147.0" onMouseClicked="#mainScreenClicked" prefHeight="460.0" prefWidth="783.0" styleClass="mainpain" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="293.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="484.0" AnchorPane.topAnchor="147.0">
                <children>
                   <HBox layoutX="228.0" layoutY="119.0" prefHeight="482.0" prefWidth="783.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>

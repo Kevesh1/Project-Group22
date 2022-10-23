@@ -135,6 +135,10 @@ public class CategoryController extends AnchorPane {
     @FXML
     public void categorySelected(){
         categoryListController.CategoryChanged(this);
+        if(!categoryItem.getSubCategories().isEmpty()) {
+            categoryListController.mainController.pieChartController
+                    .updatePieChart(categoryItem.getSubCategories());
+        }
         //showMatchingPurchases();
     }
 
@@ -197,7 +201,6 @@ public class CategoryController extends AnchorPane {
 
 
     void removeSubCategory(CategorySubItem categorySubItem) {
-        System.out.println("remove");
         categoryItem.getSubCategories().remove(
                 subCategoryDao.deleteSubCategory(categorySubItem));
         categoryListController.updateMainView();

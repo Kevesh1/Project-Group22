@@ -40,7 +40,6 @@ public final class BudgetMonth {
     }
 
     public BudgetMonth() {
-        System.out.println("INITLISTS");
         initLists();
     }
 
@@ -121,8 +120,6 @@ public final class BudgetMonth {
     public void addCategoryItem(CategoryItem categoryItem) {
         incrementBudget(categoryItem.getBudget());
         categoryItems.add(categoryItem);
-        System.out.println("Budget");
-        System.out.println(getBudget());
     }
 
     public void removeCategoryItem(CategoryItem categoryItem) {
@@ -246,7 +243,6 @@ public final class BudgetMonth {
     public void updateCategoryListItem(CategoryItem categoryItem) {
         for (int i = 0; i < getCategoryItems().size(); i++) {
             if(getCategoryItems().get(i).getCategory().equals(categoryItem.getCategory())) {
-                System.out.println("UPDATED");
                 getCategoryItems().set(i, categoryItem);
                 calculateBudget();
                 break;

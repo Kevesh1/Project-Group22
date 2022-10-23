@@ -15,7 +15,7 @@ import java.util.List;
 
 public class CategoryListController {
 
-    private final MainController mainController;
+    final MainController mainController;
 
     private CategoryController categoryController;
 
@@ -219,7 +219,6 @@ public class CategoryListController {
         categoryController.getCategoryItem().setCategory(mainController.categoryComboBox.getSelectionModel().getSelectedItem());
         categoryDao.updateCategory(categoryController.getCategoryItem());
         mainController.showMainView();
-        System.out.println("upd. cat");
         updateMainView();
     }
 
@@ -268,14 +267,12 @@ public class CategoryListController {
     }
 
     public void removeSubCategory(CategorySubItem categorySubItem) {
-        System.out.println("PRE");
         categoryController.categoryItem.getSubCategories().forEach(categorySubItem1 -> System.out.println(categorySubItem1.getName()));
 
 
         categoryController.categoryItem.removeSubcategory(subCategoryDao
                 .deleteSubCategory(categorySubItem));
 
-        System.out.println("AFTER");
         this.categoryController.categoryItem.getSubCategories().forEach(categorySubItem1 -> System.out.println(categorySubItem1.getName()));
 
         mainController.selectedBudgetMonth.updateCategoryListItem(categoryController.categoryItem);

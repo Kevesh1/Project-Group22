@@ -32,6 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import org.w3c.dom.events.Event;
 import org.w3c.dom.ls.LSOutput;
 
 import java.io.IOException;
@@ -211,8 +212,13 @@ public class MainController extends AnchorPane{
 
     @FXML
     private void addNewSubCategory() {
-        System.out.println("ADDNEWSUB");
         categoryListController.addNewSubCategory();
+    }
+
+    @FXML
+    private void mainScreenClicked () {
+        pieChartController.updatePieChart(selectedBudgetMonth.getCategoryItems());
+        // transactionController.updateTransactions();
     }
 
     /*@FXML
@@ -249,9 +255,9 @@ public class MainController extends AnchorPane{
 
     private TransactionDao transactionDao;
 
-    private PieChartController pieChartController;
+    public PieChartController pieChartController;
 
-    public CategoryListController categoryListController;
+    private CategoryListController categoryListController;
 
     private TransactionController transactionController;
 
@@ -260,7 +266,6 @@ public class MainController extends AnchorPane{
 
     public MainController(User user) {
         this.user = user;
-        System.out.println(user.getUsername());
         this.budgetMonths = FXCollections.observableArrayList();
 
         loadDaos();
