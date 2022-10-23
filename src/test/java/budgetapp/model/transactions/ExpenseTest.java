@@ -17,7 +17,7 @@ public class ExpenseTest {
 
     @BeforeEach
     void setUp() {
-        expenseT = new Expense(10.0, "L", null, null, null);
+        expenseT = new Expense(10.0, "L", new Date(2022-1-1), null, null);
     }
 
 
@@ -35,7 +35,45 @@ public class ExpenseTest {
     void setCategory(){
         expenseT.setCategory(Category.Pet);
         assertEquals(Category.Pet,expenseT.getCategory());
+    }
 
+    @Test
+    void setSum(){
+        expenseT.setSum(20);
+        assertEquals(20, expenseT.getSum());
+    }
+
+    @Test
+    void getDate(){
+        assertEquals(2022,expenseT.getDate());
+    }
+
+    @Test
+    void setDate(){
+        assertEquals(2022-1-1,expenseT.getDate());
+    }
+
+    @Test
+    void getAnnotation(){
+        assertEquals("L",expenseT.getAnnotation());
+    }
+
+    @Test
+    void setAnnotation(){
+        expenseT.setAnnotation("A");
+        assertEquals("A", expenseT.getAnnotation());
+    }
+
+    @Test
+    void getId(){
+        expenseT.setId("123");
+        assertEquals("123", expenseT.getId());
+    }
+
+    @Test
+    void setId(){
+        expenseT.setId("123");
+        assertEquals("123", expenseT.getId());
     }
 
 

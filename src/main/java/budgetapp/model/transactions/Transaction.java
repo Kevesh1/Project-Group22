@@ -16,15 +16,12 @@ public class Transaction {
     private Date date;
     private YearMonth yearMonth;
 
-    public Transaction(Double sum, String annotation, Date date) {
+    public Transaction(double sum, String annotation, Date date) {
         this.sum = sum;
         this.annotation = annotation;
         this.date = date;
     }
 
-    public Transaction() {
-
-    }
 
     /**
      * This method gets sum
@@ -75,22 +72,6 @@ public class Transaction {
      */
     public void setAnnotation(String annotation) {
         this.annotation = annotation;
-    }
-
-    /**
-     * this method gets yearMonth
-     * @return yearMonth
-     */
-    public YearMonth getYearMonth() {
-        return yearMonth;
-    }
-
-    /**
-     * this method sets yearMonth
-     * @param yearMonth
-     */
-    public void setYearMonth(YearMonth yearMonth) {
-        this.yearMonth = yearMonth;
     }
 
     /**

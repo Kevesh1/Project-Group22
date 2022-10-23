@@ -17,9 +17,5 @@ public class Income extends Transaction {
         super(sum, annotation, date);
     }
 
-    public Income() {
-
-    }
-
 
 }
