@@ -239,7 +239,7 @@ public class MainController extends AnchorPane{
 
     @FXML
     private void loadSubCategoryComboBox() {
-        categoryListController.loadSubCategoryComboBox();
+        createTransactionController.loadSubCategoryComboBox();
     }
 
 

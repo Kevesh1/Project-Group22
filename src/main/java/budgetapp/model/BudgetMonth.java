@@ -156,6 +156,7 @@ public final class BudgetMonth {
     }
 
     public void setTransactions(List<Transaction> transactions) {
+        this.transactions.clear();
         setBudgetSpent(0);
         decrementBudget(getIncomeBudget());
         for (Transaction transaction : transactions) {
@@ -189,6 +190,7 @@ public final class BudgetMonth {
     }
 
     public List<CategoryItem> setCategoryItems(List<CategoryItem> categoryItems) {
+        this.categoryItems.clear();
         setBudget(0);
         categoryItems.forEach(this::addCategoryItem);
         return this.categoryItems;

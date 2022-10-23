@@ -138,13 +138,6 @@ public class CategoryListController {
         mainController.addNewSubCategoryButton.setVisible(true);
     }
 
-    public void loadSubCategoryComboBox() {
-        ObservableList<CategorySubItem> subCategories = FXCollections.observableArrayList();
-        subCategories.addAll(mainController.newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getSubCategories());
-        mainController.newExpenseSubCategoryComboBox.setItems(subCategories);
-        mainController.newExpenseSubCategoryComboBox.setConverter(comboBoxSubCategoryStringConverter);
-    }
-
     void resetNewCategoryInputs(){
         mainController.categoryComboBox.getSelectionModel().selectFirst();
         mainController.newSubCategoryName.setText("");
@@ -201,6 +194,8 @@ public class CategoryListController {
         Category category = mainController.categoryComboBox.getSelectionModel().getSelectedItem();
         CategoryItem categoryItem = new CategoryItem(category);
         mainController.selectedBudgetMonth.addCategoryItem(categoryItem);
+        updateMainView();
+        mainController.showMainView();
     }
 
     /*void addNewSubCategory(CategorySubItem categorySubItem) {
@@ -224,23 +219,8 @@ public class CategoryListController {
 
     void updateCategory(CategoryItem categoryItem) {
         mainController.selectedBudgetMonth.updateCategoryListItem(categoryItem);
-        mainController.selectedBudgetMonth.getCategoryItems().forEach(categoryItem1 -> System.out.println(categoryItem1.getBudget()));
         updateMainView();
     }
-
-    private final StringConverter<CategorySubItem> comboBoxSubCategoryStringConverter = new StringConverter<CategorySubItem>() {
-
-        @Override
-        public String toString(CategorySubItem categorySubItem) {
-            return categorySubItem.getName();
-        }
-
-        @Override
-        public CategorySubItem fromString(String string) {
-            return null;
-        }
-    };
-
 
     private CategorySubItem createCategorySubItem() {
         String name = mainController.newSubCategoryName.getText();
@@ -257,6 +237,7 @@ public class CategoryListController {
 
             mainController.selectedBudgetMonth.updateCategoryListItem(categoryItem);
             updateMainView();
+            mainController.showMainView();
         } catch (NumberFormatException exception){
             System.out.println("Not a valid number");
         }
@@ -276,6 +257,7 @@ public class CategoryListController {
         this.categoryController.categoryItem.getSubCategories().forEach(categorySubItem1 -> System.out.println(categorySubItem1.getName()));
 
         mainController.selectedBudgetMonth.updateCategoryListItem(categoryController.categoryItem);
+        mainController.showMainView();
         updateMainView();
     }
 }

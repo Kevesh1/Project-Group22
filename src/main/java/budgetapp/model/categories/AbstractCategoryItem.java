@@ -56,7 +56,6 @@ import java.util.Objects;
       * @param budget
       */
     public void setBudget(double budget) {
-
         this.budget = budget;
     }
 
