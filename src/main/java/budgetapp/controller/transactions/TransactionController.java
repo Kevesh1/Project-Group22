@@ -8,9 +8,11 @@ import budgetapp.model.transactions.Income;
 import budgetapp.model.transactions.Transaction;
 import dataaccess.mongodb.dao.transactions.ExpenseDao;
 import dataaccess.mongodb.dao.transactions.IncomeDao;
+import dataaccess.mongodb.dao.transactions.TransactionDao;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 public class TransactionController
 {
@@ -20,10 +22,13 @@ public class TransactionController
 
     private IncomeDao incomeDao;
 
+    private TransactionDao transactionDao;
+
     public TransactionController(MainController mainController) {
         this.mainController = mainController;
         expenseDao = new ExpenseDao();
         incomeDao = new IncomeDao();
+        transactionDao = new TransactionDao();
     }
 
     private Expense createExpense(CategorySubItem subCategory) {
@@ -96,5 +101,9 @@ public class TransactionController
         }
         mainController.updateMainView();
         mainController.showMainView();
+    }
+
+    public List<Transaction> loadTransactions(String budgetMonthId) {
+        return transactionDao.getAllTransactionsByBudgetMonth(budgetMonthId);
     }
 }

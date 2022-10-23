@@ -251,10 +251,6 @@ public class MainController extends AnchorPane{
 
     private CategoryDao categoryDao;
 
-    private SubCategoryDao subCategoryDao;
-
-    private TransactionDao transactionDao;
-
     public PieChartController pieChartController;
 
     private CategoryListController categoryListController;
@@ -290,9 +286,7 @@ public class MainController extends AnchorPane{
 
     private void loadDaos() {
         budgetMonthDao = new BudgetMonthDao();
-        transactionDao = new TransactionDao();
         categoryDao = new CategoryDao();
-        subCategoryDao = new SubCategoryDao();
     }
 
     private void loadControllers() {
@@ -311,36 +305,27 @@ public class MainController extends AnchorPane{
             loadedBudgetMonths = dbBudgetMonths.get();
             loadedBudgetMonths.forEach(budgetMonth -> budgetMonth
                     .setCategoryItems(
-                            loadCategoryItems(budgetMonth.getId()))
+                            categoryListController.loadCategoryItems(budgetMonth.getId()))
                     .forEach(categoryItem -> categoryItem
                             .setSubCategories(
-                                    loadSubCategoryItems(
+                                    categoryListController.loadSubCategoryItems(
                                             categoryItem.getId()))));
             loadedBudgetMonths.forEach(budgetMonth -> budgetMonth
                     .setTransactions(
-                            loadTransactions(budgetMonth.getId())
+                            transactionController.loadTransactions(budgetMonth.getId())
                     ));
 
         } else {
             loadedBudgetMonths = budgetMonthDao
-                    .initNewBudgetMonths(createDefaultBudgetMonths(), user.getUserID());
+                    .initNewBudgetMonths(createDefaultBudgetMonths(), user.getId());
             loadedBudgetMonths.forEach(budgetMonth -> budgetMonth
                     .setCategoryItems(categoryDao.initCategoryItems(createDefaultCategoryItems(), budgetMonth.getId())));
         }
         return loadedBudgetMonths;
     }
 
-    private List<CategoryItem> loadCategoryItems(String budgetMonthId) {
-        return categoryDao.getAllCategoriesByBudgetMonth(budgetMonthId);
-    }
 
-    private List<CategorySubItem> loadSubCategoryItems(String categoryId) {
-        return subCategoryDao.getAllSubCategoriesByCategory(categoryId);
-    }
 
-    private List<Transaction> loadTransactions(String budgetMonthId) {
-        return transactionDao.getAllTransactionsByBudgetMonth(budgetMonthId);
-    }
 
     private int selectBudgetMonthIndex() {
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);

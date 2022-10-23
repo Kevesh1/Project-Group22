@@ -278,4 +278,12 @@ public class CategoryListController {
         mainController.selectedBudgetMonth.updateCategoryListItem(categoryController.categoryItem);
         updateMainView();
     }
+
+    public List<CategoryItem> loadCategoryItems(String budgetMonthId) {
+        return categoryDao.getAllCategoriesByBudgetMonth(budgetMonthId);
+    }
+
+    public List<CategorySubItem> loadSubCategoryItems(String categoryId) {
+        return subCategoryDao.getAllSubCategoriesByCategory(categoryId);
+    }
 }
