@@ -1,5 +1,6 @@
 package budgetapp.controller.login;
 
+import budgetapp.controller.WindowController;
 import dataaccess.mongodb.dao.account.AccountDao;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
@@ -26,10 +27,13 @@ public class RegistrationController extends BorderPane {
     @FXML
     private Label wrongPassword;
 
+    private final WindowController windowController;
+
     private final AccountDao accountDao;
     private final UserDao userDao;
 
-    public RegistrationController() {
+    public RegistrationController(WindowController windowController) {
+        this.windowController = windowController;
         accountDao = new AccountDao();
         userDao = new UserDao();
 
@@ -64,8 +68,9 @@ public class RegistrationController extends BorderPane {
     //TODO Change
     @FXML
     public void toLogin() {
-        AccountLoginController accountLoginController = new AccountLoginController();
-        this.getScene().setRoot(accountLoginController);
+        windowController.showLoginStage();
+        /*AccountLoginController accountLoginController = new AccountLoginController();
+        this.getScene().setRoot(accountLoginController);*/
     }
 
 }

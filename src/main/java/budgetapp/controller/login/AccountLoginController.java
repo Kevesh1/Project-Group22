@@ -1,5 +1,6 @@
 package budgetapp.controller.login;
 
+import budgetapp.controller.WindowController;
 import dataaccess.mongodb.dao.account.AccountDao;
 import budgetapp.model.account.Account;
 import javafx.event.ActionEvent;
@@ -36,8 +37,10 @@ public class AccountLoginController extends BorderPane {
     private final AccountDao accountDao;
     private Optional<Account> account;
 
+    private WindowController windowController;
 
-    public AccountLoginController() {
+    public AccountLoginController(WindowController windowController) {
+        this.windowController = windowController;
         accountDao = new AccountDao();
         loadCurrentView();
     }
@@ -55,14 +58,14 @@ public class AccountLoginController extends BorderPane {
         }
     }
 
-    public void showRegistration() {
+    /*public void showRegistration() {
         RegistrationController registrationController = new RegistrationController();
         this.getScene().setRoot(registrationController);
-    }
+    }*/
 
     @FXML
     public void toRegistration() {
-        showRegistration();
+        windowController.showRegistrationScene();
     }
 
     @FXML

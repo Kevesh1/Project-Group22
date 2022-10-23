@@ -96,10 +96,10 @@ public class FrontPageController extends AnchorPane {
         this.getScene().setRoot(userCreateViewController);
     }
 
-    public void createAccountLoginController() {
+    /*public void createAccountLoginController() {
         AccountLoginController accountLoginController = new AccountLoginController();
         this.getScene().setRoot(accountLoginController);
-    }
+    }*/
 
 
     public void updateUserCards(List<User> userCards) {
@@ -119,7 +119,7 @@ public class FrontPageController extends AnchorPane {
 
     @FXML
     public void logoutAction(ActionEvent event) throws IOException {
-        createAccountLoginController();
+        //createAccountLoginController();
         //currently unable to re-login
     }
 

@@ -30,7 +30,7 @@ public class AccountPaneController extends BorderPane {
         }
 
 
-        registrationController = new RegistrationController();
+        //registrationController = new RegistrationController();
 
     }
 

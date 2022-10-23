@@ -25,10 +25,10 @@ public class App extends Application {
         MongoDBService.createDataBase("budgetapp");
 
         WindowController windowController = new WindowController();
-        Optional<Account> account = windowController.ShowLoginStage();
+        Optional<Account> account = windowController.showLoginStage();
         if (account.isPresent()) {
             primaryStage.setScene(new Scene(new FrontPageController(account.get())));
-            primaryStage.setMaximized(true);//primaryStage.show();
+            primaryStage.setMaximized(true);
             primaryStage.show();
         }
     }
