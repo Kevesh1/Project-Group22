@@ -1,7 +1,5 @@
-package budgetapp.controller.users;
+package budgetapp.controller.usermodify;
 
-import budgetapp.controller.login.FrontPageController;
-import budgetapp.controller.users.SelectProfilePictureController;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.ProfileIcon;
 import javafx.event.ActionEvent;

@@ -18,8 +18,6 @@ import java.util.Optional;
 
 public class App extends Application {
 
-    private static Stage stg;
-
     @Override
     public void start(Stage primaryStage) {
         MongoDBService.createDataBase("budgetapp");
@@ -42,12 +40,6 @@ public class App extends Application {
         DependencyInjection.addInjectionMethod(
                 FrontPageController.class, controllerFactory
         );
-    }
-
-    public void changeScene(String fxml) throws IOException{
-        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-        stg.getScene().setRoot(pane);
-
     }
 
     public static void main(String[] args) {

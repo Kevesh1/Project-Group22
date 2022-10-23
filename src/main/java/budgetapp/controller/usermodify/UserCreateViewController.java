@@ -1,4 +1,4 @@
-package budgetapp.controller.users;
+package budgetapp.controller.usermodify;
 
 import budgetapp.controller.login.FrontPageController;
 import budgetapp.model.account.Account;

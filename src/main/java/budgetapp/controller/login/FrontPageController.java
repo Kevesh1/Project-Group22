@@ -2,9 +2,9 @@ package budgetapp.controller.login;
 
 import budgetapp.controller.MainController;
 import budgetapp.controller.WindowController;
-import budgetapp.controller.users.NewUserCardController;
-import budgetapp.controller.users.UserCreateViewController;
-import budgetapp.controller.users.UserCardController;
+import budgetapp.controller.usermodify.NewUserCardController;
+import budgetapp.controller.usermodify.UserCreateViewController;
+import budgetapp.controller.usermodify.UserCardController;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
 import dataaccess.mongodb.dao.account.UserDao;

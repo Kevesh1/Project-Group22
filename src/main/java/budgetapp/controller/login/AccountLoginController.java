@@ -58,11 +58,6 @@ public class AccountLoginController extends BorderPane {
         }
     }
 
-    /*public void showRegistration() {
-        RegistrationController registrationController = new RegistrationController();
-        this.getScene().setRoot(registrationController);
-    }*/
-
     @FXML
     public void toRegistration() {
         windowController.showRegistrationScene();

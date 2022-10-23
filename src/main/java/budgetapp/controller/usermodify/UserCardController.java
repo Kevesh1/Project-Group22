@@ -1,4 +1,4 @@
-package budgetapp.controller.users;
+package budgetapp.controller.usermodify;
 
 import budgetapp.controller.login.FrontPageController;
 import budgetapp.model.account.User;
@@ -11,7 +11,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class UserCardController extends VBox {
 
