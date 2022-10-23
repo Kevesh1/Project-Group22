@@ -3,7 +3,7 @@ package budgetapp.model.account;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileIcon implements ILocked{
+public class ProfileIcon{
     private String ProfilePicture;
     private String profileGif;
 
@@ -55,13 +55,5 @@ public class ProfileIcon implements ILocked{
 
     }
 
-    @Override
-    public void lock() {
 
-    }
-
-    @Override
-    public void unlock() {
-
-    }
 }

@@ -15,7 +15,7 @@ public class UserTest {
     @BeforeEach
     void setUp(){
         this.user = new User("Jacob Westerberg", "OMG2012again", "mario");
-        this.user.setUserID("1");
+        this.user.setId("1");
         this.user.setFirstName("Bengt");
         this.user.setLastName("Ingvar");
         this.user.setElderlyAdjusted(false);
@@ -49,8 +49,8 @@ public class UserTest {
     }
 
     @Test
-    void getUserID(){
-        assertEquals("1", user.getUserID());
+    void getID(){
+        assertEquals("1", user.getId());
     }
 
     @Test
@@ -88,9 +88,9 @@ public class UserTest {
     }
 
     @Test
-    void setUserID(){
-        user.setUserID("2");
-        assertEquals("2", user.getUserID());
+    void setID(){
+        user.setId("2");
+        assertEquals("2", user.getId());
     }
 
     @Test
@@ -115,6 +115,23 @@ public class UserTest {
     void setElderlyAdjustedTrue(){
         user.setElderlyAdjusted(true);
         assertTrue(user.isElderlyAdjusted());
+    }
+
+    @Test
+    void userStringToStringTest(){
+        assertEquals("User{username='Jacob Westerberg', firstName='Bengt', lastName='Ingvar', profilePicture='mario', password='OMG2012again', id='1', familyShare=false, elderlyAdjusted=false}", user.toString());
+    }
+
+    @Test
+    void setUsernameTest(){
+        user.setUsername("Jake Bake");
+        assertEquals("Jake Bake", user.getUsername());
+    }
+
+    @Test
+    void createObjectUser(){
+        User user = new User();
+        assertEquals("User{username='null', firstName='null', lastName='null', profilePicture='null', password='null', id='null', familyShare=false, elderlyAdjusted=false}", user.toString());
     }
 
 }

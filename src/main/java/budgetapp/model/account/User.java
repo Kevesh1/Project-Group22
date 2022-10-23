@@ -1,8 +1,5 @@
 package budgetapp.model.account;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class User{
 
     private String id;
@@ -21,9 +18,7 @@ public class User{
 
     private boolean elderlyAdjusted;
     private String userID;
-    private boolean enablePassword;
 
-    //expand
     public User(String username, String password, String profilePicture) {
         this.username = username;
         this.password = password;
@@ -83,6 +78,7 @@ public class User{
     }
 
 
+    /*
     public String getUserID() {
         return userID;
     }
@@ -90,6 +86,8 @@ public class User{
     public void setUserID(String userID) {
         this.userID = userID;
     }
+
+     */
 
     public String getId() {
         return this.id;
@@ -121,7 +119,6 @@ public class User{
                 ", id='" + id + '\'' +
                 ", familyShare=" + familyShare +
                 ", elderlyAdjusted=" + elderlyAdjusted +
-                ", enablePassword=" + enablePassword +
                 '}';
     }
 }

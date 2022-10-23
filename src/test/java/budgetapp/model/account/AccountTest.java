@@ -44,4 +44,15 @@ public class AccountTest {
     
      */
 
+    @Test
+    void accountToStringTest(){
+        assertEquals("Account{username='Jacob Westerberg', password='BraMedGlass17', users=null, id='3'}", account.toString());
+    }
+
+    @Test
+    void createAccountObject(){
+        Account account = new Account();
+        assertEquals("Account{username='null', password='null', users=null, id='null'}", account.toString());
+    }
+
 }
