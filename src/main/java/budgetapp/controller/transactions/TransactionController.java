@@ -26,24 +26,22 @@ public class TransactionController
         incomeDao = new IncomeDao();
     }
 
+    private Expense createExpense(CategorySubItem subCategory) {
+        Double cost = Double.valueOf(mainController.newExpenseAmount.getText());
+        String note = mainController.newExpenseNote.getText();
+        LocalDate tempDate = mainController.newExpenseDate.getValue();
+        Date date = Date.valueOf(tempDate);
+        Category category = Category.valueOf(mainController.newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getName());
+        return new Expense(cost, note, date, category, subCategory);
+    }
+
     public void addExpense() {
         try {
-            Double cost = Double.valueOf(mainController.newExpenseAmount.getText());
-            String note = mainController.newExpenseNote.getText();
-            LocalDate tempDate = mainController.newExpenseDate.getValue();
-            Date date = Date.valueOf(tempDate);
-            Category category = Category.valueOf(mainController.newExpenseCategoryComboBox.getSelectionModel().getSelectedItem().getName());
-
-
             CategorySubItem subCategory = mainController.newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
-            Expense expense = new Expense(cost, note, date, category, subCategory);
-
+            Expense expense = createExpense(subCategory);
             mainController.selectedBudgetMonth.addTransaction(expenseDao.addExpense(expense, mainController.selectedBudgetMonth.getId()));
             subCategory.addExpense(expense);
-
-
-            CategorySubItem subItem = mainController.newExpenseSubCategoryComboBox.getSelectionModel().getSelectedItem();
-            subItem.incrementBudgetSpent(Integer.parseInt(mainController.newExpenseAmount.getText()));
+            //subItem.addExpense(Integer.parseInt(mainController.newExpenseAmount.getText()));
 
         }catch (NullPointerException | IllegalArgumentException exception){
             //System.out.println("Not a valid number or/and chose a subcategory");

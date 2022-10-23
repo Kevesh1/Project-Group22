@@ -16,6 +16,8 @@ public class ExpenseController extends AnchorPane {
     Label latestPurchaseDate;
     @FXML
     Label latestPurchaseCost;
+    @FXML
+    Label categoryLabel;
 
     private Expense expense;
     private TransactionController transactionController;
@@ -41,9 +43,11 @@ public class ExpenseController extends AnchorPane {
     }
 
     private void setLabels(){
+
         latestPurchaseNotation.setText(expense.getAnnotation());
         latestPurchaseDate.setText(String.valueOf(expense.getDate()));
         latestPurchaseCost.setText(String.valueOf(expense.getSum()));
+        categoryLabel.setText(expense.getCategory().name());
     }
 
     @FXML

@@ -77,11 +77,12 @@ public class CategoryItem extends AbstractCategoryItem{
 
     }
 
-    public void calculateBudget() {
+    public double calculateBudget() {
         int budget = 0;
         for (CategorySubItem subCategory : subCategories) {
             budget += subCategory.getBudget();
         }
         setBudget(budget);
+        return budget;
     }
 }

@@ -243,11 +243,24 @@ public class CategoryListController {
     };
 
 
-    public void addNewSubCategory(CategorySubItem categorySubItem) {
-        categoryController.categoryItem.addSubCategory(subCategoryDao
-                .addSubCategory(categorySubItem, categoryController.categoryItem.getId()));
-        mainController.selectedBudgetMonth.updateCategoryListItem(categoryController.getCategoryItem());
-        updateMainView();
+    private CategorySubItem createCategorySubItem() {
+        String name = mainController.newSubCategoryName.getText();
+        double budget = Double.parseDouble(mainController.newSubCategoryBudget.getText());
+        return new CategorySubItem(budget, name);
+    }
+
+    public void addNewSubCategory() {
+        try {
+            CategorySubItem categorySubItem = createCategorySubItem();
+            CategoryItem categoryItem = categoryController.categoryItem;
+            categoryItem.addSubCategory(subCategoryDao
+                    .addSubCategory(categorySubItem, categoryItem.getId()));
+
+            mainController.selectedBudgetMonth.updateCategoryListItem(categoryItem);
+            updateMainView();
+        } catch (NumberFormatException exception){
+            System.out.println("Not a valid number");
+        }
     }
 
     void updateMainView() {

@@ -147,6 +147,9 @@ public class MainController extends AnchorPane{
     public
     ComboBox<CategorySubItem> newExpenseSubCategoryComboBox;
 
+    @FXML
+    Label usernameLabel;
+
     //</editor-fold>
 
     @FXML
@@ -208,14 +211,8 @@ public class MainController extends AnchorPane{
 
     @FXML
     private void addNewSubCategory() {
-        try {
-            String name = newSubCategoryName.getText();
-            double budget = Double.parseDouble(newSubCategoryBudget.getText());
-            CategorySubItem categorySubItem = new CategorySubItem(budget, name);
-            categoryListController.addNewSubCategory(categorySubItem);
-        } catch (NumberFormatException exception){
-            System.out.println("Not a valid number");
-        }
+        System.out.println("ADDNEWSUB");
+        categoryListController.addNewSubCategory();
     }
 
     /*@FXML
@@ -263,12 +260,14 @@ public class MainController extends AnchorPane{
 
     public MainController(User user) {
         this.user = user;
+        System.out.println(user.getUsername());
         this.budgetMonths = FXCollections.observableArrayList();
 
         loadDaos();
 
         budgetMonths.addAll(loadBudgetMonths());
         selectedBudgetMonth = budgetMonths.get(selectBudgetMonthIndex());
+        selectedBudgetMonth.calculateBudget();
         loadControllers();
 
 
@@ -373,6 +372,7 @@ public class MainController extends AnchorPane{
 
     @FXML
     public void initialize() {
+        usernameLabel.setText(user.getUsername());
         initializeYearMonthComboBox();
         createTransactionController.initialize();
         initializeCharts();
@@ -399,19 +399,18 @@ public class MainController extends AnchorPane{
         selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
     }
 
+    public void updateBudgetLabels() {
+        budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
+        budgetSpentLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetSpent()));
+        budgetRemainingLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetRemaining()));
+    }
+
     public void updateMainView() {
-        System.out.println("UpdateMainView");
         updateBudgetLabels();
         pieChartController.updatePieChart(selectedBudgetMonth.getCategoryItems());
         stackedBarChartController.updateBarChart();
         transactionController.updateTransactions();
         categoryListController.updateCategoryList();
-    }
-
-    public void updateBudgetLabels() {
-        budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
-        budgetSpentLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetSpent()));
-        budgetRemainingLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetRemaining()));
     }
 
 
@@ -448,11 +447,7 @@ public class MainController extends AnchorPane{
     ChangeListener<BudgetMonth> selectedBudgetMonthChanged = (obs, wasFocused, isFocused) -> {
         if (wasFocused != null) {
             selectedBudgetMonth = isFocused;
-            pieChartController.updatePieChart(selectedBudgetMonth.getCategoryItems());
-            stackedBarChartController.updateBarChart();
-            transactionController.updateTransactions();
-            categoryListController.updateCategoryList();
-            System.out.println("selectedchanged");
+            selectedBudgetMonth.calculateBudget();
             updateMainView();
         }
 

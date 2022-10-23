@@ -82,7 +82,7 @@ public final class BudgetMonth {
 
 
     public void setBudget(double budget) {
-        this.budget += budget;
+        this.budget = budget;
     }
 
     public void addBudget(Income income){
@@ -115,12 +115,14 @@ public final class BudgetMonth {
     }
 
     private void decrementBudget(double amount) {
-        setBudgetSpent(budget - amount);
+        setBudget(budget - amount);
     }
 
     public void addCategoryItem(CategoryItem categoryItem) {
         incrementBudget(categoryItem.getBudget());
         categoryItems.add(categoryItem);
+        System.out.println("Budget");
+        System.out.println(getBudget());
     }
 
     public void removeCategoryItem(CategoryItem categoryItem) {
@@ -177,7 +179,7 @@ public final class BudgetMonth {
    
    private double getIncomeBudget() {
         double amount = 0;
-       for (Income income : getIncome()) {
+        for (Income income : getIncome()) {
            amount += income.getSum();
        }
        return amount;
@@ -235,8 +237,8 @@ public final class BudgetMonth {
     public void calculateBudget() {
         budget = 0;
         for (CategoryItem categoryItem : categoryItems) {
-            categoryItem.calculateBudget();
-            budget += categoryItem.getBudget();
+            budget += categoryItem.calculateBudget();
+            //budget += categoryItem.getBudget();
         }
         setBudget(budget);
     }
@@ -244,7 +246,9 @@ public final class BudgetMonth {
     public void updateCategoryListItem(CategoryItem categoryItem) {
         for (int i = 0; i < getCategoryItems().size(); i++) {
             if(getCategoryItems().get(i).getCategory().equals(categoryItem.getCategory())) {
+                System.out.println("UPDATED");
                 getCategoryItems().set(i, categoryItem);
+                calculateBudget();
                 break;
             }
         }
