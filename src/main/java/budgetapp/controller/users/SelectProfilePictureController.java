@@ -42,7 +42,7 @@ public class SelectProfilePictureController extends AnchorPane {
 
 
     public void updatePictureCards(List<ProfileIcon> profileCards) {
-        profileSelectionContainer.getChildren().clear(); //borde rensa
+        profileSelectionContainer.getChildren().clear();
         for (ProfileIcon profileIcon : profileCards) {
             ProfilePictureCardController profilePictureCardController = new ProfilePictureCardController(this, profileIcon, account);
             profileSelectionContainer.getChildren().add(profilePictureCardController);

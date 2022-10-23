@@ -111,7 +111,7 @@ public class FrontPageController extends AnchorPane {
 
 
     @FXML
-    public void manageUserAccountsAction(ActionEvent event){
+    public void manageUserAccountsAction(ActionEvent event) {
     }
 
     @FXML
