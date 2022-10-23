@@ -40,7 +40,6 @@ import java.util.Objects;
         return budget;
     }
     public void setBudget(double budget) {
-
         this.budget = budget;
     }
 

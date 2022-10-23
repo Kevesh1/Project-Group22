@@ -65,6 +65,7 @@ public class SubCategoryController extends AnchorPane {
     @FXML
     private void removeSubCategory(){
         categoryListController.removeSubCategory(subCategory);
+
         /*int i = 0;
         if (selectedBudgetMonth.getTransactions() != null) {
             for (Transaction transaction : mainController.selectedBudgetMonth.getTransactions()){
