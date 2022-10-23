@@ -51,20 +51,13 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="addNewCategoryPane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="confirmDeletePane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane layoutX="869.0" layoutY="416.0" prefHeight="230.0" prefWidth="250.0" style="-fx-background-color: #36393e; -fx-background-radius: 7;" stylesheets="@../css/Styleheet.css">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
+            <AnchorPane layoutX="351.0" layoutY="222.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: white;">
                <children>
-                  <Button fx:id="updateCategoryButton" layoutX="198.0" layoutY="186.0" mnemonicParsing="false" onAction="#updateCategory" text="Update" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="5.5" />
-                  <Label fx:id="newCategoryLabel" layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Category" />
-                  <Label layoutX="63.0" layoutY="14.0" text="Add Category" />
-                  <Button fx:id="addNewCategoryButton" layoutX="212.0" layoutY="131.0" mnemonicParsing="false" onAction="#addNewCategory" text="Add" AnchorPane.rightAnchor="5.5" />
-                  <Button layoutX="5.5" layoutY="188.0" mnemonicParsing="false" text="Cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.5" />
-                  <Button layoutX="218.0" layoutY="11.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="x" AnchorPane.rightAnchor="5.5" />
-                  <ComboBox fx:id="categoryComboBox" layoutX="26.0" layoutY="68.0" prefWidth="150.0" />
+                  <Label layoutX="15.0" layoutY="14.0" text="Are you sure you want to delete" />
+                  <Button fx:id="confirmButton" layoutX="43.0" layoutY="40.0" mnemonicParsing="false" onAction="#removeCategory" text="Yes" />
+                  <Button layoutX="100.0" layoutY="40.0" mnemonicParsing="false" onAction="#showMainView" text="Cancel" />
                </children>
             </AnchorPane>
          </children>
@@ -138,7 +131,11 @@
                                     </DatePicker>
                                     <TextArea fx:id="newExpenseNote" layoutX="37.0" layoutY="290.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
                                     <Button layoutX="419.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="X" />
-                                    <ComboBox fx:id="newExpenseCategoryComboBox" layoutX="38.0" layoutY="53.0" onHidden="#loadSubCategoryComboBox" prefWidth="150.0" stylesheets="@../css/Styleheet.css" />
+                                    <ComboBox fx:id="newExpenseCategoryComboBox" layoutX="38.0" layoutY="53.0" onHidden="#loadSubCategoryComboBox" prefWidth="150.0">
+                                       <stylesheets>
+                                          <URL value="@../css/Styleheet.css" />
+                                          <URL value="@../css/comboBox.css" />
+                                       </stylesheets></ComboBox>
                                     <Button layoutX="387.0" layoutY="341.0" mnemonicParsing="false" onAction="#addExpense" text="Done" />
                                     <Label layoutX="215.0" layoutY="21.0" stylesheets="@../css/Styleheet.css" text="Subcategory">
                                        <font>
@@ -149,7 +146,11 @@
                                           <String fx:value="standardFontSize" />
                                        </styleClass>
                                     </Label>
-                                    <ComboBox fx:id="newExpenseSubCategoryComboBox" layoutX="214.0" layoutY="52.0" onShown="#loadSubCategoryComboBox" prefWidth="150.0" stylesheets="@../css/Styleheet.css" />
+                                    <ComboBox fx:id="newExpenseSubCategoryComboBox" layoutX="214.0" layoutY="52.0" onShown="#loadSubCategoryComboBox" prefWidth="150.0">
+                                       <stylesheets>
+                                          <URL value="@../css/Styleheet.css" />
+                                          <URL value="@../css/comboBox.css" />
+                                       </stylesheets></ComboBox>
                                  </children>
                                  <styleClass>
                                     <String fx:value="darkModeThemeDarker" />
@@ -223,7 +224,7 @@
                               </DatePicker>
                               <TextArea fx:id="newIncomeNote" layoutX="37.0" layoutY="290.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
                               <Button layoutX="419.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="X" />
-                              <ComboBox fx:id="newIncomeCategoryComboBox" disable="true" layoutX="37.0" layoutY="39.0" prefWidth="150.0" />
+                              <ComboBox fx:id="newIncomeCategoryComboBox" disable="true" layoutX="37.0" layoutY="39.0" prefWidth="150.0" stylesheets="@../css/comboBox.css" />
                               <Button layoutX="387.0" layoutY="341.0" mnemonicParsing="false" onAction="#addIncome" text="Done" />
                            </children>
                            <styleClass>
@@ -240,17 +241,6 @@
             <URL value="@../css/Styleheet.css" />
             <URL value="@../css/modalTab.css" />
          </stylesheets>
-      </AnchorPane>
-      <AnchorPane fx:id="confirmDeletePane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <AnchorPane layoutX="351.0" layoutY="222.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: white;">
-               <children>
-                  <Label layoutX="15.0" layoutY="14.0" text="Are you sure you want to delete" />
-                  <Button fx:id="confirmButton" layoutX="43.0" layoutY="40.0" mnemonicParsing="false" onAction="#removeCategory" text="Yes" />
-                  <Button layoutX="100.0" layoutY="40.0" mnemonicParsing="false" onAction="#showMainView" text="Cancel" />
-               </children>
-            </AnchorPane>
-         </children>
       </AnchorPane>
       <AnchorPane fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" styleClass="mainBackground" stylesheets="@../css/mainView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -274,7 +264,11 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <ComboBox fx:id="yearMonthComboBox" prefHeight="31.0" prefWidth="188.0" stylesheets="@../css/Styleheet.css" />
+                  <ComboBox fx:id="yearMonthComboBox" prefHeight="31.0" prefWidth="188.0">
+                     <stylesheets>
+                        <URL value="@../css/Styleheet.css" />
+                        <URL value="@../css/comboBox.css" />
+                     </stylesheets></ComboBox>
                   <Button fx:id="nextMonthButton" mnemonicParsing="false" onAction="#onClickNextMonth">
                      <graphic>
                         <ImageView pickOnBounds="true" preserveRatio="true">
@@ -380,6 +374,24 @@
                   </Label>
                </children>
             </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="addNewCategoryPane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="869.0" layoutY="416.0" prefHeight="230.0" prefWidth="250.0" style="-fx-background-color: #36393e; -fx-background-radius: 7;" stylesheets="@../css/Styleheet.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <Button fx:id="updateCategoryButton" layoutX="198.0" layoutY="186.0" mnemonicParsing="false" onAction="#updateCategory" text="Update" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="5.5" />
+                  <Label fx:id="newCategoryLabel" layoutX="26.0" layoutY="42.0" prefHeight="26.0" prefWidth="80.0" text="Category" />
+                  <Label layoutX="63.0" layoutY="14.0" text="Add Category" />
+                  <Button fx:id="addNewCategoryButton" layoutX="212.0" layoutY="131.0" mnemonicParsing="false" onAction="#addNewCategory" text="Add" AnchorPane.rightAnchor="5.5" />
+                  <Button layoutX="5.5" layoutY="188.0" mnemonicParsing="false" text="Cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.5" />
+                  <Button layoutX="218.0" layoutY="11.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="x" AnchorPane.rightAnchor="5.5" />
+                  <ComboBox fx:id="categoryComboBox" layoutX="26.0" layoutY="68.0" prefWidth="150.0" stylesheets="@../css/comboBox.css" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
