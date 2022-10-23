@@ -98,11 +98,6 @@ public class FrontPageController extends AnchorPane {
         this.getScene().setRoot(userCreateViewController);
     }
 
-    /*public void createAccountLoginController() {
-        AccountLoginController accountLoginController = new AccountLoginController();
-        this.getScene().setRoot(accountLoginController);
-    }*/
-
 
     public void updateUserCards(List<User> userCards) {
         userCardContainer.getChildren().clear();
@@ -116,17 +111,15 @@ public class FrontPageController extends AnchorPane {
 
 
     @FXML
-    public void manageUserAccountsAction(ActionEvent event) throws IOException{
+    public void manageUserAccountsAction(ActionEvent event){
     }
 
     @FXML
-    public void logoutAction(ActionEvent event) throws IOException {
+    public void logoutAction(ActionEvent event){
         Stage stage = (Stage) this.getScene().getWindow();
         stage.close();
         WindowController windowController = new WindowController();
         windowController.showLoginStage();
-        //createAccountLoginController();
-        //currently unable to re-login
     }
 
 
