@@ -4,6 +4,10 @@ import java.util.List;
 
 public class Account {
 
+    /**
+     * Account creates and saves all the information about the account
+     */
+
     private String username;
 
     private String password;
@@ -12,11 +16,19 @@ public class Account {
 
     private String id;
 
+    /**
+     * Account constructor
+     * @param username
+     * @param password
+     */
     public Account(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
+    /**
+     * Empty contructor for database to load in accounts
+     */
     public Account() {
 
     }

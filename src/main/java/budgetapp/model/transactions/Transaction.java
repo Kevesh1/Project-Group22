@@ -16,6 +16,12 @@ public class Transaction {
     private Date date;
     private YearMonth yearMonth;
 
+    /**
+     * Constructor is called when child class is initialized called
+     * @param sum
+     * @param annotation
+     * @param date
+     */
     public Transaction(double sum, String annotation, Date date) {
         this.sum = sum;
         this.annotation = annotation;

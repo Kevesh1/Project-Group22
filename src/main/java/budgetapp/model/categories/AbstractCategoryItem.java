@@ -7,18 +7,29 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.util.Objects;
  public class AbstractCategoryItem {
+     /**
+      * Parent class for different categories.
+      */
 
     private String id;
     private String name;
     private double budget;
     private double budgetSpent;
 
-
+     /**
+      * Constructor gets called when a child class is initialized.
+      * @param name
+      * @param budget
+      */
     public AbstractCategoryItem(String name, double budget) {
         this.name = name;
         this.budget = budget;
         this.budgetSpent = 0;
     }
+
+     /**
+      * Empty constructor for database maping
+      */
 
     public AbstractCategoryItem() {
 

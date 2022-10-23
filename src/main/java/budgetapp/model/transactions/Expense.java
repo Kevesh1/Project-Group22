@@ -8,12 +8,22 @@ import java.time.YearMonth;
 
 public class Expense extends Transaction {
 
-
+    /**
+     * Child class to Transaction
+     */
 
     private Category category;
 
     private CategorySubItem subCategory;
 
+    /**
+     * Constructor for Expense, calls on super.
+     * @param sum
+     * @param annotation
+     * @param date
+     * @param category
+     * @param subCategory
+     */
     public Expense(Double sum, String annotation, Date date, Category category, CategorySubItem subCategory) {
         super(sum, annotation, date);
         this.category = category;

@@ -4,11 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProfileIcon{
+    /**
+     * ProfileIcon class
+     */
     private String ProfilePicture;
     private String profileGif;
 
     public static final List<ProfileIcon> allProfileIcons = new ArrayList<>();
 
+    /**
+     * ProfileIcon constructor with every new profileIcon object it is automatically placed in the list allProfileIcons.
+     */
     public ProfileIcon(){
         allProfileIcons.add(this);
     }

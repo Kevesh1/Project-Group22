@@ -17,7 +17,7 @@ public class ExpenseTest {
 
     @BeforeEach
     void setUp() {
-        expenseT = new Expense(10.0, "L", new Date(2022-1-1), null, null);
+        expenseT = new Expense(10.0, "L", new Date(2022-01-01), null, null);
     }
 
 

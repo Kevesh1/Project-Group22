@@ -147,4 +147,23 @@ public class CategoryItemTest {
         assertEquals(-100,categoryItem.getBudgetSpent());
 
     }
+
+    @Test
+    void getId(){
+        categoryItem.setId("123");
+        assertEquals("123",categoryItem.getId());
+    }
+
+    @Test
+    void setId(){
+        categoryItem.setId("123");
+        assertEquals("123", categoryItem.getId());
+    }
+
+    @Test
+    void setSubCategories(){
+        categoryItem.addSubCategory(new CategorySubItem(200, "test"));
+        categoryItem.setSubCategories(categoryItem.getSubCategories());
+        assertEquals(200,categoryItem.getBudget());
+    }
 }

@@ -5,12 +5,18 @@ import java.util.regex.Pattern;
 
 
 public class UserManager {
+    /**
+     * UserManager class. Manages the creation of new users and a password validation
+     */
 
     private final String passwordPattern = "^(?=.*[0-9])(?=.*[a-zåäö])(?=.*[A-ZÅÄÖ]).*$";
     private final String altPasswordPattern = "^(?=.*[0-9])(?=.*[a-zåäö])(?=.*[A-ZÅÄÖ])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).*$";
     private final Pattern pattern = Pattern.compile(passwordPattern);
     private final Pattern altPattern = Pattern.compile(altPasswordPattern);
 
+    /**
+     * UserManager constructor.
+     */
     public UserManager() {
     }
 

@@ -9,12 +9,18 @@ import java.util.Objects;
 
 
 public class CategoryItem extends AbstractCategoryItem{
+    /**
+     * Child class to AbstractCategoryItem
+     */
 
     private List<CategorySubItem> subCategories = new ArrayList<>();
 
     private Category category;
 
-
+    /**
+     * Constructor that calls on the super
+     * @param category
+     */
     public CategoryItem(Category category) {
         super(category.toString(), 0);
         this.category = category;

@@ -19,12 +19,22 @@ public class User{
     private boolean elderlyAdjusted;
     private String userID;
 
+    /**
+     * User constructor. Decides which deafault values that is needed when creating a new user object.
+     * @param username
+     * @param password
+     * @param profilePicture
+     */
+
     public User(String username, String password, String profilePicture) {
         this.username = username;
         this.password = password;
         this.profilePicture = profilePicture;
     }
 
+    /**
+     * Empty User constructor for database maping
+     */
     public User() {
 
     }

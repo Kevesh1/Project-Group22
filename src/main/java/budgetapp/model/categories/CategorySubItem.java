@@ -6,9 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategorySubItem extends AbstractCategoryItem{
+    /**
+     * Child class to AbstractCategoryItem
+     */
 
     private List<Expense> expenses = new ArrayList<>();
 
+    /**
+     * Constructor that calls on super.
+     * @param budget
+     * @param categorySubName
+     */
     public CategorySubItem(double budget, String categorySubName) {
         super(categorySubName, budget);
     }

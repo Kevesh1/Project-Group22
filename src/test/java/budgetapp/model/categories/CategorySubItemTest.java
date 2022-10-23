@@ -14,7 +14,7 @@ public class CategorySubItemTest {
     private CategorySubItem subCategory;
 
 
-    /*
+
     @BeforeEach
     void setUp() {
         subCategory = new CategorySubItem(100,"Test");
@@ -22,19 +22,19 @@ public class CategorySubItemTest {
 
     @Test
     void addExpense() {
-        Expense expense = new Expense(20.0,"Test","01-01-01",Category.Food,subCategory);
+        Expense expense = new Expense(20.0,"Test",null,Category.Food,subCategory);
         subCategory.addExpense(expense);
         assertEquals(expense, subCategory.getExpenses().get(0));
     }
 
     @Test
     void getExpenses(){
-        Expense expense = new Expense(20.0,"Test","01-01-01",Category.Food,subCategory);
+        Expense expense = new Expense(20.0,"Test",null,Category.Food,subCategory);
         subCategory.addExpense(expense);
         assertEquals(expense, subCategory.getExpenses().get(0));
     }
 
 
-     */
+
 
 }
