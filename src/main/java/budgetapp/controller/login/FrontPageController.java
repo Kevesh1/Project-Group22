@@ -1,6 +1,7 @@
 package budgetapp.controller.login;
 
 import budgetapp.controller.MainController;
+import budgetapp.controller.WindowController;
 import budgetapp.controller.users.NewUserCardController;
 import budgetapp.controller.users.UserCreateViewController;
 import budgetapp.controller.users.UserCardController;
@@ -14,6 +15,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
@@ -119,6 +121,10 @@ public class FrontPageController extends AnchorPane {
 
     @FXML
     public void logoutAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) this.getScene().getWindow();
+        stage.close();
+        WindowController windowController = new WindowController();
+        windowController.showLoginStage();
         //createAccountLoginController();
         //currently unable to re-login
     }
