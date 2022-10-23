@@ -10,8 +10,8 @@
 
 <fx:root fx:id="CategoryPane" onMouseClicked="#categorySelected" prefHeight="98.0" prefWidth="429.0" styleClass="categoryBoxx" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="categoryName" layoutX="70.0" layoutY="31.0" styleClass="title" stylesheets="@../css/labels.css" text="Transport" />
-      <Label fx:id="categoryBudget" layoutX="310.0" layoutY="35.0" styleClass="amount" stylesheets="@../css/labels.css" text="5000 kr" />
+      <Label fx:id="categoryName" layoutX="70.0" layoutY="31.0" styleClass="title" stylesheets="@../../css/labels.css" text="Transport" />
+      <Label fx:id="categoryBudget" layoutX="310.0" layoutY="35.0" styleClass="amount" stylesheets="@../../css/labels.css" text="5000 kr" />
       <ImageView fx:id="categoryImage" fitHeight="43.0" fitWidth="54.0" layoutX="11.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: white;">
          <effect>
             <Blend mode="BLUE" />
@@ -22,7 +22,7 @@
       <Button fx:id="addSubCategoryButton" layoutX="374.0" layoutY="56.0" mnemonicParsing="false" onAction="#showAddSubCategoryWindow" text="+" />
    </children>
    <stylesheets>
-      <URL value="@../css/Categories.css" />
-      <URL value="@../css/Styleheet.css" />
+      <URL value="@../../css/Categories.css" />
+      <URL value="@../../css/Styleheet.css" />
    </stylesheets>
 </fx:root>

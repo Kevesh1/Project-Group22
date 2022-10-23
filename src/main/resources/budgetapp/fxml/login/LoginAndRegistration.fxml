@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/Styleheet.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../css/Styleheet.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <left>
@@ -21,12 +21,12 @@
                <children>
                   <ImageView fitHeight="210.0" fitWidth="193.0" layoutX="24.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/Blueprint.png" />
+                        <Image url="@../../img/Blueprint.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="69.0" fitWidth="59.0" layoutX="91.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/vault.png" />
+                        <Image url="@../../img/vault.png" />
                      </image>
                   </ImageView>
                   <Text fill="#050122" layoutX="48.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLUE">
@@ -70,12 +70,12 @@
                <children>
                   <ImageView fitHeight="210.0" fitWidth="193.0" layoutX="24.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/Blueprint.png" />
+                        <Image url="@../../img/Blueprint.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="69.0" fitWidth="59.0" layoutX="91.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/vault.png" />
+                        <Image url="@../../img/vault.png" />
                      </image>
                   </ImageView>
                   <Text fill="#080046" layoutX="48.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLUE">

@@ -3,11 +3,9 @@ package budgetapp.controller.login;
 import budgetapp.controller.WindowController;
 import dataaccess.mongodb.dao.account.AccountDao;
 import budgetapp.model.account.Account;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -46,7 +44,7 @@ public class AccountLoginController extends BorderPane {
     }
 
     private void loadCurrentView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/AccountLoginView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/login/AccountLoginView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try

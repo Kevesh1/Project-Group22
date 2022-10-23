@@ -57,7 +57,7 @@ public class FrontPageController extends AnchorPane {
     }
 
     private void loadCurrentView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/FrontPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/login/FrontPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try

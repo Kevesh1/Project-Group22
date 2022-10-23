@@ -31,7 +31,7 @@
       </Label>
    </children>
    <stylesheets>
-      <URL value="@../css/Styleheet.css" />
-      <URL value="@../css/labels.css" />
+      <URL value="@../../css/Styleheet.css" />
+      <URL value="@../../css/labels.css" />
    </stylesheets>
 </fx:root>

@@ -4,9 +4,7 @@ import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import dataaccess.mongodb.dao.categories.CategoryDao;
 import dataaccess.mongodb.dao.categories.SubCategoryDao;
-import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -69,7 +67,7 @@ public class CategoryController extends AnchorPane {
 
         //loadListeners();
 
-        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/category.fxml"));
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/categories/category.fxml"));
         root.setRoot(this);
         root.setController(this);
         try {

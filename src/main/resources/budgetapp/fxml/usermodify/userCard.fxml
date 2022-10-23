@@ -12,6 +12,6 @@
             <ImageView fx:id="profilePictureCard" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Button>
-      <Label fx:id="usernameLabel" prefHeight="50.0" prefWidth="150.0" styleClass="userCard" stylesheets="@../css/Styleheet.css" text="username" textAlignment="CENTER" textFill="#dadada" />
+      <Label fx:id="usernameLabel" prefHeight="50.0" prefWidth="150.0" styleClass="userCard" stylesheets="@../../css/Styleheet.css" text="username" textAlignment="CENTER" textFill="#dadada" />
    </children>
 </fx:root>

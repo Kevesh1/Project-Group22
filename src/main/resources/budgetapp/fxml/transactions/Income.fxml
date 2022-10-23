@@ -29,7 +29,7 @@
       <Label layoutX="95.0" layoutY="19.0" style="-fx-font-size: 17;" text="Note:" AnchorPane.leftAnchor="11.0" />
    </children>
    <stylesheets>
-      <URL value="@../css/Styleheet.css" />
-      <URL value="@../css/labels.css" />
+      <URL value="@../../css/Styleheet.css" />
+      <URL value="@../../css/labels.css" />
    </stylesheets>
 </fx:root>

@@ -44,7 +44,7 @@ public class UserLoginPageController extends AnchorPane {
     }
 
     private void loadCurrentView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/LoginPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/login/LoginPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try

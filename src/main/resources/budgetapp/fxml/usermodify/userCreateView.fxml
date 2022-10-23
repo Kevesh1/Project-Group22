@@ -16,12 +16,12 @@
          <graphic>
             <ImageView fx:id="chooseProfilePictureButton" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/profilepictures/BlankProfilePicture.png" />
+                  <Image url="@../../img/profilepictures/BlankProfilePicture.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <TextField fx:id="firstNameInput" layoutX="217.0" layoutY="208.0" promptText="First name" styleClass="darkcolor" stylesheets="@../css/Styleheet.css" />
+      <TextField fx:id="firstNameInput" layoutX="217.0" layoutY="208.0" promptText="First name" styleClass="darkcolor" stylesheets="@../../css/Styleheet.css" />
       <Text fill="#dadada" layoutX="124.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name:" />
       <TextField fx:id="lastNameInput" layoutX="217.0" layoutY="243.0" promptText="Last name" styleClass="darkcolor" />
       <Text fill="#dadada" layoutX="125.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last name:" />
@@ -36,7 +36,7 @@
       <Text fx:id="passwordComplex" fill="RED" layoutX="384.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.0" />
    </children>
    <stylesheets>
-      <URL value="@../css/Styleheet.css" />
-      <URL value="@../css/labels.css" />
+      <URL value="@../../css/Styleheet.css" />
+      <URL value="@../../css/labels.css" />
    </stylesheets>
 </fx:root>

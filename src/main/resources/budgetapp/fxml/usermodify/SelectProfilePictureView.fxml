@@ -8,10 +8,10 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="348.0" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="200.0" prefWidth="348.0" styleClass="darkcolor" stylesheets="@../css/Styleheet.css">
+      <VBox prefHeight="200.0" prefWidth="348.0" styleClass="darkcolor" stylesheets="@../../css/Styleheet.css">
          <children>
             <Text fill="#e4e3e3" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Please select profile picture below:" textAlignment="CENTER" wrappingWidth="347.5126953125" />
-            <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/Scrollpane.css">
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../../css/Scrollpane.css">
                <content>
                   <HBox fx:id="profileSelectionContainer" prefHeight="0.0" prefWidth="0.0" />
                </content>

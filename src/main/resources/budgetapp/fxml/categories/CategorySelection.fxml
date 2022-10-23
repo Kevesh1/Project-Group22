@@ -14,17 +14,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="692.0" prefWidth="1025.0" stylesheets="@../css/Styleheet.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="692.0" prefWidth="1025.0" stylesheets="@../../css/Styleheet.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane layoutX="292.0" layoutY="133.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="442.0" stylesheets="@../css/Styleheet.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="291.0">
+      <TabPane layoutX="292.0" layoutY="133.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="442.0" stylesheets="@../../css/Styleheet.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="291.0">
          <tabs>
             <Tab text="Income">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="313.0" prefWidth="600.0">
                      <children>
-                        <AnchorPane prefHeight="313.0" prefWidth="600.0" styleClass="darkModeThemeDarker" stylesheets="@../css/Styleheet.css">
+                        <AnchorPane prefHeight="313.0" prefWidth="600.0" styleClass="darkModeThemeDarker" stylesheets="@../../css/Styleheet.css">
                            <children>
-                              <Label layoutX="199.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
+                              <Label layoutX="199.0" layoutY="39.0" stylesheets="@../../css/Styleheet.css" text="Category">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -33,7 +33,7 @@
                                     <String fx:value="standardFontSize" />
                                  </styleClass>
                               </Label>
-                              <Label layoutX="37.0" layoutY="98.0" stylesheets="@../css/Styleheet.css" text="Income">
+                              <Label layoutX="37.0" layoutY="98.0" stylesheets="@../../css/Styleheet.css" text="Income">
                                  <font>
                                     <Font />
                                  </font>
@@ -42,7 +42,7 @@
                                     <String fx:value="standardFontSize" />
                                  </styleClass>
                               </Label>
-                              <Label layoutX="37.0" layoutY="189.0" stylesheets="@../css/Styleheet.css" text="Date">
+                              <Label layoutX="37.0" layoutY="189.0" stylesheets="@../../css/Styleheet.css" text="Date">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -51,7 +51,7 @@
                                     <String fx:value="standardFontSize" />
                                  </styleClass>
                               </Label>
-                              <Label layoutX="35.0" layoutY="263.0" stylesheets="@../css/Styleheet.css" text="Note">
+                              <Label layoutX="35.0" layoutY="263.0" stylesheets="@../../css/Styleheet.css" text="Note">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -60,7 +60,7 @@
                                     <String fx:value="standardFontSize" />
                                  </styleClass>
                               </Label>
-                              <Label layoutX="192.0" layoutY="131.0" stylesheets="@../css/Styleheet.css" text="Kr">
+                              <Label layoutX="192.0" layoutY="131.0" stylesheets="@../../css/Styleheet.css" text="Kr">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -69,7 +69,7 @@
                                     <String fx:value="standardFontSize" />
                                  </styleClass>
                               </Label>
-                              <TextField fx:id="sumWindow" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/Styleheet.css">
+                              <TextField fx:id="sumWindow" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" stylesheets="@../../css/Styleheet.css">
                                  <styleClass>
                                     <String fx:value="darkModeThemeDark" />
                                     <String fx:value="inputbox" />
@@ -78,11 +78,11 @@
                               <ImageView fx:id="closeButton" fitHeight="46.0" fitWidth="61.0" layoutX="438.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
                               <DatePicker fx:id="transaktionDate" layoutX="36.0" layoutY="215.0" styleClass="darkModeThemeDark">
                                  <stylesheets>
-                                    <URL value="@../css" />
-                                    <URL value="@../css/DatePicker.css" />
+                                    <URL value="@../../css" />
+                                    <URL value="@../../css/DatePicker.css" />
                                  </stylesheets>
                               </DatePicker>
-                              <TextArea fx:id="note" layoutX="37.0" layoutY="294.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
+                              <TextArea fx:id="note" layoutX="37.0" layoutY="294.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../../css/Styleheet.css" />
                               <Button layoutX="412.0" layoutY="11.0" mnemonicParsing="false" text="X" />
                               <ComboBox layoutX="37.0" layoutY="39.0" prefWidth="150.0" />
                               <Button layoutX="383.0" layoutY="355.0" mnemonicParsing="false" text="Done" />
@@ -94,9 +94,9 @@
             </Tab>
             <Tab text="Expense">
                <content>
-                  <AnchorPane prefHeight="396.0" prefWidth="405.0" stylesheets="@../css/Styleheet.css">
+                  <AnchorPane prefHeight="396.0" prefWidth="405.0" stylesheets="@../../css/Styleheet.css">
                      <children>
-                        <Label layoutX="199.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
+                        <Label layoutX="199.0" layoutY="39.0" stylesheets="@../../css/Styleheet.css" text="Category">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -105,7 +105,7 @@
                               <String fx:value="standardFontSize" />
                            </styleClass>
                         </Label>
-                        <Label layoutX="37.0" layoutY="98.0" stylesheets="@../css/Styleheet.css" text="Expense">
+                        <Label layoutX="37.0" layoutY="98.0" stylesheets="@../../css/Styleheet.css" text="Expense">
                            <font>
                               <Font />
                            </font>
@@ -114,7 +114,7 @@
                               <String fx:value="standardFontSize" />
                            </styleClass>
                         </Label>
-                        <Label layoutX="37.0" layoutY="189.0" stylesheets="@../css/Styleheet.css" text="Date">
+                        <Label layoutX="37.0" layoutY="189.0" stylesheets="@../../css/Styleheet.css" text="Date">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -123,7 +123,7 @@
                               <String fx:value="standardFontSize" />
                            </styleClass>
                         </Label>
-                        <Label layoutX="35.0" layoutY="263.0" stylesheets="@../css/Styleheet.css" text="Note">
+                        <Label layoutX="35.0" layoutY="263.0" stylesheets="@../../css/Styleheet.css" text="Note">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -132,7 +132,7 @@
                               <String fx:value="standardFontSize" />
                            </styleClass>
                         </Label>
-                        <Label layoutX="192.0" layoutY="131.0" stylesheets="@../css/Styleheet.css" text="Kr">
+                        <Label layoutX="192.0" layoutY="131.0" stylesheets="@../../css/Styleheet.css" text="Kr">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -141,7 +141,7 @@
                               <String fx:value="standardFontSize" />
                            </styleClass>
                         </Label>
-                        <TextField fx:id="sumWindow1" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/Styleheet.css">
+                        <TextField fx:id="sumWindow1" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" stylesheets="@../../css/Styleheet.css">
                            <styleClass>
                               <String fx:value="darkModeThemeDark" />
                               <String fx:value="inputbox" />
@@ -150,11 +150,11 @@
                         <ImageView fx:id="closeButton1" fitHeight="46.0" fitWidth="61.0" layoutX="438.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
                         <DatePicker fx:id="transaktionDate1" layoutX="36.0" layoutY="215.0" styleClass="darkModeThemeDark">
                            <stylesheets>
-                              <URL value="@../css" />
-                              <URL value="@../css/DatePicker.css" />
+                              <URL value="@../../css" />
+                              <URL value="@../../css/DatePicker.css" />
                            </stylesheets>
                         </DatePicker>
-                        <TextArea fx:id="note1" layoutX="37.0" layoutY="294.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
+                        <TextArea fx:id="note1" layoutX="37.0" layoutY="294.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../../css/Styleheet.css" />
                         <Button layoutX="412.0" layoutY="11.0" mnemonicParsing="false" text="X" />
                         <ComboBox layoutX="37.0" layoutY="39.0" prefWidth="150.0" />
                         <Button layoutX="383.0" layoutY="357.0" mnemonicParsing="false" text="Done" />
