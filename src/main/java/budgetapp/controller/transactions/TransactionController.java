@@ -103,7 +103,4 @@ public class TransactionController
         mainController.showMainView();
     }
 
-    public List<Transaction> loadTransactions(String budgetMonthId) {
-        return transactionDao.getAllTransactionsByBudgetMonth(budgetMonthId);
-    }
 }

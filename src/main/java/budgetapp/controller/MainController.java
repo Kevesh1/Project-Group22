@@ -16,9 +16,13 @@ import budgetapp.model.transactions.Income;
 import budgetapp.model.transactions.Transaction;
 
 import dataaccess.mongodb.dao.BudgetMonthDao;
+import dataaccess.mongodb.dao.IBudgetMonthDao;
 import dataaccess.mongodb.dao.categories.CategoryDao;
+import dataaccess.mongodb.dao.categories.ICategoryDao;
+import dataaccess.mongodb.dao.categories.ISubCategoryDao;
 import dataaccess.mongodb.dao.categories.SubCategoryDao;
 import dataaccess.mongodb.dao.transactions.ExpenseDao;
+import dataaccess.mongodb.dao.transactions.ITransactionDao;
 import dataaccess.mongodb.dao.transactions.TransactionDao;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -247,9 +251,13 @@ public class MainController extends AnchorPane{
 
     private ObservableList<BudgetMonth> budgetMonths;
 
-    private BudgetMonthDao budgetMonthDao;
+    private IBudgetMonthDao budgetMonthDao;
 
-    private CategoryDao categoryDao;
+    private ICategoryDao categoryDao;
+
+    private ISubCategoryDao subCategoryDao;
+
+    private ITransactionDao transactionDao;
 
     public PieChartController pieChartController;
 
@@ -258,6 +266,7 @@ public class MainController extends AnchorPane{
     private TransactionController transactionController;
 
     private CreateTransactionController createTransactionController;
+
 
 
     public MainController(User user) {
@@ -269,8 +278,9 @@ public class MainController extends AnchorPane{
         budgetMonths.addAll(loadBudgetMonths());
         selectedBudgetMonth = budgetMonths.get(selectBudgetMonthIndex());
         selectedBudgetMonth.calculateBudget();
-        loadControllers();
 
+
+        loadControllers();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
         fxmlLoader.setRoot(this);
@@ -287,6 +297,8 @@ public class MainController extends AnchorPane{
     private void loadDaos() {
         budgetMonthDao = new BudgetMonthDao();
         categoryDao = new CategoryDao();
+        subCategoryDao = new SubCategoryDao();
+        transactionDao = new TransactionDao();
     }
 
     private void loadControllers() {
@@ -304,15 +316,13 @@ public class MainController extends AnchorPane{
         if (dbBudgetMonths.isPresent()) {
             loadedBudgetMonths = dbBudgetMonths.get();
             loadedBudgetMonths.forEach(budgetMonth -> budgetMonth
-                    .setCategoryItems(
-                            categoryListController.loadCategoryItems(budgetMonth.getId()))
+                    .setCategoryItems(loadCategoryItems(budgetMonth.getId()))
                     .forEach(categoryItem -> categoryItem
-                            .setSubCategories(
-                                    categoryListController.loadSubCategoryItems(
-                                            categoryItem.getId()))));
+                            .setSubCategories(loadSubCategoryItems(
+                                    categoryItem.getId()))));
             loadedBudgetMonths.forEach(budgetMonth -> budgetMonth
                     .setTransactions(
-                            transactionController.loadTransactions(budgetMonth.getId())
+                            loadTransactions(budgetMonth.getId())
                     ));
 
         } else {
@@ -324,8 +334,17 @@ public class MainController extends AnchorPane{
         return loadedBudgetMonths;
     }
 
+    private List<CategoryItem> loadCategoryItems(String budgetMonthId) {
+        return categoryDao.getAllCategoriesByBudgetMonth(budgetMonthId);
+    }
 
+    private List<CategorySubItem> loadSubCategoryItems(String categoryId) {
+        return subCategoryDao.getAllSubCategoriesByCategory(categoryId);
+    }
 
+    public List<Transaction> loadTransactions(String budgetMonthId) {
+        return transactionDao.getAllTransactionsByBudgetMonth(budgetMonthId);
+    }
 
     private int selectBudgetMonthIndex() {
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
@@ -384,12 +403,12 @@ public class MainController extends AnchorPane{
         initializeBudgetMonths();
     }
 
-    public void initializeBudgetMonths() {
+    private void initializeBudgetMonths() {
         yearMonthComboBox.getSelectionModel().select(selectBudgetMonthIndex());
         selectedBudgetMonth = yearMonthComboBox.getSelectionModel().getSelectedItem();
     }
 
-    public void updateBudgetLabels() {
+    private void updateBudgetLabels() {
         budgetLabel.setText(String.valueOf(selectedBudgetMonth.getBudget()));
         budgetSpentLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetSpent()));
         budgetRemainingLabel.setText(String.valueOf(selectedBudgetMonth.getBudgetRemaining()));
@@ -434,7 +453,7 @@ public class MainController extends AnchorPane{
         }
     };
 
-    ChangeListener<BudgetMonth> selectedBudgetMonthChanged = (obs, wasFocused, isFocused) -> {
+    private ChangeListener<BudgetMonth> selectedBudgetMonthChanged = (obs, wasFocused, isFocused) -> {
         if (wasFocused != null) {
             selectedBudgetMonth = isFocused;
             selectedBudgetMonth.calculateBudget();

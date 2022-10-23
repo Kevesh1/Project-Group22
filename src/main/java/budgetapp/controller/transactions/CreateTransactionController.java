@@ -1,8 +1,10 @@
 package budgetapp.controller.transactions;
 
 import budgetapp.controller.MainController;
+import budgetapp.model.BudgetMonth;
 import budgetapp.model.categories.Category;
 import budgetapp.model.categories.CategoryItem;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.util.StringConverter;
@@ -27,6 +29,8 @@ public class CreateTransactionController {
         mainController.newIncomeDate.setValue(LocalDate.now());
         ObservableList<CategoryItem> categories = FXCollections.observableArrayList(mainController.selectedBudgetMonth.getCategoryItems());
         mainController.newExpenseCategoryComboBox.setItems(categories);
+        mainController.newExpenseCategoryComboBox.getSelectionModel().selectedItemProperty()
+                .addListener(selectedBudgetMonthChanged);
         mainController.newExpenseCategoryComboBox.setConverter(comboBoxCategoryStringConverter);
         mainController.newExpenseCategoryComboBox.getSelectionModel().selectFirst();
 
@@ -49,6 +53,13 @@ public class CreateTransactionController {
         @Override
         public CategoryItem fromString(String string) {
             return null;
+        }
+
+    };
+
+    ChangeListener<CategoryItem> selectedBudgetMonthChanged = (obs, wasFocused, isFocused) -> {
+        if (wasFocused != null) {
+            mainController.newExpenseSubCategoryComboBox.setItems(FXCollections.observableArrayList(isFocused.getSubCategories()));
         }
 
     };
