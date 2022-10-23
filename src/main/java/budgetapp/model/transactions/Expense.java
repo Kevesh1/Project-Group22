@@ -24,14 +24,27 @@ public class Expense extends Transaction {
 
     }
 
+    /**
+     * this method gets subcategories
+     * @return subCategory
+     */
+
     public CategorySubItem getSubCategory() {
         return subCategory;
     }
 
+    /**
+     * this method gets category
+     * @return category
+     */
     public Category getCategory() {
         return category;
     }
 
+    /**
+     * this method sets category
+     * @param category
+     */
     public void setCategory(Category category) {
         this.category = category;
     }

@@ -17,9 +17,19 @@ public class CategorySubItem extends AbstractCategoryItem{
 
     };
 
+    /**
+     * this method adds expense
+     * @param expense
+     */
+
     public void addExpense(Expense expense){
         expenses.add(expense);
     }
+
+    /**
+     * this method gets expenses
+     * @return List
+     */
 
     public List<Expense> getExpenses(){
         return expenses;

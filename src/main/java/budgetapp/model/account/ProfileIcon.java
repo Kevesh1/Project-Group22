@@ -13,23 +13,43 @@ public class ProfileIcon{
         allProfileIcons.add(this);
     }
 
-
+    /**
+     * this method gets ProfilePicture
+     * @return String
+     */
     public String getProfilePicture() {
         return ProfilePicture;
     }
+
+    /**
+     * this method sets ProfilePicture
+     * @param profilePicture
+     */
 
     public void setProfilePicture(String profilePicture) {
         ProfilePicture = profilePicture;
     }
 
+    /**
+     * this method gets profileGif
+     * @return profileGif
+     */
     public String getProfileGif() {
         return profileGif;
     }
 
+    /**
+     * this method sets profil gif
+     * @param profileGif
+     */
     public void setProfileGif(String profileGif) {
         this.profileGif = profileGif;
     }
 
+    /**
+     * this method creates list with all viable profile pictures
+     * @return
+     */
     public static List<ProfileIcon> profileIconList(){
 
         ProfileIcon mario = new ProfileIcon();

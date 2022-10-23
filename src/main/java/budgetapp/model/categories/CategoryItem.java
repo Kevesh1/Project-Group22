@@ -23,25 +23,48 @@ public class CategoryItem extends AbstractCategoryItem{
     public CategoryItem() {
     }
 
+    /**
+     * this method gets Icon
+     * @return Image
+     */
+
     //TODO - MOVE FROM MODEL
     public Image applyIcon() {
         return (new Image((Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(
                 "budgetapp/img/categories/" + getCategory().toString().toLowerCase() + ".png")))));
     }
 
+    /**
+     * this method gets subCategories
+     * @return list
+     */
+
     public List<CategorySubItem> getSubCategories() {
         return subCategories;
     }
 
+    /**
+     * this method adds subCategory
+     * @param subCategory
+     */
     public void addSubCategory(CategorySubItem subCategory) {
         subCategories.add(subCategory);
         incrementBudget(subCategory.getBudget());
     }
 
+    /**
+     * this method updates the budget
+     * @param subCategories
+     */
     public void setSubCategories(List<CategorySubItem> subCategories) {
         setBudget(0);
         subCategories.forEach(this::addSubCategory);
     }
+
+    /**
+     * this method removes a subCategory
+     * @param subCategory
+     */
 
     public void removeSubcategory(CategorySubItem subCategory) {
         decrementBudget(subCategory.getBudget());
@@ -64,19 +87,35 @@ public class CategoryItem extends AbstractCategoryItem{
 
     }*/
 
+    /**
+     * this method removes subCategory budget
+     * @param subCategory
+     */
+
     public void removeSubcategoryBudget(CategorySubItem subCategory){
         decrementBudget((int)subCategory.getBudget());
     }
 
+    /**
+     * this method gets category
+     * @return category
+     */
     public Category getCategory() {
         return category;
     }
 
+    /**
+     * this method sets category
+     * @param category
+     */
     public void setCategory(Category category) {
         this.category = category;
-
     }
 
+    /**
+     * this method calculates the budget
+     * @return budget
+     */
     public double calculateBudget() {
         int budget = 0;
         for (CategorySubItem subCategory : subCategories) {

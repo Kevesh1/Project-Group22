@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 public final class BudgetMonth {
 
+
     private String id;
 
     private double budget;
