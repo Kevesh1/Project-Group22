@@ -74,11 +74,7 @@ public class CategoryItem extends AbstractCategoryItem{
 
     public void removeSubcategory(CategorySubItem subCategory) {
         decrementBudget(subCategory.getBudget());
-        System.out.println("nPre");
-        subCategories.forEach(subCategory1 -> System.out.println(subCategory1.getName()));
         subCategories.remove(subCategory);
-        System.out.println("nAFT");
-        subCategories.forEach(subCategory1 -> System.out.println(subCategory1.getName()));
     }
 
 

@@ -67,7 +67,6 @@ public class ExpenseDao implements IExpenseDao {
 
     @Override
     public Expense deleteExpense(Expense expense) {
-        System.out.println(expense.getId());
         collection.deleteOne(Filters.eq("_id", new ObjectId(expense.getId())));
         return expense;
     }

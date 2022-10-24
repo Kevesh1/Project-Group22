@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +18,7 @@ public class ExpenseTest {
 
     @BeforeEach
     void setUp() {
-        expenseT = new Expense(10.0, "L", new Date(2022-01-01), null, null);
+        expenseT = new Expense(10.0, "L", new Date(System.currentTimeMillis()), null, null);
     }
 
 
@@ -45,12 +46,12 @@ public class ExpenseTest {
 
     @Test
     void getDate(){
-        assertEquals(2022,expenseT.getDate());
+        assertEquals(new Date(System.currentTimeMillis()).toLocalDate().atStartOfDay(),expenseT.getDate().toLocalDate().atStartOfDay());
     }
 
     @Test
     void setDate(){
-        assertEquals(2022-1-1,expenseT.getDate());
+        assertEquals(new Date(System.currentTimeMillis()).toLocalDate().atStartOfDay(), expenseT.getDate().toLocalDate().atStartOfDay());
     }
 
     @Test

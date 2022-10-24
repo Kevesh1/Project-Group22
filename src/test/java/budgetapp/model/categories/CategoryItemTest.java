@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.exceptions.base.MockitoException;
 import org.mockito.junit.jupiter.MockitoExtension;*/
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 //@ExtendWith(MockitoExtension.class)
@@ -156,8 +158,9 @@ public class CategoryItemTest {
 
     @Test
     void setSubCategories(){
-        categoryItem.addSubCategory(new CategorySubItem(200, "test"));
-        categoryItem.setSubCategories(categoryItem.getSubCategories());
+        List<CategorySubItem> categorySubItem = List.of(new CategorySubItem(200, "test"));
+        //categoryItem.addSubCategory(new CategorySubItem(200, "test"));
+        categoryItem.setSubCategories(categorySubItem);
         assertEquals(200,categoryItem.getBudget());
     }
 }
