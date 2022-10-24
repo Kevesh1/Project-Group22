@@ -67,7 +67,7 @@ public class CategoryController extends AnchorPane {
 
         //loadListeners();
 
-        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/categories/category.fxml"));
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView/category.fxml"));
         root.setRoot(this);
         root.setController(this);
         try {

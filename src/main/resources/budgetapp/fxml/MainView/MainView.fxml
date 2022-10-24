@@ -45,8 +45,8 @@
                   <Button fx:id="updateSubCategoryButton" layoutX="136.0" layoutY="174.0" mnemonicParsing="false" onAction="#updateSubCategory" text="Update" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="8.5" />
                </children>
                <stylesheets>
-                  <URL value="@../css/Styleheet.css" />
-                  <URL value="@../css/modalTab.css" />
+                  <URL value="@../../css/Styleheet.css" />
+                  <URL value="@../../css/modalTab.css" />
                </stylesheets>
             </AnchorPane>
          </children>
@@ -64,15 +64,15 @@
       </AnchorPane>
       <AnchorPane fx:id="iEWindow" layoutX="1.0" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);" styleClass="getinthefuckingmiddle" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TabPane layoutX="821.0" layoutY="295.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../css/Styleheet.css" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutX="821.0" layoutY="295.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../../css/Styleheet.css" tabClosingPolicy="UNAVAILABLE">
                <tabs>
                   <Tab text="Expense">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="313.0" prefWidth="600.0">
                            <children>
-                              <AnchorPane prefHeight="397.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../css/Styleheet.css">
+                              <AnchorPane prefHeight="397.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../../css/Styleheet.css">
                                  <children>
-                                    <Label layoutX="39.0" layoutY="22.0" stylesheets="@../css/Styleheet.css" text="Category">
+                                    <Label layoutX="39.0" layoutY="22.0" stylesheets="@../../css/Styleheet.css" text="Category">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -81,7 +81,7 @@
                                           <String fx:value="standardFontSize" />
                                        </styleClass>
                                     </Label>
-                                    <Label layoutX="37.0" layoutY="98.0" stylesheets="@../css/Styleheet.css" text="Expense">
+                                    <Label layoutX="37.0" layoutY="98.0" stylesheets="@../../css/Styleheet.css" text="Expense">
                                        <font>
                                           <Font />
                                        </font>
@@ -90,7 +90,7 @@
                                           <String fx:value="standardFontSize" />
                                        </styleClass>
                                     </Label>
-                                    <Label layoutX="37.0" layoutY="189.0" stylesheets="@../css/Styleheet.css" text="Date">
+                                    <Label layoutX="37.0" layoutY="189.0" stylesheets="@../../css/Styleheet.css" text="Date">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -99,7 +99,7 @@
                                           <String fx:value="standardFontSize" />
                                        </styleClass>
                                     </Label>
-                                    <Label layoutX="35.0" layoutY="263.0" stylesheets="@../css/Styleheet.css" text="Note">
+                                    <Label layoutX="35.0" layoutY="263.0" stylesheets="@../../css/Styleheet.css" text="Note">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -108,7 +108,7 @@
                                           <String fx:value="standardFontSize" />
                                        </styleClass>
                                     </Label>
-                                    <Label layoutX="192.0" layoutY="131.0" stylesheets="@../css/Styleheet.css" text="Kr">
+                                    <Label layoutX="192.0" layoutY="131.0" stylesheets="@../../css/Styleheet.css" text="Kr">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -117,7 +117,7 @@
                                           <String fx:value="standardFontSize" />
                                        </styleClass>
                                     </Label>
-                                    <TextField fx:id="newExpenseAmount" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/Styleheet.css">
+                                    <TextField fx:id="newExpenseAmount" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" stylesheets="@../../css/Styleheet.css">
                                        <styleClass>
                                           <String fx:value="darkModeThemeDark" />
                                           <String fx:value="inputbox" />
@@ -125,19 +125,19 @@
                                     </TextField>
                                     <DatePicker fx:id="newExpenseDate" layoutX="36.0" layoutY="215.0" styleClass="darkModeThemeDark">
                                        <stylesheets>
-                                          <URL value="@../css" />
-                                          <URL value="@../css/DatePicker.css" />
+                                          <URL value="@../../css" />
+                                          <URL value="@../../css/DatePicker.css" />
                                        </stylesheets>
                                     </DatePicker>
-                                    <TextArea fx:id="newExpenseNote" layoutX="37.0" layoutY="290.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
+                                    <TextArea fx:id="newExpenseNote" layoutX="37.0" layoutY="290.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../../css/Styleheet.css" />
                                     <Button layoutX="419.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="X" />
                                     <ComboBox fx:id="newExpenseCategoryComboBox" layoutX="38.0" layoutY="53.0" onHidden="#loadSubCategoryComboBox" prefWidth="150.0">
                                        <stylesheets>
-                                          <URL value="@../css/Styleheet.css" />
-                                          <URL value="@../css/comboBox.css" />
+                                          <URL value="@../../css/Styleheet.css" />
+                                          <URL value="@../../css/comboBox.css" />
                                        </stylesheets></ComboBox>
                                     <Button layoutX="387.0" layoutY="341.0" mnemonicParsing="false" onAction="#addExpense" text="Done" />
-                                    <Label layoutX="215.0" layoutY="21.0" stylesheets="@../css/Styleheet.css" text="Subcategory">
+                                    <Label layoutX="215.0" layoutY="21.0" stylesheets="@../../css/Styleheet.css" text="Subcategory">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -148,8 +148,8 @@
                                     </Label>
                                     <ComboBox fx:id="newExpenseSubCategoryComboBox" layoutX="214.0" layoutY="52.0" onShown="#loadSubCategoryComboBox" prefWidth="150.0">
                                        <stylesheets>
-                                          <URL value="@../css/Styleheet.css" />
-                                          <URL value="@../css/comboBox.css" />
+                                          <URL value="@../../css/Styleheet.css" />
+                                          <URL value="@../../css/comboBox.css" />
                                        </stylesheets></ComboBox>
                                  </children>
                                  <styleClass>
@@ -163,9 +163,9 @@
                   </Tab>
                   <Tab text="Income">
                      <content>
-                        <AnchorPane prefHeight="396.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../css/Styleheet.css">
+                        <AnchorPane prefHeight="396.0" prefWidth="475.0" style="-fx-background-radius: 7;" stylesheets="@../../css/Styleheet.css">
                            <children>
-                              <Label layoutX="199.0" layoutY="39.0" stylesheets="@../css/Styleheet.css" text="Category">
+                              <Label layoutX="199.0" layoutY="39.0" stylesheets="@../../css/Styleheet.css" text="Category">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -174,7 +174,7 @@
                                     <String fx:value="standardFontSize" />
                                  </styleClass>
                               </Label>
-                              <Label layoutX="37.0" layoutY="98.0" stylesheets="@../css/Styleheet.css" text="Income">
+                              <Label layoutX="37.0" layoutY="98.0" stylesheets="@../../css/Styleheet.css" text="Income">
                                  <font>
                                     <Font />
                                  </font>
@@ -183,7 +183,7 @@
                                     <String fx:value="standardFontSize" />
                                  </styleClass>
                               </Label>
-                              <Label layoutX="37.0" layoutY="189.0" stylesheets="@../css/Styleheet.css" text="Date">
+                              <Label layoutX="37.0" layoutY="189.0" stylesheets="@../../css/Styleheet.css" text="Date">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -192,7 +192,7 @@
                                     <String fx:value="standardFontSize" />
                                  </styleClass>
                               </Label>
-                              <Label layoutX="35.0" layoutY="263.0" stylesheets="@../css/Styleheet.css" text="Note">
+                              <Label layoutX="35.0" layoutY="263.0" stylesheets="@../../css/Styleheet.css" text="Note">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -201,7 +201,7 @@
                                     <String fx:value="standardFontSize" />
                                  </styleClass>
                               </Label>
-                              <Label layoutX="192.0" layoutY="131.0" stylesheets="@../css/Styleheet.css" text="Kr">
+                              <Label layoutX="192.0" layoutY="131.0" stylesheets="@../../css/Styleheet.css" text="Kr">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -210,7 +210,7 @@
                                     <String fx:value="standardFontSize" />
                                  </styleClass>
                               </Label>
-                              <TextField fx:id="newIncomeAmount" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" stylesheets="@../css/Styleheet.css">
+                              <TextField fx:id="newIncomeAmount" layoutX="35.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" stylesheets="@../../css/Styleheet.css">
                                  <styleClass>
                                     <String fx:value="darkModeThemeDark" />
                                     <String fx:value="inputbox" />
@@ -218,13 +218,13 @@
                               </TextField>
                               <DatePicker fx:id="newIncomeDate" layoutX="36.0" layoutY="215.0" styleClass="darkModeThemeDark">
                                  <stylesheets>
-                                    <URL value="@../css" />
-                                    <URL value="@../css/DatePicker.css" />
+                                    <URL value="@../../css" />
+                                    <URL value="@../../css/DatePicker.css" />
                                  </stylesheets>
                               </DatePicker>
-                              <TextArea fx:id="newIncomeNote" layoutX="37.0" layoutY="290.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Styleheet.css" />
+                              <TextArea fx:id="newIncomeNote" layoutX="37.0" layoutY="290.0" prefHeight="100.0" prefWidth="200.0" stylesheets="@../../css/Styleheet.css" />
                               <Button layoutX="419.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="X" />
-                              <ComboBox fx:id="newIncomeCategoryComboBox" disable="true" layoutX="37.0" layoutY="39.0" prefWidth="150.0" stylesheets="@../css/comboBox.css" />
+                              <ComboBox fx:id="newIncomeCategoryComboBox" disable="true" layoutX="37.0" layoutY="39.0" prefWidth="150.0" stylesheets="@../../css/comboBox.css" />
                               <Button layoutX="387.0" layoutY="341.0" mnemonicParsing="false" onAction="#addIncome" text="Done" />
                            </children>
                            <styleClass>
@@ -238,19 +238,19 @@
             </TabPane>
          </children>
          <stylesheets>
-            <URL value="@../css/Styleheet.css" />
-            <URL value="@../css/modalTab.css" />
+            <URL value="@../../css/Styleheet.css" />
+            <URL value="@../../css/modalTab.css" />
          </stylesheets>
       </AnchorPane>
-      <AnchorPane fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" styleClass="mainBackground" stylesheets="@../css/mainView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" styleClass="mainBackground" stylesheets="@../../css/mainView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ScrollPane layoutX="664.0" layoutY="142.0" prefHeight="447.0" prefWidth="435.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="142.0">
                <content>
-                  <FlowPane fx:id="categoriesFlowPane" prefHeight="0.0" prefWidth="221.0" style="-fx-background-insets: yellow;" stylesheets="@../css/mainView.css" />
+                  <FlowPane fx:id="categoriesFlowPane" prefHeight="0.0" prefWidth="221.0" style="-fx-background-insets: yellow;" stylesheets="@../../css/mainView.css" />
                </content>
                <stylesheets>
-                  <URL value="@../css/Styleheet.css" />
-                  <URL value="@../css/Scrollpane.css" />
+                  <URL value="@../../css/Styleheet.css" />
+                  <URL value="@../../css/Scrollpane.css" />
                </stylesheets>
             </ScrollPane>
             <HBox layoutX="522.0" layoutY="89.0" AnchorPane.rightAnchor="484.0">
@@ -259,21 +259,21 @@
                      <graphic>
                         <ImageView pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/material/arrow_back_ios.png" />
+                              <Image url="@../../img/material/arrow_back_ios.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
                   <ComboBox fx:id="yearMonthComboBox" prefHeight="31.0" prefWidth="188.0">
                      <stylesheets>
-                        <URL value="@../css/Styleheet.css" />
-                        <URL value="@../css/comboBox.css" />
+                        <URL value="@../../css/Styleheet.css" />
+                        <URL value="@../../css/comboBox.css" />
                      </stylesheets></ComboBox>
                   <Button fx:id="nextMonthButton" mnemonicParsing="false" onAction="#onClickNextMonth">
                      <graphic>
                         <ImageView pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/material/arrow_forward_ios.png" />
+                              <Image url="@../../img/material/arrow_forward_ios.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -286,8 +286,8 @@
                   <FlowPane fx:id="latestPurchases" orientation="VERTICAL" prefHeight="0.0" prefWidth="209.0" styleClass="transactions" />
                </content>
                <stylesheets>
-                  <URL value="@../css/Styleheet.css" />
-                  <URL value="@../css/Scrollpane.css" />
+                  <URL value="@../../css/Styleheet.css" />
+                  <URL value="@../../css/Scrollpane.css" />
                </stylesheets>
             </ScrollPane>
             <Label layoutX="1533.0" layoutY="97.0" prefHeight="30.0" prefWidth="157.0" style="-fx-font-size: 25;" styleClass="category-list" text="Categories" AnchorPane.rightAnchor="270.0" />
@@ -309,11 +309,11 @@
                </font>
             </Label>
             <Button layoutX="200.0" layoutY="644.0" mnemonicParsing="false" onAction="#openIE" prefWidth="49.0" text="+" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="200.0" />
-            <AnchorPane layoutX="33.0" layoutY="147.0" onMouseClicked="#mainScreenClicked" prefHeight="460.0" prefWidth="783.0" styleClass="mainpain" stylesheets="@../css/Styleheet.css" AnchorPane.bottomAnchor="293.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="484.0" AnchorPane.topAnchor="147.0">
+            <AnchorPane layoutX="33.0" layoutY="147.0" onMouseClicked="#mainScreenClicked" prefHeight="460.0" prefWidth="783.0" styleClass="mainpain" stylesheets="@../../css/Styleheet.css" AnchorPane.bottomAnchor="293.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="484.0" AnchorPane.topAnchor="147.0">
                <children>
                   <HBox layoutX="228.0" layoutY="119.0" prefHeight="482.0" prefWidth="783.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <StackedBarChart fx:id="stackedBarChart" stylesheets="@../css/Graph.css">
+                        <StackedBarChart fx:id="stackedBarChart" stylesheets="@../../css/Graph.css">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
@@ -321,7 +321,7 @@
                             <NumberAxis side="LEFT" />
                           </yAxis>
                         </StackedBarChart>
-                        <PieChart fx:id="pieChart" stylesheets="@../css/Graph.css" />
+                        <PieChart fx:id="pieChart" stylesheets="@../../css/Graph.css" />
                      </children>
                   </HBox>
                </children>
@@ -330,20 +330,20 @@
             <HBox layoutX="650.0" layoutY="109.0" />
             <HBox layoutX="265.0" layoutY="92.0" AnchorPane.leftAnchor="265.0" AnchorPane.topAnchor="92.0">
                <children>
-                  <Label styleClass="InfoLabelMainView" stylesheets="@../css/Styleheet.css" text="Expenses: " />
-                  <Label fx:id="budgetSpentLabel" styleClass="InfoLabelMainView" stylesheets="@../css/Styleheet.css" text="10 000" />
+                  <Label styleClass="InfoLabelMainView" stylesheets="@../../css/Styleheet.css" text="Expenses: " />
+                  <Label fx:id="budgetSpentLabel" styleClass="InfoLabelMainView" stylesheets="@../../css/Styleheet.css" text="10 000" />
                </children>
             </HBox>
             <HBox layoutX="552.0" layoutY="634.0" AnchorPane.bottomAnchor="220.39999999999998" AnchorPane.rightAnchor="484.79999999999995">
                <children>
-                  <Label styleClass="InfoLabelMainView" stylesheets="@../css/Styleheet.css" text="Remaining: " />
-                  <Label fx:id="budgetRemainingLabel" styleClass="InfoLabelMainView" stylesheets="@../css/Styleheet.css" text="20 000" />
+                  <Label styleClass="InfoLabelMainView" stylesheets="@../../css/Styleheet.css" text="Remaining: " />
+                  <Label fx:id="budgetRemainingLabel" styleClass="InfoLabelMainView" stylesheets="@../../css/Styleheet.css" text="20 000" />
                </children>
             </HBox>
             <HBox layoutX="33.0" layoutY="92.0" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="92.0">
                <children>
-                  <Label styleClass="InfoLabelMainView" stylesheets="@../css/Styleheet.css" text="Budget: " />
-                  <Label fx:id="budgetLabel" styleClass="InfoLabelMainView" stylesheets="@../css/Styleheet.css" text="30 000" />
+                  <Label styleClass="InfoLabelMainView" stylesheets="@../../css/Styleheet.css" text="Budget: " />
+                  <Label fx:id="budgetLabel" styleClass="InfoLabelMainView" stylesheets="@../../css/Styleheet.css" text="30 000" />
                </children>
             </HBox>
             <HBox layoutX="1094.0" layoutY="14.0" AnchorPane.rightAnchor="43.599999999999994" AnchorPane.topAnchor="14.0">
@@ -378,7 +378,7 @@
       </AnchorPane>
       <AnchorPane fx:id="addNewCategoryPane" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: rgba(0,0,0,0.75);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane layoutX="869.0" layoutY="416.0" prefHeight="230.0" prefWidth="250.0" style="-fx-background-color: #36393e; -fx-background-radius: 7;" stylesheets="@../css/Styleheet.css">
+            <AnchorPane layoutX="869.0" layoutY="416.0" prefHeight="230.0" prefWidth="250.0" style="-fx-background-color: #36393e; -fx-background-radius: 7;" stylesheets="@../../css/Styleheet.css">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -389,15 +389,15 @@
                   <Button fx:id="addNewCategoryButton" layoutX="212.0" layoutY="131.0" mnemonicParsing="false" onAction="#addNewCategory" text="Add" AnchorPane.rightAnchor="5.5" />
                   <Button layoutX="5.5" layoutY="188.0" mnemonicParsing="false" text="Cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.5" />
                   <Button layoutX="218.0" layoutY="11.0" mnemonicParsing="false" onAction="#closeNewCategoryWindow" text="x" AnchorPane.rightAnchor="5.5" />
-                  <ComboBox fx:id="categoryComboBox" layoutX="26.0" layoutY="68.0" prefWidth="150.0" stylesheets="@../css/comboBox.css" />
+                  <ComboBox fx:id="categoryComboBox" layoutX="26.0" layoutY="68.0" prefWidth="150.0" stylesheets="@../../css/comboBox.css" />
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
    </children>
    <stylesheets>
-      <URL value="@../css/mainView.css" />
-      <URL value="@../css/buttons.css" />
-      <URL value="@../css/labels.css" />
+      <URL value="@../../css/mainView.css" />
+      <URL value="@../../css/buttons.css" />
+      <URL value="@../../css/labels.css" />
    </stylesheets>
 </fx:root>

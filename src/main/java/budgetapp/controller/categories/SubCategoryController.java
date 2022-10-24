@@ -33,7 +33,7 @@ public class SubCategoryController extends AnchorPane {
         this.subCategory = subCategory;
         categoryItem = categoryController.getCategoryItem();
 
-        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/categories/subCategory.fxml"));
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView/subCategory.fxml"));
         root.setRoot(this);
         root.setController(this);
         try {

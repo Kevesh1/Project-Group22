@@ -70,7 +70,7 @@ public class UserCreateViewController extends AnchorPane {
     }
 
     private void loadCurrentView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/usermodify/userCreateView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/userView/userCreateView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try

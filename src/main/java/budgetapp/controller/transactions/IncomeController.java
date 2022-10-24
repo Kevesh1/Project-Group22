@@ -22,7 +22,7 @@ public class IncomeController extends AnchorPane {
     public IncomeController(TransactionController transactionController, Income income) {
         this.transactionController = transactionController;
         this.income = income;
-        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/transactions/Income.fxml"));
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView/Income.fxml"));
         root.setRoot(this);
         root.setController(this);
         try {

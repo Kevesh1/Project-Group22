@@ -28,7 +28,7 @@ public class SelectProfilePictureController extends AnchorPane {
     }
 
     private void loadCurrentView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/usermodify/SelectProfilePictureView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/userView/SelectProfilePictureView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try

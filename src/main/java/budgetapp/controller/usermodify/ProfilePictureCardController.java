@@ -33,7 +33,7 @@ public class ProfilePictureCardController extends AnchorPane {
     }
 
     private void loadCard() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/usermodify/ProfilePictureCard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/userView/ProfilePictureCard.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try

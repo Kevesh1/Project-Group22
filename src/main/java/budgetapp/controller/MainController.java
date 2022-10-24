@@ -11,8 +11,6 @@ import budgetapp.model.account.User;
 import budgetapp.model.categories.Category;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
-import budgetapp.model.transactions.Expense;
-import budgetapp.model.transactions.Income;
 import budgetapp.model.transactions.Transaction;
 
 import dataaccess.mongodb.dao.BudgetMonthDao;
@@ -21,7 +19,6 @@ import dataaccess.mongodb.dao.categories.CategoryDao;
 import dataaccess.mongodb.dao.categories.ICategoryDao;
 import dataaccess.mongodb.dao.categories.ISubCategoryDao;
 import dataaccess.mongodb.dao.categories.SubCategoryDao;
-import dataaccess.mongodb.dao.transactions.ExpenseDao;
 import dataaccess.mongodb.dao.transactions.ITransactionDao;
 import dataaccess.mongodb.dao.transactions.TransactionDao;
 import javafx.beans.value.ChangeListener;
@@ -36,12 +33,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
-import org.w3c.dom.events.Event;
-import org.w3c.dom.ls.LSOutput;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -282,7 +275,7 @@ public class MainController extends AnchorPane{
 
         loadControllers();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView/MainView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try

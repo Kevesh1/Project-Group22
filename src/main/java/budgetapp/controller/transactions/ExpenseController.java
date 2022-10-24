@@ -26,7 +26,7 @@ public class ExpenseController extends AnchorPane {
         this.transactionController = transactionController;
         this.expense = expense;
 
-        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/transactions/Expense.fxml"));
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView/Expense.fxml"));
         root.setRoot(this);
         root.setController(this);
         try {

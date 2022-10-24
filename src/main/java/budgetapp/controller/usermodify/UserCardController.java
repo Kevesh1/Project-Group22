@@ -37,7 +37,7 @@ public class UserCardController extends VBox {
     }
 
     private void loadCurrentView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/usermodify/userCard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/userView/userCard.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try
