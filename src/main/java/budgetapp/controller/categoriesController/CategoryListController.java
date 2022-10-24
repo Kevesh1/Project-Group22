@@ -175,6 +175,7 @@ public class CategoryListController {
 
         subCategoryDao.updateSubCategory(subCategory);
         mainController.selectedBudgetMonth.updateCategoryListItem(selectedCategoryItem);
+        resetNewCategoryInputs();
         mainController.showMainView();
         updateMainView();
     }
@@ -209,6 +210,7 @@ public class CategoryListController {
 
     public void editCategory() {
         categoryController.getCategoryItem().setCategory(mainController.categoryComboBox.getSelectionModel().getSelectedItem());
+        categoryController.getCategoryItem().setName(mainController.categoryComboBox.getSelectionModel().getSelectedItem().toString());
         categoryDao.updateCategory(categoryController.getCategoryItem());
         mainController.showMainView();
         updateMainView();
@@ -233,6 +235,7 @@ public class CategoryListController {
                     .addSubCategory(categorySubItem, categoryItem.getId()));
 
             mainController.selectedBudgetMonth.updateCategoryListItem(categoryItem);
+            resetNewCategoryInputs();
             updateMainView();
             mainController.showMainView();
         } catch (NumberFormatException exception){
@@ -245,13 +248,9 @@ public class CategoryListController {
     }
 
     public void removeSubCategory(CategorySubItem categorySubItem) {
-        categoryController.categoryItem.getSubCategories().forEach(categorySubItem1 -> System.out.println(categorySubItem1.getName()));
-
 
         categoryController.categoryItem.removeSubcategory(subCategoryDao
                 .deleteSubCategory(categorySubItem));
-
-        this.categoryController.categoryItem.getSubCategories().forEach(categorySubItem1 -> System.out.println(categorySubItem1.getName()));
 
         mainController.selectedBudgetMonth.updateCategoryListItem(categoryController.categoryItem);
         mainController.showMainView();

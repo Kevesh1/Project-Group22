@@ -11,10 +11,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.List;
+import java.util.Objects;
 
 public class CategoryController extends AnchorPane {
 
@@ -122,7 +124,7 @@ public class CategoryController extends AnchorPane {
         categoryName.setText(categoryItem.getName());
         categoryBudget.setText(categoryItem.getBudget() + " kr");
         progressBar.setProgress(categoryItem.getBudgetSpent() / categoryItem.getBudget());
-        categoryImage.setImage(categoryItem.applyIcon());
+        categoryImage.setImage(applyIcon(categoryItem.getCategory().name().toLowerCase()));
     }
 
     @FXML
@@ -175,6 +177,7 @@ public class CategoryController extends AnchorPane {
             categoryListController.confirmRemoveCategoryWindow(this);
         }*/
         categoryListController.removeCategory(categoryItem);
+        categoryListController.updateMainView();
     }
 
     /*public void confirmRemoveCategory(){
@@ -205,5 +208,10 @@ public class CategoryController extends AnchorPane {
     }
 
     public void updateCategorySubItemList(List<CategorySubItem> b) {
+    }
+
+    public Image applyIcon(String icon) {
+        return (new Image((Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(
+                "budgetapp/img/categories/" + icon + ".png")))));
     }
 }

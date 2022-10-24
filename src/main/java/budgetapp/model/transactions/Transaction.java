@@ -28,6 +28,10 @@ public class Transaction {
         this.date = date;
     }
 
+    public Transaction() {
+
+    }
+
 
     /**
      * This method gets sum

@@ -32,7 +32,9 @@ public class CategorySubItem extends AbstractCategoryItem{
 
     public void addExpense(Expense expense){
         expenses.add(expense);
+        incrementBudgetSpent(expense.getSum());
     }
+
 
     /**
      * this method gets expenses

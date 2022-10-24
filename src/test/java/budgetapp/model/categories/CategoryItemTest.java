@@ -32,12 +32,6 @@ public class CategoryItemTest {
         categoryItem.setName("Savings");
         assertEquals("Savings", categoryItem.getName());
     }
-
-    @Test
-    void getIcon() {
-        assertNotNull(categoryItem.applyIcon());
-    }
-
     @Test
     void getBudget() {
         assertEquals(0,categoryItem.getBudget());

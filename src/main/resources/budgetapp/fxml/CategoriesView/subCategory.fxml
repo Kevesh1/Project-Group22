@@ -8,8 +8,8 @@
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="427.0" style="-fx-background-color: gray;" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="subCategoryName" layoutX="14.0" layoutY="18.0" text="name" />
-      <ProgressBar fx:id="subCategoryProgressBar" layoutX="82.0" layoutY="18.0" prefHeight="17.0" prefWidth="246.0" progress="0.0" />
-      <Label fx:id="subCategoryBudget" layoutX="344.0" layoutY="18.0" text="kr" />
+      <ProgressBar fx:id="subCategoryProgressBar" layoutX="82.0" layoutY="18.0" prefHeight="18.0" prefWidth="226.0" progress="0.0" />
+      <Label fx:id="subCategoryBudget" layoutX="315.0" layoutY="18.0" text="kr" />
       <Button layoutX="401.0" layoutY="11.0" mnemonicParsing="false" onAction="#removeSubCategory" prefHeight="8.0" prefWidth="11.0" text="X" />
       <Button layoutX="364.0" layoutY="11.0" mnemonicParsing="false" onAction="#getEditSubCategoryWindow" text="edit" />
    </children>

@@ -29,6 +29,11 @@ public class Expense extends Transaction {
         this.category = category;
         this.subCategory = subCategory;
     }
+
+    public Expense() {
+
+    }
+
     /**
      * this method gets subcategories
      * @return subCategory

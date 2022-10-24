@@ -46,6 +46,7 @@ public class TransactionController
             mainController.selectedBudgetMonth.addTransaction(expenseDao.addExpense(expense, mainController.selectedBudgetMonth.getId()));
             subCategory.addExpense(expense);
             //subItem.addExpense(Integer.parseInt(mainController.newExpenseAmount.getText()));
+            mainController.newExpenseAmount.clear();
 
         }catch (NullPointerException | IllegalArgumentException exception){
             //System.out.println("Not a valid number or/and chose a subcategory");
