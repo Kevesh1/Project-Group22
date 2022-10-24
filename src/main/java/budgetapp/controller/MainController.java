@@ -42,6 +42,10 @@ import java.util.List;
 import java.util.Optional;
 
 
+/**
+ * @author Johannes
+ * @author Keivan
+ */
 public class MainController extends AnchorPane{
 
     //<editor-fold desc="FXML Declarations">

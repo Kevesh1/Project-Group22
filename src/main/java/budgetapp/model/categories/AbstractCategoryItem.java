@@ -6,6 +6,10 @@ import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.util.Objects;
+
+/**
+ * @author Johannes
+ */
  public class AbstractCategoryItem {
      /**
       * Parent class for different categories.

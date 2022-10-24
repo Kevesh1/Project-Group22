@@ -12,6 +12,9 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * @author jacob
+ */
 public class ProfilePictureCardController extends AnchorPane {
 
     SelectProfilePictureController parentController;

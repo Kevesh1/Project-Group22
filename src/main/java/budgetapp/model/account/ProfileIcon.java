@@ -3,6 +3,9 @@ package budgetapp.model.account;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Jacob
+ */
 public class ProfileIcon{
     /**
      * ProfileIcon class

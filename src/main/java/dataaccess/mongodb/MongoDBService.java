@@ -17,7 +17,9 @@ import java.util.logging.Logger;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
-
+/**
+ * @author Johannes
+ */
 public class MongoDBService {
     public static MongoDatabase database;
 

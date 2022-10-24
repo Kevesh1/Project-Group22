@@ -21,6 +21,10 @@ import java.io.IOException;
 import java.util.List;
 
 
+/**
+ * @author Johannes
+ * @author Jacob
+ */
 public class FrontPageController extends AnchorPane {
 
     @FXML

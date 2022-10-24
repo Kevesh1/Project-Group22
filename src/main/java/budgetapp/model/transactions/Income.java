@@ -5,6 +5,9 @@ import budgetapp.model.categories.Category;
 import java.sql.Date;
 import java.time.YearMonth;
 
+/**
+ * @author Keivan
+ */
 public class Income extends Transaction {
 
     /**

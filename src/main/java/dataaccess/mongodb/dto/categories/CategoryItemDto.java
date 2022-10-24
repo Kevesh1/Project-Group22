@@ -4,6 +4,9 @@ import budgetapp.model.categories.Category;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
+/**
+ * @author Johannes
+ */
 public final class CategoryItemDto {
 
     private ObjectId _id;

@@ -14,6 +14,9 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
+/**
+ * @author Johannes
+ */
 public class RegistrationController extends BorderPane {
     @FXML
     private TextField username;

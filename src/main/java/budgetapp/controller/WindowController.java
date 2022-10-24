@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 
 import java.util.Optional;
 
+/**
+ * @author Johannes
+ */
 public class WindowController {
 
     private final AccountLoginController accountLoginController;

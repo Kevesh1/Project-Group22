@@ -1,5 +1,8 @@
 package budgetapp.model.categories;
 
+/**
+ * @author Keivan
+ */
 public enum Category {
 
     /**

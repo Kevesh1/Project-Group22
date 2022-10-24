@@ -17,6 +17,9 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
+/**
+ * @author Jacob
+ */
 public class UserCreateViewController extends AnchorPane {
 
     @FXML

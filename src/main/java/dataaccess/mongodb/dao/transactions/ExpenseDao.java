@@ -15,6 +15,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
+/**
+ * @author Johannes
+ */
 public class ExpenseDao implements IExpenseDao {
 
     MongoCollection<ExpenseDto> collection = MongoDBService.database.getCollection(

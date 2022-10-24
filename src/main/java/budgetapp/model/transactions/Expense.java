@@ -6,6 +6,10 @@ import budgetapp.model.categories.CategorySubItem;
 import java.sql.Date;
 import java.time.YearMonth;
 
+/**
+ * @author Johannes
+ * @author Keivan
+ */
 public class Expense extends Transaction {
 
     /**

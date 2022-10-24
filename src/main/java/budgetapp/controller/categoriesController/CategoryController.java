@@ -18,6 +18,10 @@ import javafx.scene.layout.AnchorPane;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author Johannes
+ * @author Keivan
+ */
 public class CategoryController extends AnchorPane {
 
 

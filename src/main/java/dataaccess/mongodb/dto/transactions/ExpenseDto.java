@@ -7,6 +7,9 @@ import org.bson.types.ObjectId;
 import java.time.YearMonth;
 import java.util.Date;
 
+/**
+ * @author Johannes
+ */
 public final class ExpenseDto {
 
     private ObjectId _id;

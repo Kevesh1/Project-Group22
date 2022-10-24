@@ -5,6 +5,9 @@ import org.bson.codecs.pojo.annotations.BsonDiscriminator;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
+/**
+ * @author Johannes
+ */
 @BsonDiscriminator
 public class TransactionDto {
 

@@ -4,6 +4,9 @@ import org.bson.types.ObjectId;
 
 import java.time.Month;
 
+/**
+ * @author Johannes
+ */
 public class BudgetMonthDto {
 
     private ObjectId id;

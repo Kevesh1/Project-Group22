@@ -4,6 +4,9 @@ import dataaccess.mongodb.dto.Dto;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
+/**
+ * @author Johannes
+ */
 public final class UserDto implements Dto {
 
     private ObjectId _id;

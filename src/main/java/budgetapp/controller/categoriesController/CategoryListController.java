@@ -10,6 +10,10 @@ import javafx.collections.ListChangeListener;
 
 import java.util.List;
 
+/**
+ * @author Johannes
+ * @author Keivan
+ */
 public class CategoryListController {
 
     final MainController mainController;

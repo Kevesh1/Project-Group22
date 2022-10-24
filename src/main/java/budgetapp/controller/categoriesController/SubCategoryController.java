@@ -9,6 +9,10 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
 
 
+/**
+ * @author Johannes
+ * @author Keivan
+ */
 public class SubCategoryController extends AnchorPane {
 
     final CategorySubItem subCategory;

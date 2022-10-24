@@ -3,6 +3,9 @@ package dataaccess;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Johannes
+ */
 public interface IDao<T> {
     Optional<T> get(long id);
     List<T> getAll();

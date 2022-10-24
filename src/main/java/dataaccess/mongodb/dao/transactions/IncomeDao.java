@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * @author Johannes
+ */
 public class IncomeDao implements IIncomeDao {
 
     MongoCollection<IncomeDto> collection = MongoDBService.database.getCollection(

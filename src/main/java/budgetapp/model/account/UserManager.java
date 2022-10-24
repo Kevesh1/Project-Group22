@@ -3,7 +3,9 @@ package budgetapp.model.account;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+/**
+ * @author Jacob
+ */
 public class UserManager {
     /**
      * UserManager class. Manages the creation of new users and a password validation

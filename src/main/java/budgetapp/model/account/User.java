@@ -1,5 +1,9 @@
 package budgetapp.model.account;
 
+/**
+ * @author Johannes
+ * @author Jacob
+ */
 public class User{
 
     private String id;

@@ -5,6 +5,9 @@ import org.bson.types.ObjectId;
 import java.time.YearMonth;
 import java.util.Date;
 
+/**
+ * @author Johannes
+ */
 public class IncomeDto {
 
     private ObjectId _id;

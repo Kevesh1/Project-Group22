@@ -6,6 +6,9 @@ import org.bson.types.ObjectId;
 
 import java.util.List;
 
+/**
+ * @author Johannes
+ */
 public final class AccountDto implements Dto {
 
     private ObjectId _id;

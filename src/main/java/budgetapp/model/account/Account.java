@@ -2,6 +2,9 @@ package budgetapp.model.account;
 
 import java.util.List;
 
+/**
+ * @author Johannes
+ */
 public class Account {
 
     /**

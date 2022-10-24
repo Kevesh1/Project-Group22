@@ -18,6 +18,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * @author Johannes
+ * @author Jacob
+ */
 public class AccountLoginController extends BorderPane {
 
     @FXML

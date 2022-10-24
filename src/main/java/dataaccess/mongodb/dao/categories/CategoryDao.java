@@ -15,6 +15,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
+/**
+ * @author Johannes
+ */
 public class CategoryDao implements ICategoryDao{
 
     MongoCollection<CategoryItemDto> collection = MongoDBService.database.getCollection(

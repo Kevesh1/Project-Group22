@@ -17,6 +17,9 @@ import java.util.stream.Collectors;
 
 import static com.mongodb.client.model.Filters.and;
 
+/**
+ * @author Johannes
+ */
 public class AccountDao implements IAccountDao {
 
     MongoCollection<AccountDto> collection = MongoDBService.database.getCollection(

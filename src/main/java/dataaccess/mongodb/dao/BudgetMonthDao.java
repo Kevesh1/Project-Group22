@@ -14,6 +14,9 @@ import org.modelmapper.config.Configuration;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * @author Johannes
+ */
 public class BudgetMonthDao implements IBudgetMonthDao {
 
 

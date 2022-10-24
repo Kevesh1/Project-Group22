@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
+/**
+ * @author Johannes
+ */
 public class CategoryItem extends AbstractCategoryItem{
     /**
      * Child class to AbstractCategoryItem

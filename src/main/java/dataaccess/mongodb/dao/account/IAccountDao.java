@@ -6,6 +6,9 @@ import org.bson.types.ObjectId;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Johannes
+ */
 public interface IAccountDao{
 
     public Optional<Account> getAccountById(ObjectId id);

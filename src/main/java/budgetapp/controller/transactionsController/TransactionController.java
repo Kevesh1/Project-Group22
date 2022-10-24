@@ -13,6 +13,9 @@ import dataaccess.mongodb.dao.transactions.TransactionDao;
 import java.sql.Date;
 import java.time.LocalDate;
 
+/**
+ * @author Johannes
+ */
 public class TransactionController
 {
     private MainController mainController;

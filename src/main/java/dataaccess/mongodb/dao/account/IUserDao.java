@@ -7,6 +7,9 @@ import org.bson.types.ObjectId;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Johannes
+ */
 public interface IUserDao {
     Optional<Account> getUserById(ObjectId id);
     List<Account> getAllAccounts();

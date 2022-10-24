@@ -15,6 +15,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
+/**
+ * @author Johannes
+ */
 public class SubCategoryDao implements ISubCategoryDao {
 
     MongoCollection<SubCategoryItemDto> collection = MongoDBService.database.getCollection(

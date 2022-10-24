@@ -15,6 +15,10 @@ import java.io.IOException;
 import java.util.Objects;
 
 
+/**
+ * @author Johannes
+ * @author Jacob
+ */
 public class NewUserCardController extends VBox {
 
 

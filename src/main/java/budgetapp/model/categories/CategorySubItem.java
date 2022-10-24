@@ -5,6 +5,10 @@ import budgetapp.model.transactions.Expense;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Johannes
+ * @author Keivan
+ */
 public class CategorySubItem extends AbstractCategoryItem{
     /**
      * Child class to AbstractCategoryItem

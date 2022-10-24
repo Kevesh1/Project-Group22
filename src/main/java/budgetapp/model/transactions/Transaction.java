@@ -5,6 +5,9 @@ import budgetapp.model.categories.Category;
 import java.time.YearMonth;
 import java.sql.Date;
 
+/**
+ * @author Keivan
+ */
 public class Transaction {
 
     /**

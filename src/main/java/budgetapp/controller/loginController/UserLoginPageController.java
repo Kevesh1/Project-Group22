@@ -18,6 +18,9 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
+/**
+ * @author Jacob
+ */
 public class UserLoginPageController extends AnchorPane {
 
     @FXML

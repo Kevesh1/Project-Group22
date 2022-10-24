@@ -11,6 +11,9 @@ import javafx.util.Callback;
 
 import java.util.Optional;
 
+/**
+ * @author Johannes
+ */
 public class App extends Application {
 
     @Override

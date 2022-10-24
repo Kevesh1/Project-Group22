@@ -12,6 +12,10 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
+/**
+ * @author Johannes
+ * @author Jacob
+ */
 public class UserCardController extends VBox {
 
     FrontPageController parentController;

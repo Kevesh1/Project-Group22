@@ -12,6 +12,9 @@ import javafx.util.StringConverter;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * @author Johannes
+ */
 public class CreateTransactionController {
     private MainController mainController;
 

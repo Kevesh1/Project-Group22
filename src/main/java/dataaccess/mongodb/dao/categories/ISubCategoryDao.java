@@ -6,6 +6,9 @@ import org.bson.types.ObjectId;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Johannes
+ */
 public interface ISubCategoryDao {
     public Optional<CategorySubItem> getSubCategoryById(ObjectId id);
 
