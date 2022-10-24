@@ -1,4 +1,4 @@
-package budgetapp.controller.graphs;
+package budgetapp.controller.graphsController;
 
 import budgetapp.controller.MainController;
 import budgetapp.model.categories.AbstractCategoryItem;

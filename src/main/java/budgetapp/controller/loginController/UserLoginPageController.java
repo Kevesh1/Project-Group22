@@ -1,4 +1,4 @@
-package budgetapp.controller.login;
+package budgetapp.controller.loginController;
 
 import budgetapp.controller.MainController;
 import budgetapp.model.account.Account;
@@ -44,7 +44,7 @@ public class UserLoginPageController extends AnchorPane {
     }
 
     private void loadCurrentView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/login/LoginPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/loginView/LoginPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try

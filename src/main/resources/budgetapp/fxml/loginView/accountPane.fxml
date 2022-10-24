@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="budgetapp.controller.loginController.AccountPaneController">
+   <children>
+      <AnchorPane fx:id="mainPane" layoutX="82.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</fx:root>

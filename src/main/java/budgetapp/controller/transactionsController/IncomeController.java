@@ -1,4 +1,4 @@
-package budgetapp.controller.transactions;
+package budgetapp.controller.transactionsController;
 
 import budgetapp.model.transactions.Income;
 import javafx.fxml.FXML;
@@ -22,7 +22,7 @@ public class IncomeController extends AnchorPane {
     public IncomeController(TransactionController transactionController, Income income) {
         this.transactionController = transactionController;
         this.income = income;
-        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView/Income.fxml"));
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/TransaktionsView/Income.fxml"));
         root.setRoot(this);
         root.setController(this);
         try {

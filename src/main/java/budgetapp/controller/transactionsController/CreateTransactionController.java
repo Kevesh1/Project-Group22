@@ -1,7 +1,6 @@
-package budgetapp.controller.transactions;
+package budgetapp.controller.transactionsController;
 
 import budgetapp.controller.MainController;
-import budgetapp.model.BudgetMonth;
 import budgetapp.model.categories.Category;
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;

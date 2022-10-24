@@ -1,4 +1,4 @@
-package budgetapp.controller.login;
+package budgetapp.controller.loginController;
 
 import budgetapp.controller.WindowController;
 import dataaccess.mongodb.dao.account.AccountDao;
@@ -44,7 +44,7 @@ public class AccountLoginController extends BorderPane {
     }
 
     private void loadCurrentView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/login/AccountLoginView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/loginView/AccountLoginView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try

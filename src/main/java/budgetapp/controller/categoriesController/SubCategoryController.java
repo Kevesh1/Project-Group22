@@ -1,4 +1,4 @@
-package budgetapp.controller.categories;
+package budgetapp.controller.categoriesController;
 
 import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
@@ -33,7 +33,7 @@ public class SubCategoryController extends AnchorPane {
         this.subCategory = subCategory;
         categoryItem = categoryController.getCategoryItem();
 
-        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/MainView/subCategory.fxml"));
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/budgetapp/fxml/CategoriesView/subCategory.fxml"));
         root.setRoot(this);
         root.setController(this);
         try {

@@ -1,4 +1,4 @@
-package budgetapp.controller.categories;
+package budgetapp.controller.categoriesController;
 
 import budgetapp.controller.MainController;
 

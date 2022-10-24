@@ -1,6 +1,6 @@
-package budgetapp.controller.usermodify;
+package budgetapp.controller.userModifyController;
 
-import budgetapp.controller.login.FrontPageController;
+import budgetapp.controller.loginController.FrontPageController;
 import budgetapp.model.account.Account;
 import javafx.event.Event;
 import javafx.fxml.FXML;

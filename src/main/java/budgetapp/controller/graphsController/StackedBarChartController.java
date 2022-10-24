@@ -1,4 +1,4 @@
-package budgetapp.controller.graphs;
+package budgetapp.controller.graphsController;
 
 import budgetapp.controller.MainController;
 import budgetapp.model.BudgetMonth;
@@ -6,7 +6,6 @@ import budgetapp.model.categories.Category;
 import budgetapp.model.categories.CategoryItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.chart.*;
 
 import java.util.ArrayList;

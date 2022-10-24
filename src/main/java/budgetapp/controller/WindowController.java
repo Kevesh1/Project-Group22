@@ -1,7 +1,7 @@
 package budgetapp.controller;
 
-import budgetapp.controller.login.AccountLoginController;
-import budgetapp.controller.login.RegistrationController;
+import budgetapp.controller.loginController.AccountLoginController;
+import budgetapp.controller.loginController.RegistrationController;
 import budgetapp.model.account.Account;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

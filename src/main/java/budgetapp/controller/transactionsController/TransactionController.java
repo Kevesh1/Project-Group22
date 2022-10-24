@@ -1,4 +1,4 @@
-package budgetapp.controller.transactions;
+package budgetapp.controller.transactionsController;
 
 import budgetapp.controller.MainController;
 import budgetapp.model.categories.Category;
@@ -12,7 +12,6 @@ import dataaccess.mongodb.dao.transactions.TransactionDao;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.List;
 
 public class TransactionController
 {

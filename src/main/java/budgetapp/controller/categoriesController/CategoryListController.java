@@ -1,4 +1,4 @@
-package budgetapp.controller.categories;
+package budgetapp.controller.categoriesController;
 
 import budgetapp.controller.MainController;
 import budgetapp.model.categories.Category;
@@ -6,10 +6,7 @@ import budgetapp.model.categories.CategoryItem;
 import budgetapp.model.categories.CategorySubItem;
 import dataaccess.mongodb.dao.categories.CategoryDao;
 import dataaccess.mongodb.dao.categories.SubCategoryDao;
-import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
-import javafx.util.StringConverter;
 
 import java.util.List;
 

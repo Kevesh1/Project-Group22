@@ -1,10 +1,10 @@
-package budgetapp.controller.login;
+package budgetapp.controller.loginController;
 
 import budgetapp.controller.MainController;
 import budgetapp.controller.WindowController;
-import budgetapp.controller.usermodify.NewUserCardController;
-import budgetapp.controller.usermodify.UserCreateViewController;
-import budgetapp.controller.usermodify.UserCardController;
+import budgetapp.controller.userModifyController.NewUserCardController;
+import budgetapp.controller.userModifyController.UserCreateViewController;
+import budgetapp.controller.userModifyController.UserCardController;
 import budgetapp.model.account.Account;
 import budgetapp.model.account.User;
 import dataaccess.mongodb.dao.account.UserDao;
@@ -57,7 +57,7 @@ public class FrontPageController extends AnchorPane {
     }
 
     private void loadCurrentView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/login/FrontPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/loginView/FrontPage.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try

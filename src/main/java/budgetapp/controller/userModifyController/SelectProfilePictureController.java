@@ -1,4 +1,4 @@
-package budgetapp.controller.usermodify;
+package budgetapp.controller.userModifyController;
 
 import budgetapp.model.account.Account;
 import budgetapp.model.account.ProfileIcon;

@@ -1,19 +1,14 @@
 package budgetapp;
 
 import dataaccess.mongodb.MongoDBService;
-import budgetapp.controller.login.FrontPageController;
+import budgetapp.controller.loginController.FrontPageController;
 import budgetapp.controller.WindowController;
 import budgetapp.model.account.Account;
-import budgetapp.model.account.User;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-import java.io.IOException;
-import java.util.List;
 import java.util.Optional;
 
 public class App extends Application {

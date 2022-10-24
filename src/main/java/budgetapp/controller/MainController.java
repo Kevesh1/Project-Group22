@@ -1,11 +1,11 @@
 package budgetapp.controller;
 
-import budgetapp.controller.categories.CategoryController;
-import budgetapp.controller.categories.CategoryListController;
-import budgetapp.controller.graphs.PieChartController;
-import budgetapp.controller.graphs.StackedBarChartController;
-import budgetapp.controller.transactions.CreateTransactionController;
-import budgetapp.controller.transactions.TransactionController;
+import budgetapp.controller.categoriesController.CategoryController;
+import budgetapp.controller.categoriesController.CategoryListController;
+import budgetapp.controller.graphsController.PieChartController;
+import budgetapp.controller.graphsController.StackedBarChartController;
+import budgetapp.controller.transactionsController.CreateTransactionController;
+import budgetapp.controller.transactionsController.TransactionController;
 import budgetapp.model.BudgetMonth;
 import budgetapp.model.account.User;
 import budgetapp.model.categories.Category;

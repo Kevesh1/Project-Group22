@@ -1,4 +1,4 @@
-package budgetapp.controller.login;
+package budgetapp.controller.loginController;
 
 import budgetapp.controller.WindowController;
 import dataaccess.mongodb.dao.account.AccountDao;
@@ -34,7 +34,7 @@ public class RegistrationController extends BorderPane {
         accountDao = new AccountDao();
         userDao = new UserDao();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/login/AccountRegistrationView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/budgetapp/fxml/loginView/AccountRegistrationView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try
